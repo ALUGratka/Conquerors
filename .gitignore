@@ -83,3 +83,20 @@ lint/generated/
 lint/outputs/
 lint/tmp/
 # lint/reports/
+
+
+.gradle
+/captures
+
+# Built application files
+build/*
+
+# Crashlytics configuations
+com_crashlytics_export_strings.xml
+
+# Signing files
+.signing/
+
+# User-specific configurations
+.idea/*
+*.iml
