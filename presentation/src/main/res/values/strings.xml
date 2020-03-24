@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">CONQUERORS</string>
+    <string name="splash_screen_description">ONLY STRONG SURVIVE</string>
+
+    <!-- Activity titles -->
+    <string name="title_activity_home">Main panel</string>
+    <string name="title_activity_registration">Sign in</string>
+
+    <!-- Login and Registration -->
+    <!-- General -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_nick">Nick</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_email_or_nick">Email or nick</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_confirm">Confirm password</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_born">Born</string>
+    <string name="prompt_about_me">About me</string>
+
+    <string name="action_register">Register</string>
+    <string name="action_login">Login</string>
+    <string name="action_forgot_password">Forgot password?</string>
+    <string name="action_facebook_login">Login via Facebook</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="info_login_success">Welcome %1$s!</string>
+    <string name="info_registration_success">%1$s successfully registered</string>
+    <string name="register_rules">I declare that I have read and accept the Conquerors app rules</string>
+    <string name="register_rules_link">Rules available at <a href="http://www.playces.net/app/rules">playces.net</a></string>
+
 </resources>

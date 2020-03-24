@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CONQUERORS</string>
+    <string name="splash_screen_description">ONLY STRONG SURVIVE</string>
+
+    <!-- Activity titles -->
+    <string name="title_activity_home">Panel główny</string>
+    <string name="title_activity_registration">Zarejestruj</string>
+
+    <!-- Login and Registration -->
+    <!-- General -->
+    <string name="prompt_username">Nazwa użytkownika</string>
+    <string name="prompt_nick">Nazwa użytkownika</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_email_or_nick">Email lub nazwa użytkownika</string>
+    <string name="prompt_password">Hasło</string>
+    <string name="prompt_password_confirm">Potwierdź hasło</string>
+    <string name="prompt_city">Miasto</string>
+    <string name="prompt_born">Data urodzenia</string>
+    <string name="prompt_about_me">O mnie</string>
+    <string name="action_register">Rejestracja</string>
+    <string name="action_login">Logowanie</string>
+    <string name="action_forgot_password">Zapomniałeś hasła?</string>
+    <string name="action_facebook_login">Zaloguj przez Facebooka</string>
+    <string name="action_sign_in_short">Logowanie</string>
+    <string name="info_login_success">Witaj %1$s!</string>
+    <string name="info_registration_success">Rejestracja %1$s przebiegła pomyślnie!</string>
+    <string name="register_rules">Oświadczam, że zapoznałem/am się i akceptuję regulamin korzystania z aplikacji Conquerors</string>
+    <string name="register_rules_link">Regulamin dostępny jest na <a href="http://www.playces.net/app/rules">playces.net</a></string>
+
 </resources>

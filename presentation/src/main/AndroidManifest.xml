@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="pl.conquerors.app">
+    <!-- Permisions -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -9,12 +12,28 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ConquerorsApp">
+        <!-- ACTIVITIES -->
+        <activity
+            android:name=".view.splash.SplashActivity"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.home.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:screenOrientation="fullSensor"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".view.register.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:screenOrientation="fullSensor">
+            <!-- TODO android:parentActivityName=".view.home.Login" -->
         </activity>
     </application>
 

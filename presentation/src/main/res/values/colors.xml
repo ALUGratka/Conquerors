@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- Theme colors proposition -->
+    <color name="theme_dark_grey">#1F26963c</color>
+    <color name="theme_grey">#ff747674</color>
+    <color name="theme_light_grey">#EBEBEB</color>
+
+    <color name="theme_primary_color">#517f95</color>
+    <color name="theme_primary_light_color">#40C5AF</color>
+    <color name="theme_primary_light">#D2D2D2</color>
+
+    <!-- Buttons -->
+    <color name="button_pale_red">#D27274</color>
+    <color name="button_pale_green">#8AD272</color>
+    <color name="button_pale_grey">#D2D2D2</color>
+    <color name="button_facebook">#3C5A96</color>
+
+
 </resources>
