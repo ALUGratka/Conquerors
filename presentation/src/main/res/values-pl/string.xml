@@ -28,4 +28,13 @@
     <string name="register_rules">Oświadczam, że zapoznałem/am się i akceptuję regulamin korzystania z aplikacji Conquerors</string>
     <string name="register_rules_link">Regulamin dostępny jest na <a href="http://www.playces.net/app/rules">playces.net</a></string>
 
+    <!-- Errors -->
+    <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
+    <string name="error_invalid_email_match">Email i potwierdzenie nie pasują</string>
+    <string name="error_invalid_password">Hasło i kod potwierdzający nie pasują lub są niepoprawne.</string>
+    <string name="error_invalid_address">Nie udało się znaleźć podanego adresu.</string>
+    <string name="error_incorrect_password">Niepoprawne hasło</string>
+    <string name="error_field_required">To pole jest wymagane</string>
+    <string name="error_field_length">%1$s powinno mieć minimalne %2$d a maksymalnie %3$d znaków</string>
+    <string name="error_date_in_past">Nie można ustawić daty w przeszłości</string>
 </resources>

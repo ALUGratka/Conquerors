@@ -32,7 +32,8 @@
         <activity
             android:name=".view.register.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.home.HomeActivity">
             <!-- TODO android:parentActivityName=".view.home.Login" -->
         </activity>
     </application>

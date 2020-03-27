@@ -28,4 +28,13 @@
     <string name="register_rules">I declare that I have read and accept the Conquerors app rules</string>
     <string name="register_rules_link">Rules available at <a href="http://www.playces.net/app/rules">playces.net</a></string>
 
+    <!-- Errors -->
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_email_match">Email and confirmation does not match</string>
+    <string name="error_invalid_password">Password and confirmation does not match or are invalid</string>
+    <string name="error_invalid_address">Could not find given address.</string>
+    <string name="error_incorrect_password">Invalid password</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_field_length">%1$s should contain minimum of %2$d and maximum of %3$d characters</string>
+    <string name="error_date_in_past">Cannot setup date in past</string>
 </resources>

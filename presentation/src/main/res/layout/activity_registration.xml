@@ -122,9 +122,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_born"
-                    android:inputType="none"
+                    android:inputType="date"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -139,12 +139,13 @@
 
             <Button
                 android:id="@+id/register_button"
-                android:theme="@style/ColoredButton.LightRed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:enabled="false"
-                android:text="@string/action_register" />
+                android:onClick="onClick"
+                android:text="@string/action_register"
+                android:theme="@style/ColoredButton.LightRed" />
 
         </LinearLayout>
     </ScrollView>
