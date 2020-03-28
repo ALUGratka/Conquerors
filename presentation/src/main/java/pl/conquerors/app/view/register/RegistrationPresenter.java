@@ -2,15 +2,12 @@ package pl.conquerors.app.view.register;
 
 import android.text.TextUtils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
+import pl.conquerors.app.util.DateUtil;
 import pl.conquerors.app.util.Validator;
-import rx.Subscriber;
 
 public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
@@ -26,7 +23,7 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
     public RegistrationPresenter(final RegistrationUseCase useCase) { mUseCase = useCase; }
 
-    public void performRegistration() throws ParseException {
+    public void performRegistration() {
         mView.setRegistrationButtonEnabled(false);
 
         mView.hideNickError();
@@ -76,15 +73,16 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
         }
 
         //check if valid born
-        final Date bornDate = new SimpleDateFormat().parse(born);
-        if(TextUtils.isEmpty(born)) {
+        final Date bornDate = DateUtil.getDateFromDateString(born);
+        if (TextUtils.isEmpty(born)) {
             mView.showBornRequired();
             cancel = true;
-        }else if(bornDate == null || !bornDate.before(new Date(Long.MAX_VALUE))) {
+        } else if (!DateUtil.isDateValid(bornDate)) {
             mView.showBornRequired();
             cancel = true;
         }
-        String bornFormatted = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(bornDate);
+        String bornFormatted = DateUtil.getDateHyphenString(bornDate);
+
 
         if(cancel) {
             mView.setRegistrationButtonEnabled(true);
@@ -93,7 +91,8 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
             mUseCase.setData(nick, email, password, bornFormatted);
 
-            handleSubscription(mUseCase.execute().subscribe(new Subscriber<Void>() {
+            mView.onRegistrationSucceeded(email);
+            /*handleSubscription(mUseCase.execute().subscribe(new Subscriber<Void>() {
                 @Override
                 public void onCompleted() {
 
@@ -111,7 +110,7 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
                 public void onNext(Void response) {
                     mView.onRegistrationSucceeded(email);
                 }
-            }));
+            }));*/
             //TODO RegistrationUseCase
         }
 

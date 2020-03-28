@@ -6,6 +6,7 @@
     <!-- Activity titles -->
     <string name="title_activity_home">Panel główny</string>
     <string name="title_activity_registration">Zarejestruj</string>
+    <string name="title_activity_login">Logowanie</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -21,12 +22,14 @@
     <string name="action_register">Rejestracja</string>
     <string name="action_login">Logowanie</string>
     <string name="action_forgot_password">Zapomniałeś hasła?</string>
-    <string name="action_facebook_login">Zaloguj przez Facebooka</string>
+    <string name="action_not_logged_in">Nie masz konta? <b><u>Stwórz je!</u></b></string>
     <string name="action_sign_in_short">Logowanie</string>
     <string name="info_login_success">Witaj %1$s!</string>
     <string name="info_registration_success">Rejestracja %1$s przebiegła pomyślnie!</string>
     <string name="register_rules">Oświadczam, że zapoznałem/am się i akceptuję regulamin korzystania z aplikacji Conquerors</string>
-    <string name="register_rules_link">Regulamin dostępny jest na <a href="http://www.playces.net/app/rules">playces.net</a></string>
+    <string name="today">Dzisiaj</string>
+    <string name="tomorrow">Jutro</string>
+    <string name="date_long_format">EEEE, MMMM d</string>
 
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
@@ -37,4 +40,15 @@
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_field_length">%1$s powinno mieć minimalne %2$d a maksymalnie %3$d znaków</string>
     <string name="error_date_in_past">Nie można ustawić daty w przeszłości</string>
+
+    <!-- Menu Items -->
+    <string name="menu_item_events">Rozgrywki</string>
+    <string name="menu_item_my_events">Moje rozgrywki</string>
+    <string name="menu_item_add_event">Stwórz rozgrywkę</string>
+    <string name="menu_item_add_friend">Dodaj znajomego</string>
+    <string name="menu_item_profile">Profil</string>
+    <string name="menu_item_friends">Znajomi</string>
+    <string name="menu_item_settings">Ustawienia</string>
+    <string name="menu_item_login">Zaloguj się</string>
+    <string name="menu_item_logout">Wyloguj się</string>
 </resources>

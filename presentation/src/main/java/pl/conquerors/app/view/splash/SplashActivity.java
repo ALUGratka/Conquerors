@@ -45,7 +45,8 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onNext(Long aLong) {
                 //TODO if login HomeActivity if not LoginActivity/RegistrationActivity
-                Navigator.startRegistration(SplashActivity.this);
+                finish();
+                Navigator.startLogin(SplashActivity.this);
             }
 
         });

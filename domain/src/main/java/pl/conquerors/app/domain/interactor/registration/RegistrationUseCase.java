@@ -19,6 +19,7 @@ public class RegistrationUseCase extends ResultUseCase<Void> {
     protected Observable<Void> buildUseCaseObservable() {
         //TODO userRepository
 
+
         return null;
     }
 

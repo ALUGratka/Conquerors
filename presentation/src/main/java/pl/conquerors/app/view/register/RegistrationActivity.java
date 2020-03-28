@@ -2,31 +2,39 @@ package pl.conquerors.app.view.register;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
-import android.support.v7.widget.PopupMenu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import java.text.ParseException;
+import java.util.Date;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
+import butterknife.OnTouch;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
-import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
+import pl.conquerors.app.util.DateUtil;
+import pl.conquerors.app.util.DialogUtil;
 
 public class RegistrationActivity extends BaseActivity implements RegistrationView {
+
+    @BindView(R.id.registration_layout)
+    LinearLayout mLoginLayout;
 
     @BindView(R.id.nick)
     EditText mNickView;
@@ -69,26 +77,10 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
 
     private RegistrationPresenter mRegistrationPresenter;
 
-    private PopupMenu mPopupMenu;
-
-    public static Intent getStartingIntents(Context context){
-        final Intent startingIntent = new Intent(context, RegistrationActivity.class);
+    public static Intent getStartingIntents(Context context) {
+        Intent startingIntent = new Intent(context, RegistrationActivity.class);
         return startingIntent;
     }
-
-    //TODO date picker
-    @OnFocusChange(R.id.born)
-    public void onBornFocused(final View view, final boolean hasFocus){
-        if(hasFocus) {
-
-        }
-    }
-
-    @OnClick(R.id.register_button)
-    public void onClick(View view) throws ParseException {mRegistrationPresenter.performRegistration();}
-
-    @OnCheckedChanged(R.id.rules_check_box)
-    void rulesCheckChanged(boolean isChecked) {mRegisterButton.setEnabled(isChecked);}
 
     @Override
     public String getNick() { return mNickView.getText().toString(); }
@@ -106,9 +98,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     public String getBorn() { return mBornView.getText().toString(); }
 
     @Override
-    public void setRegistrationButtonEnabled(boolean enabled) {
-        mRegisterButton.setEnabled(enabled);
-    }
+    public void setRegistrationButtonEnabled(boolean enabled) { mRegisterButton.setEnabled(enabled); }
 
     @Override
     public void showNickRequired() {
@@ -132,8 +122,8 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     @Override
-    public void showEmailLengthInvalid(final int min, final int max) {
-        mEmailInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_email), min, max));
+    public void showEmailLengthInvalid(int min, int max) {
+        mEmailInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_email),min,max));
     }
 
     @Override
@@ -148,13 +138,13 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     @Override
-    public void showPasswordLengthInvalid(final int min, final int max) {
-        mPasswordInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_password), min, max));
+    public void showPasswordLengthInvalid(int min, int max) {
+        mPasswordInput.setError(getString(R.string.error_field_length,getString(R.string.prompt_password), min, max));
     }
 
     @Override
-    public void showPasswordConfirmationLengthInvalid(final int min, final int max) {
-        mPasswordConfirmationInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_password_confirm), min, max));
+    public void showPasswordConfirmationLengthInvalid(int min, int max) {
+        mPasswordConfirmationInput.setError(getString(R.string.error_field_length,getString(R.string.prompt_password_confirm), min, max));
     }
 
     @Override
@@ -187,57 +177,49 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     @Override
-    public void onRegistrationSucceeded(final String email) {
-        // after successful registration, show confirmation screen
+    public void onRegistrationSucceeded(String email) {
         showConfirmationView(email);
     }
 
     @Override
-    public void showConfirmationView(final String email) {
+    public void showConfirmationView(String email) {
         //TODO resultOfRegistration
-        Navigator.startHome(this);
-        //Navigator.startConfirmRegistrationForResult(this, email, REQUEST_CODE_CONFIRMATION);
+        Toast.makeText(this,getString(R.string.info_registration_success, getNick()), Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
-    public void showLoading() { showProgress(true); }
-
-    @Override
-    public void hideLoading() { showProgress(false); }
-
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    private void setupActionBar() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            // Show the Up button in the action bar.
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
+    public void showLoading() {
+        showProgress(true);
     }
 
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
+    @Override
+    public void hideLoading() {
+        showProgress(false);
+    }
+
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
         // for very easy animations. If available, use these APIs to fade-in
         // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                        }
-                    });
+            mLoginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                }
+            });
 
             mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(show ? 1 : 0)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                        }
-                    });
+            mProgressView.animate().setDuration(shortAnimTime).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mPasswordView.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
         } else {
             // The ViewPropertyAnimator APIs are not available, so simply show
             // and hide the relevant UI components.
@@ -246,17 +228,27 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         }
     }
 
+    @OnTouch(R.id.login_form)
+    public boolean onLoginLayoutTouch(){
+        hideKeyboard(mLoginFormView);
+        return true;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        final RegistrationUseCase useCase = new RegistrationUseCase(new AndroidComposedScheduler());
+        final RegistrationUseCase mRegistrationUseCase = new RegistrationUseCase(new AndroidComposedScheduler());
 
-        mRegistrationPresenter = new RegistrationPresenter(useCase);
+        mRegistrationPresenter = new RegistrationPresenter(mRegistrationUseCase);
         mRegistrationPresenter.setmView(this);
 
-        setupActionBar();
+        setUpActionBar();
+    }
+
+    private void setUpActionBar() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -270,4 +262,41 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         super.onResume();
         mRegistrationPresenter.resume();
     }
+
+    @OnFocusChange(R.id.born)
+    protected void onBornFocused(final View view, final boolean hasFocus){
+        if(hasFocus) {
+            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
+                @Override
+                public void onDateSet(Date date) {
+                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
+                }
+            });
+        }
+    }
+
+    @OnTouch(R.id.born)
+    protected boolean onBornTouch (final View view, final MotionEvent motionEvent) {
+        if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
+            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
+                @Override
+                public void onDateSet(Date date) {
+                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
+                }
+            });
+            return true;
+        }
+        return false;
+    }
+
+    @OnCheckedChanged(R.id.rules_check_box)
+    protected void onRulesCheckedChanged(boolean isChecked) {
+        mRegisterButton.setEnabled(isChecked);
+    }
+
+    @OnClick(R.id.register_button)
+    public void onRegisterButtonClicked() {
+        mRegistrationPresenter.performRegistration();
+    }
+
 }

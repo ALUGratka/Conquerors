@@ -33,8 +33,13 @@
             android:name=".view.register.RegistrationActivity"
             android:label="@string/title_activity_registration"
             android:screenOrientation="fullSensor"
-            android:parentActivityName=".view.home.HomeActivity">
-            <!-- TODO android:parentActivityName=".view.home.Login" -->
+            android:parentActivityName=".view.login.LoginActivity"
+            tools:targetApi="jelly_bean">
+        </activity>
+        <activity
+            android:name=".view.login.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="fullSensor">
         </activity>
     </application>
 

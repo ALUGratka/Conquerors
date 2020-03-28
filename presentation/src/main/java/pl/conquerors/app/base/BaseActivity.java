@@ -19,7 +19,6 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     @Override
     public void setContentView(@LayoutRes final int layoutResID) {
         super.setContentView(layoutResID);
-
         ButterKnife.bind(this);
     }
 
