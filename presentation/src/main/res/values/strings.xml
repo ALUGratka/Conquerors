@@ -54,4 +54,14 @@
     <string name="menu_item_settings">Settings</string>
     <string name="menu_item_login">Login</string>
     <string name="menu_item_logout">Logout</string>
+
+    <!-- Create Character -->
+    <string name="radio_bard">Bard</string>
+    <string name="radio_warrior">Warrior</string>
+    <string name="radio_thief">Thief</string>
+    <string name="radio_wizard">Wizard</string>
+    <string name="charcter_class">Character class</string>
+    <string name="action_next">Next</string>
+    <string name="action_back">Back</string>
+
 </resources>
