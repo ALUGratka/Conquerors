@@ -41,6 +41,11 @@
             android:label="@string/title_activity_login"
             android:screenOrientation="fullSensor">
         </activity>
+        <activity
+            android:name=".view.everydayPrize.EverydayPrizeActivity"
+            android:label="Get prize"
+            android:screenOrientation="fullSensor">
+        </activity>
     </application>
 
 </manifest>

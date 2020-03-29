@@ -31,6 +31,9 @@
     <string name="tomorrow">Jutro</string>
     <string name="date_long_format">EEEE, MMMM d</string>
 
+    <!-- Get everyday prize -->
+    <string name="action_everyday_prize">Naciśnij aby otrzymać nagrodę</string>
+
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
     <string name="error_invalid_email_match">Email i potwierdzenie nie pasują</string>

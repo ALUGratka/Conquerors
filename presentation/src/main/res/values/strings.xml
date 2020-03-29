@@ -31,6 +31,9 @@
     <string name="tomorrow">Tomorrow</string>
     <string name="date_long_format">EEEE, MMMM d</string>
 
+    <!-- Get everyday prize -->
+    <string name="action_everyday_prize">Press to get an award</string>
+
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_email_match">Email and confirmation does not match</string>
