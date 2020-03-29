@@ -58,7 +58,7 @@
     <string name="radio_thief">Łotrzyk</string>
     <string name="radio_wizard">Mag</string>
     <string name="charcter_class">Klasa postaci</string>
-    <string name="action_next">Dalej</>
+    <string name="action_next">Dalej</string>
     <string name="action_back">Wróć</string>
 
 </resources>

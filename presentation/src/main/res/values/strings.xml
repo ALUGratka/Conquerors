@@ -58,7 +58,7 @@
     <string name="radio_thief">Thief</string>
     <string name="radio_wizard">Wizard</string>
     <string name="charcter_class">Character class</string>
-    <string name="action_next">Next</>
+    <string name="action_next">Next</string>
     <string name="action_back">Back</string>
 
 </resources>
