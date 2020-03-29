@@ -30,7 +30,6 @@
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="date_long_format">EEEE, MMMM d</string>
-    <string name="action_next">Next</>
 
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
@@ -58,5 +57,8 @@
     <string name="radio_warrior">Warrior</string>
     <string name="radio_thief">Thief</string>
     <string name="radio_wizard">Wizard</string>
+    <string name="charcter_class">Character class</string>
+    <string name="action_next">Next</>
+    <string name="action_back">Back</string>
 
 </resources>

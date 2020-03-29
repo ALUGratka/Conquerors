@@ -30,7 +30,6 @@
     <string name="today">Dzisiaj</string>
     <string name="tomorrow">Jutro</string>
     <string name="date_long_format">EEEE, MMMM d</string>
-    <string name="action_next">Dalej</>
 
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
@@ -55,8 +54,11 @@
 
     <!-- Create Character -->
     <string name="radio_bard">Bard</string>
-    <string name="radio_warrior">Warrior</string>
-    <string name="radio_thief">Thief</string>
-    <string name="radio_wizard">Wizard</string>
+    <string name="radio_warrior">Wojownik</string>
+    <string name="radio_thief">Łotrzyk</string>
+    <string name="radio_wizard">Mag</string>
+    <string name="charcter_class">Klasa postaci</string>
+    <string name="action_next">Dalej</>
+    <string name="action_back">Wróć</string>
 
 </resources>
