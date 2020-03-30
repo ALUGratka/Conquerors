@@ -1,5 +1,7 @@
 package pl.conquerors.app.view.createCharacter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
@@ -12,6 +14,10 @@ import pl.conquerors.app.view.login.LoginPresenter;
 public class CreateCharacterActivity extends BaseActivity implements CreateCharacterView {
 
     CreateCharacterPresenter mCreateCharacterPresenter;
+
+    public static Intent getStartingIntents(Context context) {
+        return new Intent(context, CreateCharacterActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

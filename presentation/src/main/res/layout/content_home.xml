@@ -34,6 +34,33 @@
             android:text="@string/title_activity_home"
             android:gravity="center" />
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/homeCreatorButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="Kreator Postaci"
+                    android:focusable="true" />
+
+                <Button
+                    android:id="@+id/homePrizeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:text="Codzienna nagroda"
+                    android:focusable="true" />
+            </LinearLayout>
+        </ScrollView>
+
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>
