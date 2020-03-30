@@ -32,7 +32,7 @@
     <string name="date_long_format">EEEE, MMMM d</string>
 
     <!-- Get everyday prize -->
-    <string name="action_everyday_prize">Naciśnij aby otrzymać nagrodę</string>
+    <string name="action_everyday_prize">Naciśnij obraz prezentu aby otrzymać nagrodę</string>
     <string name="present_image">Obrazek prezentu</string>
     <string name="info_got_gift">Gratulacje, w pezencie otrzymałeś %1$d punktów</string>
 
