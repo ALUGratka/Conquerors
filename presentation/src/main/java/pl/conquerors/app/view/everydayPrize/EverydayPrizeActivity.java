@@ -46,7 +46,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
         showPrizeView(100);
     }
 
-    @OnClick(R.id.prizeButton)
+    @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
         getPrize();
     }

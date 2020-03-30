@@ -32,7 +32,7 @@
     <string name="date_long_format">EEEE, MMMM d</string>
 
     <!-- Get everyday prize -->
-    <string name="action_everyday_prize">Press to get an award</string>
+    <string name="action_everyday_prize">Press the image of the gift to get an award</string>
     <string name="present_image">Image of a present</string>
     <string name="info_got_gift">You have been gifted %1$d points</string>
 
