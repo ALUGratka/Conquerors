@@ -34,6 +34,7 @@
             android:label="@string/title_activity_registration"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.login.LoginActivity"
+            android:windowSoftInputMode="adjustResize"
             tools:targetApi="jelly_bean">
         </activity>
         <activity
