@@ -47,243 +47,248 @@
             android:baselineAligned="false"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/apperanceAttributesLayout"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
                 <LinearLayout
-                    android:id="@+id/hairLayout"
+                    android:id="@+id/apperanceAttributesLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
+                    <LinearLayout
+                        android:id="@+id/hairLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/hairText"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_hair"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
 
-                    <ImageButton
-                        android:id="@+id/imageButton2"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
+                        <TextView
+                            android:id="@+id/hairText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_hair"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/eyeColorLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton6"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/eyeColorText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_eye_color"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton5"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/hatLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton3"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/hatText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_hat"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton4"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/blouseLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton8"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/blouseText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_blouse"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton7"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pantsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton10"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/pantsText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_pants"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton11"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bootsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton13"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/bootsText"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:text="@string/character_boots"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton12"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/eyeColorLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton6"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
-
-                    <TextView
-                        android:id="@+id/eyeColorText"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_eye_color"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton5"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/hatLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton3"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
-
-                    <TextView
-                        android:id="@+id/hatText"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_hat"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton4"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/blouseLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton8"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
-
-                    <TextView
-                        android:id="@+id/blouseText"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_blouse"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton7"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/pantsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton10"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
-
-                    <TextView
-                        android:id="@+id/pantsText"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_pants"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton11"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/bootsLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <ImageButton
-                        android:id="@+id/imageButton13"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_left"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_left_arrow" />
-
-                    <TextView
-                        android:id="@+id/bootsTexthairText2"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:text="@string/character_boots"
-                        android:textAlignment="center"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-                    <ImageButton
-                        android:id="@+id/imageButton12"
-                        style="@style/Widget.AppCompat.ImageButton"
-                        android:layout_width="4dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:contentDescription="@string/arrow_right"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/ic_right_arrow"
-                        tools:visibility="visible" />
-                </LinearLayout>
-
-            </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 
