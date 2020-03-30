@@ -60,8 +60,21 @@
     <string name="radio_warrior">Warrior</string>
     <string name="radio_thief">Thief</string>
     <string name="radio_wizard">Wizard</string>
-    <string name="charcter_class">Character class</string>
+    <string name="character_class">Character class</string>
     <string name="action_next">Next</string>
     <string name="action_back">Back</string>
+    <string name="character_sex">Choose sex</string>
+    <string name="radio_man">Man</string>
+    <string name="radio_woman">Woman</string>
+    <string name="character_appearance">Appearance</string>
+    <string name="character_hair">Hair</string>
+    <string name="character_image_description">Character appearance</string>
+    <string name="character_hat">Hat</string>
+    <string name="arrow_right">Next</string>
+    <string name="arrow_left">Previous</string>
+    <string name="character_eye_color">Eye color</string>
+    <string name="character_blouse">Blouse</string>
+    <string name="character_pants">Pants</string>
+    <string name="character_boots">Buty</string>
 
 </resources>
