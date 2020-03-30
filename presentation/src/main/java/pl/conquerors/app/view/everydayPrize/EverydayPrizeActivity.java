@@ -11,9 +11,9 @@ import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 
-public class EverydayPrizeActivity extends BaseActivity implements EverydayPrizeView{
-
+public class EverydayPrizeActivity extends BaseActivity implements EverydayPrizeView {
     EverydayPrizePresenter mEverydayPrizePresenter;
+
     public static Intent getStartingIntents(Context context) {
         return new Intent(context, EverydayPrizeActivity.class);
     }
@@ -31,10 +31,12 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @Override
     public void showLoading() {
+
     }
 
     @Override
     public void hideLoading() {
+
     }
 
     @Override
