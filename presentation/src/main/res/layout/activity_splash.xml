@@ -7,38 +7,11 @@
     tools:context=".view.splash.SplashActivity"
     android:background="@color/theme_light_grey">
 
-    <TextView
-        android:id="@+id/splash_app_name_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/app_name"
-        android:textSize="50sp" />
-
     <ImageView
-        android:id="@+id/splash_app_icon"
+        android:id="@+id/splash_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/ic_splash_king"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true" />
-
-    <TextView
-        android:id="@+id/splash_description_textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/splash_app_name_textView"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/splash_screen_description"
-        android:textSize="20sp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="20dp"/>
-
-
+        android:contentDescription="@string/splash_screen_description"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/loading_screen" />
 </RelativeLayout>
