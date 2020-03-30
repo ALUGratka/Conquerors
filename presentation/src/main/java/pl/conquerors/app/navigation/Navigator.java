@@ -21,9 +21,5 @@ public class Navigator {
         context.startActivity(LoginActivity.getStartingIntents(context));
     }
 
-    public static void startEverydayPrize(Context context) {
-        context.startActivity(EverydayPrizeActivity.getStartingIntents(context));
-    }
-
     //TODO startRegistration, startLogin
 }

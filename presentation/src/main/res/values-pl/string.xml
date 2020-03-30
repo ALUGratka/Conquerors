@@ -33,6 +33,8 @@
 
     <!-- Get everyday prize -->
     <string name="action_everyday_prize">Naciśnij aby otrzymać nagrodę</string>
+    <string name="present_image">Obrazek prezentu</string>
+    <string name="info_got_gift">Gratulacje, w pezencie otrzymałeś %1$d punktów</string>
 
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>

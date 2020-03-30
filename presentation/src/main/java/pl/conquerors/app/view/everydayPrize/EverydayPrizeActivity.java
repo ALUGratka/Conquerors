@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.widget.Toast;
 
+import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
@@ -41,6 +43,18 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @Override
     public void getPrize() {
+        showPrizeView(100);
+    }
+
+    @OnClick(R.id.prizeButton)
+    public void onPrizeButtonClicked() {
+        getPrize();
+    }
+
+    @Override
+    public void showPrizeView(Integer points) {
+        Toast.makeText(this, getString(R.string.info_got_gift, points), Toast.LENGTH_SHORT).show();
         Navigator.startHome(this);
     }
+
 }
