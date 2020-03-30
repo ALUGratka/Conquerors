@@ -9,6 +9,8 @@
     <color name="theme_primary_light_color">#40C5AF</color>
     <color name="theme_primary_light">#D2D2D2</color>
 
+    <color name="theme_background_color">#E1D1AC</color>
+
     <!-- Buttons -->
     <color name="button_pale_red">#D27274</color>
     <color name="button_pale_green">#8AD272</color>
