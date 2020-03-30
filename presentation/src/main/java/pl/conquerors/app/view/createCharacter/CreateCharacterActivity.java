@@ -14,9 +14,9 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     CreateCharacterPresenter mCreateCharacterPresenter;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_character_class);
+        setContentView(R.layout.create_character_appearance);
 
 
 //        mCreateCharacterPresenter = new CreateCharacterPresenter(); //cos tam use case?

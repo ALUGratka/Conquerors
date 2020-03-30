@@ -62,8 +62,21 @@
     <string name="radio_warrior">Wojownik</string>
     <string name="radio_thief">Łotrzyk</string>
     <string name="radio_wizard">Mag</string>
-    <string name="charcter_class">Klasa postaci</string>
+    <string name="character_class">Klasa postaci</string>
     <string name="action_next">Dalej</string>
     <string name="action_back">Wróć</string>
+    <string name="character_sex">Wybierz płeć</string>
+    <string name="radio_man">Mężczyzna</string>
+    <string name="radio_woman">Kobieta</string>
+    <string name="character_appearance">Wygląd</string>
+    <string name="character_hair">Fryzura</string>
+    <string name="character_image_description">Wygląd postaci</string>
+    <string name="character_hat">Nakrycie głowy</string>
+    <string name="arrow_right">Następny</string>
+    <string name="arrow_left">Poprzedni</string>
+    <string name="character_eye_color">Kolor oczu</string>
+    <string name="character_blouse">Bluzka</string>
+    <string name="character_pants">Spodnie</string>
+    <string name="character_boots">Buty</string>
 
 </resources>
