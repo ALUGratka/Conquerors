@@ -1,0 +1,323 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/create_character_apperance_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".view.createCharacter.CreateCharacterSex">
+
+    <LinearLayout
+        android:id="@+id/create_character_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/characterView"
+                android:layout_width="match_parent"
+                android:layout_height="333dp"
+                android:contentDescription="@string/character_image_description"
+                android:src="@drawable/wizard"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/createCharacterApperanceText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/character_appearance"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/characterView"
+                tools:ignore="MissingConstraints" />
+
+            <ScrollView
+                android:layout_width="374dp"
+                android:layout_height="221dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/createCharacterApperanceText">
+
+                <LinearLayout
+                    android:id="@+id/apperanceAttributesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/hairLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/hairText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_hair"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/eyeColorLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton6"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/eyeColorText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_eye_color"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton5"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/hatLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton3"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/hatText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_hat"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton4"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/blouseLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton8"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/blouseText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_blouse"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton7"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pantsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton10"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/pantsText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_pants"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton11"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/bootsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/imageButton13"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_left"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_left_arrow" />
+
+                        <TextView
+                            android:id="@+id/bootsText"
+                            android:layout_width="110dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="center|center_horizontal"
+                            android:text="@string/character_boots"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton12"
+                            style="@style/Widget.AppCompat.ImageButton"
+                            android:layout_width="4dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/arrow_right"
+                            android:scaleType="fitXY"
+                            app:srcCompat="@drawable/ic_right_arrow"
+                            tools:visibility="visible" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/action_next"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:theme="@style/ColoredButton.LightRed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="1"
+                android:text="@string/action_back"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:theme="@style/ColoredButton.LightRed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="MissingConstraints" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+</LinearLayout>

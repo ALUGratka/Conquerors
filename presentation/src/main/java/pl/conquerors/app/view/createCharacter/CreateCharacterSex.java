@@ -28,7 +28,7 @@ public class CreateCharacterSex extends BaseActivity implements BaseView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_character_sex2);
+        setContentView(R.layout.create_character_sex);
     }
 
     @OnClick(R.id.next_button)
