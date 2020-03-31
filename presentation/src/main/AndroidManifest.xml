@@ -47,13 +47,9 @@
             android:label="Get prize"
             android:screenOrientation="fullSensor">
         </activity>
-        <activity android:name=".view.createCharacter.CreateCharacterActivity">
-<!--                    <intent-filter>-->
-<!--                        <action android:name="android.intent.action.MAIN" />-->
-
-<!--                        <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                    </intent-filter>-->
-        </activity>
+        <activity android:name=".view.createCharacter.CreateCharacterSex"/>
+        <activity android:name=".view.createCharacter.CreateCharacterClass"/>
+        <activity android:name=".view.createCharacter.CreateCharacterAppearance"/>
         </application>
 
 </manifest>

@@ -32,12 +32,12 @@ public class HomeActivity extends BaseActivity {
 
     @OnClick(R.id.homePrizeButton)
     public void onPrizeButtonClicked() {
-        Navigator.startPrize(this);;
+        Navigator.startPrize(this);
     }
 
     @OnClick(R.id.homeCreatorButton)
     public void onCreatorButtonClicked() {
-        Navigator.startCreator(this);;
+        Navigator.startCharacterSexSelection(this);
     }
 
     @Override
