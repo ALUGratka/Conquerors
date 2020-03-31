@@ -28,7 +28,7 @@ public class CreateCharacterAppearance extends BaseActivity implements BaseView 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_character_appearance2);
+        setContentView(R.layout.create_character_appearance);
     }
 
     @OnClick(R.id.back_button)
