@@ -65,6 +65,7 @@
     <string name="character_class">Character class</string>
     <string name="action_next">Next</string>
     <string name="action_back">Back</string>
+    <string name="action_approve">Approve your character</string>
     <string name="character_sex">Choose sex</string>
     <string name="radio_man">Man</string>
     <string name="radio_woman">Woman</string>
@@ -77,6 +78,19 @@
     <string name="character_eye_color">Eye color</string>
     <string name="character_blouse">Blouse</string>
     <string name="character_pants">Pants</string>
-    <string name="character_boots">Buty</string>
+    <string name="character_boots">Boots</string>
+    <string name="character_name">Nickname</string>
+    <string name="character_nickname">Enter your characters nickname</string>
+    <string name="character_player_nickname">Default nickname</string>
+    <string name="character_player_class">Default class</string>
+    <string name="character_class_statistics">Character class statistics</string>
+    <string name="character_strength">Strength</string>
+    <string name="character_charisma">Charisma</string>
+    <string name="character_agility">Agility</string>
+    <string name="character_intelligence">Intelligence</string>
+    <string name="character_player_strength">Default strength number</string>
+    <string name="character_player_charisma">Default charisma number</string>
+    <string name="character_player_agility">Default agility number</string>
+    <string name="character_player_intelligence">Default intelligence number</string>
 
 </resources>

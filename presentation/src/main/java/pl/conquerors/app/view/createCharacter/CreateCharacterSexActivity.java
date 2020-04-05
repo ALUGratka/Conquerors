@@ -2,7 +2,6 @@ package pl.conquerors.app.view.createCharacter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,7 +14,7 @@ import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.navigation.Navigator;
 
-public class CreateCharacterSex extends BaseActivity implements BaseView {
+public class CreateCharacterSexActivity extends BaseActivity implements BaseView {
 
     @BindView(R.id.back_button)
     Button mPreviousScreenButton;
@@ -35,7 +34,7 @@ public class CreateCharacterSex extends BaseActivity implements BaseView {
     private static int [] images = {R.drawable.female_256, R.drawable.male_256};
 
     public static Intent getStartingIntents(Context context) {
-        return new Intent(context, CreateCharacterSex.class);
+        return new Intent(context, CreateCharacterSexActivity.class);
     }
 
     @Override

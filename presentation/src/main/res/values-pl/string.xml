@@ -65,6 +65,7 @@
     <string name="character_class">Klasa postaci</string>
     <string name="action_next">Dalej</string>
     <string name="action_back">Wróć</string>
+    <string name="action_approve">Zatwierdź swoja postać</string>
     <string name="character_sex">Wybierz płeć</string>
     <string name="radio_man">Mężczyzna</string>
     <string name="radio_woman">Kobieta</string>
@@ -78,5 +79,18 @@
     <string name="character_blouse">Bluzka</string>
     <string name="character_pants">Spodnie</string>
     <string name="character_boots">Buty</string>
+    <string name="character_name">Pseudonim</string>
+    <string name="character_nickname">Podaj pseudonim swojej postaci</string>
+    <string name="character_player_nickname">Domyślny pseudonim</string>
+    <string name="character_player_class">Domyslna klasa</string>
+    <string name="character_class_statistics">Statystyki dla klasy postaci</string>
+    <string name="character_strength">Siła</string>
+    <string name="character_charisma">Charyzma</string>
+    <string name="character_agility">Zręczność</string>
+    <string name="character_intelligence">Inteligencja</string>
+    <string name="character_player_strength">Domyślna siła dla klasy</string>
+    <string name="character_player_charisma">Domyślna charyzma dla klasy</string>
+    <string name="character_player_agility">Domyślna zręczność dla klasy</string>
+    <string name="character_player_intelligence">Domyślna inteligencja dla klasy</string>
 
 </resources>

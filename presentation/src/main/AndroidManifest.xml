@@ -17,11 +17,11 @@
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".view.home.HomeActivity"
@@ -47,9 +47,11 @@
             android:label="Get prize"
             android:screenOrientation="fullSensor">
         </activity>
-        <activity android:name=".view.createCharacter.CreateCharacterSex"/>
-        <activity android:name=".view.createCharacter.CreateCharacterClass"/>
-        <activity android:name=".view.createCharacter.CreateCharacterAppearance"/>
+        <activity android:name=".view.createCharacter.CreateCharacterSexActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterClassActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterAppearanceActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterNameActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterSummaryActivity"/>
         </application>
 
 </manifest>

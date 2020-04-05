@@ -12,7 +12,7 @@ import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.navigation.Navigator;
 
-public class CreateCharacterClass extends BaseActivity implements BaseView {
+public class CreateCharacterNameActivity extends BaseActivity implements BaseView {
 
     @BindView(R.id.back_button)
     Button mPreviousScreenButton;
@@ -20,25 +20,24 @@ public class CreateCharacterClass extends BaseActivity implements BaseView {
     @BindView(R.id.next_button)
     Button mNextScreenButton;
 
-
     public static Intent getStartingIntents(Context context) {
-        return new Intent(context, CreateCharacterClass.class);
+        return new Intent(context, CreateCharacterNameActivity.class);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_character_class);
+        setContentView(R.layout.create_character_name);
     }
 
     @OnClick(R.id.next_button)
     public void onNextButtonClicked() {
-        Navigator.startCharacterAppearanceSelection(this);
+        Navigator.startCharacterSummary(this);
     }
 
     @OnClick(R.id.back_button)
     public void onPreviousButtonClicked() {
-        Navigator.startCharacterSexSelection(this);
+        Navigator.startCharacterAppearanceSelection(this);
     }
 
     @Override
