@@ -10,11 +10,11 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    skillPoints = db.Column(db.Integer, unique=False, nullable=False)
+    skillPoints = db.Column(db.Integer, unique=False, default=0)
     birthDate = db.Column(db.String(10), nullable=False) #day/month/year
     # relations
-    characters = db.relationship('Character', backref='userId', lazy=True)
-    lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='userId', lazy=True)
+    characters = db.relationship('Character', backref='user_id', lazy=True)
+    lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='last_logged_in', lazy=True)
 
     def __repr__(self):
         return f"User('{self.id}', '{self.username}')"
@@ -35,19 +35,19 @@ class Character(db.Model):
     # foreign keys
     userId = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     # relations
-    lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='characterId', lazy=True)
+    lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='character_id', lazy=True)
 
     def __repr__(self):
         return f"Character('{self.id}', '{self.nickname}', '{self.level}', '{self.characterClass}')"
 
 class LastLoggedIn(db.Model):
 
-    id = db.Column(db.Integer, unique=True, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
 
-    lastLogin = db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
+    lastLoginDate = db.Column(db.DateTime, nullable=False, default = datetime.utcnow)
     # foreign keys
     userId =  db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     characterId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
     
     def __repr__(self):
-        return f"LastLoggedIn('{self.id}', '{self.userId}', '{self.characterId}', '{self.lastLogin}')"
+        return f"LastLoggedIn('{self.id}', '{self.userId}', '{self.characterId}', '{self.lastLoginDate}')"
