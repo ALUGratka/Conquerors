@@ -1,13 +1,20 @@
 package pl.conquerors.app.view.register;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import java.util.Date;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
+import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.rest.RestService;
 import pl.conquerors.app.util.DateUtil;
 import pl.conquerors.app.util.Validator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
@@ -91,27 +98,25 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
             mUseCase.setData(nick, email, password, bornFormatted);
 
-            mView.onRegistrationSucceeded(email);
-            /*handleSubscription(mUseCase.execute().subscribe(new Subscriber<Void>() {
+            Call<UserEntity> call = RestClient.getInstance().register(email,nick,password,born);
+
+            call.enqueue(new Callback<UserEntity>() {
                 @Override
-                public void onCompleted() {
-
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    mView.hideLoading();
-                    mView.setRegistrationButtonEnabled(true);
-
-                    handleError(e);
-                }
-
-                @Override
-                public void onNext(Void response) {
+                public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                    if(!response.isSuccessful()) {
+                        Log.e("registration", "code: "+response.code());
+                        return;
+                    }
                     mView.onRegistrationSucceeded(email);
                 }
-            }));*/
-            //TODO RegistrationUseCase
+
+                @Override
+                public void onFailure(Call<UserEntity> call, Throwable t) {
+                    mView.hideLoading();
+                    mView.setRegisterButtonEnabled(true);
+                    Log.e("registration", t.getMessage());
+                }
+            });
         }
 
     }

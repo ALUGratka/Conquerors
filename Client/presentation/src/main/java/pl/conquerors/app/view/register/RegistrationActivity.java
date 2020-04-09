@@ -189,6 +189,11 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     @Override
+    public void setRegisterButtonEnabled(boolean enabled) {
+        mRegisterButton.setEnabled(enabled);
+    }
+
+    @Override
     public void showLoading() {
         showProgress(true);
     }

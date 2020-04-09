@@ -125,6 +125,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
+    public void showPasswordInvalid() {
+        mPasswordInput.setError(getString(R.string.error_field_required));
+    }
+
+    @Override
     public void showLoading() {
         showProgress(true);
     }

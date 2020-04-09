@@ -23,4 +23,6 @@ public interface LoginView extends BaseView {
     void onLoginSucceeded(/*User user*/);
 
     void showConfirmationView(String nick);
+
+    void showPasswordInvalid();
 }

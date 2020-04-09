@@ -1,9 +1,16 @@
 package pl.conquerors.app.view.login;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.interactor.login.LoginUseCase;
+import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.util.Validator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
 
@@ -33,16 +40,36 @@ public class LoginPresenter extends BasePresenter<LoginView> {
         if(TextUtils.isEmpty(password)) {
             mView.showPasswordRequired();
             cancel = true;
-        } else if (!TextUtils.equals(password, "123")) {
-            //TODO check if user in repository
+        } else if (!Validator.isPasswordValid(password)) {
+            mView.showPasswordInvalid();
             cancel = true;
         }
 
         if (cancel) {
             mView.setLoginButtonEnabled(true);
         } else {
-            mView.showLoading();
-            mView.onLoginSucceeded();
+
+            Call<UserEntity> call = RestClient.getInstance().login(nick,password);
+
+            call.enqueue(new Callback<UserEntity>() {
+                @Override
+                public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                    if(!response.isSuccessful()){
+                        Log.e("login", "Code: "+response.code());
+                        return;
+                    }
+                    mView.onLoginSucceeded();
+                }
+
+                @Override
+                public void onFailure(Call<UserEntity> call, Throwable t) {
+                    mView.hideLoading();
+                    mView.setLoginButtonEnabled(true);
+                    Log.e("login", t.getMessage());
+                }
+            });
+
+
         }
     }
 }
