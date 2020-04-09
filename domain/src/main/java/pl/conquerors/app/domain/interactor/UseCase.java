@@ -7,7 +7,9 @@ public abstract class UseCase<T, P> {
 
     protected ComposedScheduler mComposedScheduler;
 
-    protected UseCase(ComposedScheduler scheduler) {mComposedScheduler = scheduler; }
+    protected UseCase(ComposedScheduler scheduler) {
+        mComposedScheduler = scheduler;
+    }
 
     protected abstract Observable<T> buildUseCaseObservable(P parameter);
 
