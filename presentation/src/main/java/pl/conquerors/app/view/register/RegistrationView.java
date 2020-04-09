@@ -21,7 +21,6 @@ public interface RegistrationView extends BaseView {
     void showEmailRequired();
     void showEmailLengthInvalid(int min, int max);
     void showEmailInvalid();
-    void showEmailTaken();
     void hideEmailError();
 
     //password and password confirmation
@@ -37,6 +36,6 @@ public interface RegistrationView extends BaseView {
 
     //callback
     void onRegistrationSucceeded(String email);
-    void onRegistrationFiled();
+
     void showConfirmationView(String email);
 }

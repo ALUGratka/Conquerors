@@ -3,13 +3,12 @@ package pl.conquerors.app.base;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.LayoutRes;
+import android.support.v4.app.NavUtils;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-
-import androidx.annotation.LayoutRes;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NavUtils;
-import androidx.core.app.TaskStackBuilder;
 
 import butterknife.ButterKnife;
 

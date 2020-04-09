@@ -6,9 +6,7 @@ import java.util.Date;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
-import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.util.DateUtil;
-import pl.conquerors.app.util.UserUtil;
 import pl.conquerors.app.util.Validator;
 
 public class RegistrationPresenter extends BasePresenter<RegistrationView> {
@@ -22,8 +20,8 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
     RegistrationUseCase mUseCase;
 
-    public RegistrationPresenter(final RegistrationUseCase useCase) { mUseCase = useCase; }
 
+    public RegistrationPresenter(final RegistrationUseCase useCase) { mUseCase = useCase; }
 
     public void performRegistration() {
         mView.setRegistrationButtonEnabled(false);
@@ -91,38 +89,9 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
         } else {
             mView.showLoading();
 
-            User user;
+            mUseCase.setData(nick, email, password, bornFormatted);
 
-
-
-
-            if(UserUtil.getNumberOfUsers()==0){
-                user = new User(0,nick,born,email,0,1);
-
-                UserUtil.addUser(user);
-                mView.onRegistrationSucceeded(email);
-            }
-            else{
-                int id = UserUtil.getNumberOfUsers();
-                if(!UserUtil.findIfUserWithEmailExists(email)) {
-
-                    user = new User(id, nick, born, email, 0, 1);
-
-                    UserUtil.addUser(user);
-                    mView.onRegistrationSucceeded(email);
-                }
-                else{
-                    mView.hideLoading();
-                    mView.showEmailTaken();
-                    mView.onRegistrationFiled();
-                }
-            }
-
-
-
-            //mUseCase.setData(nick, email, password, bornFormatted);
-
-
+            mView.onRegistrationSucceeded(email);
             /*handleSubscription(mUseCase.execute().subscribe(new Subscriber<Void>() {
                 @Override
                 public void onCompleted() {

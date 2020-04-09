@@ -1,8 +1,7 @@
 package pl.conquerors.app.base;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
-
-import androidx.annotation.NonNull;
 
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;

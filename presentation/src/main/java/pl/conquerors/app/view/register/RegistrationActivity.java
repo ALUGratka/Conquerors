@@ -1,8 +1,13 @@
 package pl.conquerors.app.view.register;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
@@ -12,12 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-
-import com.google.android.material.textfield.TextInputLayout;
-
 import java.util.Date;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.OnCheckedChanged;
@@ -27,7 +27,6 @@ import butterknife.OnTouch;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
-import pl.conquerors.app.repository.UserRepositoryImp;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 import pl.conquerors.app.util.DateUtil;
 import pl.conquerors.app.util.DialogUtil;
@@ -79,7 +78,8 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     private RegistrationPresenter mRegistrationPresenter;
 
     public static Intent getStartingIntents(Context context) {
-        return new Intent(context, RegistrationActivity.class);
+        Intent startingIntent = new Intent(context, RegistrationActivity.class);
+        return startingIntent;
     }
 
     @Override
@@ -129,11 +129,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     @Override
     public void showEmailInvalid() {
         mEmailInput.setError(getString(R.string.error_invalid_email));
-    }
-
-    @Override
-    public void showEmailTaken() {
-        mEmailInput.setError(getString(R.string.error_taken_email));
     }
 
     @Override
@@ -204,8 +199,33 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     private void showProgress(final boolean show) {
-        mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-        mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
+        // for very easy animations. If available, use these APIs to fade-in
+        // the progress spinner.
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
+            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
+
+            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            mLoginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                }
+            });
+
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mProgressView.animate().setDuration(shortAnimTime).setListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    mPasswordView.setVisibility(show ? View.VISIBLE : View.GONE);
+                }
+            });
+        } else {
+            // The ViewPropertyAnimator APIs are not available, so simply show
+            // and hide the relevant UI components.
+            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+        }
     }
 
     @OnTouch(R.id.login_form)
@@ -219,9 +239,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        final UserRepositoryImp mUserRepositoryImp = new UserRepositoryImp();
-
-        final RegistrationUseCase mRegistrationUseCase = new RegistrationUseCase(new AndroidComposedScheduler(),mUserRepositoryImp);
+        final RegistrationUseCase mRegistrationUseCase = new RegistrationUseCase(new AndroidComposedScheduler());
 
         mRegistrationPresenter = new RegistrationPresenter(mRegistrationUseCase);
         mRegistrationPresenter.setmView(this);
@@ -230,7 +248,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     }
 
     private void setUpActionBar() {
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -248,14 +266,24 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     @OnFocusChange(R.id.born)
     protected void onBornFocused(final View view, final boolean hasFocus){
         if(hasFocus) {
-            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), date -> ((TextView)view).setText(DateUtil.getDateDottedString(date)));
+            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
+                @Override
+                public void onDateSet(Date date) {
+                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
+                }
+            });
         }
     }
 
     @OnTouch(R.id.born)
     protected boolean onBornTouch (final View view, final MotionEvent motionEvent) {
         if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), date -> ((TextView)view).setText(DateUtil.getDateDottedString(date)));
+            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
+                @Override
+                public void onDateSet(Date date) {
+                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
+                }
+            });
             return true;
         }
         return false;
@@ -270,8 +298,5 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     public void onRegisterButtonClicked() {
         mRegistrationPresenter.performRegistration();
     }
-
-    @Override
-    public void onRegistrationFiled(){ mRegisterButton.setEnabled(true);}
 
 }

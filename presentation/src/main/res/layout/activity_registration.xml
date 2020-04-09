@@ -36,7 +36,7 @@
                 android:layout_height="80dp"
                 android:src="@drawable/login_logo"/>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/nick_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -50,9 +50,9 @@
                     android:nextFocusForward="@+id/login"
                     android:singleLine="true"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/email_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -68,9 +68,9 @@
                     android:nextFocusForward="@+id/password"
                     android:singleLine="true"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/password_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -85,9 +85,9 @@
                     android:nextFocusForward="@+id/password_confirm"
                     android:singleLine="true"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/password_confirm_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -102,9 +102,9 @@
                     android:nextFocusForward="@+id/city"
                     android:singleLine="true"/>
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <android.support.design.widget.TextInputLayout
                 android:id="@+id/born_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -118,7 +118,7 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
 
             <CheckBox
                 android:layout_marginTop="@dimen/activity_vertical_margin"

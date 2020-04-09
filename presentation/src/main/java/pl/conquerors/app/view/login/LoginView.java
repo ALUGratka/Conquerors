@@ -1,7 +1,6 @@
 package pl.conquerors.app.view.login;
 
 import pl.conquerors.app.base.BaseView;
-import pl.conquerors.app.domain.model.User;
 
 public interface LoginView extends BaseView {
 
@@ -16,13 +15,12 @@ public interface LoginView extends BaseView {
 
     // password
     void showPasswordRequired();
-    void showPasswordInvalid();
     void hidePasswordError();
 
     void showNoUser();
 
     // callbacks
-    void onLoginSucceeded(User user);
+    void onLoginSucceeded(/*User user*/);
 
     void showConfirmationView(String nick);
 }

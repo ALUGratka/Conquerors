@@ -3,9 +3,13 @@ package pl.conquerors.app.view.createCharacter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
+import pl.conquerors.app.domain.interactor.login.LoginUseCase;
+import pl.conquerors.app.scheduler.AndroidComposedScheduler;
+import pl.conquerors.app.view.login.LoginPresenter;
 
 public class CreateCharacterActivity extends BaseActivity implements CreateCharacterView {
 

@@ -7,7 +7,6 @@
     <string name="title_activity_home">Panel główny</string>
     <string name="title_activity_registration">Zarejestruj</string>
     <string name="title_activity_login">Logowanie</string>
-    <string name="tittle_activity_my_profile">Mój profil</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -39,7 +38,6 @@
 
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
-    <string name="error_taken_email">Ten adres email jest już zajęty.</string>
     <string name="error_invalid_email_match">Email i potwierdzenie nie pasują</string>
     <string name="error_invalid_password">Hasło i kod potwierdzający nie pasują lub są niepoprawne.</string>
     <string name="error_invalid_address">Nie udało się znaleźć podanego adresu.</string>

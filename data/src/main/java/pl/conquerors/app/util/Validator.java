@@ -24,8 +24,4 @@ public class Validator {
         if( input >= min && input <= max) return true;
         return false;
     }
-
-    public static boolean isPasswordValid(String password) {
-        return !TextUtils.isEmpty(password) && password.length() > 5;
-    }
 }

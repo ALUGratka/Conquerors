@@ -5,7 +5,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import androidx.annotation.StringRes;
+import android.support.annotation.StringRes;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
