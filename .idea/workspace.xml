@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="803d8a52-f913-40dc-ac89-b0247626f663" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/consumer-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/androidTest/java/pl/conquerors/app/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/main/java/pl/conquerors/app/util/Validator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/test/java/pl/conquerors/app/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/executor/ComposedScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/interactor/ResultUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/interactor/UseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/interactor/everydayPrize/EverydayPrizeUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/interactor/login/LoginUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/interactor/registration/RegistrationUseCase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/domain/src/main/java/pl/conquerors/app/domain/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/androidTest/java/pl/conquerors/app/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/ConquerorsApp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/base/BaseActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/base/BasePresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/base/BaseView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/navigation/Navigator.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/scheduler/AndroidComposedScheduler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/util/DateUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/util/DialogUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterAppearanceActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterClassActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterDisplay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterNameActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterSexActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/createCharacter/CreateCharacterSummaryActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/everydayPrize/EverydayPrizeActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/everydayPrize/EverydayPrizePresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/everydayPrize/EverydayPrizeView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/home/HomeActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/login/LoginActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/login/LoginPresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/login/LoginView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/register/RegistrationActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/register/RegistrationPresenter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/register/RegistrationView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/pl/conquerors/app/view/splash/SplashActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_cofnij_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_cofnij_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_dalej_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_dalej_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_graj_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_graj_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_leftarrow_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_leftarrow_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_nagrody_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_nagrody_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_postacie_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_postacie_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_rightarrow_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_rightarrow_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_ustawienia_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_ustawienia_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_wyjdz_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/buttons/button_wyjdz_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_pants_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_pants_gray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_pants_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_tshirt_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_tshirt_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/female_tshirt_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_pants_brown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_pants_gray.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_pants_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_tshirt_blue.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_tshirt_red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/clothes/male_tshirt_yellow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/female_256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/gift_256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/ic_left_arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/ic_right_arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/loading_screen.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/login_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/login_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/login_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/male_256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/present.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/register_active.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/register_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable-v24/shield.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/drawer_splash_screen_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_add_game.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_events.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_friends.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_my_games.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_profile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/ic_splash_king.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/login_button.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/login_button_normal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/login_button_pressed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/register_button.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/drawable/wizard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_everyday_prize.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_home.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_login.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_registration.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_splash.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/content_home.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/create_character_appearance.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/create_character_class.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/create_character_name.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/create_character_sex.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/create_character_summary.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/progress_bar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/menu/menu_home_drawer.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values-pl/string.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values/dimensons.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/test/java/pl/conquerors/app/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1aIYKe9bCcO82yi7KJQeEU1MtFy" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Client" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projects\Github\Conquerors\Client" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="803d8a52-f913-40dc-ac89-b0247626f663" name="Default Changelist" comment="" />
+      <created>1586424512794</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586424512794</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
