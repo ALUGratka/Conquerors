@@ -1,0 +1,96 @@
+<resources>
+    <string name="app_name">CONQUERORS</string>
+    <string name="splash_screen_description">ONLY STRONG SURVIVE</string>
+
+    <!-- Activity titles -->
+    <string name="title_activity_home">Main panel</string>
+    <string name="title_activity_registration">Sign up</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Login and Registration -->
+    <!-- General -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_nick">Nick</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_email_or_nick">Email or nick</string>
+    <string name="prompt_password">Password</string>
+    <string name="prompt_password_confirm">Confirm password</string>
+    <string name="prompt_city">City</string>
+    <string name="prompt_born">Born</string>
+    <string name="prompt_about_me">About me</string>
+
+    <string name="action_register">Register</string>
+    <string name="action_login">Login</string>
+    <string name="action_forgot_password">Forgot password?</string>
+    <string name="action_not_logged_in">No account yet? <b><u>Create one</u></b></string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="info_login_success">Welcome %1$s!</string>
+    <string name="info_registration_success">%1$s successfully registered</string>
+    <string name="register_rules">I declare that I have read and accept the Conquerors app rules</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="date_long_format">EEEE, MMMM d</string>
+
+    <!-- Get everyday prize -->
+    <string name="action_everyday_prize">Press the image of the gift to get an award</string>
+    <string name="present_image">Image of a present</string>
+    <string name="info_got_gift">You have been gifted %1$d points</string>
+
+    <!-- Errors -->
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_email_match">Email and confirmation does not match</string>
+    <string name="error_invalid_password">Password and confirmation does not match or are invalid</string>
+    <string name="error_invalid_address">Could not find given address.</string>
+    <string name="error_incorrect_password">Invalid password</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="error_field_length">%1$s should contain minimum of %2$d and maximum of %3$d characters</string>
+    <string name="error_date_in_past">Cannot setup date in past</string>
+
+    <!-- Menu Items -->
+    <string name="menu_item_events">Games</string>
+    <string name="menu_item_my_events">My games</string>
+    <string name="menu_item_add_event">Add game</string>
+    <string name="menu_item_add_friend">Add friend</string>
+    <string name="menu_item_profile">Profile</string>
+    <string name="menu_item_friends">Friends</string>
+    <string name="menu_item_settings">Settings</string>
+    <string name="menu_item_login">Login</string>
+    <string name="menu_item_logout">Logout</string>
+
+    <!-- Create Character -->
+    <string name="radio_bard">Bard</string>
+    <string name="radio_warrior">Warrior</string>
+    <string name="radio_thief">Thief</string>
+    <string name="radio_wizard">Wizard</string>
+    <string name="character_class">Character class</string>
+    <string name="action_next">Next</string>
+    <string name="action_back">Back</string>
+    <string name="action_approve">Approve your character</string>
+    <string name="character_sex">Choose sex</string>
+    <string name="radio_man">Man</string>
+    <string name="radio_woman">Woman</string>
+    <string name="character_appearance">Appearance</string>
+    <string name="character_hair">Hair</string>
+    <string name="character_image_description">Character appearance</string>
+    <string name="character_hat">Hat</string>
+    <string name="arrow_right">Next</string>
+    <string name="arrow_left">Previous</string>
+    <string name="character_eye_color">Eye color</string>
+    <string name="character_blouse">Blouse</string>
+    <string name="character_pants">Pants</string>
+    <string name="character_boots">Boots</string>
+    <string name="character_name">Nickname</string>
+    <string name="character_nickname">Enter your characters nickname</string>
+    <string name="character_player_nickname">Default nickname</string>
+    <string name="character_player_class">Default class</string>
+    <string name="character_class_statistics">Character class statistics</string>
+    <string name="character_strength">Strength</string>
+    <string name="character_charisma">Charisma</string>
+    <string name="character_agility">Agility</string>
+    <string name="character_intelligence">Intelligence</string>
+    <string name="character_player_strength">Default strength number</string>
+    <string name="character_player_charisma">Default charisma number</string>
+    <string name="character_player_agility">Default agility number</string>
+    <string name="character_player_intelligence">Default intelligence number</string>
+
+</resources>
