@@ -2,6 +2,6 @@
 venv/Include
 venv/Lib
 venv/Scripts
-venv//__pycache__
+venv/__pycache__
 pyvenv.cfg
 venv/conquerors/__pycache__
