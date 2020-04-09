@@ -5,13 +5,15 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TextInputLayout;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+
+import com.google.android.material.textfield.TextInputLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,7 +21,11 @@ import butterknife.OnTouch;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.login.LoginUseCase;
+import pl.conquerors.app.domain.interactor.profile.GetMyProfileUseCase;
+import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.domain.repository.UserRepository;
 import pl.conquerors.app.navigation.Navigator;
+import pl.conquerors.app.repository.UserRepositoryImp;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 
 public class LoginActivity extends BaseActivity implements LoginView {
@@ -102,6 +108,11 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
+    public void showPasswordInvalid() {
+        mPasswordInput.setError(getString(R.string.error_incorrect_password));
+    }
+
+    @Override
     public void hidePasswordError() {
         mPasswordInput.setError(null);
         mPasswordInput.setErrorEnabled(true);
@@ -113,9 +124,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     }
 
     @Override
-    public void onLoginSucceeded(/*User user*/) {
-        Toast.makeText(this, getString(R.string.info_login_success, getNick()), Toast.LENGTH_SHORT).show();
+    public void onLoginSucceeded(User user) {
         finish();
+        Toast.makeText(this, getString(R.string.info_login_success, user.getNick()), Toast.LENGTH_SHORT).show();
         Navigator.startHome(this);
     }
 
@@ -161,11 +172,25 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler());
+        UserRepository userRepository = new UserRepositoryImp();
 
-        mLoginPresenter = new LoginPresenter(loginUseCase);
+        LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler(), userRepository);
+        GetMyProfileUseCase getMyProfileUseCase = new GetMyProfileUseCase(new AndroidComposedScheduler(), userRepository);
+
+        mLoginPresenter = new LoginPresenter(loginUseCase, getMyProfileUseCase);
         mLoginPresenter.setmView(this);
 
+    }
+
+    @Override
+    protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            mLoginPresenter.performLogin();
+        } else {
+            Toast.makeText(this, "Nie udało się.", Toast.LENGTH_SHORT).show();
+            //mCallbackManager.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     @Override

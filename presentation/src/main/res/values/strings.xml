@@ -6,6 +6,7 @@
     <string name="title_activity_home">Main panel</string>
     <string name="title_activity_registration">Sign up</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="tittle_activity_my_profile">My profile</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -38,6 +39,7 @@
 
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_taken_email">This email is already used.</string>
     <string name="error_invalid_email_match">Email and confirmation does not match</string>
     <string name="error_invalid_password">Password and confirmation does not match or are invalid</string>
     <string name="error_invalid_address">Could not find given address.</string>
