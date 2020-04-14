@@ -4,6 +4,7 @@
     android:id="@+id/create_character_apperance_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/theme_background_color"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -66,15 +67,18 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+
+                        <Button
+                            android:id="@+id/hair_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:background="@drawable/button_leftarrow_active"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/hairText"
@@ -86,16 +90,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton2"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/hair_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -104,15 +109,17 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton6"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/eye_color_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_leftarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/eyeColorText"
@@ -124,16 +131,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton5"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/eye_color_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -142,15 +150,17 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton3"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/hat_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_leftarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/hatText"
@@ -162,16 +172,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton4"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/hat_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                     </LinearLayout>
 
@@ -181,15 +192,17 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton8"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/blouse_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_leftarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/blouseText"
@@ -201,16 +214,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton7"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/blouse_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -219,15 +233,17 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton10"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/pants_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_leftarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/pantsText"
@@ -239,16 +255,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton11"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/pants_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                     </LinearLayout>
 
@@ -258,15 +275,17 @@
                         android:layout_height="70dp"
                         android:orientation="horizontal">
 
-                        <ImageButton
-                            android:id="@+id/imageButton13"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/boots_back_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_leftarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_left"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_left_arrow" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <TextView
                             android:id="@+id/bootsText"
@@ -278,16 +297,17 @@
                             android:textAlignment="center"
                             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton12"
-                            style="@style/Widget.AppCompat.ImageButton"
-                            android:layout_width="4dp"
-                            android:layout_height="match_parent"
+                        <Button
+                            android:id="@+id/boots_next_arrow_button"
+                            android:layout_width="20dp"
+                            android:layout_height="70dp"
+                            android:background="@drawable/button_rightarrow_active"
                             android:layout_weight="1"
-                            android:contentDescription="@string/arrow_right"
-                            android:scaleType="fitXY"
-                            app:srcCompat="@drawable/ic_right_arrow"
-                            tools:visibility="visible" />
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            android:theme="@style/ColoredButton.LightRed"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:ignore="MissingConstraints" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -295,10 +315,10 @@
 
             <Button
                 android:id="@+id/next_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="@string/action_next"
+                android:background="@drawable/button_dalej_active"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:theme="@style/ColoredButton.LightRed"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -307,15 +327,16 @@
 
             <Button
                 android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="@string/action_back"
+                android:background="@drawable/button_cofnij_active"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:theme="@style/ColoredButton.LightRed"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:ignore="MissingConstraints" />
+
 
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>

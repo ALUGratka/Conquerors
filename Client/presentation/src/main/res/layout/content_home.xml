@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/theme_background_color"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -40,24 +41,40 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/homeCreatorButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:text="Kreator Postaci"
-                    android:focusable="true" />
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/homePrizeButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:text="Codzienna nagroda"
-                    android:focusable="true" />
+                    <Button
+                        android:id="@+id/homeCreatorButton"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_postacie_active"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:layout_constraintBottom_toTopOf="@+id/homePrizeButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/homePrizeButton"
+                        android:layout_width="200dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_nagrody_active"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/homeCreatorButton" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
             </LinearLayout>
         </ScrollView>
 
