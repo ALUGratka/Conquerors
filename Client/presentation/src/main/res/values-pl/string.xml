@@ -93,4 +93,10 @@
     <string name="character_player_agility">Domyślna zręczność dla klasy</string>
     <string name="character_player_intelligence">Domyślna inteligencja dla klasy</string>
 
+    <!-- My Profile -->
+    <string name="my_profile_my_characters">Moje postaci</string>
+    <string name="my_profile_my_games">Moje rozgrywki</string>
+    <string name="my_profile_my_awards">Moje nagrody</string>
+    <string name="my_profile_my_friends">Moi znajomi</string>
+
 </resources>
