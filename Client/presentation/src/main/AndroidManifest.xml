@@ -17,11 +17,7 @@
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".view.home.HomeActivity"
@@ -52,6 +48,20 @@
         <activity android:name=".view.createCharacter.CreateCharacterAppearanceActivity"/>
         <activity android:name=".view.createCharacter.CreateCharacterNameActivity"/>
         <activity android:name=".view.createCharacter.CreateCharacterSummaryActivity"/>
-        </application>
+
+        <activity android:name=".view.profile.my.MyProfileActivity"
+            android:label="@string/tittle_activity_my_profile"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
 
 </manifest>

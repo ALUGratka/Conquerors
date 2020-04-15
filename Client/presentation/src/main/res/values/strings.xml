@@ -6,6 +6,7 @@
     <string name="title_activity_home">Main panel</string>
     <string name="title_activity_registration">Sign up</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="tittle_activity_my_profile">My profile</string>
 
     <!-- Login and Registration -->
     <!-- General -->
