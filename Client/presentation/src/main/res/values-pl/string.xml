@@ -46,6 +46,8 @@
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_field_length">%1$s powinno mieć minimalne %2$d a maksymalnie %3$d znaków</string>
     <string name="error_date_in_past">Nie można ustawić daty w przeszłości</string>
+    <string name="dialog_logout_title">Wyloguj</string>
+    <string name="dialog_logout_message">Jesteś pewien, że chcesz się wylogować?</string>
 
     <!-- Menu Items -->
     <string name="menu_item_events">Rozgrywki</string>

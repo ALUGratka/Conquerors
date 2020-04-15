@@ -33,9 +33,6 @@ import pl.conquerors.app.util.DialogUtil;
 
 public class RegistrationActivity extends BaseActivity implements RegistrationView {
 
-    @BindView(R.id.registration_layout)
-    LinearLayout mLoginLayout;
-
     @BindView(R.id.nick)
     EditText mNickView;
 

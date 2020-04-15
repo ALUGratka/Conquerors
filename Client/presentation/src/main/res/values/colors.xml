@@ -5,6 +5,7 @@
     <color name="theme_grey">#ff747674</color>
     <color name="theme_light_grey">#EBEBEB</color>
     <color name="theme_transparent_grey">#22747674</color>
+    <color name="theme_green">#6A7936</color>
 
     <color name="theme_primary_color">#517f95</color>
     <color name="theme_primary_light_color">#40C5AF</color>

@@ -46,6 +46,8 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_field_length">%1$s should contain minimum of %2$d and maximum of %3$d characters</string>
     <string name="error_date_in_past">Cannot setup date in past</string>
+    <string name="dialog_logout_title">Logout</string>
+    <string name="dialog_logout_message">Are you sure you want to logout?</string>
 
     <!-- Menu Items -->
     <string name="menu_item_events">Games</string>
