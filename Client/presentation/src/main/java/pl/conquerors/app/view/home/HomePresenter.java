@@ -4,6 +4,7 @@ import android.view.MenuItem;
 
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.navigation.Navigator;
 import rx.Subscriber;
 
 public class HomePresenter extends BasePresenter<HomeView> {
@@ -36,9 +37,5 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 break;
         }
         mView.closeDrawer();
-    }
-
-    public void attemptLogOut() {
-        mView.showLogout();
     }
 }

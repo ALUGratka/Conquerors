@@ -118,8 +118,12 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     private DialogInterface.OnClickListener getLogoutPositiveListener() {
-        return (dialog, which) ->  Navigator.startLogin(this.getContext());
+        return (dialog, which) ->  logout();
+    }
 
+    private void logout(){
+        finish();
+        Navigator.startLogin(this.getContext());
     }
 
     @Override
