@@ -38,4 +38,6 @@ public interface RegistrationView extends BaseView {
     void onRegistrationSucceeded(String email);
 
     void showConfirmationView(String email);
+
+    void setRegisterButtonEnabled(boolean b);
 }

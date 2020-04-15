@@ -7,6 +7,7 @@
     <string name="title_activity_home">Panel główny</string>
     <string name="title_activity_registration">Zarejestruj</string>
     <string name="title_activity_login">Logowanie</string>
+    <string name="tittle_activity_my_profile">Mój profil</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -45,6 +46,8 @@
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_field_length">%1$s powinno mieć minimalne %2$d a maksymalnie %3$d znaków</string>
     <string name="error_date_in_past">Nie można ustawić daty w przeszłości</string>
+    <string name="dialog_logout_title">Wyloguj</string>
+    <string name="dialog_logout_message">Jesteś pewien, że chcesz się wylogować?</string>
 
     <!-- Menu Items -->
     <string name="menu_item_events">Rozgrywki</string>
@@ -92,5 +95,11 @@
     <string name="character_player_charisma">Domyślna charyzma dla klasy</string>
     <string name="character_player_agility">Domyślna zręczność dla klasy</string>
     <string name="character_player_intelligence">Domyślna inteligencja dla klasy</string>
+
+    <!-- My Profile -->
+    <string name="my_profile_my_characters">Moje postaci</string>
+    <string name="my_profile_my_games">Moje rozgrywki</string>
+    <string name="my_profile_my_awards">Moje nagrody</string>
+    <string name="my_profile_my_friends">Moi znajomi</string>
 
 </resources>

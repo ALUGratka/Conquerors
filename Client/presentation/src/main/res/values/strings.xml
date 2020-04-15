@@ -6,6 +6,7 @@
     <string name="title_activity_home">Main panel</string>
     <string name="title_activity_registration">Sign up</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="tittle_activity_my_profile">My profile</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -45,6 +46,8 @@
     <string name="error_field_required">This field is required</string>
     <string name="error_field_length">%1$s should contain minimum of %2$d and maximum of %3$d characters</string>
     <string name="error_date_in_past">Cannot setup date in past</string>
+    <string name="dialog_logout_title">Logout</string>
+    <string name="dialog_logout_message">Are you sure you want to logout?</string>
 
     <!-- Menu Items -->
     <string name="menu_item_events">Games</string>
@@ -92,5 +95,11 @@
     <string name="character_player_charisma">Default charisma number</string>
     <string name="character_player_agility">Default agility number</string>
     <string name="character_player_intelligence">Default intelligence number</string>
+
+    <!-- My Profile -->
+    <string name="my_profile_my_characters">My characters</string>
+    <string name="my_profile_my_games">My games</string>
+    <string name="my_profile_my_awards">My awards</string>
+    <string name="my_profile_my_friends">My friends</string>
 
 </resources>

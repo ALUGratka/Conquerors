@@ -4,6 +4,8 @@
     <color name="theme_dark_grey">#1F26963c</color>
     <color name="theme_grey">#ff747674</color>
     <color name="theme_light_grey">#EBEBEB</color>
+    <color name="theme_transparent_grey">#22747674</color>
+    <color name="theme_green">#6A7936</color>
 
     <color name="theme_primary_color">#517f95</color>
     <color name="theme_primary_light_color">#40C5AF</color>
@@ -16,6 +18,11 @@
     <color name="button_pale_green">#8AD272</color>
     <color name="button_pale_grey">#D2D2D2</color>
     <color name="button_facebook">#3C5A96</color>
+
+    <!-- Dividers -->
+    <color name="divider_gray">#1F000000</color>
+    <color name="divider_green">#1F26963c</color>
+
 
 
 </resources>

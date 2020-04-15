@@ -33,9 +33,6 @@ import pl.conquerors.app.util.DialogUtil;
 
 public class RegistrationActivity extends BaseActivity implements RegistrationView {
 
-    @BindView(R.id.registration_layout)
-    LinearLayout mLoginLayout;
-
     @BindView(R.id.nick)
     EditText mNickView;
 
@@ -186,6 +183,11 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         //TODO resultOfRegistration
         Toast.makeText(this,getString(R.string.info_registration_success, getNick()), Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    @Override
+    public void setRegisterButtonEnabled(boolean enabled) {
+        mRegisterButton.setEnabled(enabled);
     }
 
     @Override

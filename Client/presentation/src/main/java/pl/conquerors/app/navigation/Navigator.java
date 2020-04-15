@@ -10,6 +10,7 @@ import pl.conquerors.app.view.createCharacter.CreateCharacterSummaryActivity;
 import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
+import pl.conquerors.app.view.profile.my.MyProfileActivity;
 import pl.conquerors.app.view.register.RegistrationActivity;
 
 public class Navigator {
@@ -48,6 +49,10 @@ public class Navigator {
 
     public static void startCharacterSummary(Context context) {
         context.startActivity(CreateCharacterSummaryActivity.getStartingIntents(context));
+    }
+
+    public static void startMyProfile(Context context){
+        context.startActivity(MyProfileActivity.getStartingIntents(context));
     }
 
     //TODO startRegistration, startLogin

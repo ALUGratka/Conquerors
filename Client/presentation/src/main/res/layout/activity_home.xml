@@ -19,7 +19,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:background="@color/cardview_shadow_start_color"
+        app:headerLayout="@layout/nav_header"
+        android:background="@drawable/background_no_borders"
         app:menu="@menu/menu_home_drawer" />
 
 </android.support.v4.widget.DrawerLayout>
