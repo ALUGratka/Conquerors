@@ -24,6 +24,12 @@ class Character(db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     level = db.Column(db.Integer, unique=False, nullable=False)
+
+    charisma = db.Column(db.Integer, unique=False, nullable=False)
+    intelligence = db.Column(db.Integer, unique=False, nullable=False)
+    agility = db.Column(db.Integer, unique=False, nullable=False)
+    strength = db.Column(db.Integer, unique=False, nullable=False)
+
     nickname = db.Column(db.String(20), unique=False, nullable=False)
     sex = db.Column(db.Integer, unique=False, nullable=False) # 0 - Man, 1 - Woman
     characterClass = db.Column(db.Integer, unique=False, nullable=False) # bard, warrior, thief, wizard
