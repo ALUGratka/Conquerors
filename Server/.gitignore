@@ -1,7 +1,7 @@
-.vscode
-venv/Include
-venv/Lib
-venv/Scripts
-venv/__pycache__
+..vscode
+.venv/Include
+.venv/Lib
+.venv/Scripts
+.venv/__pycache__
 pyvenv.cfg
-venv/conquerors/__pycache__
+.venv/conquerors/__pycache__
