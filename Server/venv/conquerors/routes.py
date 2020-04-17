@@ -84,7 +84,7 @@ def register():
     return response
 
 
-@app.route('create-character', methods=['POST'])
+@app.route('/create-character', methods=['POST'])
 def create_character():
     if request.method == 'POST':
         data = json.loads(request.data)
@@ -106,23 +106,34 @@ def create_character():
         pants = data['pants']
         shoes = data['shoes']
         
-        # if not, create new user
-        character = Character(level=level, charisma=charisma, intelligence=intelligence,
-         agility=agility, strength=strength, nickname=nickname, sex=sex,
-         characterClass=characterClass, hair=hair, eyeColor=eyeColor, blouse=blouse,
-         pants=pants, shoes=shoes, userId=userId)
-        print(character)
-        db.session.add(character)
-        db.session.commit()
-        # send response
-        message = {
-            'response' : 'Character created'
-        }
-        response = make_response(json.dumps(message))
-        response.headers['Content-Type'] = 'application/json'
-        response.status_code = 201 # created
-        return response
-    # if else
+        # check if user with given id exists
+        if User.query.filter_by(id=int(userId)).first():
+            # if so create character and add to db
+            character = Character(level=level, charisma=charisma, intelligence=intelligence,
+            agility=agility, strength=strength, nickname=nickname, sex=sex,
+            characterClass=characterClass, hair=hair, eyeColor=eyeColor, blouse=blouse,
+            pants=pants, shoes=shoes, userId=userId)
+
+            print(character)
+            db.session.add(character)
+            db.session.commit()
+            # send response
+            message = {
+                'response' : 'Character created'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 201 # created
+            return response
+        else:
+            message = {
+                'response' : 'User with given id does not exists in db'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            return response
+
+    # if any other error occours
     message = {
         'response' : 'Error'
     }
