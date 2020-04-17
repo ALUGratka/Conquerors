@@ -1,6 +1,6 @@
 from flask import request, make_response
 from conquerors import app, db, bcrypt
-from conquerors.models import User
+from conquerors.models import User, Character
 import json
 
 
@@ -61,13 +61,62 @@ def register():
             response.headers['Content-Type'] = 'application/json'
             return response
         # if not, create new user
-        user = User(username=username, email=email, password=hashed_password, birthDate=birth_date)
+        user = User(username=username, email=email, password=hashed_password,
+         birthDate=birth_date)
         print(user)
         db.session.add(user)
         db.session.commit()
         # send response
         message = {
             'response' : 'User created'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 201 # created
+        return response
+    # if else
+    message = {
+        'response' : 'Error'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 404
+    return response
+
+
+@app.route('create-character', methods=['POST'])
+def create_character():
+    if request.method == 'POST':
+        data = json.loads(request.data)
+        
+        userId = data['userId']
+        level = data['level']
+
+        charisma = data['charisma']
+        intelligence = data['intelligence']
+        agility = data['agility']
+        strength = data['strength']
+
+        nickname = data['nickname']
+        sex = data['sex']
+        characterClass = data['characterClass']
+        hair = data['hair']
+        eyeColor = data['eyeColor']
+        blouse = data['blouse']
+        pants = data['pants']
+        shoes = data['shoes']
+        
+        # if not, create new user
+        character = Character(level=level, charisma=charisma, intelligence=intelligence,
+         agility=agility, strength=strength, nickname=nickname, sex=sex,
+         characterClass=characterClass, hair=hair, eyeColor=eyeColor, blouse=blouse,
+         pants=pants, shoes=shoes, userId=userId)
+        print(character)
+        db.session.add(character)
+        db.session.commit()
+        # send response
+        message = {
+            'response' : 'Character created'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
