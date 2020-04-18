@@ -88,7 +88,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @OnClick(R.id.homeCreatorButton)
     public void onCreatorButtonClicked() {
-        Navigator.startCharacterSexSelection(this);
+        Navigator.startCreateCharacter(this);
     }
 
     @Override

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.createCharacter.SexFragment">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/chooseSexLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/createCharacterSexText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/character_sex"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintBottom_toTopOf="@+id/selectSexRadioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/characterView"
+            tools:ignore="MissingConstraints" />
+
+        <RadioGroup
+            android:id="@+id/selectSexRadioGroup"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createCharacterSexText">
+
+            <RadioButton
+                android:id="@+id/radioWomen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/radio_woman"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+            <RadioButton
+                android:id="@+id/radioMan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/radio_man"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        </RadioGroup>
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

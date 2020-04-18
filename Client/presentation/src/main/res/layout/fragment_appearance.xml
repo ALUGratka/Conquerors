@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.createCharacter.AppearanceFragment">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/appearanceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/createCharacterNameText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/character_appearance"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <ScrollView
+            android:id="@+id/appearanceScrollView"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createCharacterNameText">
+
+            <LinearLayout
+                android:id="@+id/apperanceAttributesLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/hairLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+
+                    <Button
+                        android:id="@+id/hair_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/hairText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_hair"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/hair_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/eyeColorLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/eye_color_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/eyeColorText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_eye_color"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/eye_color_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/hatLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/hat_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/hatText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_hat"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/hat_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/blouseLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/blouse_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/blouseText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_blouse"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/blouse_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pantsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/pants_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/pantsText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_pants"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/pants_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/bootsLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/boots_back_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_leftarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+
+                    <TextView
+                        android:id="@+id/bootsText"
+                        android:layout_width="110dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:gravity="center|center_horizontal"
+                        android:text="@string/character_boots"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+                    <Button
+                        android:id="@+id/boots_next_arrow_button"
+                        android:layout_width="20dp"
+                        android:layout_height="70dp"
+                        android:background="@drawable/button_rightarrow_active"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        android:theme="@style/ColoredButton.LightRed"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:ignore="MissingConstraints" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>

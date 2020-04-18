@@ -61,6 +61,8 @@
     <string name="menu_item_logout">Logout</string>
 
     <!-- Create Character -->
+    <string name="title_activity_create_character">Create character</string>
+
     <string name="radio_bard">Bard</string>
     <string name="radio_warrior">Warrior</string>
     <string name="radio_thief">Thief</string>
@@ -101,5 +103,9 @@
     <string name="my_profile_my_games">My games</string>
     <string name="my_profile_my_awards">My awards</string>
     <string name="my_profile_my_friends">My friends</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
