@@ -44,7 +44,6 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/character_nickname"
                     android:maxLines="1"
-                    android:nextFocusForward="@+id/nextButton"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>

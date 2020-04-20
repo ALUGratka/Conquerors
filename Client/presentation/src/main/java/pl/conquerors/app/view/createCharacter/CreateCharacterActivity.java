@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,15 +13,16 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.navigation.Navigator;
 
-public class CreateCharacterActivity extends AppCompatActivity {
+public class CreateCharacterActivity extends BaseActivity implements CreateCharacterView {
 
-    @BindView(R.id.backButton)
-    Button mPreviousScreenButton;
+    @BindView(R.id.previousFragmentButton)
+    Button previousScreenButton;
 
-    @BindView(R.id.nextButton)
-    Button mNextScreenButton;
+    @BindView(R.id.nextFragmentButton)
+    Button nextScreenButton;
 
     @BindView(R.id.fragmentsLayout)
     LinearLayout fragmentsLayout;
@@ -57,16 +57,27 @@ public class CreateCharacterActivity extends AppCompatActivity {
 
         transaction.add(R.id.fragmentsLayout, sexFragment);
         transaction.commit();
+
     }
 
-    @OnClick(R.id.nextButton)
+    @OnClick(R.id.nextFragmentButton)
     public void onNextButtonClicked() {
+        System.out.println("DUPA");
         transaction.add(R.id.fragmentsLayout, classFragment);
-        transaction.commit();
     }
 
-    @OnClick(R.id.backButton)
+    @OnClick(R.id.previousFragmentButton)
     public void onPreviousButtonClicked() {
         Navigator.startHome(this);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

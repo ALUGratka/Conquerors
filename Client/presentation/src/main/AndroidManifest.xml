@@ -51,8 +51,7 @@
             android:name=".view.createCharacter.CreateCharacterActivity"
             android:label="@string/title_activity_create_character"
             android:parentActivityName=".view.home.HomeActivity"
-            android:screenOrientation="fullSensor"
-            tools:ignore="DuplicateActivity" />
+            android:screenOrientation="fullSensor" />
 
 
         <activity
