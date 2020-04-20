@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.FrameLayout;
 
 
 import butterknife.BindView;
@@ -24,18 +24,14 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     @BindView(R.id.nextFragmentButton)
     Button nextScreenButton;
 
-    @BindView(R.id.fragmentsLayout)
-    LinearLayout fragmentsLayout;
+    @BindView(R.id.fragment)
+    FrameLayout fragment;
 
-    Fragment sexFragment;
-    Fragment classFragment;
-    Fragment appearanceFragment;
-    Fragment nameFragment;
-    Fragment summaryFragment;
-
-    FragmentManager manager;
-    FragmentTransaction transaction;
-
+    SexFragment sexFragment = new SexFragment();
+    ClassFragment classFragment = new ClassFragment();
+    AppearanceFragment appearanceFragment = new AppearanceFragment();
+    NameFragment nameFragment = new NameFragment();
+    SummaryFragment summaryFragment = new SummaryFragment();
 
     public static Intent getStartingIntents(Context context) {
         return new Intent(context, CreateCharacterActivity.class);
@@ -46,24 +42,21 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_character);
 
-        manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
 
-        sexFragment = new SexFragment();
-        classFragment = new ClassFragment();
-        appearanceFragment = new AppearanceFragment();
-        nameFragment = new NameFragment();
-        summaryFragment = new SummaryFragment();
-
-        transaction.add(R.id.fragmentsLayout, sexFragment);
+        transaction.replace(R.id.fragment, sexFragment);
         transaction.commit();
-
     }
 
     @OnClick(R.id.nextFragmentButton)
     public void onNextButtonClicked() {
         System.out.println("DUPA");
-        transaction.add(R.id.fragmentsLayout, classFragment);
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        transaction.replace(R.id.fragment, classFragment);
+        transaction.commit();
     }
 
     @OnClick(R.id.previousFragmentButton)
