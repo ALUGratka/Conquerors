@@ -8,7 +8,6 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -18,7 +17,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
-import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.util.DialogUtil;
 import pl.conquerors.app.util.SharedPreferenceUtil;
@@ -107,6 +105,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
     public void showMyProfile() {
         Navigator.startMyProfile(this);
     }
+
+    @Override
+    public void showSettings() { Navigator.startSettings(this); }
 
     @Override
     public void showLogout() {

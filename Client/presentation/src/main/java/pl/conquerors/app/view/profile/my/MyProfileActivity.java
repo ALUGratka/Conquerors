@@ -53,7 +53,7 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
     }
 
     @OnClick(R.id.layout_my_awards)
-    protected void showMyAvards() {
+    protected void showMyAvatars() {
         //TODO show my characters
     }
 
@@ -91,14 +91,10 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
     }
 
     @Override
-    public void showLoading() {
-
-    }
+    public void showLoading() { }
 
     @Override
-    public void hideLoading() {
-
-    }
+    public void hideLoading() { }
 
     @Override
     public void setUserName(final String name) {

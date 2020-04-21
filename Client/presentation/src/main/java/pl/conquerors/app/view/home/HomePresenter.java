@@ -31,6 +31,9 @@ public class HomePresenter extends BasePresenter<HomeView> {
             case R.id.nav_profile:
                 mView.showMyProfile();
                 break;
+            case R.id.nav_settings:
+                mView.showSettings();
+                break;
             case R.id.nav_logout:
                 mView.showLogout();
                 break;

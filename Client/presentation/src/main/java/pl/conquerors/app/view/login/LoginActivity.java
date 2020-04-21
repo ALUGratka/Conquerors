@@ -165,9 +165,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //SessionRepository sessionRepository = new SessionRepositoryImpl();
-        //LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler(),sessionRepository);
-
         mLoginPresenter = new LoginPresenter();
         mLoginPresenter.setmView(this);
 

@@ -59,6 +59,20 @@
             android:parentActivityName=".view.home.HomeActivity">
 
         </activity>
+        <activity
+            android:name=".view.settings.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".view.home.HomeActivity"
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity android:name=".view.settings.email.ChangeEmailActivity"
+            android:label="@string/tittle_activity_change_email"
+            android:parentActivityName=".view.settings.SettingsActivity"
+            android:screenOrientation="fullSensor"/>
+        <activity android:name=".view.settings.password.ChangePasswordActivity"
+            android:label="@string/tittle_activity_change_password"
+            android:parentActivityName=".view.settings.SettingsActivity"
+            android:screenOrientation="fullSensor"/>
 
         <meta-data
             android:name="preloaded_fonts"
