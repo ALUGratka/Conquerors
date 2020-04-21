@@ -69,7 +69,7 @@ def delete_user_by_email():
 
             if user:
                 user.delete()
-                session.commit()
+                db.session.commit()
                 
                 message = {
                     'response' : 'User deleted from db'
@@ -123,7 +123,7 @@ def update_user():
         if user.password != password:
             user.password = password
 
-        session.commit()
+        db.session.commit()
 
         message = {
             'response' : 'User updated'
