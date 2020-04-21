@@ -21,7 +21,6 @@ import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.util.DialogUtil;
-import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class HomeActivity extends BaseActivity implements HomeView {
 
@@ -123,7 +122,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     private void logout(){
-        SharedPreferenceUtil.setLoggedIn(this,false);
         finish();
         Navigator.startLogin(this.getContext());
     }

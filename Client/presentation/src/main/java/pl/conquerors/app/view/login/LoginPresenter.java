@@ -4,11 +4,9 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import pl.conquerors.app.base.BasePresenter;
-import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.domain.interactor.login.LoginUseCase;
 import pl.conquerors.app.model.UserEntity;
-import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
-import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,8 +14,11 @@ import retrofit2.Response;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
 
-    //SessionRepository sessionRepository;
+    LoginUseCase mLoginUseCase;
 
+    public LoginPresenter(LoginUseCase loginUseCase) {
+        mLoginUseCase = loginUseCase;
+    }
 
     public void performLogin() {
         //disable button
@@ -48,7 +49,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
             mView.setLoginButtonEnabled(true);
         } else {
 
-            Call<UserEntity> call = RestClient.getInstance().login(new UserEntity(nick,password));
+            Call<UserEntity> call = RestClient.getInstance().login(nick,password);
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override
@@ -57,11 +58,6 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                         Log.e("login", "Code: "+response.code());
                         return;
                     }
-                    User user = UserEntityMapper.transform(response.body());
-                    SharedPreferenceUtil.setLoggedIn(mView.getContext(), true);
-
-                    Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
-
                     mView.onLoginSucceeded();
                 }
 
@@ -72,6 +68,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     Log.e("login", t.getMessage());
                 }
             });
+
+
         }
     }
 }

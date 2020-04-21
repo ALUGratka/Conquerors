@@ -19,18 +19,6 @@ public class UserEntity {
     @SerializedName("birthDate")
     private String born;
 
-    public UserEntity(String email,String userName, String password, String born) {
-        this.userName = userName;
-        this.email = email;
-        this.password = password;
-        this.born = born;
-    }
-
-    public UserEntity(String userName, String password) {
-        this.userName = userName;
-        this.password = password;
-    }
-
     public int getUserId() {
         return userId;
     }
