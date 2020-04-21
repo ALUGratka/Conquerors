@@ -14,7 +14,6 @@ public class HomePresenter extends BasePresenter<HomeView> {
     @Override
     public void created() {
         super.created();
-
     }
 
     @Override

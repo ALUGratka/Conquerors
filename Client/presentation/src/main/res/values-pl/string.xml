@@ -101,5 +101,6 @@
     <string name="my_profile_my_games">Moje rozgrywki</string>
     <string name="my_profile_my_awards">Moje nagrody</string>
     <string name="my_profile_my_friends">Moi znajomi</string>
+    <string name="profile_edit">Edytuj profil</string>
 
 </resources>

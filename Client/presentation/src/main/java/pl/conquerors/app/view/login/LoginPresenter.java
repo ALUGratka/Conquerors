@@ -16,9 +16,6 @@ import retrofit2.Response;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
 
-    //SessionRepository sessionRepository;
-
-
     public void performLogin() {
         //disable button
         mView.setLoginButtonEnabled(false);
@@ -59,8 +56,10 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     }
                     User user = UserEntityMapper.transform(response.body());
                     SharedPreferenceUtil.setLoggedIn(mView.getContext(), true);
+                    SharedPreferenceUtil.setUserName(mView.getContext(),nick);
 
                     Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
+                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUserName(mView.getContext()))));
 
                     mView.onLoginSucceeded();
                 }

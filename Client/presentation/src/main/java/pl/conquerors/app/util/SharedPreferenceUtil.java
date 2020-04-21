@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import static android.preference.PreferenceManager.*;
 import static pl.conquerors.app.util.PreferencesUtility.LOGGED_IN_PREF;
+import static pl.conquerors.app.util.PreferencesUtility.USER_NAME_PREF;
 
 public class SharedPreferenceUtil {
 
@@ -21,5 +22,15 @@ public class SharedPreferenceUtil {
 
     public static boolean getLoggedStatus(Context context) {
         return getPreferences(context).getBoolean(LOGGED_IN_PREF, false);
+    }
+
+    public static void setUserName(Context context, String userName) {
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        editor.putString(USER_NAME_PREF, userName);
+        editor.apply();
+    }
+
+    public static String getUserName(Context context) {
+        return getPreferences(context).getString(USER_NAME_PREF, null);
     }
 }
