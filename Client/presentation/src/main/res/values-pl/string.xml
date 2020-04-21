@@ -62,6 +62,7 @@
 
     <!-- Create Character -->
     <string name="title_activity_create_character">Stwórz postać</string>
+    <string name="info_character_created">Postać utworzona!</string>
 
     <string name="radio_bard">Bard</string>
     <string name="radio_warrior">Wojownik</string>
