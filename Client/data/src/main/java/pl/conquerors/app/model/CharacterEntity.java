@@ -37,6 +37,9 @@ public class CharacterEntity {
     @SerializedName("hair")
     private int hair;
 
+    @SerializedName("hat")
+    private int hat;
+
     @SerializedName("eyeColor")
     private int eyeColor;
 
@@ -116,6 +119,8 @@ public class CharacterEntity {
         return hair;
     }
 
+    public int getHat() { return hat; }
+
     /**
      * setters
      **/
@@ -158,6 +163,10 @@ public class CharacterEntity {
 
     public void setHair(int hair) {
         this.hair = hair;
+    }
+
+    public void setHat(int hat) {
+        this.hat = hat;
     }
 
     public void setEyeColor(int eyeColor) {

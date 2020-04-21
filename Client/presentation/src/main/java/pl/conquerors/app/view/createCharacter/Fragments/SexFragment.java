@@ -1,4 +1,4 @@
-package pl.conquerors.app.view.createCharacter;
+package pl.conquerors.app.view.createCharacter.Fragments;
 
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -11,6 +11,7 @@ import android.widget.RadioGroup;
 
 import butterknife.BindView;
 import pl.conquerors.app.R;
+import pl.conquerors.app.domain.model.Character;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,16 +32,16 @@ public class SexFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_sex, container, false);
     }
 
-    public boolean getSelectedSex(){
+    public Character.Sex getSelectedSex() {
         sexRadioGroup = getView().findViewById(R.id.selectSexRadioGroup);
 
         int selectedId = sexRadioGroup.getCheckedRadioButtonId();
         sexRadioButton = getView().findViewById(selectedId);
 
-        if (sexRadioButton.getText() == "Kobieta") {
-            return true; // woman
-        }else{
-            return false; // man
+        if (sexRadioButton.getText().equals(R.string.radio_woman)) {
+            return Character.Sex.Woman;
+        } else {
+            return Character.Sex.Man;
         }
     }
 }

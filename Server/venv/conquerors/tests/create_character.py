@@ -18,6 +18,7 @@ def create_character():
         "sex" : 0,
         "characterClass" : 3,
         "hair" : 0,
+        "hat" : 0,
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,

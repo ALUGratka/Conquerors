@@ -101,6 +101,7 @@ def create_character():
         sex = data['sex']
         characterClass = data['characterClass']
         hair = data['hair']
+        hat = data['hat']
         eyeColor = data['eyeColor']
         blouse = data['blouse']
         pants = data['pants']
@@ -111,7 +112,7 @@ def create_character():
             # if so create character and add to db
             character = Character(level=level, charisma=charisma, intelligence=intelligence,
             agility=agility, strength=strength, nickname=nickname, sex=sex,
-            characterClass=characterClass, hair=hair, eyeColor=eyeColor, blouse=blouse,
+            characterClass=characterClass, hair=hair, hat=hat, eyeColor=eyeColor, blouse=blouse,
             pants=pants, shoes=shoes, userId=userId)
 
             print(character)

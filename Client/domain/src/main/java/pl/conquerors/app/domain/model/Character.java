@@ -50,6 +50,7 @@ public class Character {
     private Sex mSex;
     private CharacterClass mCharacterClass;
     private Hair mHair;
+    private Hat mHat;
     private EyeColor mEyeColor;
     private Blouse mBlouse;
     private Pants mPants;
@@ -188,6 +189,18 @@ public class Character {
             this.mHair = Hair.Brown;
         } else if (mHair == 2) {
             this.mHair = Hair.Black;
+        } else {
+            System.out.println("Invalid number given");
+        }
+    }
+
+    public void setmHat(int mHat) {
+        if (mHat == 0) {
+            this.mHat = Hat.Hat1;
+        } else if (mHat == 1) {
+            this.mHat = Hat.Hat2;
+        } else if (mHat == 2) {
+            this.mHat = Hat.Hat3;
         } else {
             System.out.println("Invalid number given");
         }

@@ -25,6 +25,7 @@ public class CharacterEntityMapper {
             character.setmSex(characterEntity.getSex());
             character.setmCharacterClass(characterEntity.getCharacterClass());
             character.setmHair(characterEntity.getHair());
+            character.setmHat(characterEntity.getHat());
             character.setmEyeColor(characterEntity.getEyeColor());
             character.setmBlouse(characterEntity.getBlouse());
             character.setmPants(characterEntity.getPants());

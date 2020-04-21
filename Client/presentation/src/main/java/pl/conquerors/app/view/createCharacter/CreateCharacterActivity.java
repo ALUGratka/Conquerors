@@ -14,7 +14,13 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.navigation.Navigator;
+import pl.conquerors.app.view.createCharacter.Fragments.AppearanceFragment;
+import pl.conquerors.app.view.createCharacter.Fragments.ClassFragment;
+import pl.conquerors.app.view.createCharacter.Fragments.NameFragment;
+import pl.conquerors.app.view.createCharacter.Fragments.SexFragment;
+import pl.conquerors.app.view.createCharacter.Fragments.SummaryFragment;
 
 public class CreateCharacterActivity extends BaseActivity implements CreateCharacterView {
 
@@ -34,6 +40,8 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     SummaryFragment summaryFragment = new SummaryFragment();
 
     int currentFragment = 0;
+
+    CreateCharacterPresenter createCharacterPresenter;
 
     public static Intent getStartingIntents(Context context) {
         return new Intent(context, CreateCharacterActivity.class);
@@ -60,20 +68,18 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-
         switch (currentFragment) {
             case 0:
-                Boolean sex = sexFragment.getSelectedSex();
-                // do sth with that value
+                Character.Sex sex = sexFragment.getSelectedSex();
+                createCharacterPresenter.setSex(sex);
 
                 transaction.replace(R.id.fragment, classFragment);
                 transaction.addToBackStack("CLASS_FRAGMENT_TAG");
                 currentFragment = 1;
                 break;
             case 1:
-                // work on data
-                // ...
-
+                Character.CharacterClass characterClass = classFragment.getSelectedCharacterClass();
+                createCharacterPresenter.setCharacterClass(characterClass);
 
                 transaction.replace(R.id.fragment, appearanceFragment);
                 transaction.addToBackStack("APPEARANCE_FRAGMENT_TAG");
@@ -83,7 +89,6 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 // work on data
                 // ...
 
-
                 transaction.replace(R.id.fragment, nameFragment);
                 transaction.addToBackStack("NAME_FRAGMENT_TAG");
                 currentFragment = 3;
@@ -92,14 +97,12 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 // work on data
                 // ...
 
-
                 transaction.replace(R.id.fragment, summaryFragment);
                 transaction.addToBackStack("SUMMARY_FRAGMENT_TAG");
                 currentFragment = 4;
                 break;
             case 4:
-                // work on data
-                // ...
+                createCharacterPresenter.performCharacterCreation();
 
                 currentFragment = 0;
                 Toast.makeText(this, getString(R.string.info_character_created), Toast.LENGTH_SHORT).show();

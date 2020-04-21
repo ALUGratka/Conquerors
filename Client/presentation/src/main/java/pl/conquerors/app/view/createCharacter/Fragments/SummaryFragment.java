@@ -1,4 +1,4 @@
-package pl.conquerors.app.view.createCharacter;
+package pl.conquerors.app.view.createCharacter.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,18 +10,19 @@ import pl.conquerors.app.R;
 
 /**
  * A simple {@link Fragment} subclass.
+ * Use the {@link SummaryFragment#newInstance} factory method to
+ * create an instance of this fragment.
  */
-public class ClassFragment extends Fragment {
+public class SummaryFragment extends Fragment {
 
-    public ClassFragment() {
+    public SummaryFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class, container, false);
+        return inflater.inflate(R.layout.fragment_summary, container, false);
     }
 }

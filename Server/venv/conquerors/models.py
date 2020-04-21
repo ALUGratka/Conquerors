@@ -34,6 +34,7 @@ class Character(db.Model):
     sex = db.Column(db.Integer, unique=False, nullable=False) # 0 - Man, 1 - Woman
     characterClass = db.Column(db.Integer, unique=False, nullable=False) # bard, warrior, thief, wizard
     hair = db.Column(db.Integer, unique=False, nullable=False) # 0 - blond, 1 - brown, 2 - black
+    hat = db.Column(db.Integer, unique=False, nullable=False) # some hats
     eyeColor = db.Column(db.Integer, unique=False, nullable=False) # 0 - blue, 1 - brown, 2 - green
     blouse = db.Column(db.Integer, unique=False, nullable=False) # some shirts
     pants = db.Column(db.Integer, unique=False, nullable=False) # some pants
