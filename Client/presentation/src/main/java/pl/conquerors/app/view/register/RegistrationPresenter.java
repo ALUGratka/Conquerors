@@ -4,9 +4,11 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import java.util.Date;
+import java.util.Objects;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
+import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.rest.RestService;
@@ -16,21 +18,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RegistrationPresenter extends BasePresenter<RegistrationView> {
+class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
-    public final static int NICK_MIN = 2;
-    public final static int NICK_MAX = 20;
-    public final static int PASSWORD_MIN = 6;
-    public final static int PASSWORD_MAX = 30;
-    public final static int EMAIL_MIN = 5;
-    public final static int EMAIL_MAX = 50;
+    private final static int NICK_MIN = 2;
+    private final static int NICK_MAX = 20;
+    private final static int PASSWORD_MIN = 6;
+    private final static int PASSWORD_MAX = 30;
+    private final static int EMAIL_MIN = 5;
+    private final static int EMAIL_MAX = 50;
 
-    RegistrationUseCase mUseCase;
+    private RegistrationUseCase mUseCase;
 
+    RegistrationPresenter(final RegistrationUseCase useCase) { mUseCase = useCase; }
 
-    public RegistrationPresenter(final RegistrationUseCase useCase) { mUseCase = useCase; }
-
-    public void performRegistration() {
+    void performRegistration() {
         mView.setRegistrationButtonEnabled(false);
 
         mView.hideNickError();
@@ -98,13 +99,17 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
             mUseCase.setData(nick, email, password, bornFormatted);
 
-            Call<UserEntity> call = RestClient.getInstance().register(email,nick,password,born);
+            Call<UserEntity> call = RestClient.getInstance().register(new UserEntity(email,nick,password,born));
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override
                 public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                     if(!response.isSuccessful()) {
                         Log.e("registration", "code: "+response.code());
+                        return;
+                    }
+                    if(response.message().equals("User with given username already exists")) {
+                        Log.e("registration", "User with given username already exists");
                         return;
                     }
                     mView.onRegistrationSucceeded(email);
@@ -114,7 +119,7 @@ public class RegistrationPresenter extends BasePresenter<RegistrationView> {
                 public void onFailure(Call<UserEntity> call, Throwable t) {
                     mView.hideLoading();
                     mView.setRegisterButtonEnabled(true);
-                    Log.e("registration", t.getMessage());
+                    Log.e("registration", Objects.requireNonNull(t.getMessage()));
                 }
             });
         }

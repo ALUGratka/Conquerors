@@ -18,9 +18,8 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
-import pl.conquerors.app.domain.interactor.login.LoginUseCase;
 import pl.conquerors.app.navigation.Navigator;
-import pl.conquerors.app.scheduler.AndroidComposedScheduler;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class LoginActivity extends BaseActivity implements LoginView {
 
@@ -166,11 +165,16 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler());
+        //SessionRepository sessionRepository = new SessionRepositoryImpl();
+        //LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler(),sessionRepository);
 
-        mLoginPresenter = new LoginPresenter(loginUseCase);
+        mLoginPresenter = new LoginPresenter();
         mLoginPresenter.setmView(this);
 
+        if(SharedPreferenceUtil.getLoggedStatus(getApplicationContext())){
+            Navigator.startHome(this);
+            finish();
+        }
     }
 
     @Override
