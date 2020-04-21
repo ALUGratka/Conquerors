@@ -4,35 +4,35 @@ public class Character {
     /**
      * enums
      **/
-    private enum Sex {
+    public enum Sex {
         Man, Woman
     }
 
-    private enum CharacterClass {
+    public enum CharacterClass {
         Bard, Warrior, Thief, Wizard
     }
 
-    private enum Hair {
+    public enum Hair {
         Blond, Brown, Black
     }
 
-    private enum EyeColor {
+    public enum EyeColor {
         Blue, Brown, Green
     }
 
-    private enum Hat {
+    public enum Hat {
         Hat1, Hat2, Hat3
     }
 
-    private enum Blouse {
+    public enum Blouse {
         BlouseBlue, BlouseRed, BlouseYellow
     }
 
-    private enum Pants {
+    public enum Pants {
         Pants1, Pants2, Pants3
     }
 
-    private enum Shoes {
+    public enum Shoes {
         Shoes1, Shoes2, Shoes3
     }
 
