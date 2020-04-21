@@ -33,7 +33,23 @@ public class AppearanceFragment extends Fragment {
     @BindView(R.id.hat_next_arrow_button)
     Button hatNextArrowButton;
 
+    @BindView(R.id.blouse_back_arrow_button)
+    Button blouseBackArrowButton;
 
+    @BindView(R.id.blouse_next_arrow_button)
+    Button blouseNextArrowButton;
+
+    @BindView(R.id.pants_back_arrow_button)
+    Button pantsBackArrowButton;
+
+    @BindView(R.id.pants_next_arrow_button)
+    Button pantsNextArrowButton;
+
+    @BindView(R.id.boots_back_arrow_button)
+    Button shoesBackArrowButton;
+
+    @BindView(R.id.boots_next_arrow_button)
+    Button shoesNextArrowButton;
 
     public AppearanceFragment() {
         // Required empty public constructor

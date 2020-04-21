@@ -35,6 +35,113 @@ def login():
     return response
 
 
+@app.route("/user", methods=['GET'])
+def get_user_by_email():
+    if request.method == 'GET':
+        data = json.loads(request.data)
+        email = data['email']
+
+        user = User.query.filter_by(email=email).first()
+
+        if user:
+            message = json.dumps(user.__dict__)
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
+
+        message = {
+            'response' : 'User with given id does not exists in db'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 400 # bad request
+        return response
+
+
+@app.route("/user", methods=['DELETE'])
+def delete_user_by_email():
+        if request.method == 'DELETE':
+            data = json.loads(request.data)
+            email = data['email']
+
+            user = User.query.filter_by(email=email).first()
+
+            if user:
+                user.delete()
+                session.commit()
+                
+                message = {
+                    'response' : 'User deleted from db'
+                }
+                response = make_response(json.dumps(message))
+                response.headers['Content-Type'] = 'application/json'
+                response.status_code = 200 # success
+                return response
+
+        message = {
+            'response' : 'User with given email not found in db'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 400 # bad request
+        return response
+
+
+@app.route("/user", methods=['PUT'])
+def update_user():
+    if request.method == 'PUT':
+        data = json.loads(request.data)
+        id = data['id']
+        email = data['email']
+        username = data['username']
+        password = data['password']
+        birth_date = data['birthDate']
+
+        user = User.query.filter_by(id=id).first()
+
+        if user.email != email:
+            if User.query.filter_by(email=email).first():
+                message = {
+                    'response' : 'Email taken'
+                }
+                response = make_response(json.dumps(message))
+                response.headers['Content-Type'] = 'application/json'
+                return response
+            user.email = email
+
+        if user.username != username:
+            if User.query.filter_by(username=username).first():
+                message = {
+                    'response' : 'Username taken'
+                }
+                response = make_response(json.dumps(message))
+                response.headers['Content-Type'] = 'application/json'
+                return response
+            user.username = username
+
+        if user.password != password:
+            user.password = password
+
+        session.commit()
+
+        message = {
+            'response' : 'User updated'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response
+
+    message = {
+        'response' : 'Error, user not updated'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 400 # bad request
+    return response
+
+
 @app.route("/register", methods=['POST'])
 def register():
     if request.method == 'POST':
