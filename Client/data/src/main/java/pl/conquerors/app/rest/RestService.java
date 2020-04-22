@@ -16,10 +16,9 @@ public interface RestService {
     @POST("login")
     Call<UserEntity> login(@Body UserEntity userEntity);
 
-    @GET("users/{id}")
-    Call<UserEntity> getMyProfile(@Path("id") int userId);
+    @GET("{email}")
+    Call<UserEntity> getMyProfile(@Path("email") String email);
 
-    @DELETE("userName")
-    Call<UserEntity> deleteProfile(@Path("userName") String email);
+
 
 }

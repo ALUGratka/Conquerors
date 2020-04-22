@@ -15,9 +15,9 @@ public class MyProfilePresenter extends BasePresenter<MyProfileView> {
     public void getProfileName() {
         //TODO GET method to get profile data
 
-        mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
+        //mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
 
-        /*Call<UserEntity> call = RestClient.getInstance().getMyProfile(2);
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile("ala123@gmail.com");
 
         call.enqueue(new Callback<UserEntity>() {
             @Override
@@ -33,7 +33,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileView> {
             public void onFailure(Call<UserEntity> call, Throwable t) {
                 Log.e("get_profile", t.getMessage());
             }
-        });*/
+        });
     }
 
     public void setupEditMenu() {
