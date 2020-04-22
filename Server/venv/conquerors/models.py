@@ -19,6 +19,16 @@ class User(db.Model):
     def __repr__(self):
         return f"User('{self.id}', '{self.username}')"
 
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'email' : self.email,
+            'username' : self.username,
+            'password' : self.password,
+            'skillPoints' : self.skillPoints,
+            'birthDate' : self.birthDate
+        }
+
 class Character(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)

@@ -41,10 +41,10 @@ def get_user_by_email():
         data = json.loads(request.data)
         email = data['email']
 
-        user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first() 
 
         if user:
-            message = json.dumps(user.__dict__)
+            message = user.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200 # success
@@ -68,7 +68,7 @@ def delete_user_by_email():
             user = User.query.filter_by(email=email).first()
 
             if user:
-                user.delete()
+                db.session.delete(user)
                 db.session.commit()
                 
                 message = {
@@ -96,7 +96,6 @@ def update_user():
         email = data['email']
         username = data['username']
         password = data['password']
-        birth_date = data['birthDate']
 
         user = User.query.filter_by(id=id).first()
 
