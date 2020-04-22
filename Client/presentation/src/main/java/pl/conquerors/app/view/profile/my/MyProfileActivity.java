@@ -72,7 +72,6 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
-
         myProfilePresenter = new MyProfilePresenter();
         myProfilePresenter.setmView(this);
         myProfilePresenter.created();

@@ -16,7 +16,7 @@ public interface RestService {
     @POST("login")
     Call<UserEntity> login(@Body UserEntity userEntity);
 
-    @GET("{email}")
+    @GET("user/{email}")
     Call<UserEntity> getMyProfile(@Path("email") String email);
 
 

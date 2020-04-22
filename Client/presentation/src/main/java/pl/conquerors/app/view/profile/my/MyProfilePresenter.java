@@ -1,9 +1,12 @@
 package pl.conquerors.app.view.profile.my;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import retrofit2.Call;
@@ -17,7 +20,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileView> {
 
         //mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
 
-        Call<UserEntity> call = RestClient.getInstance().getMyProfile("ala123@gmail.com");
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile("ala@gmail.com");
 
         call.enqueue(new Callback<UserEntity>() {
             @Override
@@ -26,7 +29,10 @@ public class MyProfilePresenter extends BasePresenter<MyProfileView> {
                     Log.e("get_profile", "Code: ".concat(String.valueOf(response.code())));
                     return;
                 }
-                mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
+                User user = UserEntityMapper.transform(response.body());
+                SharedPreferenceUtil.setUser(mView.getContext(),user);
+
+                mView.setUserName(SharedPreferenceUtil.getUser(mView.getContext()).getmNick());
             }
 
             @Override

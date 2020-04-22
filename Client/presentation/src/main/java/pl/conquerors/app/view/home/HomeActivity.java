@@ -126,6 +126,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
     private void logout(){
         SharedPreferenceUtil.setLoggedIn(this,false);
         SharedPreferenceUtil.setUserName(this,null);
+        SharedPreferenceUtil.setUser(this,null);
         finish();
         Navigator.startLogin(this.getContext());
     }

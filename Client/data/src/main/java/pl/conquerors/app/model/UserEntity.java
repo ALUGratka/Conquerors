@@ -31,6 +31,8 @@ public class UserEntity {
         this.password = password;
     }
 
+
+
     public int getUserId() {
         return userId;
     }

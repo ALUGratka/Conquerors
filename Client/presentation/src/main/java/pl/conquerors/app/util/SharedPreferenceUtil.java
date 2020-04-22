@@ -1,12 +1,18 @@
 package pl.conquerors.app.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+
+import com.google.gson.Gson;
+
+import pl.conquerors.app.domain.model.User;
 
 import static android.preference.PreferenceManager.*;
 import static pl.conquerors.app.util.PreferencesUtility.LOGGED_IN_PREF;
 import static pl.conquerors.app.util.PreferencesUtility.USER_NAME_PREF;
+import static pl.conquerors.app.util.PreferencesUtility.USER_PREF;
 
 public class SharedPreferenceUtil {
 
@@ -32,5 +38,19 @@ public class SharedPreferenceUtil {
 
     public static String getUserName(Context context) {
         return getPreferences(context).getString(USER_NAME_PREF, null);
+    }
+
+    public static void setUser(Context context, User user) {
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        editor.putString(USER_PREF, json);
+        editor.apply();
+    }
+
+    public static User getUser(Context context) {
+        Gson gson = new Gson();
+        String json = getPreferences(context).getString(USER_PREF, null);
+        return gson.fromJson(json, User.class);
     }
 }

@@ -52,6 +52,8 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                     if(!response.isSuccessful()){
                         Log.e("login", "Code: "+response.code());
+                        mView.showNoUser();
+                        mView.setLoginButtonEnabled(true);
                         return;
                     }
                     User user = UserEntityMapper.transform(response.body());

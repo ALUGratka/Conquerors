@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    private static final String API_URL = "http://192.168.99.100:8080/";
+    private static final String API_URL = "http://192.168.99.104:8080/";
     private static RestService service;
 
     public static RestService getInstance(){
