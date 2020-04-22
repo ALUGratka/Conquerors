@@ -90,6 +90,17 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
     }
 
     @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_edit_profile:
+                Navigator.startSettings(this);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
     public void showLoading() { }
 
     @Override

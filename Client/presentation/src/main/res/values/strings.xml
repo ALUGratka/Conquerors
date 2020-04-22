@@ -43,6 +43,7 @@
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_email_match">Email and confirmation does not match</string>
+    <string name="error_invalid_password_match">Password and confirmation does not match</string>
     <string name="error_invalid_password">Password and confirmation does not match or are invalid</string>
     <string name="error_invalid_address">Could not find given address.</string>
     <string name="error_incorrect_password">Invalid password</string>

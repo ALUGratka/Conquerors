@@ -14,22 +14,25 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
 
     public void attemptRemoveAccount(){
         mView.onRemoveAccountSucceeded();
-        /*Call<UserEntity> call = RestClient.getInstance().deleteProfile(SharedPreferenceUtil.getUserName(mView.getContext()));
+        //Call<String> call = RestClient.getInstance().deleteUser(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail());
+        Call<String> call = RestClient.getInstance().deleteUser("ala123@gmail.com");
 
-        call.enqueue(new Callback<UserEntity>() {
+
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if(!response.isSuccessful()){
                     Log.e("delete_user:", "Code: ".concat(String.valueOf(response.code())));
                     return;
                 }
+                Log.e("delete_user:",response.body());
                 mView.onRemoveAccountSucceeded();
             }
 
             @Override
-            public void onFailure(Call<UserEntity> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Log.e("delete_user: ", t.getMessage());
             }
-        });*/
+        });
     }
 }

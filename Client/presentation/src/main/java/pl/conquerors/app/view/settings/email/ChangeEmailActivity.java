@@ -15,6 +15,8 @@ import butterknife.OnClick;
 import butterknife.OnTouch;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
+import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class ChangeEmailActivity extends BaseActivity implements ChangeEmailView {
 
@@ -119,6 +121,10 @@ public class ChangeEmailActivity extends BaseActivity implements ChangeEmailView
 
     @Override
     public void onChangeEmailSucceeded() {
+        User user = SharedPreferenceUtil.getUser(this);
+        user.setmEmail(getEmail());
+        SharedPreferenceUtil.setUser(this, user);
         Toast.makeText(this, getString(R.string.change_email_success),Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

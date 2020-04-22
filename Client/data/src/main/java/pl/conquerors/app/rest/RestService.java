@@ -4,8 +4,11 @@ import pl.conquerors.app.model.UserEntity;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface RestService {
@@ -16,9 +19,14 @@ public interface RestService {
     @POST("login")
     Call<UserEntity> login(@Body UserEntity userEntity);
 
-    @GET("user/{email}")
-    Call<UserEntity> getMyProfile(@Path("email") String email);
+    @GET("user")
+    Call<UserEntity> getMyProfile(@Body String email);
 
+    @DELETE("user/{email}")
+    Call<String> deleteUser(@Path("email") String email);
 
+    @PUT("user/{id}")
+    Call<UserEntity> updateUser(@Path("id")int id,
+                                @Body UserEntity userEntity);
 
 }

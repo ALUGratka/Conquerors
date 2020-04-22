@@ -1,9 +1,20 @@
 package pl.conquerors.app.view.settings.email;
 
 import android.text.TextUtils;
+import android.util.Log;
+
+import java.util.Objects;
 
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.mapper.UserEntityMapper;
+import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
 
@@ -34,13 +45,13 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
 
         //check if confirmation valid
         if(TextUtils.isEmpty(confirmation)) {
-            mView.showEmailRequired();
+            mView.showEmailConfirmationRequired();
             cancel = true;
         }else if(!Validator.isEmailValid(confirmation)) {
             mView.showEmailInvalid();
             cancel = true;
         }else if (!Validator.isLengthValid(confirmation, EMAIL_MIN, EMAIL_MAX)) {
-            mView.showEmailLengthInvalid(EMAIL_MIN, EMAIL_MAX);
+            mView.showEmailConfirmationLengthInvalid(EMAIL_MIN, EMAIL_MAX);
             cancel = true;
         } else if(!TextUtils.equals(email,confirmation)){
             mView.showEmailsDoNotMatch();
@@ -51,6 +62,32 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
             mView.setChangeEmailButtonEnabled(true);
         } else {
 
+
+            //TODO REST API update Email
+
+            /*Call<UserEntity> call = RestClient.getInstance().updateUser(0,new UserEntity(0,"ala123@gmail.com","ala123","ala123"));
+
+            call.enqueue(new Callback<UserEntity>() {
+                @Override
+                public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                    if(!response.isSuccessful()){
+                        Log.e("update_user: ", "Code: ".concat(String.valueOf(response.code())).concat("Message: ").concat(response.message()));
+                        return;
+                    }
+                    User user = UserEntityMapper.transform(response.body());
+                    SharedPreferenceUtil.setUser(mView.getContext(),user);
+
+                    mView.onChangeEmailSucceeded();
+                }
+
+                @Override
+                public void onFailure(Call<UserEntity> call, Throwable t) {
+                    mView.setChangeEmailButtonEnabled(true);
+                    Log.e("update_user: ", Objects.requireNonNull(t.getMessage()));
+                }
+            });*/
+
+            mView.onChangeEmailSucceeded();
         }
 
     }

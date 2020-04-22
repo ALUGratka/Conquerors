@@ -43,6 +43,7 @@
     <!-- Errors -->
     <string name="error_invalid_email">Podany adres email jest niepoprawny</string>
     <string name="error_invalid_email_match">Email i potwierdzenie nie pasują</string>
+    <string name="error_invalid_password_match">Hasło i potwierdzenie nie pasują</string>
     <string name="error_invalid_password">Hasło i kod potwierdzający nie pasują lub są niepoprawne.</string>
     <string name="error_invalid_address">Nie udało się znaleźć podanego adresu.</string>
     <string name="error_incorrect_password">Niepoprawne hasło</string>
