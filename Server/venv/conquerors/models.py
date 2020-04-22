@@ -29,6 +29,7 @@ class User(db.Model):
             'birthDate' : self.birthDate
         }
 
+
 class Character(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -57,6 +58,27 @@ class Character(db.Model):
     def __repr__(self):
         return f"Character('{self.id}', '{self.nickname}', '{self.level}', '{self.characterClass}')"
 
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'level' : self.level,
+            'charisma' : self.charisma,
+            'intelligence' : self.intelligence,
+            'agility' : self.agility,
+            'strength' : self.strength,
+            'nickname' : self.nickname,
+            'sex' : self.sex,
+            'characterClass' : self.characterClass,
+            'hair' : self.hair,
+            'hat' : self.hat,
+            'eyeColor' : self.eyeColor,
+            'blouse' : self.blouse,
+            'pants' : self.pants,
+            'shoes' : self.shoes,
+            'userId' : self.userId
+        }
+
+
 class LastLoggedIn(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -68,3 +90,11 @@ class LastLoggedIn(db.Model):
     
     def __repr__(self):
         return f"LastLoggedIn('{self.id}', '{self.userId}', '{self.characterId}', '{self.lastLoginDate}')"
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'lastLoginDate' : self.lastLoginDate,
+            'userId' : self.userId,
+            'characterId' : self.characterId
+        }
