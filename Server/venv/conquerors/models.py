@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from conquerors import db
 
 
@@ -97,4 +97,22 @@ class LastLoggedIn(db.Model):
             'lastLoginDate' : self.lastLoginDate,
             'userId' : self.userId,
             'characterId' : self.characterId
+        }
+
+
+class LastPrize(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    lastDate = db.Column(db.Date, nullable=False, default=date.today())
+    # foreign keys
+    userId = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"LastPrize('{self.id}', '{self.userId}', '{self.lastDate}')"
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'lastDate': self.lastDate,
+            'userId': self.userId
         }

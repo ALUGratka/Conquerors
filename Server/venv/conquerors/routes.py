@@ -1,7 +1,8 @@
 from flask import request, make_response
 from conquerors import app, db, bcrypt
-from conquerors.models import User, Character
+from conquerors.models import User, Character, LastPrize
 import json
+from datetime import date
 
 
 @app.route("/")
@@ -243,6 +244,56 @@ def create_character():
     # if any other error occours
     message = {
         'response' : 'Error'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 404
+    return response
+
+
+@app.route("/prize", methods=['POST'])
+def createPrizeDate():
+    if request.method == 'POST':
+        data = json.loads(request.data)
+
+        userId = data['userId']
+        lastDate = date.today()
+
+        # check if user with given id exists
+        if User.query.filter_by(id=int(userId)).first():
+            if(LastPrize.query.filter_by(userId=int(userId), lastDate=str(lastDate)).first()):
+                message = {
+                    'response': 'You already got a prize today'
+                }
+                response = make_response(json.dumps(message))
+                response.headers['Content-Type'] = 'application/json'
+                response.status_code = 403
+                return response
+            else:
+                # if so create character and add to db
+                prizeDate = LastPrize(lastDate=lastDate, userId=userId)
+                print(prizeDate)
+                db.session.add(prizeDate)
+                db.session.commit()
+                # send response
+                message = {
+                    'response': 'Prize Date created'
+                }
+                response = make_response(json.dumps(message))
+                response.headers['Content-Type'] = 'application/json'
+                response.status_code = 201  # created
+                return response
+        else:
+            message = {
+                'response': 'User with given id does not exists in db'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            return response
+
+    # if any other error occours
+    message = {
+        'response': 'Error'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
