@@ -13,6 +13,7 @@ def get_user():
     endpoint = 'user'
     print('sending get user request')
     response = requests.get(url=url+endpoint, headers=headers, data=json.dumps(user))
+    print(response.url)
     print(response.content.decode('UTF-8'))
 
 
@@ -41,14 +42,14 @@ def update_user_by_id():
     print(response.content)
 
 if __name__ == '__main__':
-    # print('testing get user by email route')
-    # get_user()
+    print('testing get user by email route')
+    get_user()
 
     # print('testing update user by id route')
     # update_user_by_id()
 
-    print('testing delete user by email route')
-    delete_user()
+    # print('testing delete user by email route')
+    # delete_user()
 
     # print('testing get user by email route')
     # get_user()

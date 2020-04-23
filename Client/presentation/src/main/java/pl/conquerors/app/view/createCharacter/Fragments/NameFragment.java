@@ -11,14 +11,12 @@ import butterknife.BindView;
 import pl.conquerors.app.R;
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link NameFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * A simple {@link Fragment} subclass.\
  */
 public class NameFragment extends Fragment {
 
-    @BindView(R.id.nickname)
-    AutoCompleteTextView nickname;
+    @BindView(R.id.characterNickname)
+    AutoCompleteTextView characterNickname;
 
     public NameFragment() {
         // Required empty public constructor
@@ -27,7 +25,13 @@ public class NameFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_name, container, false);
     }
+
+    public String getNickname() {
+        System.out.println(characterNickname.getText());
+        return characterNickname.getText().toString();
+    }
+
+
 }

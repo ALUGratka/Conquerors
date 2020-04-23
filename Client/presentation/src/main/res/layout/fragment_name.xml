@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
-                    android:id="@+id/nickname"
+                    android:id="@+id/characterNickname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/character_nickname"

@@ -19,6 +19,10 @@ public class ClassFragment extends Fragment {
     RadioGroup characterClassRadioGroup;
     RadioButton characterClassRadioButton;
 
+    Character.Sex sex;
+
+    // zaimplementowac onClick radiobutton i zmieniać na canvas klasy i uwzgledniac plec
+
     public ClassFragment() {
         // Required empty public constructor
     }
@@ -27,6 +31,14 @@ public class ClassFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        int arg_sex = getArguments().getInt("sex");
+        if (arg_sex == 0) {
+            sex = Character.Sex.Man;
+        } else {
+            sex = Character.Sex.Woman;
+        }
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_class, container, false);
     }
@@ -37,17 +49,21 @@ public class ClassFragment extends Fragment {
         int selectedId = characterClassRadioGroup.getCheckedRadioButtonId();
         characterClassRadioButton = getView().findViewById(selectedId);
 
-        if (characterClassRadioButton.getText().equals(R.string.radio_bard)) {
+        System.out.println(characterClassRadioButton.getText());
+
+
+        if (characterClassRadioButton.getText().equals(getString(R.string.radio_bard))) {
             return Character.CharacterClass.Bard;
-        } else if (characterClassRadioButton.getText().equals(R.string.radio_thief)) {
+        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_thief))) {
             return Character.CharacterClass.Thief;
-        } else if (characterClassRadioButton.getText().equals(R.string.radio_warrior)) {
+        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_warrior))) {
             return Character.CharacterClass.Warrior;
-        } else if (characterClassRadioButton.getText().equals(R.string.radio_wizard)) {
+        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_wizard))) {
             return Character.CharacterClass.Wizard;
         } else {
             System.out.println("Error : not existing class selected");
         }
+
         return null;
     }
 }

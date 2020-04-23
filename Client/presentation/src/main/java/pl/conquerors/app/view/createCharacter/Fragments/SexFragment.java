@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.domain.model.Character;
 
@@ -28,8 +29,17 @@ public class SexFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sex, container, false);
+    }
+
+    @OnClick(R.id.radioWomen)
+    public void onRadioWomanClicked(){
+        // display woman on canvas
+    }
+
+    @OnClick(R.id.radioMan)
+    public void onRadioManClicked(){
+        //display man on canvas
     }
 
     public Character.Sex getSelectedSex() {

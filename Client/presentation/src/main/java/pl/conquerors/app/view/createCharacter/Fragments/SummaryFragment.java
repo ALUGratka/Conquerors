@@ -5,15 +5,33 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import butterknife.BindView;
 import pl.conquerors.app.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link SummaryFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class SummaryFragment extends Fragment {
+
+    @BindView(R.id.displayCharacterNicknameText)
+    TextView nickname;
+
+    @BindView(R.id.displayCharacterClassText)
+    TextView characterClass;
+
+    @BindView(R.id.displayClassStrength)
+    TextView strength;
+
+    @BindView(R.id.displayCharacterCharisma)
+    TextView charisma;
+
+    @BindView(R.id.displayCharacterAgility)
+    TextView agility;
+
+    @BindView(R.id.displayCharacterIntelligence)
+    TextView intelligence;
 
     public SummaryFragment() {
         // Required empty public constructor
@@ -22,7 +40,38 @@ public class SummaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
+        String arg_nickname = getArguments().getString("nickname");
+        int arg_class = getArguments().getInt("class");
+
+        nickname.setText(arg_nickname);
+
+        if (arg_class == 0) {
+            characterClass.setText(getString(R.string.radio_bard));
+            strength.setText("2");
+            charisma.setText("10");
+            agility.setText("5");
+            intelligence.setText("3");
+        } else if (arg_class == 1) {
+            characterClass.setText(getString(R.string.radio_thief));
+            strength.setText("2");
+            charisma.setText("5");
+            agility.setText("10");
+            intelligence.setText("3");
+        } else if (arg_class == 2) {
+            characterClass.setText(getString(R.string.radio_warrior));
+            strength.setText("10");
+            charisma.setText("3");
+            agility.setText("5");
+            intelligence.setText("2");
+        } else {
+            characterClass.setText(getString(R.string.radio_wizard));
+            strength.setText("5");
+            charisma.setText("3");
+            agility.setText("2");
+            intelligence.setText("10");
+        }
+
         return inflater.inflate(R.layout.fragment_summary, container, false);
     }
 }

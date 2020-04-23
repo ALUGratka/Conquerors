@@ -12,7 +12,8 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
     Character.Blouse blouse;
     Character.EyeColor eyeColor;
     Character.Hair hair;
-    String nickname;
+    Character.Hat hat;
+    String nickname = "Lamus";
     int userId;
 
     CreateCharacterUseCase createCharacterUseCase;
@@ -47,6 +48,10 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
         this.hair = hair;
     }
 
+    public void setHat(Character.Hat hat) {
+        this.hat = hat;
+    }
+
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
@@ -56,7 +61,7 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
     }
 
     public void performCharacterCreation(){
-        createCharacterUseCase.setData(nickname=nickname, sex=sex, characterClass=characterClass, hair=hair,
+        createCharacterUseCase.setData(nickname=nickname, sex=sex, characterClass=characterClass, hair=hair, hat=hat,
                 eyeColor=eyeColor, blouse=blouse, pants=pants, shoes=shoes, userId=userId);
     }
 
