@@ -24,6 +24,7 @@ public class EverydayPrizePresenter extends BasePresenter<EverydayPrizeView> {
                     Log.e("Everyday Prize", "Code: "+response.code());
                     if (response.code()==403)
                         mView.showAlreadyGifted();
+                    return;
                 }
                 mView.onEverydayPrizeSucceeded();
             }
