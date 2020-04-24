@@ -22,7 +22,8 @@ public class EverydayPrizePresenter extends BasePresenter<EverydayPrizeView> {
             public void onResponse(Call<PrizeDateEntity> call, Response<PrizeDateEntity> response) {
                 if(!response.isSuccessful()){
                     Log.e("Everyday Prize", "Code: "+response.code());
-                    return;
+                    if (response.code()==403)
+                        mView.showAlreadyGifted();
                 }
                 mView.onEverydayPrizeSucceeded();
             }
