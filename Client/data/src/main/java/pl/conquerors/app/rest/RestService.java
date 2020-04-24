@@ -1,6 +1,7 @@
 package pl.conquerors.app.rest;
 
 import pl.conquerors.app.model.CharacterEntity;
+import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.UserEntity;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -24,5 +25,8 @@ public interface RestService {
 
     @POST("create-character")
     Call<CharacterEntity> createCharacter(@Body CharacterEntity characterEntity);
+
+    @POST("prize")
+    Call<PrizeDateEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
 
 }

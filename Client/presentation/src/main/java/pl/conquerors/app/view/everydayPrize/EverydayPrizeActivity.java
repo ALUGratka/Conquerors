@@ -48,7 +48,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
-        getPrize();
+        mEverydayPrizePresenter.performEverydayPrize();
     }
 
     @Override
@@ -57,4 +57,13 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
         Navigator.startHome(this);
     }
 
+    public void showAlreadyGifted(){
+        Toast.makeText(this, "You already got a prize", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onEverydayPrizeSucceeded() {
+        Toast.makeText(this, getString(R.string.info_got_gift, 100), Toast.LENGTH_SHORT).show();
+        Navigator.startHome(this);
+    }
 }
