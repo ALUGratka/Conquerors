@@ -1,8 +1,11 @@
 package pl.conquerors.app.rest;
 
-import android.app.AliasActivity;
+import java.io.IOException;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import pl.conquerors.data.BuildConfig;
 import retrofit2.Retrofit;
@@ -25,8 +28,19 @@ public class RestClient {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(BuildConfig.DEBUG ? HttpLoggingInterceptor.Level.BODY : HttpLoggingInterceptor.Level.NONE);
 
+        final Interceptor cache_interceptor = new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+
+                Request request = chain.request().newBuilder().addHeader("Connection", "close").build();
+                return chain.proceed(request);
+            }
+        };
+
         final OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(cache_interceptor)
                 .addInterceptor(loggingInterceptor)
+                .retryOnConnectionFailure(false)
                 .build();
 
         final Retrofit retrofit = new Retrofit.Builder()

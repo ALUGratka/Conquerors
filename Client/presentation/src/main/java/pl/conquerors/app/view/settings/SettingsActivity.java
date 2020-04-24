@@ -74,8 +74,8 @@ public class SettingsActivity extends BaseActivity implements SettingsView {
     private void removeAccount(){
         DialogUtil.showSimpleDialog(
                 SettingsActivity.this,
+                getString(R.string.settings_action_remove_account),
                 getString(R.string.settings_remove_dialog_message),
-                getString(R.string.dialog_logout_message),
                 getRemoveAccountPositiveListener(),
                 null); // We don't need here anything more than default behaviour which is dismissing the dialog.
 

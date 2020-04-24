@@ -17,7 +17,6 @@ import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.util.SharedPreferenceUtil;
-import pl.conquerors.app.view.settings.email.ChangeEmailView;
 
 public class ChangePasswordActivity extends BaseActivity implements ChangePasswordView {
 
@@ -26,23 +25,23 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     @BindView(R.id.change_password_form)
     View mChangePasswordForm;
 
-    @BindView(R.id.current_password)
-    TextInputLayout mCurrentPasswordView;
-
     @BindView(R.id.current_password_input)
-    TextInputEditText mCurrentPasswordInput;
+    TextInputLayout mCurrentPasswordInput;
 
-    @BindView(R.id.new_password)
-    TextInputLayout mNewPasswordView;
+    @BindView(R.id.current_password)
+    TextInputEditText mCurrentPasswordView;
 
     @BindView(R.id.new_password_input)
-    TextInputEditText mNewPasswordInput;
+    TextInputLayout mNewPasswordInput;
 
-    @BindView(R.id.new_password_confirm)
-    TextInputLayout mNewPasswordConfirmationView;
+    @BindView(R.id.new_password)
+    TextInputEditText mNewPasswordView;
 
     @BindView(R.id.new_password_confirm_input)
-    TextInputEditText mNewPasswordConfirmationInput;
+    TextInputLayout mNewPasswordConfirmationInput;
+
+    @BindView(R.id.new_password_confirm)
+    TextInputEditText mNewPasswordConfirmationView;
 
     @BindView(R.id.change_password_button)
     Button mChangePasswordButton;
@@ -78,75 +77,73 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     public void hideLoading() { }
 
     @Override
-    public String getOldPassword() { return mCurrentPasswordInput.getText().toString(); }
+    public String getOldPassword() { return mCurrentPasswordView.getText().toString(); }
 
     @Override
-    public String getNewPassword() { return mNewPasswordInput.getText().toString(); }
+    public String getNewPassword() { return mNewPasswordView.getText().toString(); }
 
     @Override
-    public String getNewPasswordConfirmation() { return mNewPasswordConfirmationInput.getText().toString(); }
+    public String getNewPasswordConfirmation() { return mNewPasswordConfirmationView.getText().toString(); }
 
     @Override
     public void setChangePasswordButtonEnabled(boolean enabled) { mChangePasswordButton.setEnabled(enabled); }
 
     @Override
     public void showOldPasswordRequired() {
-        mCurrentPasswordView.setError(getString(R.string.error_field_required));
+        mCurrentPasswordInput.setError(getString(R.string.error_field_required));
     }
 
     @Override
     public void showOldPasswordLengthInvalid(int min, int max) {
-        mCurrentPasswordView.setError(getString(R.string.error_field_length, getString(R.string.prompt_password),min, max));
+        mCurrentPasswordInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_password),min, max));
     }
 
     @Override
-    public void showPasswordInvalid() { mCurrentPasswordView.setError(getString(R.string.error_invalid_password)); }
+    public void showPasswordInvalid() { mCurrentPasswordInput.setError(getString(R.string.error_invalid_password)); }
 
     @Override
     public void hideOldPasswordErrors() {
-        mCurrentPasswordView.setError(null);
-        mCurrentPasswordView.setErrorEnabled(true);
+        mCurrentPasswordInput.setError(null);
+        mCurrentPasswordInput.setErrorEnabled(true);
     }
 
     @Override
-    public void showNewPasswordRequired() { mNewPasswordView.setError(getString(R.string.error_field_required));}
+    public void showNewPasswordRequired() { mNewPasswordInput.setError(getString(R.string.error_field_required));}
 
     @Override
     public void showNewPasswordLengthInvalid(int min, int max) {
-        mNewPasswordView.setError(getString(R.string.error_field_length, getString(R.string.prompt_password),min, max));
+        mNewPasswordInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_password),min, max));
     }
 
     @Override
     public void hideNewPasswordErrors() {
-        mNewPasswordView.setError(null);
-        mNewPasswordView.setErrorEnabled(true);
+        mNewPasswordInput.setError(null);
+        mNewPasswordInput.setErrorEnabled(true);
     }
 
     @Override
-    public void showNewPasswordConfirmationRequired() { mNewPasswordConfirmationView.setError(getString(R.string.error_field_required));}
+    public void showNewPasswordConfirmationRequired() { mNewPasswordConfirmationInput.setError(getString(R.string.error_field_required));}
 
     @Override
     public void showNewPasswordConfirmationLengthInvalid(int min, int max) {
-        mNewPasswordConfirmationView.setError(getString(R.string.error_field_length, getString(R.string.prompt_password_confirm),min, max));
+        mNewPasswordConfirmationInput.setError(getString(R.string.error_field_length, getString(R.string.prompt_password_confirm),min, max));
     }
 
     @Override
     public void showPasswordDoNotMatch() {
-        mNewPasswordView.setError(getString(R.string.error_invalid_password_match));
-        mNewPasswordConfirmationView.setError(getString(R.string.error_invalid_password_match));
+        mNewPasswordInput.setError(getString(R.string.error_invalid_password_match));
+        mNewPasswordConfirmationInput.setError(getString(R.string.error_invalid_password_match));
     }
 
     @Override
     public void hideNewPasswordConfirmationErrors() {
-        mNewPasswordConfirmationView.setError(null);
-        mNewPasswordConfirmationView.setErrorEnabled(true);
+        mNewPasswordConfirmationInput.setError(null);
+        mNewPasswordConfirmationInput.setErrorEnabled(true);
     }
 
     @Override
     public void onChangePasswordSucceeded() {
-        User user = SharedPreferenceUtil.getUser(this);
-        user.setmPassword(getNewPassword());
-        SharedPreferenceUtil.setUser(this, user);
+        //TODO SharedPropertiesUtil when get will work
         Toast.makeText(this, getString(R.string.change_password_success),Toast.LENGTH_SHORT).show();
         finish();
     }

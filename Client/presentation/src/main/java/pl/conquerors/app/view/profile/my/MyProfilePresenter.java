@@ -1,23 +1,14 @@
 package pl.conquerors.app.view.profile.my;
 
-import android.content.SharedPreferences;
-import android.util.Log;
 
 import pl.conquerors.app.base.BasePresenter;
-import pl.conquerors.app.domain.model.User;
-import pl.conquerors.app.model.UserEntity;
-import pl.conquerors.app.model.mapper.UserEntityMapper;
-import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MyProfilePresenter extends BasePresenter<MyProfileView> {
 
     public void getProfileName() {
         //TODO GET method to get profile data
-        mView.setUserName(SharedPreferenceUtil.getUser(mView.getContext()).getmNick());
+        mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
 
         /*Call<UserEntity> call = RestClient.getInstance().getMyProfile(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail());
 

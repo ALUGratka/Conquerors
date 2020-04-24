@@ -121,9 +121,9 @@ public class ChangeEmailActivity extends BaseActivity implements ChangeEmailView
 
     @Override
     public void onChangeEmailSucceeded() {
-        User user = SharedPreferenceUtil.getUser(this);
+        /*User user = SharedPreferenceUtil.getUser(this);
         user.setmEmail(getEmail());
-        SharedPreferenceUtil.setUser(this, user);
+        SharedPreferenceUtil.setUser(this, user);*/
         Toast.makeText(this, getString(R.string.change_email_success),Toast.LENGTH_SHORT).show();
         finish();
     }

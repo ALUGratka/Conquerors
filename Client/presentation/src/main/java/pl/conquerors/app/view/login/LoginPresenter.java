@@ -6,6 +6,7 @@ import android.util.Log;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.UserGetEntity;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
@@ -74,5 +75,27 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 }
             });
         }
+    }
+
+    public void onLoginSucceeded(){
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile((new UserGetEntity("ala123@gmai.com")).getEmail());
+
+        call.enqueue(new Callback<UserEntity>() {
+            @Override
+            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                if(!response.isSuccessful()){
+                    Log.e("get_user: ","Code: ".concat(String.valueOf(response.code())));
+                    return;
+                }
+                User user = UserEntityMapper.transform(response.body());
+                SharedPreferenceUtil.setUser(mView.getContext(),user);
+                Log.e("get_user: ",user.toString());
+            }
+
+            @Override
+            public void onFailure(Call<UserEntity> call, Throwable t) {
+                Log.e("get_user: ", t.getMessage());
+            }
+        });
     }
 }

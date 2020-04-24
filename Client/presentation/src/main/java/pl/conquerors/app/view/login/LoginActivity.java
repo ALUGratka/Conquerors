@@ -113,6 +113,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onLoginSucceeded(/*User user*/) {
+        mLoginPresenter.onLoginSucceeded();
         Toast.makeText(this, getString(R.string.info_login_success, getNick()), Toast.LENGTH_SHORT).show();
         finish();
         Navigator.startHome(this);

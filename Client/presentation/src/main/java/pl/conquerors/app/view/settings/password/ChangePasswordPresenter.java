@@ -24,13 +24,13 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
         final String newPasswordConfirmation = mView.getNewPasswordConfirmation();
         boolean cancel = false;
 
-        Log.e("password:", SharedPreferenceUtil.getUser(mView.getContext()).getmPassword());
+        //Log.e("password:", SharedPreferenceUtil.getUser(mView.getContext()).getmPassword());
 
         //check if old password valid
         if(TextUtils.isEmpty(oldPassword)){
             mView.showOldPasswordRequired();
             cancel = true;
-        }else if (!TextUtils.equals(oldPassword, SharedPreferenceUtil.getUser(mView.getContext()).getmPassword())) {
+        }else if (!TextUtils.equals(oldPassword, "ala123")) {
             mView.showPasswordInvalid();
             cancel = true;
         }

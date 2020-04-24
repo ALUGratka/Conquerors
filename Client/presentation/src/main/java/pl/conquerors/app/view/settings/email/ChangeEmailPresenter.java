@@ -65,7 +65,7 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
 
             //TODO REST API update Email
 
-            /*Call<UserEntity> call = RestClient.getInstance().updateUser(0,new UserEntity(0,"ala123@gmail.com","ala123","ala123"));
+            /*Call<UserEntity> call = RestClient.getInstance().updateUser(new UserEntity(0,"ala123@gmail.com","ala123","ala123"));
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override
