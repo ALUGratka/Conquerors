@@ -19,9 +19,7 @@ def login():
         user = User.query.filter_by(username=username).first() 
 
         if user and bcrypt.check_password_hash(user.password, password):
-            message = {
-                'response' : 'User authenticated'
-            }
+            message = user.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200 # success
@@ -39,8 +37,7 @@ def login():
 @app.route("/user", methods=['GET'])
 def get_user_by_email():
     if request.method == 'GET':
-        data = json.loads(request.data)
-        email = data['email']
+        email = request.args.get('email')
 
         user = User.query.filter_by(email=email).first() 
 
@@ -63,8 +60,7 @@ def get_user_by_email():
 @app.route("/user", methods=['DELETE'])
 def delete_user_by_email():
         if request.method == 'DELETE':
-            data = json.loads(request.data)
-            email = data['email']
+            email = request.args.get('email')
 
             user = User.query.filter_by(email=email).first()
 

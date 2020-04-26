@@ -7,8 +7,8 @@ url = 'http://127.0.0.1:80/'
 
 def login_user():
     user = {
-        "username" : "dziku",
-        "password" : "dzikidzik"
+        "username" : "izabelka",
+        "password" : "izabelaizabela"
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'login'

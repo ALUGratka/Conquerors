@@ -22,7 +22,7 @@ def create_user(email, username, password, birth_date):
 
 
 def register_user():
-    user = create_user('dzik@gmail.com', 'dziku', 'dzikidzik', '22/06/1998')
+    user = create_user('izabela@gmail.com', 'izabelka', 'izabelaizabela', '22/06/1998')
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'register'
     print('sending register request')
