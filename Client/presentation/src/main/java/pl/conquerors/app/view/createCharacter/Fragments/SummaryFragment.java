@@ -49,13 +49,8 @@ public class SummaryFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         String arg_nickname = SharedPreferenceUtil.getCharacterName(view.getContext());
-
         int arg_class = SharedPreferenceUtil.getCharacterClass(view.getContext());
-        if (getArguments() != null) {
-            arg_class = SharedPreferenceUtil.getCharacterClass(view.getContext());
-        }
 
         nickname.setText(arg_nickname);
 

@@ -1,6 +1,7 @@
 package pl.conquerors.app.view.createCharacter.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,12 +29,18 @@ public class ClassFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        SharedPreferenceUtil.setCharacterClass(view.getContext(), 0);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        int arg_sex = getArguments().getInt("sex");
+        int arg_sex = SharedPreferenceUtil.getCharacterSex(getContext());
         if (arg_sex == 0) {
             sex = Character.Sex.Man;
         } else {
@@ -49,10 +56,6 @@ public class ClassFragment extends Fragment {
 
         int selectedId = characterClassRadioGroup.getCheckedRadioButtonId();
         characterClassRadioButton = getView().findViewById(selectedId);
-
-        System.out.println(characterClassRadioButton.getText());
-
-
 
         if (characterClassRadioButton.getText().equals(getString(R.string.radio_bard))) {
             SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);

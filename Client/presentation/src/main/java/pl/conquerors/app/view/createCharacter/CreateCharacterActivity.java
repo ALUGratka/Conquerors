@@ -42,13 +42,6 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     NameFragment nameFragment = new NameFragment();
     SummaryFragment summaryFragment = new SummaryFragment();
 
-    Bundle sexBundle = new Bundle();
-    Bundle classBundle = new Bundle();
-    Bundle appearanceBundle = new Bundle();
-    Bundle nameBundle = new Bundle();
-
-    Bundle character;
-
     int currentFragment = 0;
 
     CreateCharacterUseCase createCharacterUseCase;
@@ -62,9 +55,6 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_character);
-
-        character = new Bundle();
-        getStartingIntents(this).putExtras(character);
 
         createCharacterUseCase = new CreateCharacterUseCase(new AndroidComposedScheduler());
         createCharacterPresenter = new CreateCharacterPresenter(createCharacterUseCase);
@@ -93,13 +83,10 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 transaction.addToBackStack("CLASS_FRAGMENT_TAG");
 
                 if (sex.equals(Character.Sex.Man)) {
-                    character.putInt("sex", 0); // man
+                    SharedPreferenceUtil.setCharacterSex(this.getContext(), 0); // man
                 } else {
-                    character.putInt("sex", 1); // woman
+                    SharedPreferenceUtil.setCharacterSex(this.getContext(), 1); // woman
                 }
-
-                classFragment.setArguments(character);
-                appearanceFragment.setArguments(character);
 
                 currentFragment = 1;
                 break;
@@ -123,8 +110,6 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                     SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
                 }
 
-                classFragment.setArguments(character);
-
                 currentFragment = 2;
                 break;
             case 2:
@@ -144,54 +129,52 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
 
                 // hair
                 if (hair.equals(Character.Hair.Blond)) {
-                    character.putInt("hair", 0); // blond
+                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 0); // blond
                 } else if (hair.equals(Character.Hair.Brown)) {
-                    character.putInt("hair", 1); // brown
+                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 1); // brown
                 } else {
-                    character.putInt("hair", 2); // black
+                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 2); // black
                 }
                 // hat
                 if (hat.equals(Character.Hat.Hat1)) {
-                    character.putInt("hat", 0); // Hat1
+                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 0); // Hat1
                 } else if (hat.equals(Character.Hat.Hat2)) {
-                    character.putInt("hat", 1); // Hat2
+                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 1); // Hat2
                 } else {
-                    character.putInt("hat", 2); // Hat3
+                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 2); // Hat3
                 }
                 // eyeColor
                 if (eyeColor.equals(Character.EyeColor.Blue)) {
-                    character.putInt("eyeColor", 0); // Blue
+                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0); // Blue
                 } else if (eyeColor.equals(Character.EyeColor.Brown)) {
-                    character.putInt("eyeColor", 1); // Brown
+                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1); // Brown
                 } else {
-                    character.putInt("eyeColor", 2); // Green
+                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2); // Green
                 }
                 // blouse
                 if (blouse.equals(Character.Blouse.BlouseBlue)) {
-                    character.putInt("blouse", 0); // Blue
+                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0); // Blue
                 } else if (blouse.equals(Character.Blouse.BlouseRed)) {
-                    character.putInt("blouse", 1); // Red
+                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1); // Red
                 } else {
-                    character.putInt("blouse", 2); // Yellow
+                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2); // Yellow
                 }
                 // pants
                 if (pants.equals(Character.Pants.Pants1)) {
-                    character.putInt("pants", 0); // Pants1
+                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 0); // Pants1
                 } else if (pants.equals(Character.Pants.Pants2)) {
-                    character.putInt("pants", 1); // Pants2
+                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 1); // Pants2
                 } else {
-                    character.putInt("pants", 2); // Pants3
+                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 2); // Pants3
                 }
                 // shoes
                 if (shoes.equals(Character.Shoes.Shoes1)) {
-                    character.putInt("shoes", 0); // Shoes1
+                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0); // Shoes1
                 } else if (shoes.equals(Character.Shoes.Shoes2)) {
-                    character.putInt("shoes", 1); // Shoes2
+                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1); // Shoes2
                 } else {
-                    character.putInt("shoes", 2); // Shoes3
+                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2); // Shoes3
                 }
-
-                appearanceFragment.setArguments(character);
 
                 transaction.replace(R.id.fragment, nameFragment);
                 transaction.addToBackStack("NAME_FRAGMENT_TAG");
@@ -201,18 +184,13 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 String nickname = nameFragment.getNickname();
                 SharedPreferenceUtil.setCharacterName(this.getContext(), nickname);
 
-                nameBundle.putString("nickname", nickname);
-
                 transaction.replace(R.id.fragment, summaryFragment);
                 transaction.addToBackStack("SUMMARY_FRAGMENT_TAG");
                 currentFragment = 4;
                 break;
             case 4:
-                summaryFragment.setArguments(nameBundle);
-                summaryFragment.setArguments(classBundle);
-
                 // get userId from somewhere ????
-
+                // and send it to presenter
                 createCharacterPresenter.performCharacterCreation();
 
                 currentFragment = 0;

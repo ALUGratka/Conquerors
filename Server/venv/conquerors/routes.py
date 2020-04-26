@@ -35,7 +35,7 @@ def login():
 
 
 @app.route("/user", methods=['GET'])
-def get_user_by_email():
+def get_user_by_username():
     if request.method == 'GET':
         username = request.args.get('username')
 
