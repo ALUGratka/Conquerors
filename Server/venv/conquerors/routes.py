@@ -116,8 +116,16 @@ def update_user():
                 return response
             user.username = username
 
-        if user.password != password:
-            user.password = password
+        if bcrypt.check_password_hash(user.password, password):
+            message = {
+                'response' : 'Same password'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            return response
+        else:
+            hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+            user.password = hashed_password
 
         db.session.commit()
 

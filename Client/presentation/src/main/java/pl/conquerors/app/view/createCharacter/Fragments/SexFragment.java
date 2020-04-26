@@ -1,7 +1,6 @@
 package pl.conquerors.app.view.createCharacter.Fragments;
 
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.domain.model.Character;
