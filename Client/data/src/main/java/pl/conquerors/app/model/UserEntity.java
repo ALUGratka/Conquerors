@@ -21,6 +21,14 @@ public class UserEntity {
     @SerializedName("birthDate")
     private String born;
 
+    public UserEntity(User user) {
+        this.userId = (int)user.getmId();
+        this.userName = user.getmNick();
+        this.email = user.getmEmail();
+        this.password = user.getmPassword();
+        this.born = user.getmBorn();
+    }
+
     public UserEntity(String email,String userName, String password, String born) {
         this.userName = userName;
         this.email = email;

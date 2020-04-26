@@ -99,7 +99,7 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     }
 
     @Override
-    public void showPasswordInvalid() { mCurrentPasswordInput.setError(getString(R.string.error_invalid_password)); }
+    public void showPasswordInvalid() { mCurrentPasswordInput.setError(getString(R.string.error_incorrect_password)); }
 
     @Override
     public void hideOldPasswordErrors() {
@@ -143,7 +143,6 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
 
     @Override
     public void onChangePasswordSucceeded() {
-        //TODO SharedPropertiesUtil when get will work
         Toast.makeText(this, getString(R.string.change_password_success),Toast.LENGTH_SHORT).show();
         finish();
     }

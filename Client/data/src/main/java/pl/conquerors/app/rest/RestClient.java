@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestClient {
 
-    private static final String API_URL = "http://192.168.99.105:8080/";
+    private static final String API_URL = "http://192.168.99.106:8080/";
     private static RestService service;
 
     public static RestService getInstance(){
@@ -32,7 +32,9 @@ public class RestClient {
             @Override
             public Response intercept(Chain chain) throws IOException {
 
-                Request request = chain.request().newBuilder().addHeader("Connection", "close").build();
+                Request request = chain.request().newBuilder()
+                        .addHeader("Content-Type","application/json")
+                        .addHeader("Connection", "close").build();
                 return chain.proceed(request);
             }
         };

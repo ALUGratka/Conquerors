@@ -1,11 +1,21 @@
 package pl.conquerors.app.view.settings.password;
 
+import android.icu.lang.UScript;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.util.Objects;
+
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.mapper.UserEntityMapper;
+import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
 
@@ -24,16 +34,16 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
         final String newPasswordConfirmation = mView.getNewPasswordConfirmation();
         boolean cancel = false;
 
-        //Log.e("password:", SharedPreferenceUtil.getUser(mView.getContext()).getmPassword());
-
         //check if old password valid
         if(TextUtils.isEmpty(oldPassword)){
             mView.showOldPasswordRequired();
             cancel = true;
-        }else if (!TextUtils.equals(oldPassword, "ala123")) {
+        }
+        //TODO get_password
+        /*else if (!TextUtils.equals(oldPassword, SharedPreferenceUtil.getUser(mView.getContext()).getmPassword())) {
             mView.showPasswordInvalid();
             cancel = true;
-        }
+        }*/
 
         //check if new password valid
         if(TextUtils.isEmpty(newPassword)){
@@ -61,8 +71,29 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
         }
         else {
             //TODO REST API update Password
+            UserEntity userEntity = new UserEntity((int)SharedPreferenceUtil.getUser(mView.getContext()).getmId(), SharedPreferenceUtil.getUser(mView.getContext()).getmEmail(), SharedPreferenceUtil.getUser(mView.getContext()).getmNick(), newPassword);
 
-            mView.onChangePasswordSucceeded();
+            Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity);
+
+            call.enqueue(new Callback<UserEntity>() {
+                @Override
+                public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                    if(!response.isSuccessful()){
+                        Log.e("change_password","Code: ".concat(String.valueOf(response.code())));
+                        return;
+                    }
+                    User user = UserEntityMapper.transform(response.body());
+                    SharedPreferenceUtil.setUser(mView.getContext(),user);
+                    mView.onChangePasswordSucceeded();
+
+                }
+
+                @Override
+                public void onFailure(Call<UserEntity> call, Throwable t) {
+                    mView.setChangePasswordButtonEnabled(true);
+                    Log.e("change_password", Objects.requireNonNull(t.getMessage()));
+                }
+            });
         }
 
     }

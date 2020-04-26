@@ -6,7 +6,6 @@ import android.util.Log;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
-import pl.conquerors.app.model.UserGetEntity;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
@@ -64,6 +63,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
                     Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
                     Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUserName(mView.getContext()))));
+                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail())));
 
                     mView.onLoginSucceeded();
                 }
@@ -79,7 +79,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     }
 
     public void onLoginSucceeded(){
-        Call<UserEntity> call = RestClient.getInstance().getMyProfile("username="+SharedPreferenceUtil.getUserName(mView.getContext()));
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile(SharedPreferenceUtil.getUserName(mView.getContext()));
 
         call.enqueue(new Callback<UserEntity>() {
             @Override
