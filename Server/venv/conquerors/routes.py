@@ -37,9 +37,9 @@ def login():
 @app.route("/user", methods=['GET'])
 def get_user_by_email():
     if request.method == 'GET':
-        email = request.args.get('email')
+        username = request.args.get('username')
 
-        user = User.query.filter_by(email=email).first() 
+        user = User.query.filter_by(username=username).first() 
 
         if user:
             message = user.to_dict()

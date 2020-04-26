@@ -7,7 +7,7 @@ url = 'http://127.0.0.1:80/'
 
 def get_user():
     user_params = {
-        "email" : "izabela@gmail.com"
+        "username" : "izabelka"
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'user'
