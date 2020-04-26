@@ -10,12 +10,13 @@ import android.widget.EditText;
 
 import butterknife.BindView;
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.\
  */
-public class NameFragment extends Fragment{
+public class NameFragment extends BaseFragment {
 
     @BindView(R.id.characterNickname)
     EditText characterNickname;
@@ -40,4 +41,10 @@ public class NameFragment extends Fragment{
         System.out.println(characterNickname.getText());
         return characterNickname.getText().toString();
     }
+
+    @Override
+    public void showLoading() { }
+
+    @Override
+    public void hideLoading() { }
 }

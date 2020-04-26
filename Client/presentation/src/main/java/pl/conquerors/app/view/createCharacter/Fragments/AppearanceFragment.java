@@ -11,13 +11,14 @@ import android.widget.Button;
 import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AppearanceFragment extends Fragment {
+public class AppearanceFragment extends BaseFragment {
 
     @BindView(R.id.hair_back_arrow_button)
     Button hairBackArrowButton;
@@ -340,5 +341,15 @@ public class AppearanceFragment extends Fragment {
 
     public Character.Shoes getShoesCurrent() {
         return shoesCurrent;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

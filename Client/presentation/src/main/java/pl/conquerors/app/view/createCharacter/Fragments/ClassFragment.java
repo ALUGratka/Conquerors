@@ -10,13 +10,14 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClassFragment extends Fragment {
+public class ClassFragment extends BaseFragment {
 
     RadioGroup characterClassRadioGroup;
     RadioButton characterClassRadioButton;
@@ -73,5 +74,15 @@ public class ClassFragment extends Fragment {
             System.out.println("Error : not existing class selected");
         }
         return null;
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

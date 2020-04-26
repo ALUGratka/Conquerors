@@ -12,12 +12,13 @@ import android.widget.RadioGroup;
 import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.domain.model.Character;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SexFragment extends Fragment {
+public class SexFragment extends BaseFragment {
 
     RadioGroup sexRadioGroup;
     RadioButton sexRadioButton;
@@ -53,5 +54,15 @@ public class SexFragment extends Fragment {
         } else {
             return Character.Sex.Man;
         }
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }

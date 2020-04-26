@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import pl.conquerors.app.R;
+import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SummaryFragment extends Fragment {
+public class SummaryFragment extends BaseFragment {
 
     @BindView(R.id.displayCharacterNicknameText)
     TextView nickname;
@@ -79,5 +80,15 @@ public class SummaryFragment extends Fragment {
             agility.setText("2");
             intelligence.setText("10");
         }
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
     }
 }
