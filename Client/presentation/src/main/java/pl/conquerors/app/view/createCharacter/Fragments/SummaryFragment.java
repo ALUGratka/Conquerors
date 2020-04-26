@@ -79,6 +79,5 @@ public class SummaryFragment extends Fragment {
             agility.setText("2");
             intelligence.setText("10");
         }
-
     }
 }
