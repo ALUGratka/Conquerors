@@ -71,15 +71,17 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
         }
         else {
             //TODO REST API update Password
-            UserEntity userEntity = new UserEntity((int)SharedPreferenceUtil.getUser(mView.getContext()).getmId(), SharedPreferenceUtil.getUser(mView.getContext()).getmEmail(), SharedPreferenceUtil.getUser(mView.getContext()).getmNick(), newPassword);
+            User user = SharedPreferenceUtil.getUser(mView.getContext());
+            user.setmPassword(newPassword);
+            UserEntity userEntity = new UserEntity(user);
 
-            Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity);
+            Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity.getUserName(), userEntity);
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override
                 public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                     if(!response.isSuccessful()){
-                        Log.e("change_password","Code: ".concat(String.valueOf(response.code())));
+                        Log.e("change_password_code","Code: ".concat(String.valueOf(response.code())));
                         return;
                     }
                     User user = UserEntityMapper.transform(response.body());

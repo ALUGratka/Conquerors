@@ -23,7 +23,8 @@ public interface RestService {
     @DELETE("/user")
     Call<String> deleteUser(@Query("email") String email);
 
-    @PUT("user")
-    Call<UserEntity> updateUser(@Body UserEntity userEntity);
+    @PUT("/user")
+    Call<UserEntity> updateUser(@Query("username") String username,
+                                @Body UserEntity userEntity);
 
 }

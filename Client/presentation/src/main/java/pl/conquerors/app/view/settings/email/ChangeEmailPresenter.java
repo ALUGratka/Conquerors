@@ -65,9 +65,12 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
 
             //TODO REST API update Email
 
-            UserEntity userEntity = new UserEntity((int)SharedPreferenceUtil.getUser(mView.getContext()).getmId(), email, SharedPreferenceUtil.getUser(mView.getContext()).getmNick(),  SharedPreferenceUtil.getUser(mView.getContext()).getmPassword());
+            User user = SharedPreferenceUtil.getUser(mView.getContext());
+            user.setmEmail(email);
 
-            Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity);
+            UserEntity userEntity = new UserEntity(user);
+
+            Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity.getUserName(), userEntity);
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override
