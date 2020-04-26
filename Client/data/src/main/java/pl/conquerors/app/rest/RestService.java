@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
+import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
@@ -21,8 +22,8 @@ public interface RestService {
     @POST("login")
     Call<UserEntity> login(@Body UserEntity userEntity);
 
-    @GET("user/{email}")
-    Call<UserEntity> getMyProfile(@Path("email") String email);
+    @GET("user/{username}")
+    Call<UserEntity> getMyProfile(@Path("username") String username);
 
     @HTTP(method = "DELETE", path = "user", hasBody = true)
     Call<UserEntity> deleteUser(@Body UserGetEntity entity);

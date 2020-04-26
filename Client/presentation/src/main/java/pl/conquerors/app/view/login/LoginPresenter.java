@@ -60,6 +60,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                     User user = UserEntityMapper.transform(response.body());
                     SharedPreferenceUtil.setLoggedIn(mView.getContext(), true);
                     SharedPreferenceUtil.setUserName(mView.getContext(),nick);
+                    SharedPreferenceUtil.setUser(mView.getContext(), user);
 
                     Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
                     Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUserName(mView.getContext()))));
@@ -78,7 +79,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
     }
 
     public void onLoginSucceeded(){
-        Call<UserEntity> call = RestClient.getInstance().getMyProfile((new UserGetEntity("ala123@gmai.com")).getEmail());
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile("username="+SharedPreferenceUtil.getUserName(mView.getContext()));
 
         call.enqueue(new Callback<UserEntity>() {
             @Override

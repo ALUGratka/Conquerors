@@ -16,7 +16,7 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
 
     public void attemptRemoveAccount(){
         mView.onRemoveAccountSucceeded();
-        Call<UserEntity> call = RestClient.getInstance().deleteUser(new UserGetEntity("ala123@gmail.com"));
+        Call<UserEntity> call = RestClient.getInstance().deleteUser(new UserGetEntity("ala@gmail.com"));
 
 
         call.enqueue(new Callback<UserEntity>() {
