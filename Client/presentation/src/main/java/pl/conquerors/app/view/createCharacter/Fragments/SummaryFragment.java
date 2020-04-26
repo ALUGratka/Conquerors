@@ -1,6 +1,7 @@
 package pl.conquerors.app.view.createCharacter.Fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import pl.conquerors.app.R;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,9 +42,20 @@ public class SummaryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_summary, container, false);
+    }
 
-        String arg_nickname = getArguments().getString("nickname");
-        int arg_class = getArguments().getInt("class");
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        String arg_nickname = SharedPreferenceUtil.getCharacterName(view.getContext());
+
+        int arg_class = SharedPreferenceUtil.getCharacterClass(view.getContext());
+        if (getArguments() != null) {
+            arg_class = SharedPreferenceUtil.getCharacterClass(view.getContext());
+        }
 
         nickname.setText(arg_nickname);
 
@@ -72,6 +85,5 @@ public class SummaryFragment extends Fragment {
             intelligence.setText("10");
         }
 
-        return inflater.inflate(R.layout.fragment_summary, container, false);
     }
 }

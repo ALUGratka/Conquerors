@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 
 import pl.conquerors.app.R;
 import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,18 +53,22 @@ public class ClassFragment extends Fragment {
         System.out.println(characterClassRadioButton.getText());
 
 
+
         if (characterClassRadioButton.getText().equals(getString(R.string.radio_bard))) {
+            SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
             return Character.CharacterClass.Bard;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_thief))) {
+            SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
             return Character.CharacterClass.Thief;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_warrior))) {
+            SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
             return Character.CharacterClass.Warrior;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_wizard))) {
+            SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
             return Character.CharacterClass.Wizard;
         } else {
             System.out.println("Error : not existing class selected");
         }
-
         return null;
     }
 }

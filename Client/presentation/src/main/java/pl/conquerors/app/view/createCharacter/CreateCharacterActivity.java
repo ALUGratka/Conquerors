@@ -18,6 +18,7 @@ import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCas
 import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.view.createCharacter.Fragments.AppearanceFragment;
 import pl.conquerors.app.view.createCharacter.Fragments.ClassFragment;
 import pl.conquerors.app.view.createCharacter.Fragments.NameFragment;
@@ -46,6 +47,8 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     Bundle appearanceBundle = new Bundle();
     Bundle nameBundle = new Bundle();
 
+    Bundle character;
+
     int currentFragment = 0;
 
     CreateCharacterUseCase createCharacterUseCase;
@@ -59,6 +62,9 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_character);
+
+        character = new Bundle();
+        getStartingIntents(this).putExtras(character);
 
         createCharacterUseCase = new CreateCharacterUseCase(new AndroidComposedScheduler());
         createCharacterPresenter = new CreateCharacterPresenter(createCharacterUseCase);
@@ -77,6 +83,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
+
         switch (currentFragment) {
             case 0:
                 Character.Sex sex = sexFragment.getSelectedSex();
@@ -86,13 +93,13 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 transaction.addToBackStack("CLASS_FRAGMENT_TAG");
 
                 if (sex.equals(Character.Sex.Man)) {
-                    sexBundle.putInt("sex", 0); // man
+                    character.putInt("sex", 0); // man
                 } else {
-                    sexBundle.putInt("sex", 1); // woman
+                    character.putInt("sex", 1); // woman
                 }
 
-                classFragment.setArguments(sexBundle);
-                appearanceFragment.setArguments(sexBundle);
+                classFragment.setArguments(character);
+                appearanceFragment.setArguments(character);
 
                 currentFragment = 1;
                 break;
@@ -107,16 +114,16 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
 
 
                 if (characterClass.equals(Character.CharacterClass.Bard)) {
-                    classBundle.putInt("class", 0); // bard
+                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
                 } else if (characterClass.equals(Character.CharacterClass.Thief)) {
-                    classBundle.putInt("class", 1); // thief
+                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
                 } else if (characterClass.equals(Character.CharacterClass.Warrior)) {
-                    classBundle.putInt("class", 2); // warrior
+                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
                 } else {
-                    classBundle.putInt("class", 3); // wizard
+                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
                 }
 
-                classFragment.setArguments(classBundle);
+                classFragment.setArguments(character);
 
                 currentFragment = 2;
                 break;
@@ -137,54 +144,54 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
 
                 // hair
                 if (hair.equals(Character.Hair.Blond)) {
-                    appearanceBundle.putInt("hair", 0); // blond
+                    character.putInt("hair", 0); // blond
                 } else if (hair.equals(Character.Hair.Brown)) {
-                    appearanceBundle.putInt("hair", 1); // brown
+                    character.putInt("hair", 1); // brown
                 } else {
-                    appearanceBundle.putInt("hair", 2); // black
+                    character.putInt("hair", 2); // black
                 }
                 // hat
                 if (hat.equals(Character.Hat.Hat1)) {
-                    appearanceBundle.putInt("hat", 0); // Hat1
+                    character.putInt("hat", 0); // Hat1
                 } else if (hat.equals(Character.Hat.Hat2)) {
-                    appearanceBundle.putInt("hat", 1); // Hat2
+                    character.putInt("hat", 1); // Hat2
                 } else {
-                    appearanceBundle.putInt("hat", 2); // Hat3
+                    character.putInt("hat", 2); // Hat3
                 }
                 // eyeColor
                 if (eyeColor.equals(Character.EyeColor.Blue)) {
-                    appearanceBundle.putInt("eyeColor", 0); // Blue
+                    character.putInt("eyeColor", 0); // Blue
                 } else if (eyeColor.equals(Character.EyeColor.Brown)) {
-                    appearanceBundle.putInt("eyeColor", 1); // Brown
+                    character.putInt("eyeColor", 1); // Brown
                 } else {
-                    appearanceBundle.putInt("eyeColor", 2); // Green
+                    character.putInt("eyeColor", 2); // Green
                 }
                 // blouse
                 if (blouse.equals(Character.Blouse.BlouseBlue)) {
-                    appearanceBundle.putInt("blouse", 0); // Blue
+                    character.putInt("blouse", 0); // Blue
                 } else if (blouse.equals(Character.Blouse.BlouseRed)) {
-                    appearanceBundle.putInt("blouse", 1); // Red
+                    character.putInt("blouse", 1); // Red
                 } else {
-                    appearanceBundle.putInt("blouse", 2); // Yellow
+                    character.putInt("blouse", 2); // Yellow
                 }
                 // pants
                 if (pants.equals(Character.Pants.Pants1)) {
-                    appearanceBundle.putInt("pants", 0); // Pants1
+                    character.putInt("pants", 0); // Pants1
                 } else if (pants.equals(Character.Pants.Pants2)) {
-                    appearanceBundle.putInt("pants", 1); // Pants2
+                    character.putInt("pants", 1); // Pants2
                 } else {
-                    appearanceBundle.putInt("pants", 2); // Pants3
+                    character.putInt("pants", 2); // Pants3
                 }
                 // shoes
                 if (shoes.equals(Character.Shoes.Shoes1)) {
-                    appearanceBundle.putInt("shoes", 0); // Shoes1
+                    character.putInt("shoes", 0); // Shoes1
                 } else if (shoes.equals(Character.Shoes.Shoes2)) {
-                    appearanceBundle.putInt("shoes", 1); // Shoes2
+                    character.putInt("shoes", 1); // Shoes2
                 } else {
-                    appearanceBundle.putInt("shoes", 2); // Shoes3
+                    character.putInt("shoes", 2); // Shoes3
                 }
 
-                appearanceFragment.setArguments(appearanceBundle);
+                appearanceFragment.setArguments(character);
 
                 transaction.replace(R.id.fragment, nameFragment);
                 transaction.addToBackStack("NAME_FRAGMENT_TAG");
@@ -192,7 +199,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 break;
             case 3:
                 String nickname = nameFragment.getNickname();
-                createCharacterPresenter.setNickname(nickname);
+                SharedPreferenceUtil.setCharacterName(this.getContext(), nickname);
 
                 nameBundle.putString("nickname", nickname);
 
