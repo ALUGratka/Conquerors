@@ -16,7 +16,7 @@
         <RelativeLayout
             android:id="@+id/characterCanvas"
             android:layout_width="423dp"
-            android:layout_height="252dp"
+            android:layout_height="200dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/createCharacterSexText"
