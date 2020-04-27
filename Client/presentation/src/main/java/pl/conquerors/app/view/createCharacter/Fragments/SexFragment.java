@@ -12,6 +12,7 @@ import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,16 +42,18 @@ public class SexFragment extends BaseFragment {
         //display man on canvas
     }
 
-    public Character.Sex getSelectedSex() {
+    public int getSelectedSex() {
         sexRadioGroup = getView().findViewById(R.id.selectSexRadioGroup);
 
         int selectedId = sexRadioGroup.getCheckedRadioButtonId();
         sexRadioButton = getView().findViewById(selectedId);
 
         if (sexRadioButton.getText().equals(R.string.radio_woman)) {
-            return Character.Sex.Woman;
+            SharedPreferenceUtil.setCharacterSex(this.getContext(),1);
+            return 1;
         } else {
-            return Character.Sex.Man;
+            SharedPreferenceUtil.setCharacterSex(this.getContext(),0);
+            return 0;
         }
     }
 

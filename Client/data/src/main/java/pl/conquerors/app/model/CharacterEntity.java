@@ -55,6 +55,27 @@ public class CharacterEntity {
     @SerializedName("userId")
     private int userId;
 
+    public CharacterEntity(int level, int charisma, int intelligence, int agility,
+                           int strength, String nickname, int sex, int characterClass,
+                           int hair, int hat, int eyeColor, int blouse, int pants,
+                           int shoes, int userId) {
+        this.level = level;
+        this.charisma = charisma;
+        this.intelligence = intelligence;
+        this.agility = agility;
+        this.strength = strength;
+        this.nickname = nickname;
+        this.sex = sex;
+        this.characterClass = characterClass;
+        this.hair = hair;
+        this.hat = hat;
+        this.eyeColor = eyeColor;
+        this.blouse = blouse;
+        this.pants = pants;
+        this.shoes = shoes;
+        this.userId = userId;
+    }
+
     /**
      * getters
      **/
@@ -119,7 +140,9 @@ public class CharacterEntity {
         return hair;
     }
 
-    public int getHat() { return hat; }
+    public int getHat() {
+        return hat;
+    }
 
     /**
      * setters

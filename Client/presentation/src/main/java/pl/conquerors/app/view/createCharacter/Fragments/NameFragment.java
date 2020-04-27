@@ -22,7 +22,6 @@ public class NameFragment extends BaseFragment {
     EditText characterNickname;
 
     public NameFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -38,8 +37,9 @@ public class NameFragment extends BaseFragment {
     }
 
     public String getNickname() {
-        System.out.println(characterNickname.getText());
-        return characterNickname.getText().toString();
+        String nickname =  characterNickname.getText().toString();
+        SharedPreferenceUtil.setCharacterName(this.getContext(), nickname);
+        return nickname;
     }
 
     @Override

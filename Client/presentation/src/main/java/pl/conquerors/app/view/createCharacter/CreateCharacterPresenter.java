@@ -1,54 +1,60 @@
 package pl.conquerors.app.view.createCharacter;
 
+import android.util.Log;
+
 import pl.conquerors.app.base.BasePresenter;
-import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCase;
 import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.model.CharacterEntity;
+import pl.conquerors.app.model.mapper.CharacterEntityMapper;
+import pl.conquerors.app.rest.RestClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView> {
-    Character.Sex sex;
-    Character.CharacterClass characterClass;
-    Character.Shoes shoes;
-    Character.Pants pants;
-    Character.Blouse blouse;
-    Character.EyeColor eyeColor;
-    Character.Hair hair;
-    Character.Hat hat;
-    String nickname = "Lamus";
-    int userId;
+    private int sex;
+    private int characterClass;
+    private int shoes;
+    private int pants;
+    private int blouse;
+    private int eyeColor;
+    private int hair;
+    private int hat;
+    private String nickname = "Lamus";
+    private int userId;
 
-    CreateCharacterUseCase createCharacterUseCase;
+    public CreateCharacterPresenter() {
+    }
 
-    public CreateCharacterPresenter(final CreateCharacterUseCase useCase) { createCharacterUseCase = useCase; }
-
-    public void setSex(Character.Sex sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
-    public void setCharacterClass(Character.CharacterClass characterClass) {
+    public void setCharacterClass(int characterClass) {
         this.characterClass = characterClass;
     }
 
-    public void setShoes(Character.Shoes shoes) {
+    public void setShoes(int shoes) {
         this.shoes = shoes;
     }
 
-    public void setPants(Character.Pants pants) {
+    public void setPants(int pants) {
         this.pants = pants;
     }
 
-    public void setBlouse(Character.Blouse blouse) {
+    public void setBlouse(int blouse) {
         this.blouse = blouse;
     }
 
-    public void setEyeColor(Character.EyeColor eyeColor) {
+    public void setEyeColor(int eyeColor) {
         this.eyeColor = eyeColor;
     }
 
-    public void setHair(Character.Hair hair) {
+    public void setHair(int hair) {
         this.hair = hair;
     }
 
-    public void setHat(Character.Hat hat) {
+    public void setHat(int hat) {
         this.hat = hat;
     }
 
@@ -60,9 +66,56 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
         this.userId = userId;
     }
 
-    public void performCharacterCreation(){
-        createCharacterUseCase.setData(nickname=nickname, sex=sex, characterClass=characterClass, hair=hair, hat=hat,
-                eyeColor=eyeColor, blouse=blouse, pants=pants, shoes=shoes, userId=userId);
-    }
+    public void performCharacterCreation() {
 
+        int level = 0;
+        int strength;
+        int charisma;
+        int agility;
+        int intelligence;
+
+        if (characterClass == 0) {
+            strength = 2;
+            charisma = 10;
+            agility = 5;
+            intelligence = 3;
+        } else if (characterClass == 1) {
+            strength = 2;
+            charisma = 5;
+            agility = 10;
+            intelligence = 3;
+        } else if (characterClass == 2) {
+            strength = 10;
+            charisma = 3;
+            agility = 5;
+            intelligence = 2;
+        } else { //3
+            strength = 5;
+            charisma = 3;
+            agility = 2;
+            intelligence = 10;
+        }
+
+        Call<CharacterEntity> call = RestClient.getInstance().createCharacter(new CharacterEntity(level, charisma, intelligence, agility,
+                strength, nickname, sex, characterClass, hair, hat, eyeColor, blouse, pants,
+                shoes, userId));
+
+        call.enqueue(new Callback<CharacterEntity>() {
+            @Override
+            public void onResponse(Call<CharacterEntity> call, Response<CharacterEntity> response) {
+                if (!response.isSuccessful()) {
+                    Log.e("Character creation", "Code: " + response.code());
+                } else {
+                    Log.e("Character created!", "Code: " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CharacterEntity> call, Throwable t) {
+                Log.e("Create character", t.getMessage());
+            }
+        });
+
+    }
 }
+

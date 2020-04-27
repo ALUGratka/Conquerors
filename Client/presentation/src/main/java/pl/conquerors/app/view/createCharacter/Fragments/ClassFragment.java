@@ -22,7 +22,7 @@ public class ClassFragment extends BaseFragment {
     RadioGroup characterClassRadioGroup;
     RadioButton characterClassRadioButton;
 
-    Character.Sex sex;
+    int sex;
 
     // zaimplementowac onClick radiobutton i zmieniać na canvas klasy i uwzgledniac plec
 
@@ -34,25 +34,17 @@ public class ClassFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        sex = SharedPreferenceUtil.getCharacterSex(getContext());
         SharedPreferenceUtil.setCharacterClass(view.getContext(), 0);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        int arg_sex = SharedPreferenceUtil.getCharacterSex(getContext());
-        if (arg_sex == 0) {
-            sex = Character.Sex.Man;
-        } else {
-            sex = Character.Sex.Woman;
-        }
-
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_class, container, false);
     }
 
-    public Character.CharacterClass getSelectedCharacterClass() {
+    public int getSelectedCharacterClass() {
         characterClassRadioGroup = getView().findViewById(R.id.selectClassTypeGroup);
 
         int selectedId = characterClassRadioGroup.getCheckedRadioButtonId();
@@ -60,20 +52,20 @@ public class ClassFragment extends BaseFragment {
 
         if (characterClassRadioButton.getText().equals(getString(R.string.radio_bard))) {
             SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
-            return Character.CharacterClass.Bard;
+            return 0;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_thief))) {
             SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
-            return Character.CharacterClass.Thief;
+            return 1;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_warrior))) {
             SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
-            return Character.CharacterClass.Warrior;
+            return 2;
         } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_wizard))) {
             SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
-            return Character.CharacterClass.Wizard;
+            return 3;
         } else {
             System.out.println("Error : not existing class selected");
         }
-        return null;
+        return -1;
     }
 
     @Override

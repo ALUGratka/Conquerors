@@ -37,7 +37,6 @@ public class SummaryFragment extends BaseFragment {
     TextView intelligence;
 
     public SummaryFragment() {
-        // Required empty public constructor
     }
 
     @Override

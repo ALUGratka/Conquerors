@@ -1,7 +1,6 @@
 package pl.conquerors.app.util;
 
 public class PreferencesUtility {
-
     public static final String LOGGED_IN_PREF = "logged_in_status";
     public static final String SEX_SELECTED = "sex_selected";
     public static final String CHARACTER_CLASS_SELECTED = "character_class_selected";
@@ -12,5 +11,4 @@ public class PreferencesUtility {
     public static final String APPEARANCE_PANTS_SELECTED = "appearance_pants_selected";
     public static final String APPEARANCE_SHOES_SELECTED = "appearance_shoes_selected";
     public static final String NAME_SELECTED = "name_selected";
-
 }

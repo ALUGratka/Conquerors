@@ -57,7 +57,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
         setContentView(R.layout.activity_create_character);
 
         createCharacterUseCase = new CreateCharacterUseCase(new AndroidComposedScheduler());
-        createCharacterPresenter = new CreateCharacterPresenter(createCharacterUseCase);
+        createCharacterPresenter = new CreateCharacterPresenter();
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
@@ -76,22 +76,16 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
 
         switch (currentFragment) {
             case 0:
-                Character.Sex sex = sexFragment.getSelectedSex();
+                int sex = sexFragment.getSelectedSex();
                 createCharacterPresenter.setSex(sex);
 
                 transaction.replace(R.id.fragment, classFragment);
                 transaction.addToBackStack("CLASS_FRAGMENT_TAG");
 
-                if (sex.equals(Character.Sex.Man)) {
-                    SharedPreferenceUtil.setCharacterSex(this.getContext(), 0); // man
-                } else {
-                    SharedPreferenceUtil.setCharacterSex(this.getContext(), 1); // woman
-                }
-
                 currentFragment = 1;
                 break;
             case 1:
-                Character.CharacterClass characterClass = classFragment.getSelectedCharacterClass();
+                int characterClass = classFragment.getSelectedCharacterClass();
                 System.out.println("from activity character class");
                 System.out.println(characterClass);
                 createCharacterPresenter.setCharacterClass(characterClass);
@@ -99,26 +93,17 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 transaction.replace(R.id.fragment, appearanceFragment);
                 transaction.addToBackStack("APPEARANCE_FRAGMENT_TAG");
 
-
-                if (characterClass.equals(Character.CharacterClass.Bard)) {
-                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
-                } else if (characterClass.equals(Character.CharacterClass.Thief)) {
-                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
-                } else if (characterClass.equals(Character.CharacterClass.Warrior)) {
-                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
-                } else {
-                    SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
-                }
+                SharedPreferenceUtil.setCharacterClass(this.getContext(), characterClass);
 
                 currentFragment = 2;
                 break;
             case 2:
-                Character.Hair hair = appearanceFragment.getHairCurrent();
-                Character.Hat hat = appearanceFragment.getHatCurrent();
-                Character.EyeColor eyeColor = appearanceFragment.getEyeColorCurrent();
-                Character.Blouse blouse = appearanceFragment.getBlouseCurrent();
-                Character.Pants pants = appearanceFragment.getPantsCurrent();
-                Character.Shoes shoes = appearanceFragment.getShoesCurrent();
+                int hair = SharedPreferenceUtil.getCharacterHair(this.getContext());
+                int hat = SharedPreferenceUtil.getCharacterHat(this.getContext());
+                int eyeColor =SharedPreferenceUtil.getCharacterEyeColor(this.getContext());
+                int blouse = SharedPreferenceUtil.getCharacterBlouse(this.getContext());
+                int pants = SharedPreferenceUtil.getCharacterPants(this.getContext());
+                int shoes = SharedPreferenceUtil.getCharacterShoes(this.getContext());
 
                 createCharacterPresenter.setHair(hair);
                 createCharacterPresenter.setHat(hat);
@@ -127,62 +112,13 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 createCharacterPresenter.setPants(pants);
                 createCharacterPresenter.setShoes(shoes);
 
-                // hair
-                if (hair.equals(Character.Hair.Blond)) {
-                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 0); // blond
-                } else if (hair.equals(Character.Hair.Brown)) {
-                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 1); // brown
-                } else {
-                    SharedPreferenceUtil.setCharacterHair(this.getContext(), 2); // black
-                }
-                // hat
-                if (hat.equals(Character.Hat.Hat1)) {
-                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 0); // Hat1
-                } else if (hat.equals(Character.Hat.Hat2)) {
-                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 1); // Hat2
-                } else {
-                    SharedPreferenceUtil.setCharacterHat(this.getContext(), 2); // Hat3
-                }
-                // eyeColor
-                if (eyeColor.equals(Character.EyeColor.Blue)) {
-                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0); // Blue
-                } else if (eyeColor.equals(Character.EyeColor.Brown)) {
-                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1); // Brown
-                } else {
-                    SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2); // Green
-                }
-                // blouse
-                if (blouse.equals(Character.Blouse.BlouseBlue)) {
-                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0); // Blue
-                } else if (blouse.equals(Character.Blouse.BlouseRed)) {
-                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1); // Red
-                } else {
-                    SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2); // Yellow
-                }
-                // pants
-                if (pants.equals(Character.Pants.Pants1)) {
-                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 0); // Pants1
-                } else if (pants.equals(Character.Pants.Pants2)) {
-                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 1); // Pants2
-                } else {
-                    SharedPreferenceUtil.setCharacterPants(this.getContext(), 2); // Pants3
-                }
-                // shoes
-                if (shoes.equals(Character.Shoes.Shoes1)) {
-                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0); // Shoes1
-                } else if (shoes.equals(Character.Shoes.Shoes2)) {
-                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1); // Shoes2
-                } else {
-                    SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2); // Shoes3
-                }
-
                 transaction.replace(R.id.fragment, nameFragment);
                 transaction.addToBackStack("NAME_FRAGMENT_TAG");
                 currentFragment = 3;
                 break;
             case 3:
                 String nickname = nameFragment.getNickname();
-                SharedPreferenceUtil.setCharacterName(this.getContext(), nickname);
+                createCharacterPresenter.setNickname(nickname);
 
                 transaction.replace(R.id.fragment, summaryFragment);
                 transaction.addToBackStack("SUMMARY_FRAGMENT_TAG");
@@ -190,8 +126,11 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 break;
             case 4:
                 // get userId from somewhere ????
+                int userId = 0;
                 // and send it to presenter
-                createCharacterPresenter.performCharacterCreation();
+                createCharacterPresenter.setUserId(userId);
+
+                //createCharacterPresenter.performCharacterCreation();
 
                 currentFragment = 0;
                 Toast.makeText(this, getString(R.string.info_character_created), Toast.LENGTH_SHORT).show();

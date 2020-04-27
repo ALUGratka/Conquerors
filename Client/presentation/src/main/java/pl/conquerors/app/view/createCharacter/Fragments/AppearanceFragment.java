@@ -56,43 +56,29 @@ public class AppearanceFragment extends BaseFragment {
     @BindView(R.id.boots_next_arrow_button)
     Button shoesNextArrowButton;
 
-    Character.Hair hairCurrent = Character.Hair.Blond;
-    Character.EyeColor eyeColorCurrent = Character.EyeColor.Blue;
-    Character.Hat hatCurrent = Character.Hat.Hat1;
-    Character.Blouse blouseCurrent = Character.Blouse.BlouseBlue;
-    Character.Pants pantsCurrent = Character.Pants.Pants1;
-    Character.Shoes shoesCurrent = Character.Shoes.Shoes1;
+    int hairCurrent = 0;
+    int eyeColorCurrent = 0;
+    int hatCurrent = 0;
+    int blouseCurrent = 0;
+    int pantsCurrent = 0;
+    int shoesCurrent = 0;
 
-    Character.Sex sex;
-    Character.CharacterClass characterClass;
+    int sex;
+    int characterClass;
 
     public AppearanceFragment() {
         // Required empty public constructor
+    }
+
+    public void updateCanvas() {
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int arg_sex = SharedPreferenceUtil.getCharacterSex(view.getContext());
-        int arg_class = SharedPreferenceUtil.getCharacterClass(view.getContext());
-
-        if (arg_sex == 0) {
-            sex = Character.Sex.Man;
-        } else {
-            sex = Character.Sex.Woman;
-        }
-
-        if (arg_class == 0) {
-            characterClass = Character.CharacterClass.Bard;
-        } else if (arg_class == 1) {
-            characterClass = Character.CharacterClass.Thief;
-        } else if (arg_class == 2) {
-            characterClass = Character.CharacterClass.Warrior;
-        } else {
-            characterClass = Character.CharacterClass.Wizard;
-        }
-
+        sex = SharedPreferenceUtil.getCharacterSex(view.getContext());
+        characterClass = SharedPreferenceUtil.getCharacterClass(view.getContext());
     }
 
     @Override
@@ -105,35 +91,35 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.hair_back_arrow_button)
     public void onHairBackArrowButtonClicked() {
-        if (hairCurrent.equals(Character.Hair.Blond)) {
+        if (hairCurrent == 0) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 2);
-            hairCurrent = Character.Hair.Black;
-            // change view on canvas
-        } else if (hairCurrent.equals(Character.Hair.Brown)) {
+            hairCurrent = 2;
+            updateCanvas();
+        } else if (hairCurrent == 1) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 0);
-            hairCurrent = Character.Hair.Blond;
-            // change view on canvas
-        } else if (hairCurrent.equals(Character.Hair.Black)) {
+            hairCurrent = 0;
+            updateCanvas();
+        } else if (hairCurrent == 2) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 1);
-            hairCurrent = Character.Hair.Brown;
-            // change view on canvas
+            hairCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.hair_next_arrow_button)
     public void onHairNextArrowButtonClicked() {
-        if (hairCurrent.equals(Character.Hair.Blond)) {
+        if (hairCurrent == 0) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 1);
-            hairCurrent = Character.Hair.Brown;
-            // change view on canvas
-        } else if (hairCurrent.equals(Character.Hair.Brown)) {
+            hairCurrent = 1;
+            updateCanvas();
+        } else if (hairCurrent == 1) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 2);
-            hairCurrent = Character.Hair.Black;
-            // change view on canvas
-        } else if (hairCurrent.equals(Character.Hair.Black)) {
+            hairCurrent = 2;
+            updateCanvas();
+        } else if (hairCurrent == 2) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 0);
-            hairCurrent = Character.Hair.Blond;
-            // change view on canvas
+            hairCurrent = 0;
+            updateCanvas();
         }
     }
 
@@ -141,35 +127,35 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.eye_color_back_arrow_button)
     public void onEyeColorBackArrowButtonClicked() {
-        if (eyeColorCurrent.equals(Character.EyeColor.Blue)) {
+        if (eyeColorCurrent == 0) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2);
-            eyeColorCurrent = Character.EyeColor.Green;
-            // change view on canvas
-        } else if (eyeColorCurrent.equals(Character.EyeColor.Brown)) {
+            eyeColorCurrent = 2;
+            updateCanvas();
+        } else if (eyeColorCurrent == 1) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0);
-            eyeColorCurrent = Character.EyeColor.Blue;
-            // change view on canvas
-        } else if (eyeColorCurrent.equals(Character.EyeColor.Green)) {
+            eyeColorCurrent = 0;
+            updateCanvas();
+        } else if (eyeColorCurrent == 2) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1);
-            eyeColorCurrent = Character.EyeColor.Brown;
-            // change view on canvas
+            eyeColorCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.eye_color_next_arrow_button)
     public void onEyeColorNextArrowButtonClicked() {
-        if (eyeColorCurrent.equals(Character.EyeColor.Blue)) {
+        if (eyeColorCurrent == 0) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1);
-            eyeColorCurrent = Character.EyeColor.Brown;
-            // change view on canvas
-        } else if (eyeColorCurrent.equals(Character.EyeColor.Brown)) {
+            eyeColorCurrent = 1;
+            updateCanvas();
+        } else if (eyeColorCurrent == 1) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2);
-            eyeColorCurrent = Character.EyeColor.Green;
-            // change view on canvas
-        } else if (eyeColorCurrent.equals(Character.EyeColor.Green)) {
+            eyeColorCurrent = 2;
+            updateCanvas();
+        } else if (eyeColorCurrent == 2) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0);
-            eyeColorCurrent = Character.EyeColor.Blue;
-            // change view on canvas
+            eyeColorCurrent = 0;
+            updateCanvas();
         }
     }
 
@@ -177,35 +163,35 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.hat_back_arrow_button)
     public void onHatBackArrowButtonClicked() {
-        if (hatCurrent.equals(Character.Hat.Hat1)) {
+        if (hatCurrent == 0) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 2);
-            hatCurrent = Character.Hat.Hat3;
-            // change view on canvas
-        } else if (hatCurrent.equals(Character.Hat.Hat2)) {
+            hatCurrent = 2;
+            updateCanvas();
+        } else if (hatCurrent == 1) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 0);
-            hatCurrent = Character.Hat.Hat1;
-            // change view on canvas
-        } else if (hatCurrent.equals(Character.Hat.Hat3)) {
+            hatCurrent = 0;
+            updateCanvas();
+        } else if (hatCurrent == 2) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 1);
-            hatCurrent = Character.Hat.Hat2;
-            // change view on canvas
+            hatCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.hat_next_arrow_button)
     public void onHatNextArrowButtonClicked() {
-        if (hatCurrent.equals(Character.Hat.Hat1)) {
+        if (hatCurrent == 0) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 1);
-            hatCurrent = Character.Hat.Hat2;
-            // change view on canvas
-        } else if (hatCurrent.equals(Character.Hat.Hat2)) {
+            hatCurrent = 1;
+            updateCanvas();
+        } else if (hatCurrent == 1) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 2);
-            hatCurrent = Character.Hat.Hat3;
-            // change view on canvas
-        } else if (hatCurrent.equals(Character.Hat.Hat3)) {
+            hatCurrent = 2;
+            updateCanvas();
+        } else if (hatCurrent == 2) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 0);
-            hatCurrent = Character.Hat.Hat1;
-            // change view on canvas
+            hatCurrent = 0;
+            updateCanvas();
         }
     }
 
@@ -213,35 +199,35 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.blouse_back_arrow_button)
     public void onBlouseBackArrowButtonClicked() {
-        if (blouseCurrent.equals(Character.Blouse.BlouseBlue)) {
+        if (blouseCurrent == 0) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2);
-            blouseCurrent = Character.Blouse.BlouseYellow;
-            // change view on canvas
-        } else if (blouseCurrent.equals(Character.Blouse.BlouseRed)) {
+            blouseCurrent = 2;
+            updateCanvas();
+        } else if (blouseCurrent == 1) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0);
-            blouseCurrent = Character.Blouse.BlouseBlue;
-            // change view on canvas
-        } else if (blouseCurrent.equals(Character.Blouse.BlouseYellow)) {
+            blouseCurrent = 0;
+            updateCanvas();
+        } else if (blouseCurrent == 2) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1);
-            blouseCurrent = Character.Blouse.BlouseRed;
-            // change view on canvas
+            blouseCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.blouse_next_arrow_button)
     public void onBlouseNextArrowButtonClicked() {
-        if (blouseCurrent.equals(Character.Blouse.BlouseBlue)) {
+        if (blouseCurrent == 0) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1);
-            blouseCurrent = Character.Blouse.BlouseYellow;
-            // change view on canvas
-        } else if (blouseCurrent.equals(Character.Blouse.BlouseRed)) {
+            blouseCurrent = 1;
+            updateCanvas();
+        } else if (blouseCurrent == 1) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2);
-            blouseCurrent = Character.Blouse.BlouseBlue;
-            // change view on canvas
-        } else if (blouseCurrent.equals(Character.Blouse.BlouseYellow)) {
+            blouseCurrent = 2;
+            updateCanvas();
+        } else if (blouseCurrent == 2) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0);
-            blouseCurrent = Character.Blouse.BlouseRed;
-            // change view on canvas
+            blouseCurrent = 0;
+            updateCanvas();
         }
     }
 
@@ -249,35 +235,35 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.pants_back_arrow_button)
     public void onPantsBackArrowButtonClicked() {
-        if (pantsCurrent.equals(Character.Pants.Pants1)) {
+        if (pantsCurrent == 0) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 2);
-            pantsCurrent = Character.Pants.Pants3;
-            // change view on canvas
-        } else if (pantsCurrent.equals(Character.Pants.Pants2)) {
+            pantsCurrent = 2;
+            updateCanvas();
+        } else if (pantsCurrent == 1) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 0);
-            pantsCurrent = Character.Pants.Pants1;
-            // change view on canvas
-        } else if (pantsCurrent.equals(Character.Pants.Pants3)) {
+            pantsCurrent = 0;
+            updateCanvas();
+        } else if (pantsCurrent == 2) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 1);
-            pantsCurrent = Character.Pants.Pants2;
-            // change view on canvas
+            pantsCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.pants_next_arrow_button)
     public void onPantsNextArrowButtonClicked() {
-        if (pantsCurrent.equals(Character.Pants.Pants1)) {
+        if (pantsCurrent == 0) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 1);
-            pantsCurrent = Character.Pants.Pants2;
-            // change view on canvas
-        } else if (pantsCurrent.equals(Character.Pants.Pants2)) {
+            pantsCurrent = 1;
+            updateCanvas();
+        } else if (pantsCurrent == 1) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 2);
-            pantsCurrent = Character.Pants.Pants3;
-            // change view on canvas
-        } else if (pantsCurrent.equals(Character.Pants.Pants3)) {
+            pantsCurrent = 2;
+            updateCanvas();
+        } else if (pantsCurrent == 2) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 0);
-            pantsCurrent = Character.Pants.Pants1;
-            // change view on canvas
+            pantsCurrent = 0;
+            updateCanvas();
         }
     }
 
@@ -285,62 +271,36 @@ public class AppearanceFragment extends BaseFragment {
 
     @OnClick(R.id.boots_back_arrow_button)
     public void onShoesBackArrowButtonClicked() {
-        if (shoesCurrent.equals(Character.Shoes.Shoes1)) {
+        if (shoesCurrent == 0) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2);
-            shoesCurrent = Character.Shoes.Shoes3;
-            // change view on canvas
-        } else if (shoesCurrent.equals(Character.Shoes.Shoes2)) {
+            shoesCurrent = 2;
+            updateCanvas();
+        } else if (shoesCurrent == 1) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0);
-            pantsCurrent = Character.Pants.Pants1;
-            // change view on canvas
-        } else if (shoesCurrent.equals(Character.Shoes.Shoes3)) {
+            pantsCurrent = 0;
+            updateCanvas();
+        } else if (shoesCurrent == 2) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1);
-            pantsCurrent = Character.Pants.Pants2;
-            // change view on canvas
+            pantsCurrent = 1;
+            updateCanvas();
         }
     }
 
     @OnClick(R.id.boots_next_arrow_button)
     public void onShoesNextArrowButtonClicked() {
-        if (shoesCurrent.equals(Character.Shoes.Shoes1)) {
+        if (shoesCurrent == 0) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1);
-            shoesCurrent = Character.Shoes.Shoes2;
-            // change view on canvas
-        } else if (shoesCurrent.equals(Character.Shoes.Shoes2)) {
+            shoesCurrent = 1;
+            updateCanvas();
+        } else if (shoesCurrent == 1) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2);
-            pantsCurrent = Character.Pants.Pants3;
-            // change view on canvas
-        } else if (shoesCurrent.equals(Character.Shoes.Shoes3)) {
+            pantsCurrent = 2;
+            updateCanvas();
+        } else if (shoesCurrent == 2) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0);
-            pantsCurrent = Character.Pants.Pants1;
-            // change view on canvas
+            pantsCurrent = 0;
+            updateCanvas();
         }
-    }
-
-    // getters
-
-    public Character.Hair getHairCurrent() {
-        return hairCurrent;
-    }
-
-    public Character.EyeColor getEyeColorCurrent() {
-        return eyeColorCurrent;
-    }
-
-    public Character.Hat getHatCurrent() {
-        return hatCurrent;
-    }
-
-    public Character.Blouse getBlouseCurrent() {
-        return blouseCurrent;
-    }
-
-    public Character.Pants getPantsCurrent() {
-        return pantsCurrent;
-    }
-
-    public Character.Shoes getShoesCurrent() {
-        return shoesCurrent;
     }
 
     @Override
