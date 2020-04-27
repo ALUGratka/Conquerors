@@ -130,7 +130,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 // and send it to presenter
                 createCharacterPresenter.setUserId(userId);
 
-                //createCharacterPresenter.performCharacterCreation();
+                createCharacterPresenter.performCharacterCreation();
 
                 currentFragment = 0;
                 Toast.makeText(this, getString(R.string.info_character_created), Toast.LENGTH_SHORT).show();
