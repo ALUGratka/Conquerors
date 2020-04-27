@@ -13,6 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/characterCanvas"
+            android:layout_width="423dp"
+            android:layout_height="252dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/createCharacterSexText"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/createCharacterSexText"
             android:layout_width="match_parent"
@@ -22,14 +31,14 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintBottom_toTopOf="@+id/selectSexRadioGroup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterView"
+            app:layout_constraintTop_toBottomOf="@+id/characterCanvas"
             tools:ignore="MissingConstraints" />
 
         <RadioGroup
             android:id="@+id/selectSexRadioGroup"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:layout_constraintEnd_toEndOf="parent"

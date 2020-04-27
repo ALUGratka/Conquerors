@@ -26,7 +26,7 @@
 
         <ScrollView
             android:id="@+id/chooseClassScrollView"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="220dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
 
             <RadioGroup
                 android:id="@+id/selectClassTypeGroup"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
                 <RadioButton
