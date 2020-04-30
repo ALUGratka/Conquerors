@@ -278,6 +278,8 @@ def createPrizeDate():
                 prizeDate = LastPrize(lastDate=lastDate, userId=userId)
                 print(prizeDate)
                 db.session.add(prizeDate)
+                user =  User.query.get(userId)
+                user.skillPoints = user.skillPoints+2
                 db.session.commit()
                 # send response
                 message = {

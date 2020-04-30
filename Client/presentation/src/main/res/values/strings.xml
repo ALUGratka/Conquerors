@@ -35,7 +35,7 @@
     <!-- Get everyday prize -->
     <string name="action_everyday_prize">Press the image of the gift to get an award</string>
     <string name="present_image">Image of a present</string>
-    <string name="info_got_gift">You have been gifted %1$d points</string>
+    <string name="info_got_gift">You have been gifted %1$d skill points</string>
 
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
