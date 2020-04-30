@@ -63,7 +63,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @Override
     public void onEverydayPrizeSucceeded() {
-        Toast.makeText(this, getString(R.string.info_got_gift, 100), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.info_got_gift, 2), Toast.LENGTH_SHORT).show();
         Navigator.startHome(this);
     }
 }
