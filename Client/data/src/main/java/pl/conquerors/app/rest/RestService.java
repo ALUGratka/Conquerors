@@ -1,5 +1,7 @@
 package pl.conquerors.app.rest;
 
+import java.util.List;
+
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.UserEntity;
@@ -7,7 +9,9 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface RestService {
 
@@ -28,5 +32,8 @@ public interface RestService {
 
     @POST("prize")
     Call<PrizeDateEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
+
+    @GET("users/{userId}/prizes")
+    Call<List<PrizeDateEntity>> getPrizeDate(@Path("userId") int user);
 
 }

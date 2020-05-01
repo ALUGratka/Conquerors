@@ -11,9 +11,14 @@ public class PrizeDateEntity {
 
     @SerializedName("userId")
     private int userId;
+    @SerializedName("lastDate")
+    private String prizeDate;
 
     public int getUserId() {
         return userId;
+    }
+    public String getPrizeDate() {
+        return prizeDate;
     }
 
     public void setUserId(int userId) {
