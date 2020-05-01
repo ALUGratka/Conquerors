@@ -2,19 +2,34 @@ package pl.conquerors.app.view.everydayPrize;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
+import pl.conquerors.app.domain.model.PrizeDate;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 
 public class EverydayPrizeActivity extends BaseActivity implements EverydayPrizeView {
     EverydayPrizePresenter mEverydayPrizePresenter;
+    CompactCalendarView compactCalendar;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
     public static Intent getStartingIntents(Context context) {
         return new Intent(context, EverydayPrizeActivity.class);
@@ -29,6 +44,41 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
         mEverydayPrizePresenter = new EverydayPrizePresenter(everydayPrizeUseCase);
         mEverydayPrizePresenter.setmView(this);
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(false);
+        actionBar.setTitle(null);
+
+        compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        compactCalendar.setUseThreeLetterAbbreviation(true);
+        compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                List<Event> events = compactCalendar.getEvents(dateClicked);
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                actionBar.setTitle(simpleDateFormat.format(firstDayOfNewMonth));
+            }
+        });
+        mEverydayPrizePresenter.getEverydayPrize();
+    }
+
+    public void updateCalendar(List<PrizeDate> prizeDates) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date gmt = null;
+        for (PrizeDate prizeDate:prizeDates)
+        {
+            String date = prizeDate.getPrizeDate();
+            try {
+                gmt = formatter.parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            long millisecondsSinceEpoch0 = gmt.getTime();
+            Event ev1 = new Event(Color.RED, millisecondsSinceEpoch0);
+            compactCalendar.addEvent(ev1);
+        }
     }
 
     @Override

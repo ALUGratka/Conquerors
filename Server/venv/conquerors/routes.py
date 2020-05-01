@@ -276,7 +276,6 @@ def createPrizeDate():
             else:
                 # if so create character and add to db
                 prizeDate = LastPrize(lastDate=lastDate, userId=userId)
-                print(prizeDate)
                 db.session.add(prizeDate)
                 user =  User.query.get(userId)
                 user.skillPoints = user.skillPoints+2
@@ -305,3 +304,16 @@ def createPrizeDate():
     response.headers['Content-Type'] = 'application/json'
     response.status_code = 404
     return response
+
+
+@app.route("/users/<userId>/prizes", methods=['GET'])
+def get_user_prizes(userId):
+    if request.method == 'GET':
+        prizes = LastPrize.query.filter_by(userId=int(userId)).all()
+        prizesJson = []
+        for prize in prizes:
+            prizesJson.append(prize.to_dict())
+        response = make_response(json.dumps(prizesJson, default=str))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response
