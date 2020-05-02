@@ -317,3 +317,14 @@ def get_user_prizes(userId):
         response.headers['Content-Type'] = 'application/json'
         response.status_code = 200 # success
         return response
+
+
+@app.route("/characters/<characterId>/statistic", methods=['GET'])
+def get_character_statistic(characterId):
+    if request.method == 'GET':
+        character = Character.query.get(characterId)
+        message = character.to_statistic_dict()
+        response = make_response(json.dumps(message, default=str))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response

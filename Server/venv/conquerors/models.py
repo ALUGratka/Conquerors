@@ -78,6 +78,22 @@ class Character(db.Model):
             'userId' : self.userId
         }
 
+    def to_statistic_dict(self):
+        user = User.query.get(self.userId)
+        return {
+            'id': self.id,
+            'level': self.level,
+            'charisma': self.charisma,
+            'intelligence': self.intelligence,
+            'agility': self.agility,
+            'strength': self.strength,
+            'nickname': self.nickname,
+            'characterClass': self.characterClass,
+            'userId': self.userId,
+            'skillPoints': user.skillPoints
+        }
+
+
 
 class LastLoggedIn(db.Model):
 
