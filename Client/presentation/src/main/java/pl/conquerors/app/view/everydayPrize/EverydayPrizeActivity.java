@@ -46,10 +46,10 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
         mEverydayPrizePresenter.setmView(this);
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setTitle(null);
 
         compactCalendar = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
         compactCalendar.setUseThreeLetterAbbreviation(true);
+        compactCalendar.shouldDrawIndicatorsBelowSelectedDays(true);
         compactCalendar.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
