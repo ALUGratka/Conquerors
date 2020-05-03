@@ -99,6 +99,17 @@
     <string name="character_player_agility">Default agility number</string>
     <string name="character_player_intelligence">Default intelligence number</string>
 
+    <!-- Character Statistic -->
+    <string name="character_current_strength">Current character strength</string>
+    <string name="character_current_charisma">Current character charisma</string>
+    <string name="character_current_agility">Current character agility</string>
+    <string name="character_current_intelligence">Current character intelligence</string>
+    <string name="character_level">Character level</string>
+    <string name="user_skillpoints">User skill points</string>
+    <string name="character_current_level">Current character level</string>
+    <string name="user_current_skillpoints">Current skill points</string>
+    <string name="character_skills">Skills</string>
+
     <!-- My Profile -->
     <string name="my_profile_my_characters">My characters</string>
     <string name="my_profile_my_games">My games</string>

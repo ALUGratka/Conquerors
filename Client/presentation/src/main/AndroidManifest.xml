@@ -53,6 +53,11 @@
             android:label="Get prize"
             android:screenOrientation="fullSensor" />
 
+        <activity
+            android:name=".view.characterStatistics.CharacterStatisticsActivity"
+            android:label="Character Statistics"
+            android:screenOrientation="fullSensor">
+        </activity>
 
         <activity
             android:name=".view.createCharacter.CreateCharacterActivity"
