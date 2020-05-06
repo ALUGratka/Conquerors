@@ -8,7 +8,7 @@ public class MyProfilePresenter extends BasePresenter<MyProfileView> {
 
     public void getProfileName() {
         //TODO GET method to get profile data
-        mView.setUserName(SharedPreferenceUtil.getUserName(mView.getContext()));
+        mView.setUserName(SharedPreferenceUtil.getUser(mView.getContext()).getmNick());
 
         /*Call<UserEntity> call = RestClient.getInstance().getMyProfile(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail());
 
