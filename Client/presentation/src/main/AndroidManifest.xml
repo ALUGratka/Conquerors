@@ -11,62 +11,54 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
+        android:theme="@style/AppTheme">
         <!-- ACTIVITIES -->
         <activity
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
         <activity
             android:name=".view.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
         <activity
             android:name=".view.register.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName=".view.login.LoginActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="fullSensor"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:parentActivityName=".view.login.LoginActivity">
+        </activity>
         <activity
             android:name=".view.login.LoginActivity"
             android:label="@string/title_activity_login"
-            android:screenOrientation="fullSensor"
-            android:windowSoftInputMode="stateHidden|adjustPan" />
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:screenOrientation="fullSensor">
+        </activity>
         <activity
             android:name=".view.everydayPrize.EverydayPrizeActivity"
             android:label="Get prize"
-            android:screenOrientation="fullSensor" />
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity android:name=".view.createCharacter.CreateCharacterSexActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterClassActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterAppearanceActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterNameActivity"/>
+        <activity android:name=".view.createCharacter.CreateCharacterSummaryActivity"/>
 
-
-        <activity
-            android:name=".view.createCharacter.CreateCharacterActivity"
-            android:label="@string/title_activity_create_character"
-            android:parentActivityName=".view.home.HomeActivity"
-            android:screenOrientation="fullSensor" />
-
-
-        <activity
-            android:name=".view.profile.my.MyProfileActivity"
+        <activity android:name=".view.profile.my.MyProfileActivity"
             android:label="@string/tittle_activity_my_profile"
-            android:parentActivityName=".view.home.HomeActivity"
             android:screenOrientation="fullSensor"
-            tools:targetApi="jelly_bean" />
+            android:parentActivityName=".view.home.HomeActivity">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

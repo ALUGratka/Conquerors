@@ -13,6 +13,7 @@ import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.rest.RestService;
 import pl.conquerors.app.util.DateUtil;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,6 +101,15 @@ class RegistrationPresenter extends BasePresenter<RegistrationView> {
             mUseCase.setData(nick, email, password, bornFormatted);
 
             Call<UserEntity> call = RestClient.getInstance().register(new UserEntity(email,nick,password,born));
+
+            //TODO remove it when API changed
+            User user = new User();
+            user.setmEmail(email);
+            user.setmNick(nick);
+            user.setmPassword(password);
+            user.setmBorn(born);
+
+            SharedPreferenceUtil.setUser(mView.getContext(),user);
 
             call.enqueue(new Callback<UserEntity>() {
                 @Override

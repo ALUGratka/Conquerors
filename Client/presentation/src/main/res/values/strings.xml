@@ -7,6 +7,9 @@
     <string name="title_activity_registration">Sign up</string>
     <string name="title_activity_login">Sign in</string>
     <string name="tittle_activity_my_profile">My profile</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="tittle_activity_change_email">Change email</string>
+    <string name="tittle_activity_change_password">Change password</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -40,6 +43,7 @@
     <!-- Errors -->
     <string name="error_invalid_email">This email address is invalid</string>
     <string name="error_invalid_email_match">Email and confirmation does not match</string>
+    <string name="error_invalid_password_match">Password and confirmation does not match</string>
     <string name="error_invalid_password">Password and confirmation does not match or are invalid</string>
     <string name="error_invalid_address">Could not find given address.</string>
     <string name="error_incorrect_password">Invalid password</string>
@@ -104,6 +108,25 @@
     <string name="my_profile_my_games">My games</string>
     <string name="my_profile_my_awards">My awards</string>
     <string name="my_profile_my_friends">My friends</string>
+    <string name="profile_edit">Edit profile</string>
+
+    <!-- Settings -->
+    <string name="settings_action_remove_account">Remove account</string>
+    <string name="settings_action_change_password">Change password</string>
+    <string name="settings_action_change_email">Change email</string>
+    <string name="settings_remove_dialog_message">Are you sure you want to delete your account?</string>
+
+    <!-- Change email -->
+    <string name="prompt_new_email">New email</string>
+    <string name="prompt_new_email_confirm">Confirm new email</string>
+    <string name="action_change_email">Change email</string>
+    <string name="change_email_success">Email has been changed.</string>
+
+    <!-- Change password -->
+    <string name="prompt_old_password">Old password</string>
+    <string name="prompt_new_password">New password</string>
+    <string name="prompt_new_password_confirm">Confirm new password</string>
+    <string name="change_password_success">Password has been changed.</string>
 
 
 

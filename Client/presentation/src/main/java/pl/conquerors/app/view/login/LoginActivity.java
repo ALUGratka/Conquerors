@@ -113,6 +113,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onLoginSucceeded(/*User user*/) {
+        mLoginPresenter.onLoginSucceeded();
         Toast.makeText(this, getString(R.string.info_login_success, getNick()), Toast.LENGTH_SHORT).show();
         finish();
         Navigator.startHome(this);
@@ -164,9 +165,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        //SessionRepository sessionRepository = new SessionRepositoryImpl();
-        //LoginUseCase loginUseCase = new LoginUseCase(new AndroidComposedScheduler(),sessionRepository);
 
         mLoginPresenter = new LoginPresenter();
         mLoginPresenter.setmView(this);

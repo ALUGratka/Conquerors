@@ -2,6 +2,8 @@ package pl.conquerors.app.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import pl.conquerors.app.domain.model.User;
+
 public class UserEntity {
 
     @SerializedName("id")
@@ -19,6 +21,14 @@ public class UserEntity {
     @SerializedName("birthDate")
     private String born;
 
+    public UserEntity(User user) {
+        this.userId = (int)user.getmId();
+        this.userName = user.getmNick();
+        this.email = user.getmEmail();
+        this.password = user.getmPassword();
+        this.born = user.getmBorn();
+    }
+
     public UserEntity(String email,String userName, String password, String born) {
         this.userName = userName;
         this.email = email;
@@ -28,6 +38,17 @@ public class UserEntity {
 
     public UserEntity(String userName, String password) {
         this.userName = userName;
+        this.password = password;
+    }
+
+    public UserEntity(String email) {
+        this.email = email;
+    }
+
+    public UserEntity(int userId, String email, String userName, String password) {
+        this.userId = userId;
+        this.userName = userName;
+        this.email = email;
         this.password = password;
     }
 

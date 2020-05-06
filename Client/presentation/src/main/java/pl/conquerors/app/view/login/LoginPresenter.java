@@ -16,9 +16,6 @@ import retrofit2.Response;
 
 public class LoginPresenter extends BasePresenter<LoginView> {
 
-    //SessionRepository sessionRepository;
-
-
     public void performLogin() {
         //disable button
         mView.setLoginButtonEnabled(false);
@@ -55,12 +52,18 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                     if(!response.isSuccessful()){
                         Log.e("login", "Code: "+response.code());
+                        mView.showNoUser();
+                        mView.setLoginButtonEnabled(true);
                         return;
                     }
                     User user = UserEntityMapper.transform(response.body());
                     SharedPreferenceUtil.setLoggedIn(mView.getContext(), true);
+                    SharedPreferenceUtil.setUserName(mView.getContext(),nick);
+                    SharedPreferenceUtil.setUser(mView.getContext(), user);
 
                     Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
+                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUserName(mView.getContext()))));
+                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail())));
 
                     mView.onLoginSucceeded();
                 }
@@ -73,5 +76,27 @@ public class LoginPresenter extends BasePresenter<LoginView> {
                 }
             });
         }
+    }
+
+    public void onLoginSucceeded(){
+        Call<UserEntity> call = RestClient.getInstance().getMyProfile(SharedPreferenceUtil.getUserName(mView.getContext()));
+
+        call.enqueue(new Callback<UserEntity>() {
+            @Override
+            public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
+                if(!response.isSuccessful()){
+                    Log.e("get_user: ","Code: ".concat(String.valueOf(response.code())));
+                    return;
+                }
+                User user = UserEntityMapper.transform(response.body());
+                SharedPreferenceUtil.setUser(mView.getContext(),user);
+                Log.e("get_user: ",user.toString());
+            }
+
+            @Override
+            public void onFailure(Call<UserEntity> call, Throwable t) {
+                Log.e("get_user: ", t.getMessage());
+            }
+        });
     }
 }

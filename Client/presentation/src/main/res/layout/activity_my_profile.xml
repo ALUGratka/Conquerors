@@ -13,6 +13,16 @@
     tools:context=".view.profile.my.MyProfileActivity"
     android:background="@drawable/background">
 
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/advent_pro_thin" />
+
+
     <ImageView
         android:id="@+id/profile_avatar"
         android:layout_width="180dp"
