@@ -28,10 +28,14 @@ public class Character {
         BlouseBlue, BlouseRed, BlouseYellow
     }
 
+    //woman -> blue, gray, yellow
+    //man -> brown, gray, red
     public enum Pants {
         Pants1, Pants2, Pants3
     }
 
+    // woman -> pink, red
+    //man -> gray, red, white
     public enum Shoes {
         Shoes1, Shoes2, Shoes3
     }

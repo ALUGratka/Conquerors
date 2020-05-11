@@ -25,10 +25,12 @@ import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
 import pl.conquerors.app.domain.model.PrizeDate;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class EverydayPrizeActivity extends BaseActivity implements EverydayPrizeView {
     EverydayPrizePresenter mEverydayPrizePresenter;
     CompactCalendarView compactCalendar;
+    int userId = 0;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
 
     public static Intent getStartingIntents(Context context) {
@@ -61,7 +63,8 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
                 actionBar.setTitle(simpleDateFormat.format(firstDayOfNewMonth));
             }
         });
-        mEverydayPrizePresenter.getEverydayPrize();
+        userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getmId();
+        mEverydayPrizePresenter.getEverydayPrize(userId);
     }
 
     public void updateCalendar(List<PrizeDate> prizeDates) {
@@ -98,7 +101,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
-        mEverydayPrizePresenter.performEverydayPrize();
+        mEverydayPrizePresenter.performEverydayPrize(userId);
     }
 
     @Override

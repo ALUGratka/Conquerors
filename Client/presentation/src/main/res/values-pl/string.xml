@@ -103,6 +103,17 @@
     <string name="character_player_agility">Domyślna zręczność dla klasy</string>
     <string name="character_player_intelligence">Domyślna inteligencja dla klasy</string>
 
+    <!-- Character Statistic -->
+    <string name="character_current_strength">Aktualna siła postaci</string>
+    <string name="character_current_charisma">Aktualna charyzma postaci</string>
+    <string name="character_current_agility">Aktualna zręczność postaci</string>
+    <string name="character_current_intelligence">Aktualna inteligencja postaci</string>
+    <string name="character_level">Poziom postaci</string>
+    <string name="user_skillpoints">Punkty użytkownika</string>
+    <string name="character_current_level">Aktualny poziom postaci</string>
+    <string name="user_current_skillpoints">Aktualne punkty użytkownika</string>
+    <string name="character_skills">Umiejętności</string>
+
     <!-- My Profile -->
     <string name="my_profile_my_characters">Moje postaci</string>
     <string name="my_profile_my_games">Moje rozgrywki</string>

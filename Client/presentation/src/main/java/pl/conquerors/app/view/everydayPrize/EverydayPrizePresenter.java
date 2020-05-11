@@ -14,6 +14,7 @@ import pl.conquerors.app.rest.RestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 import static android.support.constraint.Constraints.TAG;
 import static pl.conquerors.app.model.mapper.EveryDayPrizeMapper.transform;
@@ -21,8 +22,7 @@ import static pl.conquerors.app.model.mapper.EveryDayPrizeMapper.transform;
 public class EverydayPrizePresenter extends BasePresenter<EverydayPrizeView> {
     EverydayPrizeUseCase mUseCase;
     public EverydayPrizePresenter(final EverydayPrizeUseCase useCase) { mUseCase = useCase; }
-    final int userId = 1;
-    public void performEverydayPrize() {
+    public void performEverydayPrize(int userId) {
         Call<PrizeDateEntity> call = RestClient.getInstance().createPrizeDate(new PrizeDateEntity(userId));
 
         call.enqueue(new Callback<PrizeDateEntity>() {
@@ -45,9 +45,8 @@ public class EverydayPrizePresenter extends BasePresenter<EverydayPrizeView> {
         });
     }
 
-    public void getEverydayPrize() {
-        int user = 1;
-        Call<List<PrizeDateEntity>> call = RestClient.getInstance().getPrizeDate(user);
+    public void getEverydayPrize(int userId) {
+        Call<List<PrizeDateEntity>> call = RestClient.getInstance().getPrizeDate(userId);
 
         call.enqueue(new Callback<List<PrizeDateEntity>>() {
             @RequiresApi(api = Build.VERSION_CODES.N)

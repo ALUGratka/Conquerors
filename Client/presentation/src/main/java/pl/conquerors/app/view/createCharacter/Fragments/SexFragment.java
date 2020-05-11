@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
@@ -22,11 +23,8 @@ import pl.conquerors.app.view.createCharacter.CharacterView;
  */
 public class SexFragment extends BaseFragment {
 
-    RadioGroup sexRadioGroup;
-    RadioButton sexRadioButton;
-
-    @BindView(R.id.characterCanvas)
-    RelativeLayout characterCanvas;
+    @BindView(R.id.sexFragmentSexImageView)
+    ImageView sexImageView;
 
     public SexFragment() {
     }
@@ -34,7 +32,6 @@ public class SexFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        characterCanvas.addView(new CharacterView(this.getContext()));
     }
 
     @Override
@@ -45,27 +42,14 @@ public class SexFragment extends BaseFragment {
 
     @OnClick(R.id.radioWomen)
     public void onRadioWomanClicked() {
-        // display woman on canvas
+        sexImageView.setImageResource(R.drawable.female_256);
+        SharedPreferenceUtil.setCharacterSex(this.getContext(), 1);
     }
 
     @OnClick(R.id.radioMan)
     public void onRadioManClicked() {
-        //display man on canvas
-    }
-
-    public int getSelectedSex() {
-        sexRadioGroup = getView().findViewById(R.id.selectSexRadioGroup);
-
-        int selectedId = sexRadioGroup.getCheckedRadioButtonId();
-        sexRadioButton = getView().findViewById(selectedId);
-
-        if (sexRadioButton.getText().equals(R.string.radio_woman)) {
-            SharedPreferenceUtil.setCharacterSex(this.getContext(), 1);
-            return 1;
-        } else {
-            SharedPreferenceUtil.setCharacterSex(this.getContext(), 0);
-            return 0;
-        }
+        sexImageView.setImageResource(R.drawable.male_256);
+        SharedPreferenceUtil.setCharacterSex(this.getContext(), 0);
     }
 
     @Override

@@ -14,13 +14,65 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/characterCanvas"
-            android:layout_width="423dp"
-            android:layout_height="200dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createCharacterSexText"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/sexFragmentSexImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/male_256" />
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/classImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/hairImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/hatImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/eyeColorImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/pantsImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/blouseImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+            <!--            <ImageView-->
+            <!--                android:id="@+id/shoesImageView"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:srcCompat="@drawable/male_256" />-->
+
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/createCharacterSexText"
@@ -29,11 +81,9 @@
             android:gravity="center"
             android:text="@string/character_sex"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            app:layout_constraintBottom_toTopOf="@+id/selectSexRadioGroup"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterCanvas"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
             tools:ignore="MissingConstraints" />
 
         <RadioGroup
