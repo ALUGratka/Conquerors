@@ -318,6 +318,18 @@ def get_user_prizes(userId):
         response.status_code = 200 # success
         return response
 
+@app.route("/users/<userId>/characters", methods=['GET'])
+def get_user_characters(userId):
+    if request.method == 'GET':
+        characters = Character.query.filter_by(userId=int(userId)).all()
+        charactersJson = []
+        for character in characters:
+            charactersJson.append(character.to_dict())
+        response = make_response(json.dumps(charactersJson, default=str))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response
+
 
 @app.route("/characters/<characterId>/statistic", methods=['GET'])
 def get_character_statistic(characterId):
