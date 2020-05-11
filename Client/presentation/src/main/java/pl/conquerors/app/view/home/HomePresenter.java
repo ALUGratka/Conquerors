@@ -40,6 +40,8 @@ public class HomePresenter extends BasePresenter<HomeView> {
             case R.id.nav_add_game:
                 mView.showAddGame();
                 break;
+            case R.id.nav_my_games:
+                mView.showMyGames();
         }
         mView.closeDrawer();
     }

@@ -139,9 +139,13 @@
     <string name="prompt_new_password_confirm">Potwierdź nowe hasło</string>
     <string name="change_password_success">Twoje hasło zostało zmienione.</string>
 
-    <!-- Create game -->
+    <!-- Game -->
     <string name="choose_character">Wybór postaci</string>
     <string name="choose_opponent">Wybór przeciwnika</string>
     <string name="game_created">Gra utworzona</string>
+    <string name="game_id">Id Rozgrywki</string>
+    <string name="opponent">Przeciwnik</string>
+    <string name="date">Data</string>
+    <string name="character">Postać</string>
 
 </resources>

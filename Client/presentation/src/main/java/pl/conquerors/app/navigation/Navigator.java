@@ -14,6 +14,7 @@ import pl.conquerors.app.view.register.RegistrationActivity;
 import pl.conquerors.app.view.settings.SettingsActivity;
 import pl.conquerors.app.view.settings.email.ChangeEmailActivity;
 import pl.conquerors.app.view.settings.password.ChangePasswordActivity;
+import pl.conquerors.app.view.showGames.showGamesActivity;
 
 public class Navigator {
 
@@ -66,5 +67,10 @@ public class Navigator {
     public static void startChooseOpponent(Context context)
     {
         context.startActivity(chooseOpponentActivity.getStartingIntents(context));
+    }
+
+    public static void startShowGames(Context context)
+    {
+        context.startActivity(showGamesActivity.getStartingIntents(context));
     }
 }

@@ -87,8 +87,14 @@
             android:label="Create game"
             android:screenOrientation="fullSensor">
         </activity>
+
         <activity android:name=".view.createGame.chooseOpponent.chooseOpponentActivity"
             android:label="Choose opponent"
+            android:screenOrientation="fullSensor">
+        </activity>
+
+        <activity android:name=".view.showGames.showGamesActivity"
+            android:label="Show games"
             android:screenOrientation="fullSensor">
         </activity>
         <meta-data
