@@ -42,8 +42,7 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
     @OnClick(R.id.layout_my_character)
     protected void showMyCharacters() {
         mCharactersLayout.setBackgroundResource(R.color.theme_transparent_grey);
-        Navigator.startHome(this.getContext());
-        finish();
+        Navigator.startMyCharacters(this.getContext());
         //TODO show my characters
     }
 
