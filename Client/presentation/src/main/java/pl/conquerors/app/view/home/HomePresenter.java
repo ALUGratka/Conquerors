@@ -14,7 +14,6 @@ public class HomePresenter extends BasePresenter<HomeView> {
     @Override
     public void created() {
         super.created();
-
     }
 
     @Override
@@ -31,6 +30,9 @@ public class HomePresenter extends BasePresenter<HomeView> {
         switch (item.getItemId()) {
             case R.id.nav_profile:
                 mView.showMyProfile();
+                break;
+            case R.id.nav_settings:
+                mView.showSettings();
                 break;
             case R.id.nav_logout:
                 mView.showLogout();

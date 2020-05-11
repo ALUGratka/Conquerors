@@ -9,6 +9,7 @@ public interface HomeView extends BaseView {
 
     void showMyProfile();
     void showLogout();
+    void showSettings();
 
     boolean isDrawerOpen();
     void closeDrawer();
