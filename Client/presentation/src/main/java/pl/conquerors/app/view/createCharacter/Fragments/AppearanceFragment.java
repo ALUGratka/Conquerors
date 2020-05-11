@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,6 +21,32 @@ import pl.conquerors.app.util.SharedPreferenceUtil;
  */
 public class AppearanceFragment extends BaseFragment {
 
+    //image views
+    @BindView(R.id.appearanceFragmentSexImageView)
+    ImageView sexImageView;
+
+    @BindView(R.id.appearanceFragmentClassImageView)
+    ImageView classImageView;
+
+//    @BindView(R.id.appearanceFragmentHatImageView)
+//    ImageView hatImageView;
+//
+//    @BindView(R.id.appearanceFragmentHairImageView)
+//    ImageView hairImageView;
+
+    @BindView(R.id.appearanceFragmentEyeColorImageView)
+    ImageView eyeColorImageView;
+
+    @BindView(R.id.appearanceFragmentBlouseImageView)
+    ImageView blouseImageView;
+
+    @BindView(R.id.appearanceFragmentPantsImageView)
+    ImageView pantsImageView;
+
+    @BindView(R.id.appearanceFragmentShoesImageView)
+    ImageView shoesImageView;
+
+    // buttons
     @BindView(R.id.hair_back_arrow_button)
     Button hairBackArrowButton;
 
@@ -64,13 +91,29 @@ public class AppearanceFragment extends BaseFragment {
     int shoesCurrent = 0;
 
     int sex;
-    int characterClass;
 
     public AppearanceFragment() {
         // Required empty public constructor
     }
 
-    public void updateCanvas() {
+    void setCurrentSexImage(int sex){
+        if (sex == 1) {
+            sexImageView.setImageResource(R.drawable.female_256);
+        } else if (sex == 0) {
+            sexImageView.setImageResource(R.drawable.male_256);
+        }
+    }
+
+    void setCurrentCharacterClassImage(int characterClass){
+        if (characterClass == 0) {
+            classImageView.setImageResource(R.drawable.note);
+        } else if (characterClass == 1) {
+            classImageView.setImageResource(R.drawable.sword);
+        } else if (characterClass == 2) {
+            classImageView.setImageResource(R.drawable.warrior_shield);
+        } else if (characterClass == 3) {
+            classImageView.setImageResource(R.drawable.wand);
+        }
     }
 
     @Override
@@ -78,7 +121,10 @@ public class AppearanceFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
 
         sex = SharedPreferenceUtil.getCharacterSex(view.getContext());
-        characterClass = SharedPreferenceUtil.getCharacterClass(view.getContext());
+        int characterClass = SharedPreferenceUtil.getCharacterClass(view.getContext());
+
+        setCurrentSexImage(sex);
+        setCurrentCharacterClassImage(characterClass);
     }
 
     @Override
@@ -87,22 +133,21 @@ public class AppearanceFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_appearance, container, false);
     }
 
-    // handle hair change
 
     @OnClick(R.id.hair_back_arrow_button)
     public void onHairBackArrowButtonClicked() {
         if (hairCurrent == 0) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 2);
             hairCurrent = 2;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hairCurrent == 1) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 0);
             hairCurrent = 0;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hairCurrent == 2) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 1);
             hairCurrent = 1;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         }
     }
 
@@ -111,34 +156,32 @@ public class AppearanceFragment extends BaseFragment {
         if (hairCurrent == 0) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 1);
             hairCurrent = 1;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hairCurrent == 1) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 2);
             hairCurrent = 2;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hairCurrent == 2) {
             SharedPreferenceUtil.setCharacterHair(this.getContext(), 0);
             hairCurrent = 0;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         }
     }
-
-    // handle eye color change
 
     @OnClick(R.id.eye_color_back_arrow_button)
     public void onEyeColorBackArrowButtonClicked() {
         if (eyeColorCurrent == 0) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2);
             eyeColorCurrent = 2;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_green);
         } else if (eyeColorCurrent == 1) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0);
             eyeColorCurrent = 0;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_blue);
         } else if (eyeColorCurrent == 2) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1);
             eyeColorCurrent = 1;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_brown);
         }
     }
 
@@ -147,15 +190,15 @@ public class AppearanceFragment extends BaseFragment {
         if (eyeColorCurrent == 0) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 1);
             eyeColorCurrent = 1;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_brown);
         } else if (eyeColorCurrent == 1) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 2);
             eyeColorCurrent = 2;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_green);
         } else if (eyeColorCurrent == 2) {
             SharedPreferenceUtil.setCharacterEyeColor(this.getContext(), 0);
             eyeColorCurrent = 0;
-            updateCanvas();
+            eyeColorImageView.setImageResource(R.drawable.eyes_blue);
         }
     }
 
@@ -166,15 +209,15 @@ public class AppearanceFragment extends BaseFragment {
         if (hatCurrent == 0) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 2);
             hatCurrent = 2;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hatCurrent == 1) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 0);
             hatCurrent = 0;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hatCurrent == 2) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 1);
             hatCurrent = 1;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         }
     }
 
@@ -183,15 +226,15 @@ public class AppearanceFragment extends BaseFragment {
         if (hatCurrent == 0) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 1);
             hatCurrent = 1;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hatCurrent == 1) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 2);
             hatCurrent = 2;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         } else if (hatCurrent == 2) {
             SharedPreferenceUtil.setCharacterHat(this.getContext(), 0);
             hatCurrent = 0;
-            updateCanvas();
+            //hairImageView.setImageResource(R.drawable.);
         }
     }
 
@@ -202,15 +245,27 @@ public class AppearanceFragment extends BaseFragment {
         if (blouseCurrent == 0) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2);
             blouseCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_yellow);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_yellow);
+            }
         } else if (blouseCurrent == 1) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0);
             blouseCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_blue);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_blue);
+            }
         } else if (blouseCurrent == 2) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1);
             blouseCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_red);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_red);
+            }
         }
     }
 
@@ -219,15 +274,27 @@ public class AppearanceFragment extends BaseFragment {
         if (blouseCurrent == 0) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 1);
             blouseCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_red);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_red);
+            }
         } else if (blouseCurrent == 1) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 2);
             blouseCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_yellow);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_yellow);
+            }
         } else if (blouseCurrent == 2) {
             SharedPreferenceUtil.setCharacterBlouse(this.getContext(), 0);
             blouseCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                blouseImageView.setImageResource(R.drawable.female_tshirt_blue);
+            }else{  //man
+                blouseImageView.setImageResource(R.drawable.male_tshirt_blue);
+            }
         }
     }
 
@@ -238,15 +305,27 @@ public class AppearanceFragment extends BaseFragment {
         if (pantsCurrent == 0) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 2);
             pantsCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_gray);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_gray);
+            }
         } else if (pantsCurrent == 1) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 0);
             pantsCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_blue);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_brown);
+            }
         } else if (pantsCurrent == 2) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 1);
             pantsCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_yellow);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_red);
+            }
         }
     }
 
@@ -255,15 +334,27 @@ public class AppearanceFragment extends BaseFragment {
         if (pantsCurrent == 0) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 1);
             pantsCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_gray);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_gray);
+            }
         } else if (pantsCurrent == 1) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 2);
             pantsCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_yellow);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_red);
+            }
         } else if (pantsCurrent == 2) {
             SharedPreferenceUtil.setCharacterPants(this.getContext(), 0);
             pantsCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                pantsImageView.setImageResource(R.drawable.female_pants_blue);
+            }else{  //man
+                pantsImageView.setImageResource(R.drawable.male_pants_brown);
+            }
         }
     }
 
@@ -274,15 +365,28 @@ public class AppearanceFragment extends BaseFragment {
         if (shoesCurrent == 0) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2);
             shoesCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                // NO SHOES!!!! >:(
+                //shoesImageView.setImageResource(R.drawable.female_shoes_pink);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_white);
+            }
         } else if (shoesCurrent == 1) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0);
             pantsCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                shoesImageView.setImageResource(R.drawable.female_shoes_pink);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_gray);
+            }
         } else if (shoesCurrent == 2) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1);
             pantsCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                shoesImageView.setImageResource(R.drawable.female_shoes_red);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_red);
+            }
         }
     }
 
@@ -291,15 +395,28 @@ public class AppearanceFragment extends BaseFragment {
         if (shoesCurrent == 0) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 1);
             shoesCurrent = 1;
-            updateCanvas();
+            if(sex == 1){ // woman
+                shoesImageView.setImageResource(R.drawable.female_shoes_red);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_red);
+            }
         } else if (shoesCurrent == 1) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 2);
             pantsCurrent = 2;
-            updateCanvas();
+            if(sex == 1){ // woman
+                // NO SHOES!!!! >:(
+                //shoesImageView.setImageResource(R.drawable.female_shoes_pink);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_white);
+            }
         } else if (shoesCurrent == 2) {
             SharedPreferenceUtil.setCharacterShoes(this.getContext(), 0);
             pantsCurrent = 0;
-            updateCanvas();
+            if(sex == 1){ // woman
+                shoesImageView.setImageResource(R.drawable.female_shoes_pink);
+            }else{  //man
+                shoesImageView.setImageResource(R.drawable.male_shoes_gray);
+            }
         }
     }
 

@@ -13,13 +13,62 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
-            android:id="@+id/characterCanvas"
-            android:layout_width="423dp"
-            android:layout_height="200dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/createCharacterNameText"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/appearanceFragmentSexImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/female_256" />
+
+            <ImageView
+                android:id="@+id/appearanceFragmentClassImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/wand" />
+
+<!--            <ImageView-->
+<!--                android:id="@+id/appearanceFragmentHairImageView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:srcCompat="@drawable/" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/appearanceFragmentHatImageView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:srcCompat="@drawable/" />-->
+
+            <ImageView
+                android:id="@+id/appearanceFragmentEyeColorImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/appearanceFragmentPantsImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/appearanceFragmentBlouseImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/appearanceFragmentShoesImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/createCharacterNameText"
@@ -30,7 +79,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Display1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/characterCanvas"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
             tools:ignore="MissingConstraints" />
 
         <ScrollView
@@ -42,7 +91,7 @@
             app:layout_constraintTop_toBottomOf="@+id/createCharacterNameText">
 
             <LinearLayout
-                android:id="@+id/apperanceAttributesLayout"
+                android:id="@+id/appearanceAttributesLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">

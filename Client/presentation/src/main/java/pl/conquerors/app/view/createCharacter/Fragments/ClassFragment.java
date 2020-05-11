@@ -6,9 +6,12 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseFragment;
 import pl.conquerors.app.domain.model.Character;
@@ -22,19 +25,32 @@ public class ClassFragment extends BaseFragment {
     RadioGroup characterClassRadioGroup;
     RadioButton characterClassRadioButton;
 
-    int sex;
+    @BindView(R.id.classFragmentSexImageView)
+    ImageView sexImageView;
 
-    // zaimplementowac onClick radiobutton i zmieniać na canvas klasy i uwzgledniac plec
+    @BindView(R.id.classFragmentClassImageView)
+    ImageView classImageView;
 
     public ClassFragment() {
         // Required empty public constructor
+    }
+
+    public void setCurrentSexImage(int sex){
+        if (sex == 1) {
+            sexImageView.setImageResource(R.drawable.female_256);
+        } else if (sex == 0) {
+            sexImageView.setImageResource(R.drawable.male_256);
+        }
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sex = SharedPreferenceUtil.getCharacterSex(getContext());
+        int sex = SharedPreferenceUtil.getCharacterSex(getContext());
+
+        setCurrentSexImage(sex);
+
         SharedPreferenceUtil.setCharacterClass(view.getContext(), 0);
     }
 
@@ -44,28 +60,28 @@ public class ClassFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_class, container, false);
     }
 
-    public int getSelectedCharacterClass() {
-        characterClassRadioGroup = getView().findViewById(R.id.selectClassTypeGroup);
+    @OnClick(R.id.radioBard)
+    public void onRadioBardClicked() {
+        classImageView.setImageResource(R.drawable.note);
+        SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
+    }
 
-        int selectedId = characterClassRadioGroup.getCheckedRadioButtonId();
-        characterClassRadioButton = getView().findViewById(selectedId);
+    @OnClick(R.id.radioThief)
+    public void onRadioThiefClicked() {
+        classImageView.setImageResource(R.drawable.sword);
+        SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
+    }
 
-        if (characterClassRadioButton.getText().equals(getString(R.string.radio_bard))) {
-            SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
-            return 0;
-        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_thief))) {
-            SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
-            return 1;
-        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_warrior))) {
-            SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
-            return 2;
-        } else if (characterClassRadioButton.getText().equals(getString(R.string.radio_wizard))) {
-            SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
-            return 3;
-        } else {
-            System.out.println("Error : not existing class selected");
-        }
-        return -1;
+    @OnClick(R.id.radioWarrior)
+    public void onRadioWarriorClicked() {
+        classImageView.setImageResource(R.drawable.warrior_shield);
+        SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
+    }
+
+    @OnClick(R.id.radioWizard)
+    public void onRadioWizardClicked() {
+        classImageView.setImageResource(R.drawable.wand);
+        SharedPreferenceUtil.setCharacterClass(this.getContext(), 3);
     }
 
     @Override

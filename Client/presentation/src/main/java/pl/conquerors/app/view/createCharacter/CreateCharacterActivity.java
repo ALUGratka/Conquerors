@@ -2,6 +2,8 @@ package pl.conquerors.app.view.createCharacter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -16,6 +19,7 @@ import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCase;
 import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 import pl.conquerors.app.util.SharedPreferenceUtil;
@@ -76,7 +80,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
 
         switch (currentFragment) {
             case 0:
-                int sex = sexFragment.getSelectedSex();
+                int sex = SharedPreferenceUtil.getCharacterSex(this.getContext());
                 createCharacterPresenter.setSex(sex);
 
                 transaction.replace(R.id.fragment, classFragment);
@@ -85,9 +89,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 currentFragment = 1;
                 break;
             case 1:
-                int characterClass = classFragment.getSelectedCharacterClass();
-                System.out.println("from activity character class");
-                System.out.println(characterClass);
+                int characterClass = SharedPreferenceUtil.getCharacterClass(this.getContext());
                 createCharacterPresenter.setCharacterClass(characterClass);
 
                 transaction.replace(R.id.fragment, appearanceFragment);
@@ -125,9 +127,9 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 currentFragment = 4;
                 break;
             case 4:
-                // get userId from somewhere ????
-                int userId = 0;
-                // and send it to presenter
+                User currentUser = SharedPreferenceUtil.getUser(this.getContext());
+                int userId = new BigDecimal(currentUser.getmId()).intValueExact();
+
                 createCharacterPresenter.setUserId(userId);
 
                 createCharacterPresenter.performCharacterCreation();
