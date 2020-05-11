@@ -128,6 +128,8 @@
     <string name="prompt_new_password_confirm">Confirm new password</string>
     <string name="change_password_success">Password has been changed.</string>
 
-
-
+    <!-- Create game -->
+    <string name="choose_character">Choose character</string>
+    <string name="choose_opponent">Choose opponent</string>
+    <string name="game_created">Game created</string>
 </resources>

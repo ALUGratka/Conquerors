@@ -107,6 +107,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
+    public void showAddGame() {Navigator.startAddGame(this);}
+
+    @Override
     public void showSettings() { Navigator.startSettings(this); }
 
     @Override

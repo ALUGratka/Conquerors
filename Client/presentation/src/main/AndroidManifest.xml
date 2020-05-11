@@ -75,6 +75,14 @@
             android:parentActivityName=".view.settings.SettingsActivity">
         </activity>
 
+        <activity android:name=".view.createGame.createGameActivity"
+            android:label="Create game"
+            android:screenOrientation="fullSensor">
+        </activity>
+        <activity android:name=".view.createGame.chooseOpponent.chooseOpponentActivity"
+            android:label="Choose opponent"
+            android:screenOrientation="fullSensor">
+        </activity>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

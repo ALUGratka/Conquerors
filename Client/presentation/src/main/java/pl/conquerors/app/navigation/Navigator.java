@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import pl.conquerors.app.view.createCharacter.CreateCharacterActivity;
+import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
+import pl.conquerors.app.view.createGame.createGameActivity;
 import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
@@ -55,5 +57,14 @@ public class Navigator {
 
     public static void startChangePassword(Context context) {
         context.startActivity(ChangePasswordActivity.getStartingIntent(context));
+    }
+
+    public static void startAddGame(Context context){
+        context.startActivity(createGameActivity.getStartingIntents(context));
+    }
+
+    public static void startChooseOpponent(Context context)
+    {
+        context.startActivity(chooseOpponentActivity.getStartingIntents(context));
     }
 }

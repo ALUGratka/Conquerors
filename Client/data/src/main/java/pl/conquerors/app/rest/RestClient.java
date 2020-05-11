@@ -14,7 +14,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 public class RestClient {
 
-    private static final String API_URL = "http://192.168.99.107:8080/";
+    private static final String API_URL = "http://192.168.1.5:8080/";
     private static RestService service;
 
     public static RestService getInstance(){

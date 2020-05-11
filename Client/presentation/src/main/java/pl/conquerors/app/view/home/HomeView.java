@@ -7,6 +7,7 @@ public interface HomeView extends BaseView {
     void setNavigationButtonsVisibility(boolean isLoggedIn);
     void onNativeBackPressed();
 
+    void showAddGame();
     void showMyProfile();
     void showLogout();
     void showSettings();
