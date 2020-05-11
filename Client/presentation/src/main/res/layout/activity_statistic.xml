@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.createCharacter.Fragments.SummaryFragment">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/summaryLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/characterCanvas"
+            android:layout_width="423dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/displayCharacterNicknameText"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayCharacterNicknameText" />
+
+        <TextView
+            android:id="@+id/displayCharacterNicknameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/character_player_nickname"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:layout_constraintBottom_toTopOf="@+id/displayCharacterClassText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/characterCanvas" />
+
+        <TextView
+            android:id="@+id/displayCharacterClassText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="9dp"
+            android:text="@string/character_player_class"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/displayCharacterStatistics"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayCharacterNicknameText" />
+
+        <TextView
+            android:id="@+id/displayCharacterStatistics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="9dp"
+            android:text="@string/character_skills"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintBottom_toTopOf="@+id/summaryScrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayCharacterClassText" />
+
+        <ScrollView
+            android:id="@+id/summaryScrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toTopOf="@+id/levelAndSkillScrollView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/displayCharacterStatistics">
+
+            <TableLayout
+                android:id="@+id/summaryTableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="clip_horizontal|center">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="fill_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterStrengthText"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_strength" />
+
+                    <TextView
+                        android:id="@+id/displayCurrentCharacterStrength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_current_strength" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="clip_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterCharismaText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_charisma" />
+
+                    <TextView
+                        android:id="@+id/displayCurrentCharacterCharisma"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_current_charisma" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="clip_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterAgilityText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_agility" />
+
+                    <TextView
+                        android:id="@+id/displayCurrentCharacterAgility"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_current_agility" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="clip_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/characterIntelligenceText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_intelligence" />
+
+                    <TextView
+                        android:id="@+id/displayCurrentCharacterIntelligence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_current_intelligence" />
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:id="@+id/levelAndSkillScrollView"
+            android:layout_width="244dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="80dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summaryScrollView"
+            app:layout_constraintVertical_bias="0.0">
+
+            <TableLayout
+                android:id="@+id/levelAndSkillTableLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/characterLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_level" />
+
+                    <TextView
+                        android:id="@+id/displayCharacterLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/character_current_level" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/userSkillpoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_skillpoints" />
+
+                    <TextView
+                        android:id="@+id/displayUserSkillPoints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_current_skillpoints" />
+                </TableRow>
+
+            </TableLayout>
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</FrameLayout>
