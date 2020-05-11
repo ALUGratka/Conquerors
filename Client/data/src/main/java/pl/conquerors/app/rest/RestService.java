@@ -2,6 +2,7 @@ package pl.conquerors.app.rest;
 
 import java.util.List;
 
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
@@ -44,6 +45,9 @@ public interface RestService {
 
     @GET("users/{userId}/prizes")
     Call<List<PrizeDateEntity>> getPrizeDate(@Path("userId") int user);
+
+    @GET("users/{userId}/characters")
+    Call<List<CharacterEntity>> getCharacter(@Path("userId") int user);
 
     @GET("/characters/{characterId}/statistic")
     Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);

@@ -12,6 +12,7 @@ import pl.conquerors.app.view.register.RegistrationActivity;
 import pl.conquerors.app.view.settings.SettingsActivity;
 import pl.conquerors.app.view.settings.email.ChangeEmailActivity;
 import pl.conquerors.app.view.settings.password.ChangePasswordActivity;
+import pl.conquerors.app.view.showCharacters.ShowCharactersAcitivity;
 
 public class Navigator {
 
@@ -43,6 +44,10 @@ public class Navigator {
 
     public static void startMyProfile(Context context){
         context.startActivity(MyProfileActivity.getStartingIntents(context));
+    }
+
+    public static void startMyCharacters(Context context){
+        context.startActivity(ShowCharactersAcitivity.getStartingIntents(context));
     }
 
     public static void startSettings(Context context) {
