@@ -3,6 +3,7 @@ package pl.conquerors.app.view.createGame.chooseOpponent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import butterknife.OnClick;
@@ -28,6 +29,8 @@ public class chooseOpponentActivity extends BaseActivity implements chooseOppone
     @Override
     protected void onCreate(Bundle savedInstancesState) {
         super.onCreate(savedInstancesState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_choose_opponent);
 
     }
