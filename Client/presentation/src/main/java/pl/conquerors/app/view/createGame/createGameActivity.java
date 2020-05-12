@@ -55,27 +55,33 @@ public class createGameActivity extends BaseActivity implements createGameView {
     private int value = 0;
     @OnClick(R.id.previousButton)
     public void onLeftButtonClicked(){
-        characters_count = characters.size();
-        TextView txtview = (TextView)findViewById(R.id.characterName);
-        //ImageView imgview = (ImageView)findViewById(R.id.characterView);
-        value--;
-        if(value<0){
-            value=characters_count-1;
+        TextView txtview = (TextView) findViewById(R.id.characterName);
+        try {
+            characters_count = characters.size();
+            //ImageView imgview = (ImageView)findViewById(R.id.characterView);
+            value--;
+            if (value < 0) {
+                value = characters_count-1;
+            }
+            //imgview.setImageResource(images[value]);
+            txtview.setText(characters.get(value).getmNickname());
         }
-        //imgview.setImageResource(images[value]);
-        txtview.setText(characters.get(value).getmNickname());
+        catch(NullPointerException e){txtview.setText("Brak postaci");}
     }
     @OnClick(R.id.nextButton)
     public void onRightButtonClicked(){
-        characters_count = characters.size();
-        TextView txtview = (TextView)findViewById(R.id.characterName);
-        //ImageView imgview = (ImageView)findViewById(R.id.characterView);
-        value++;
-        if(value>characters_count-1){
-            value=0;
+        TextView txtview = (TextView) findViewById(R.id.characterName);
+        try {
+            characters_count = characters.size();
+            //ImageView imgview = (ImageView)findViewById(R.id.characterView);
+            value++;
+            if (value > characters_count - 1) {
+                value = 0;
+            }
+            //imgview.setImageResource(images[value]);
+            txtview.setText(characters.get(value).getmNickname());
         }
-        //imgview.setImageResource(images[value]);
-        txtview.setText(characters.get(value).getmNickname());
+        catch(NullPointerException e){txtview.setText("Brak postaci");}
     }
 
     @OnClick(R.id.backButton)
