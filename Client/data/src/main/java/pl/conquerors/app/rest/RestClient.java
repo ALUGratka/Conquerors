@@ -14,7 +14,7 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 public class RestClient {
 
-    private static final String API_URL = "http://192.168.1.5:8080/";
+    private static final String API_URL = "http://192.168.99.108:8080/";
     private static RestService service;
 
     public static RestService getInstance(){
@@ -32,9 +32,8 @@ public class RestClient {
         final Interceptor cache_interceptor = chain -> {
 
             Request request = chain.request().newBuilder()
-                    .addHeader("Content-Type","application/json")
-                    .addHeader("Content-Length",String.valueOf(100))
-                    .addHeader("Server","Werkzeug/1.0.1 Python/3.8.2")
+                    .addHeader("Content-Type","application/json")/*
+                    .addHeader("Content-Length",String.valueOf(100))*/
                     .addHeader("Connection", "close").build();
             return chain.proceed(request);
         };

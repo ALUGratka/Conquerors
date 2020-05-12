@@ -1,8 +1,5 @@
 package pl.conquerors.app.model.mapper;
 
-import android.os.Build;
-import android.support.annotation.RequiresApi;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +21,11 @@ public class UserEntityMapper {
         return user;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public static List<User> transform (List<UserEntity> userEntities) {
         final List<User> users = new ArrayList<>();
-        userEntities.forEach(userEntitiy -> users.add(transform(userEntitiy)));
+        for(UserEntity userEntity : userEntities){
+            users.add(transform(userEntity));
+        }
         return users;
     }
 }

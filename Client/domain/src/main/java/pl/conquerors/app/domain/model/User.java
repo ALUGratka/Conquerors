@@ -1,8 +1,6 @@
 package pl.conquerors.app.domain.model;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
+public class User {
 
     private long mId;
     private String mNick;

@@ -40,10 +40,13 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
             cancel = true;
         }
         //TODO get_password
-        /*else if (!TextUtils.equals(oldPassword, SharedPreferenceUtil.getUser(mView.getContext()).getmPassword())) {
+
+
+
+        else if (!TextUtils.equals(oldPassword, "test123")){
             mView.showPasswordInvalid();
             cancel = true;
-        }*/
+        }
 
         //check if new password valid
         if(TextUtils.isEmpty(newPassword)){

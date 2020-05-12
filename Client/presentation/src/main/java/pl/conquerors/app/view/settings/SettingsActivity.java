@@ -82,7 +82,10 @@ public class SettingsActivity extends BaseActivity implements SettingsView {
     }
 
     @Override
-    public void showChangePassword() { Navigator.startChangePassword(this); }
+    public void showChangePassword() {
+        mChangeEmail.setBackgroundResource(android.R.color.transparent);
+        Navigator.startChangePassword(this);
+    }
 
     @Override
     public void showRemoveAccount() {
@@ -94,6 +97,7 @@ public class SettingsActivity extends BaseActivity implements SettingsView {
         SharedPreferenceUtil.setLoggedIn(this,false);
         SharedPreferenceUtil.setUserName(this, null);
         Toast.makeText(this, "Account deleted",Toast.LENGTH_SHORT);
+        mRemoveAccount.setBackgroundResource(android.R.color.transparent);
         Navigator.startLoginWhenDeletedAccount(this);
         finish();
     }
@@ -102,6 +106,9 @@ public class SettingsActivity extends BaseActivity implements SettingsView {
     protected void onResume() {
         super.onResume();
         mSettingsPresenter.resume();
+        mChangeEmail.setBackgroundResource(android.R.color.transparent);
+        mRemoveAccount.setBackgroundResource(android.R.color.transparent);
+        mChangePassword.setBackgroundResource(android.R.color.transparent);
     }
 
     @Override

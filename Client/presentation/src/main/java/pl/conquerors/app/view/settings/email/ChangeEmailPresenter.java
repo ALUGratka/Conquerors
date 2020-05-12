@@ -67,6 +67,7 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
 
             User user = SharedPreferenceUtil.getUser(mView.getContext());
             user.setmEmail(email);
+            Log.e("old_user", user.getmPassword());
 
             UserEntity userEntity = new UserEntity(user);
 
@@ -79,8 +80,9 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
                         Log.e("update_user: ", "Code: ".concat(String.valueOf(response.code())).concat("Message: ").concat(response.message()));
                         return;
                     }
-                    User user = UserEntityMapper.transform(response.body());
                     SharedPreferenceUtil.setUser(mView.getContext(),user);
+
+                    Log.e("new_user", user.getmPassword());
 
                     mView.onChangeEmailSucceeded();
                 }
