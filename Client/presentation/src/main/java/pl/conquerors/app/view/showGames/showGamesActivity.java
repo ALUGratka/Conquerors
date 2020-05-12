@@ -3,6 +3,7 @@ package pl.conquerors.app.view.showGames;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -31,6 +32,8 @@ public class showGamesActivity extends BaseActivity implements showGamesView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         setContentView(R.layout.activity_show_games);
         TextView gameId = (TextView)findViewById(R.id.gameIdValue);
         TextView opponent = (TextView)findViewById(R.id.opponentValue);
@@ -39,7 +42,7 @@ public class showGamesActivity extends BaseActivity implements showGamesView {
 
         gameId.setText("1");
         opponent.setText("opponent name");
-        character.setText("Male character");
+        character.setText("wojownik");
         date.setText(String.valueOf(Calendar.getInstance().getTime()));
 
     }
