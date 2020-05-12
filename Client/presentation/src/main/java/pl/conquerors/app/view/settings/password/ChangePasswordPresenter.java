@@ -43,10 +43,10 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
 
 
 
-        else if (!TextUtils.equals(oldPassword, "test123")){
+        /*else if (!TextUtils.equals(oldPassword, "test123")){
             mView.showPasswordInvalid();
             cancel = true;
-        }
+        }*/
 
         //check if new password valid
         if(TextUtils.isEmpty(newPassword)){
