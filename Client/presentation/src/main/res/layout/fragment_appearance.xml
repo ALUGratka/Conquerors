@@ -7,10 +7,12 @@
     tools:context=".view.createCharacter.Fragments.AppearanceFragment">
 
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/appearanceLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -348,5 +350,5 @@
             </LinearLayout>
         </ScrollView>
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </FrameLayout>

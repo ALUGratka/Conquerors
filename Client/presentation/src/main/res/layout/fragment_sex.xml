@@ -8,10 +8,12 @@
     tools:context=".view.createCharacter.Fragments.SexFragment">
 
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/chooseSexLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -113,5 +115,5 @@
 
         </RadioGroup>
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 </FrameLayout>

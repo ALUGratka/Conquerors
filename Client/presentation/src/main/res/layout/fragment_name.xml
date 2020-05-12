@@ -7,10 +7,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.createCharacter.Fragments.NameFragment">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:id="@+id/chooseNicknameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <RelativeLayout
             android:id="@+id/relativeLayout"
@@ -104,6 +106,6 @@
 
         </ScrollView>
 
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </FrameLayout>
