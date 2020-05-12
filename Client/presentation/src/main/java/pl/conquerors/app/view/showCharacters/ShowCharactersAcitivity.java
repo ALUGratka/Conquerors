@@ -16,6 +16,8 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -88,7 +90,26 @@ public class ShowCharactersAcitivity  extends BaseActivity implements ShowCharac
         //TODO: about character
         setContentView(R.layout.activity_statistic);
         TextView nickname = findViewById(R.id.displayCharacterNicknameText);
+        TextView level = (TextView) findViewById(R.id.displayCharacterLevel);
+        TextView strength = (TextView) findViewById(R.id.displayCurrentCharacterStrength);
+        TextView agility = (TextView) findViewById(R.id.displayCurrentCharacterAgility);
+        TextView charisma = (TextView) findViewById(R.id.displayCurrentCharacterCharisma);
+        TextView intelligence = (TextView) findViewById(R.id.displayCurrentCharacterIntelligence);
+        TextView skillpoints = (TextView) findViewById(R.id.displayUserSkillPoints);
+        TextView skillpoints_description = (TextView) findViewById(R.id.userSkillpoints);
+        TextView characterClassText = (TextView) findViewById(R.id.displayCharacterClassText);
+
+        skillpoints.setVisibility(View.INVISIBLE);
+        skillpoints_description.setVisibility(View.INVISIBLE);
         nickname.setText(ch.getmNickname());
+        level.setText(Integer.toString(ch.getmLevel()));
+        strength.setText(Integer.toString(ch.getmStrength()));
+        agility.setText(Integer.toString(ch.getmAgility()));
+        charisma.setText(Integer.toString(ch.getmCharisma()));
+        intelligence.setText(Integer.toString(ch.getmIntelligence()));
+        Character.CharacterClass arg_class = ch.getmCharacterClass();
+        characterClassText.setText(arg_class.toString());
+
     }
     @Override
     public void showLoading() {
