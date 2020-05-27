@@ -18,16 +18,17 @@
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".view.home.HomeActivity"
             android:label="@string/title_activity_home"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.register.RegistrationActivity"
@@ -103,6 +104,11 @@
             android:label="Show games"
             android:screenOrientation="fullSensor">
         </activity>
+
+        <activity android:name=".view.fiends.FriendsActivity"
+            android:label="@string/tittle_activity_friends"
+            android:screenOrientation="fullSensor"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

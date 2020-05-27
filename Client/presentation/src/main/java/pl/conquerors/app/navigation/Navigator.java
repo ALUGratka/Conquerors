@@ -7,6 +7,7 @@ import pl.conquerors.app.view.createCharacter.CreateCharacterActivity;
 import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
 import pl.conquerors.app.view.createGame.createGameActivity;
 import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
+import pl.conquerors.app.view.fiends.FriendsActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
 import pl.conquerors.app.view.profile.my.MyProfileActivity;
@@ -77,5 +78,9 @@ public class Navigator {
     public static void startShowGames(Context context)
     {
         context.startActivity(showGamesActivity.getStartingIntents(context));
+    }
+
+    public static void startFriends(Context context) {
+        context.startActivity(FriendsActivity.getStartingIntent(context));
     }
 }

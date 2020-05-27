@@ -9,4 +9,16 @@
     <!-- Registration screen -->
     <dimen name="registration_rules_margin">4dp</dimen>
 
+    <!-- Default dimensons -->
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_normal_dense">13sp</dimen>
+    <dimen name="font_normal">16sp</dimen>
+    <dimen name="font_big">18sp</dimen>
+    <dimen name="font_huge">20sp</dimen>
+    <dimen name="image_small">20dp</dimen>
+    <dimen name="image_normal">30dp</dimen>
+    <dimen name="image_medium">40dp</dimen>
+    <dimen name="image_big">50dp</dimen>
+    <dimen name="joined_status_size" />
+
 </resources>

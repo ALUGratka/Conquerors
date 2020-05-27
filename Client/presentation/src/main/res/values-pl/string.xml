@@ -11,6 +11,7 @@
     <string name="title_activity_settings">Ustawienia</string>
     <string name="tittle_activity_change_email">Zmień adres e-mail</string>
     <string name="tittle_activity_change_password">Zmień hasło</string>
+    <string name="tittle_activity_friends">Znajomi</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -147,5 +148,11 @@
     <string name="opponent">Przeciwnik</string>
     <string name="date">Data</string>
     <string name="character">Postać</string>
+
+    <!-- Friends -->
+    <string name="friend_level">Poziom</string>
+    <string name="friend_points">Punkty</string>
+    <string name="invite_button">ZAPROŚ</string>
+    <string name="number_of_games">Gry:</string>
 
 </resources>

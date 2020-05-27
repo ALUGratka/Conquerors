@@ -10,6 +10,7 @@
     <string name="title_activity_settings">Settings</string>
     <string name="tittle_activity_change_email">Change email</string>
     <string name="tittle_activity_change_password">Change password</string>
+    <string name="tittle_activity_friends">Friends</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -147,4 +148,10 @@
     <string name="opponent">Opponent</string>
     <string name="date">Date</string>
     <string name="character">Character</string>
+
+    <!-- Friends -->
+    <string name="friend_level">Level</string>
+    <string name="friend_points">Points</string>
+    <string name="invite_button">INVITE</string>
+    <string name="number_of_games">Games:</string>
 </resources>

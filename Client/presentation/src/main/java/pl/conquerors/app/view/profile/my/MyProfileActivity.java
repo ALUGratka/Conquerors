@@ -58,7 +58,7 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
 
     @OnClick(R.id.layout_my_friends)
     protected void showMyFriends() {
-        //TODO show my characters
+        Navigator.startFriends(this);
     }
 
     public static Intent getStartingIntents(Context context) {
