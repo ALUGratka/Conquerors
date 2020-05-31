@@ -105,9 +105,15 @@
             android:screenOrientation="fullSensor">
         </activity>
 
-        <activity android:name=".view.fiends.FriendsActivity"
+        <activity android:name=".view.friends.FriendsActivity"
             android:label="@string/tittle_activity_friends"
-            android:screenOrientation="fullSensor"/>
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.profile.my.MyProfileActivity"/>
+
+        <activity android:name=".view.friends.search.FindFriendActivity"
+            android:label="@string/tittle_activity_find_friend"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.friends.FriendsActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

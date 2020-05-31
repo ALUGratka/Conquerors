@@ -11,6 +11,7 @@
     <string name="tittle_activity_change_email">Change email</string>
     <string name="tittle_activity_change_password">Change password</string>
     <string name="tittle_activity_friends">Friends</string>
+    <string name="tittle_activity_find_friend">Find friend</string>
 
     <!-- Login and Registration -->
     <!-- General -->

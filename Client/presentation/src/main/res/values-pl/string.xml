@@ -12,6 +12,7 @@
     <string name="tittle_activity_change_email">Zmień adres e-mail</string>
     <string name="tittle_activity_change_password">Zmień hasło</string>
     <string name="tittle_activity_friends">Znajomi</string>
+    <string name="tittle_activity_find_friend">Znajdź znajomego</string>
 
     <!-- Login and Registration -->
     <!-- General -->

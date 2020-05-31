@@ -2,7 +2,6 @@ package pl.conquerors.app.rest;
 
 import java.util.List;
 
-import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
@@ -51,5 +50,8 @@ public interface RestService {
 
     @GET("/characters/{characterId}/statistic")
     Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);
+
+    @GET("users/{userId}/friends")
+    Call<List<UserEntity>> getAllFriends(@Path("userId") long user);
 
 }
