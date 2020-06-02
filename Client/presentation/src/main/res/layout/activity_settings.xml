@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_no_borders">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/background"
         android:padding="60dp"
         android:orientation="vertical">
@@ -37,8 +34,7 @@
             android:padding="15dp"
             android:text="@string/settings_action_change_email"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/advent_pro_thin" />
+            android:textStyle="bold" />
 
         <include layout="@layout/divider" />
 
@@ -50,8 +46,7 @@
             android:padding="15dp"
             android:text="@string/settings_action_change_password"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/advent_pro_thin" />
+            android:textStyle="bold" />
 
         <include layout="@layout/divider" />
 
@@ -63,10 +58,8 @@
             android:padding="15dp"
             android:text="@string/settings_action_remove_account"
             android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/advent_pro_thin" />
+            android:textStyle="bold" />
 
         <include layout="@layout/divider" />
     </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+</ScrollView>

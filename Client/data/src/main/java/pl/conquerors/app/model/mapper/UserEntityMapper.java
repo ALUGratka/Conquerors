@@ -12,10 +12,10 @@ public class UserEntityMapper {
         User user = null;
         if(userEntity!=null){
             user = new User();
-            user.setmId(userEntity.getUserId());
-            user.setmNick(userEntity.getUserName());
-            user.setmEmail(userEntity.getEmail());
-            user.setmPassword(userEntity.getPassword());
+            user.setUserId(userEntity.getUserId());
+            user.setUserNick(userEntity.getUserName());
+            user.setUserEmail(userEntity.getEmail());
+            user.setUserPassword(userEntity.getPassword());
             user.setmBorn(userEntity.getBorn());
         }
         return user;

@@ -8,6 +8,7 @@ import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
 import pl.conquerors.app.view.createGame.createGameActivity;
 import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
 import pl.conquerors.app.view.friends.FriendsActivity;
+import pl.conquerors.app.view.friends.profile.FriendProfileActivity;
 import pl.conquerors.app.view.friends.search.FindFriendActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
@@ -87,5 +88,9 @@ public class Navigator {
 
     public static void startFindFriend(Context context) {
         context.startActivity(FindFriendActivity.getStartingIntent(context));
+    }
+
+    public static void startFriendProfile(Context context, final long userId) {
+        context.startActivity(FriendProfileActivity.getStartingIntent(context, userId));
     }
 }

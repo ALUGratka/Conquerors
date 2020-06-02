@@ -25,10 +25,7 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".view.register.RegistrationActivity"
@@ -67,8 +64,6 @@
             android:label="@string/tittle_activity_my_profile"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.home.HomeActivity">
-
-
         </activity>
 
         <activity android:name=".view.settings.SettingsActivity"
@@ -108,12 +103,24 @@
         <activity android:name=".view.friends.FriendsActivity"
             android:label="@string/tittle_activity_friends"
             android:screenOrientation="fullSensor"
-            android:parentActivityName=".view.profile.my.MyProfileActivity"/>
+            android:parentActivityName=".view.profile.my.MyProfileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity android:name=".view.friends.search.FindFriendActivity"
             android:label="@string/tittle_activity_find_friend"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.friends.FriendsActivity"/>
+
+
+        <activity android:name=".view.friends.profile.FriendProfileActivity"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.friends.FriendsActivity">
+
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

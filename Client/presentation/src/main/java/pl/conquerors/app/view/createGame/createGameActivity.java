@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.util.Log;
-import android.view.Window;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.List;
@@ -45,7 +42,7 @@ public class createGameActivity extends BaseActivity implements createGameView {
         setContentView(R.layout.activity_create_game);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getmId();
+        userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getUserId();
         getCharacters(userId);
 
 

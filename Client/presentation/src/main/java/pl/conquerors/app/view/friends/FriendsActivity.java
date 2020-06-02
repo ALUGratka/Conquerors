@@ -83,7 +83,8 @@ public class FriendsActivity extends BaseActivity implements FriendsView {
 
     @Override
     public Long getUserId() {
-        return SharedPreferenceUtil.getUser(this).getmId();
+        //return SharedPreferenceUtil.getUser(this).getmId();
+        return Long.valueOf(1);
     }
 
     @Override

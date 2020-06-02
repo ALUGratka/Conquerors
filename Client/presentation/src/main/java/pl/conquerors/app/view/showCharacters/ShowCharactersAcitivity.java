@@ -4,23 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.TextClock;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
-import butterknife.BindView;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCase;
@@ -42,7 +34,7 @@ public class ShowCharactersAcitivity  extends BaseActivity implements ShowCharac
             CreateCharacterUseCase characterUseCase = new CreateCharacterUseCase(new AndroidComposedScheduler());
 
             mCharacterPresenter = new ShowCharactersPresenter(characterUseCase);
-            userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getmId();
+            userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getUserId();
             mCharacterPresenter.getCharacters(userId);
             mCharacterPresenter.setmView(this);
     }

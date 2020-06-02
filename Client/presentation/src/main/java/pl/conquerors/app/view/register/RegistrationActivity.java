@@ -8,10 +8,13 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.res.ResourcesCompat;
+import android.text.method.PasswordTransformationMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -71,6 +74,9 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
 
     @BindView(R.id.register_button)
     Button mRegisterButton;
+
+    @BindView(R.id.rules_check_box)
+    CheckBox rules;
 
     private RegistrationPresenter mRegistrationPresenter;
 
@@ -241,6 +247,7 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+        setPrivacyStyle();
         final RegistrationUseCase mRegistrationUseCase = new RegistrationUseCase(new AndroidComposedScheduler());
 
         mRegistrationPresenter = new RegistrationPresenter(mRegistrationUseCase);
@@ -299,6 +306,12 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     @OnClick(R.id.register_button)
     public void onRegisterButtonClicked() {
         mRegistrationPresenter.performRegistration();
+    }
+
+    private void setPrivacyStyle() {
+        mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
+        mPasswordConfirmationView.setTransformationMethod(new PasswordTransformationMethod());
+        rules.setTypeface(ResourcesCompat.getFont(this, R.font.pixel_font));
     }
 
 }

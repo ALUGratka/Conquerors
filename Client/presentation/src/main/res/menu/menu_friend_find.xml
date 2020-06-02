@@ -4,10 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.friends.search.FindFriendActivity">
 
-    <item android:id="@+id/action_find_friend"
-        android:icon="@drawable/ic_add_game"
-        android:orderInCategory="101"
-        android:title="@string/menu_item_add_friend"
-        app:showAsAction="never"/>
+    <item
+        android:id="@+id/find_friends"
+        android:icon="@drawable/ic_search"
+        android:title="@string/tittle_activity_find_friend"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="ifRoom" />
 
 </menu>

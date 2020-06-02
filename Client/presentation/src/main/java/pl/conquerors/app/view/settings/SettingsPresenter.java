@@ -13,7 +13,7 @@ public class SettingsPresenter extends BasePresenter<SettingsView> {
 
     public void attemptRemoveAccount(){
         mView.onRemoveAccountSucceeded();
-        Call<String> call = RestClient.getInstance().deleteUser(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail());
+        Call<String> call = RestClient.getInstance().deleteUser(SharedPreferenceUtil.getUser(mView.getContext()).getUserEmail());
 
 
         call.enqueue(new Callback<String>() {

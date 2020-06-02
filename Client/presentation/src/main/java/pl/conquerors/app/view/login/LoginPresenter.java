@@ -63,7 +63,7 @@ public class LoginPresenter extends BasePresenter<LoginView> {
 
                     Log.e("session", "Is logged: ".concat(String.valueOf(SharedPreferenceUtil.getLoggedStatus(mView.getContext()))));
                     Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUserName(mView.getContext()))));
-                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUser(mView.getContext()).getmEmail())));
+                    Log.e("session", " logged: ".concat(String.valueOf(SharedPreferenceUtil.getUser(mView.getContext()).getUserEmail())));
 
                     mView.onLoginSucceeded();
                 }

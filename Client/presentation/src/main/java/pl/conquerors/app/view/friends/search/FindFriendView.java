@@ -11,4 +11,6 @@ public interface FindFriendView extends BaseView {
     void showSearchResult(List<User> result);
 
     void showNoResultsMessage();
+
+    void setContentShown(final boolean visible);
 }

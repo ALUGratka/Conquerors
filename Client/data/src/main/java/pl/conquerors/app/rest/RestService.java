@@ -51,7 +51,42 @@ public interface RestService {
     @GET("/characters/{characterId}/statistic")
     Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);
 
+    @GET("users/{userId}")
+    Call<UserEntity> getFriend(
+            @Path("userId") long userId
+    );
+
     @GET("users/{userId}/friends")
     Call<List<UserEntity>> getAllFriends(@Path("userId") long user);
+
+    @FormUrlEncoded
+    @POST("users")
+    Call<List<UserEntity>> findFriends(
+            @Field("phrase") final String query
+    );
+
+    @FormUrlEncoded
+    @POST("users")
+    Call<Void> addFriend(
+            @Field("userId") final long userId
+    );
+
+    @FormUrlEncoded
+    @POST("users")
+    Call<Void> acceptFriend(
+            @Field("userId") final long userId
+    );
+
+    @FormUrlEncoded
+    @POST("users")
+    Call<Void> deleteFriend(
+            @Field("userId") final long userId
+    );
+
+    @FormUrlEncoded
+    @POST("users")
+    Call<Void> ignoreFriend(
+            @Field("userId") final long userId
+    );
 
 }

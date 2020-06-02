@@ -11,7 +11,6 @@ import pl.conquerors.app.domain.interactor.registration.RegistrationUseCase;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.rest.RestClient;
-import pl.conquerors.app.rest.RestService;
 import pl.conquerors.app.util.DateUtil;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
@@ -104,9 +103,9 @@ class RegistrationPresenter extends BasePresenter<RegistrationView> {
 
             //TODO remove it when API changed
             User user = new User();
-            user.setmEmail(email);
-            user.setmNick(nick);
-            user.setmPassword(password);
+            user.setUserEmail(email);
+            user.setUserNick(nick);
+            user.setUserPassword(password);
             user.setmBorn(born);
 
             SharedPreferenceUtil.setUser(mView.getContext(),user);

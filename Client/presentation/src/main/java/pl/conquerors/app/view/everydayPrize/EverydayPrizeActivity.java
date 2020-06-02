@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
@@ -63,7 +62,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
                 actionBar.setTitle(simpleDateFormat.format(firstDayOfNewMonth));
             }
         });
-        userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getmId();
+        userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getUserId();
         mEverydayPrizePresenter.getEverydayPrize(userId);
     }
 

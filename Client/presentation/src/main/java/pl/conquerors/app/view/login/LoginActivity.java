@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -166,6 +167,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setPrivacyStyle();
+
         mLoginPresenter = new LoginPresenter();
         mLoginPresenter.setmView(this);
 
@@ -185,5 +188,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     protected void onPause() {
         super.onPause();
         mLoginPresenter.pause();
+    }
+
+    private void setPrivacyStyle() {
+        mPasswordView.setTransformationMethod(new PasswordTransformationMethod());
     }
 }

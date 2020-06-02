@@ -52,8 +52,11 @@
     <string name="error_field_required">To pole jest wymagane</string>
     <string name="error_field_length">%1$s powinno mieć minimalne %2$d a maksymalnie %3$d znaków</string>
     <string name="error_date_in_past">Nie można ustawić daty w przeszłości</string>
+    <string name="error_find_friend_no_results">Nie znaleziono użytkownika o podanej nazwie</string>
     <string name="dialog_logout_title">Wyloguj</string>
     <string name="dialog_logout_message">Jesteś pewien, że chcesz się wylogować?</string>
+    <string name="dialog_button_no">Nie</string>
+    <string name="dialog_button_yes">Tak</string>
 
     <!-- Menu Items -->
     <string name="menu_item_events">Rozgrywki</string>
@@ -154,6 +157,26 @@
     <string name="friend_level">Poziom</string>
     <string name="friend_points">Punkty</string>
     <string name="invite_button">ZAPROŚ</string>
+    <string name="invited_button">ZAPROSZONO</string>
     <string name="number_of_games">Gry:</string>
+    <string name="friend_label_add_friend">Dodaj znajomego</string>
+    <string name="friend_label_delete_friend">Usuń znajomego</string>
+    <string name="friend_label_accept_friend">Zaakceptuj zaproszenie</string>
+    <string name="friend_label_reject_friend">Odrzuć zaproszenie</string>
+    <string name="friend_characters">Liczba postaci</string>
+
+    <!-- Friends actions -->
+    <string name="add_friend_title">Dodawanie znajomego</string>
+    <string name="add_friend_message">Jesteś pewien, że chcesz wysłać zaproszenie do znajomych?</string>
+    <string name="added_friend_message">Zaproszenie do znajomych zostało wysłane</string>
+    <string name="delete_friend_title">Usuwanie znajomego</string>
+    <string name="delete_friend_message">Jesteś pewien, że chcesz usunąć znajomego?</string>
+    <string name="deleted_friend_message">Usunięto znajomego</string>
+    <string name="accept_friend_title">Akceptacja zaproszenia</string>
+    <string name="accept_friend_message">Jesteś pewien, że chcesz zaakceptować zaproszenie?</string>
+    <string name="accepted_friend_message">Zaproszenie zostało zaakceptowane</string>
+    <string name="ignore_title">Ignorowanie</string>
+    <string name="ignore_message">Jesteś pewien, że chcesz ignorować użytkownika?</string>
+    <string name="ignored_message">Użytkownik jest ignorowany</string>
 
 </resources>

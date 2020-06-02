@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         tools:ignore="ContentDescription, RtlSymmetry"
-        android:src="@drawable/ic_friends"/>
+        android:src="@drawable/my_profile_message"/>
 
     <LinearLayout
         android:id="@+id/number_of_games_container"
@@ -25,16 +25,18 @@
         android:layout_alignParentRight="true"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/rounded_background"
+        android:background="@drawable/rounded_background_green"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="@string/number_of_games"
             android:textColor="@android:color/white"/>
@@ -43,8 +45,10 @@
             android:id="@+id/number_of_games"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="@string/number_of_games"
             tools:text="1"
@@ -81,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textSize="@dimen/font_normal"
+                android:textSize="@dimen/font_huge"
                 android:textStyle="bold"
                 tools:text="Header text here it is for not too long input because we do not want it to break into multiline text"/>
         </LinearLayout>
@@ -105,7 +109,7 @@
                     android:layout_height="16dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerInside"
-                    android:src="@drawable/ic_friends"/>
+                    android:src="@drawable/my_profile_awards"/>
 
                 <TextView
                     android:layout_width="wrap_content"

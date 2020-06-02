@@ -22,10 +22,10 @@ public class UserEntity {
     private String born;
 
     public UserEntity(User user) {
-        this.userId = (int)user.getmId();
-        this.userName = user.getmNick();
-        this.email = user.getmEmail();
-        this.password = user.getmPassword();
+        this.userId = (int)user.getUserId();
+        this.userName = user.getUserNick();
+        this.email = user.getUserEmail();
+        this.password = user.getUserPassword();
         this.born = user.getmBorn();
     }
 

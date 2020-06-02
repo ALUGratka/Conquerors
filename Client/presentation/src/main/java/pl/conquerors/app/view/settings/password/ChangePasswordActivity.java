@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -63,6 +64,8 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+
+        setPrivacyStyle();
 
         mChangePasswordPresenter = new ChangePasswordPresenter();
         mChangePasswordPresenter.setmView(this);
@@ -145,5 +148,11 @@ public class ChangePasswordActivity extends BaseActivity implements ChangePasswo
     public void onChangePasswordSucceeded() {
         Toast.makeText(this, getString(R.string.change_password_success),Toast.LENGTH_SHORT).show();
         finish();
+    }
+
+    private void setPrivacyStyle() {
+        mCurrentPasswordView.setTransformationMethod(new PasswordTransformationMethod());
+        mNewPasswordView.setTransformationMethod(new PasswordTransformationMethod());
+        mNewPasswordConfirmationView.setTransformationMethod(new PasswordTransformationMethod());
     }
 }

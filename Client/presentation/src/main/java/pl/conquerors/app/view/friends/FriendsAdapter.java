@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -59,8 +58,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     private void setUpItems() {
         User testUser = new User();
-        testUser.setmNick("Tester");
-        testUser.setmId(1);
+        testUser.setUserNick("Tester");
+        testUser.setUserId(1);
 
         friends.add(testUser);
 
@@ -86,7 +85,10 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView numberOfGames;
 
         @OnClick(R.id.item_view)
-        void userSelected() { Navigator.startMyProfile(itemView.getContext()); }
+        void userSelected() {
+            //TODO start friend profile by id
+            Navigator.startFriendProfile(itemView.getContext(), boundUserId);
+        }
 
         private long boundUserId;
 
@@ -98,8 +100,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @Override
         public void bind(final AdapterUser adapterUser) {
             User user = adapterUser.getUser();
-            name.setText(user.getmNick());
-            boundUserId = user.getmId();
+            name.setText(user.getUserNick());
+            boundUserId = user.getUserId();
             numberOfGames.setText("0");
             points.setText("123");
         }
