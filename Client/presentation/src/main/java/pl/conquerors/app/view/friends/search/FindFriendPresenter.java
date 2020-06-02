@@ -21,6 +21,7 @@ public class FindFriendPresenter extends BasePresenter<FindFriendView> {
         User user1 = new User();
         user1.setUserNick("werka");
         user1.setUserId(1);
+        user1.setCanInvite(true);
 
         usersInDatabase.add(user1);
     }
