@@ -1,6 +1,6 @@
 from flask import request, make_response
 from conquerors import app, db, bcrypt
-from conquerors.models import User, Character, LastPrize
+from conquerors.models import User, Character, LastPrize, Enemy, Treasure, GameplayAchievements
 import json
 from datetime import date
 
@@ -59,30 +59,30 @@ def get_user_by_username():
 
 @app.route("/user", methods=['DELETE'])
 def delete_user_by_email():
-        if request.method == 'DELETE':
-            email = request.args.get('email')
+    if request.method == 'DELETE':
+        email = request.args.get('email')
 
-            user = User.query.filter_by(email=email).first()
+        user = User.query.filter_by(email=email).first()
 
-            if user:
-                db.session.delete(user)
-                db.session.commit()
-                
-                message = {
-                    'response' : 'User deleted from db'
-                }
-                response = make_response(json.dumps(message))
-                response.headers['Content-Type'] = 'application/json'
-                response.status_code = 200 # success
-                return response
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            
+            message = {
+                'response' : 'User deleted from db'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
 
-        message = {
-            'response' : 'User with given email not found in db'
-        }
-        response = make_response(json.dumps(message))
-        response.headers['Content-Type'] = 'application/json'
-        response.status_code = 400 # bad request
-        return response
+    message = {
+        'response' : 'User with given email not found in db'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 400 # bad request
+    return response
 
 
 @app.route("/user", methods=['PUT'])
@@ -230,9 +230,7 @@ def create_character():
             db.session.add(character)
             db.session.commit()
             # send response
-            message = {
-                'response' : 'Character created'
-            }
+            message = character.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 201 # created
@@ -244,6 +242,38 @@ def create_character():
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
             return response
+
+    # if any other error occours
+    message = {
+        'response' : 'Error'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 404
+    return response
+
+
+# get list of characters created by user with given userId
+@app.route('/get-characters', methods=['GET'])
+def get_characters():
+    if request.method == 'GET':
+        userId = request.args.get('userId')
+        characters = Character.query.filter_by(userId=int(userId))
+        if characters.length()>0:
+            print(characters)
+            message = []
+            for character in characters:
+                message.append(character.to_dict())
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200
+            return response
+        message = {
+            'response' : 'This user did not created any characters'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        return response
 
     # if any other error occours
     message = {
@@ -340,3 +370,135 @@ def get_character_statistic(characterId):
         response.headers['Content-Type'] = 'application/json'
         response.status_code = 200 # success
         return response
+
+
+@app.route("/enemies", methods=['GET'])
+def get_enemies():
+    if request.method == 'GET': 
+        enemies = Enemy.query.all()
+
+        if enemies.length() > 0:
+            message = []
+            for enemy in enemies:
+                message.append(enemy.to_dict())
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
+
+        message = {
+            'response' : 'No enemies in db'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 400 # bad request
+        return response
+
+
+@app.route("/treasures", methods=['GET'])
+def get_treasures():
+    if request.method == 'GET': 
+        treasures = Treasure.query.all()
+
+        if treasures.length() > 0:
+            message = []
+            for treasure in treasures:
+                message.append(treasure.to_dict())
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
+
+        message = {
+            'response' : 'No treasures in db'
+        }
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 400 # bad request
+        return response
+
+
+@app.route("/gameplay-achievement", methods=['POST', 'PUT'])
+def gameplay_achievement():
+    if request.method == 'POST':
+        data = json.loads(request.data)
+        objectPositionX = data['objectPositionX']
+        objectPositionY = data['objectPositionY']
+        objectId = data['objectId']
+        gameplayId = data['gameplayId']
+        achievedByCharacterId = data['achievedByCharacterId']
+
+        gameplay_achievement = GameplayAchievements(
+            objectPositionX=objectPositionX, objectPositionY=objectPositionY,
+            objectId=objectId, gameplayId=gameplayId, 
+            achievedByCharacterId=achievedByCharacterId)
+
+        print(gameplay_achievement)
+        db.session.add(gameplay_achievement)
+        db.session.commit()
+
+        message = gameplay_achievement.to_dict()
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response
+
+    if request.method == 'PUT':
+        data = json.loads(request.data)
+        id = data['id']
+        objectPositionX = data['objectPositionX']
+        objectPositionY = data['objectPositionY']
+        objectId = data['objectId']
+        gameplayId = data['gameplayId']
+        achievedByCharacterId = data['achievedByCharacterId']
+
+        gameplay_achievement = GameplayAchievements.query.filter_by(id=id).first()
+        gameplay_achievement.objectPositionX = objectPositionX
+        gameplay_achievement.objectPositionY = objectPositionY
+        gameplay_achievement.objectId = objectId
+        gameplay_achievement.gameplayId = gameplayId
+        gameplay_achievement.achievedByCharacterId = achievedByCharacterId
+
+        print(gameplay_achievement)
+
+        db.session.commit()
+
+        message = gameplay_achievement.to_dict()
+        response = make_response(json.dumps(message))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200 # success
+        return response
+
+    message = {
+        'response' : 'Gameplay achievement invalid'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 400 # bad request
+    return response
+
+
+# get gameplay achievements by gameplay ID
+@app.route("/gameplay-achievements", methods=['GET'])
+def gameplay_achievements():
+    if request.method == 'GET':
+        gameplayId = request.args.get('gameplayId')
+        gameplay_achievements = GameplayAchievements.query.filter_by(
+            gameplayId=int(gameplayId)).first()
+        if(gameplay_achievements.length()>0):
+            message = []
+            for achievement in gameplay_achievements:
+                message.append(achievement.to_dict())
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
+
+    message = {
+        'response' : 'Invalid gameplay achievements request'
+    }
+    response = make_response(json.dumps(message))
+    response.headers['Content-Type'] = 'application/json'
+    response.status_code = 400 # bad request
+    return response
+

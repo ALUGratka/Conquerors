@@ -94,6 +94,86 @@ class Character(db.Model):
         }
 
 
+class Treasure(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String(100), unique=False, nullable=False)
+    description = db.Column(db.String(200), unique=False, nullable=False)
+
+    charisma = db.Column(db.Integer, unique=False, nullable=False)
+    intelligence = db.Column(db.Integer, unique=False, nullable=False)
+    agility = db.Column(db.Integer, unique=False, nullable=False)
+    strength = db.Column(db.Integer, unique=False, nullable=False)
+    skillPoints = db.Column(db.Integer, unique=False, nullable=False)
+
+    def __repr__(self):
+        return f"Treasure('{self.id}', '{self.name}', '{self.description}')"
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'name' : self.name,
+            'description' : self.description,
+            'charisma' : self.charisma,
+            'intelligence' : self.intelligence,
+            'agility' : self.agility,
+            'strength' : self.strength,
+            'skillPoints' : self.skillPoints
+        }
+
+
+class Enemy(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    name = db.Column(db.String(100), unique=False, nullable=False)
+    description = db.Column(db.String(200), unique=False, nullable=False)
+
+    charisma = db.Column(db.Integer, unique=False, nullable=False)
+    intelligence = db.Column(db.Integer, unique=False, nullable=False)
+    agility = db.Column(db.Integer, unique=False, nullable=False)
+    strength = db.Column(db.Integer, unique=False, nullable=False)
+
+    def __repr__(self):
+        return f"Enemy('{self.id}', '{self.name}', '{self.description}')"
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'name' : self.name,
+            'description' : self.description,
+            'charisma' : self.charisma,
+            'intelligence' : self.intelligence,
+            'agility' : self.agility,
+            'strength' : self.strength
+        }
+
+
+class GameplayAchievements(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    objectPositionX = db.Column(db.String(100), unique=False, nullable=False)
+    objectPositionY = db.Column(db.String(200), unique=False, nullable=False)
+     # foreign keys
+    objectId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    gameplayId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    achievedByCharacterId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=True)
+
+    def __repr__(self):
+        return f"GameplayAchievements('{self.id}', '{self.objectId}', '{self.gameplayId}', '{self.achievedByCharacterId}')"
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'objectPositionX' : self.objectPositionX,
+            'objectPositionY' : self.objectPositionY,
+            'objectId' : self.objectId,
+            'gameplayId' : self.gameplayId,
+            'achievedByCharacterId' : self.achievedByCharacterId
+        }
+
 
 class LastLoggedIn(db.Model):
 
