@@ -8,7 +8,6 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -22,7 +21,7 @@ public class GameMapCanvas extends View {
     private static int[][] tileMap;
     private static int rows, columns;
     private Drawable box;
-    Paint p;
+    Paint strokePaint, fillPaint;
     Random random;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -30,7 +29,8 @@ public class GameMapCanvas extends View {
         super(context);
         box = getResources().getDrawable(R.mipmap.skarb, null);
         box.mutate().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
-        p = new Paint();
+        strokePaint = new Paint();
+        fillPaint = new Paint();
         random = new Random();
         createTilemap();
     }
@@ -56,6 +56,11 @@ public class GameMapCanvas extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        // stroke
+        strokePaint.setStyle(Paint.Style.STROKE);
+        strokePaint.setColor(Color.BLACK);
+        strokePaint.setStrokeWidth(5);
+
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
 
@@ -64,16 +69,25 @@ public class GameMapCanvas extends View {
 
                 int r  = random.nextInt(10);
                 if(r%10!=1 && r%10!=2) {
-                    p.setColor(Color.GREEN);
-                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, p);
+                    // fill
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.GREEN);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
                 else if(r%10==2) {
-                    p.setColor(Color.RED);
-                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, p);
+                    // fill
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.RED);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
                 else {
                     box.setBounds(pos_i, pos_j, pos_i + TILE_SIZE, pos_j+TILE_SIZE);
                     box.draw(canvas);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                     System.out.println("pos_i:"+pos_i+" pos_j:"+pos_j+" right:"+(pos_i+TILE_SIZE)+" bottom:"+ (pos_j+TILE_SIZE));
                 }
             }
