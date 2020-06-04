@@ -4,9 +4,11 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -27,6 +29,7 @@ public class GameMapCanvas extends View {
     public GameMapCanvas(Context context) {
         super(context);
         box = getResources().getDrawable(R.mipmap.skarb, null);
+        box.mutate().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
         p = new Paint();
         random = new Random();
         createTilemap();
@@ -53,7 +56,6 @@ public class GameMapCanvas extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < columns; j++){
 
@@ -61,8 +63,12 @@ public class GameMapCanvas extends View {
                 int pos_j = TILE_SIZE * j;
 
                 int r  = random.nextInt(10);
-                if(r%10!=1) {
+                if(r%10!=1 && r%10!=2) {
                     p.setColor(Color.GREEN);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, p);
+                }
+                else if(r%10==2) {
+                    p.setColor(Color.RED);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, p);
                 }
                 else {
