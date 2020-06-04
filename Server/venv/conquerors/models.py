@@ -10,7 +10,6 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    skillPoints = db.Column(db.Integer, unique=False, default=0)
     birthDate = db.Column(db.String(10), nullable=False) #day/month/year
     # relations
     characters = db.relationship('Character', backref='user_id', lazy=True)
@@ -25,7 +24,6 @@ class User(db.Model):
             'email' : self.email,
             'username' : self.username,
             'password' : self.password,
-            'skillPoints' : self.skillPoints,
             'birthDate' : self.birthDate
         }
 
@@ -40,6 +38,7 @@ class Character(db.Model):
     intelligence = db.Column(db.Integer, unique=False, nullable=False)
     agility = db.Column(db.Integer, unique=False, nullable=False)
     strength = db.Column(db.Integer, unique=False, nullable=False)
+    skillPoints = db.Column(db.Integer, unique=False, default=0)
 
     nickname = db.Column(db.String(20), unique=False, nullable=False)
     sex = db.Column(db.Integer, unique=False, nullable=False) # 0 - Man, 1 - Woman
@@ -75,7 +74,8 @@ class Character(db.Model):
             'blouse' : self.blouse,
             'pants' : self.pants,
             'shoes' : self.shoes,
-            'userId' : self.userId
+            'userId' : self.userId,
+            'skillPoints' : self.skillPoints
         }
 
     def to_statistic_dict(self):
@@ -150,29 +150,72 @@ class Enemy(db.Model):
         }
 
 
-class GameplayAchievements(db.Model):
+class GameplayEnemiesAchievements(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
 
     objectPositionX = db.Column(db.String(100), unique=False, nullable=False)
     objectPositionY = db.Column(db.String(200), unique=False, nullable=False)
-     # foreign keys
-    objectId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-    gameplayId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
-    achievedByCharacterId = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=True)
+    # foreign keys
+    enemyId = db.Column(db.Integer, db.ForeignKey('enemy.id'), nullable=True)
+    gameplayId = db.Column(db.Integer, db.ForeignKey('gameplay.id'), nullable=False)
+    defeatedByCharacterId = db.Column(db.Integer, db.ForeignKey('character.id'), default=0, nullable=True)
 
     def __repr__(self):
-        return f"GameplayAchievements('{self.id}', '{self.objectId}', '{self.gameplayId}', '{self.achievedByCharacterId}')"
+        return f"GameplayEnemiesAchievements('{self.id}', '{self.enemyId}', '{self.gameplayId}', '{self.defeatedByCharacterId}')"
 
     def to_dict(self):
         return {
             'id' : self.id,
             'objectPositionX' : self.objectPositionX,
             'objectPositionY' : self.objectPositionY,
-            'objectId' : self.objectId,
+            'enemyId' : self.enemyId,
             'gameplayId' : self.gameplayId,
-            'achievedByCharacterId' : self.achievedByCharacterId
+            'defeatedByCharacterId' : self.defeatedByCharacterId
         }
+
+
+class GameplayTreasuresAchievements(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    objectPositionX = db.Column(db.String(100), unique=False, nullable=False)
+    objectPositionY = db.Column(db.String(200), unique=False, nullable=False)
+    # foreign keys
+    treasureId = db.Column(db.Integer, db.ForeignKey('treasure.id'), nullable=True)
+    gameplayId = db.Column(db.Integer, db.ForeignKey('gameplay.id'), nullable=False)
+    obtainedByCharacterId = db.Column(db.Integer, db.ForeignKey('character.id'), default=0, nullable=True)
+
+    def __repr__(self):
+        return f"GameplayTreasuresAchievements('{self.id}', '{self.objectId}', '{self.gameplayId}', '{self.achievedByCharacterId}')"
+
+    def to_dict(self):
+        return {
+            'id' : self.id,
+            'objectPositionX' : self.objectPositionX,
+            'objectPositionY' : self.objectPositionY,
+            'treasureId' : self.treasureId,
+            'gameplayId' : self.gameplayId,
+            'obtainedByCharacterId' : self.obtainedByCharacterId
+        }
+
+
+class Gameplay(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    # foreign keys
+    player1id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    player2id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Gameplay('{self.id}', '{self.player1id}', '{self.player2id}')"
+
+    def to_dict(self):
+        return {
+            'player1id' : self.player1id,
+            'player2id' : self.player2id
+        }
+
 
 
 class LastLoggedIn(db.Model):
