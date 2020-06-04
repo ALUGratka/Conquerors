@@ -55,8 +55,53 @@ public class GameMapCanvas extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        //createNewMap(canvas);
+        loadMap(canvas);
+    }
 
-        // stroke
+    protected void loadMap(Canvas canvas)
+    {
+        // TODO: get list of x,y
+        strokePaint.setStyle(Paint.Style.STROKE);
+        strokePaint.setColor(Color.BLACK);
+        strokePaint.setStrokeWidth(5);
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+
+                int pos_i = TILE_SIZE * i;
+                int pos_j = TILE_SIZE * j;
+
+                int r = random.nextInt(10);
+                if (r % 10 != 1) {
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.GREEN);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
+                } else {
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.RED);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
+                }
+            }
+        }
+        int x = 5;
+        int y = 7;
+        box.setBounds(x*TILE_SIZE, y*TILE_SIZE, x*TILE_SIZE + TILE_SIZE, y*TILE_SIZE+TILE_SIZE);
+        box.draw(canvas);
+        canvas.drawRect(x*TILE_SIZE, y*TILE_SIZE, x*TILE_SIZE + TILE_SIZE, y*TILE_SIZE+TILE_SIZE, strokePaint);
+
+        x = 9;
+        y = 1;
+        box.setBounds(x*TILE_SIZE, y*TILE_SIZE, x*TILE_SIZE + TILE_SIZE, y*TILE_SIZE+TILE_SIZE);
+        box.draw(canvas);
+        canvas.drawRect(x*TILE_SIZE, y*TILE_SIZE, x*TILE_SIZE + TILE_SIZE, y*TILE_SIZE+TILE_SIZE, strokePaint);
+    }
+    protected void createNewMap(Canvas canvas)
+    {
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setColor(Color.BLACK);
         strokePaint.setStrokeWidth(5);
@@ -69,7 +114,6 @@ public class GameMapCanvas extends View {
 
                 int r  = random.nextInt(10);
                 if(r%10!=1 && r%10!=2) {
-                    // fill
                     fillPaint.setStyle(Paint.Style.FILL);
                     fillPaint.setColor(Color.GREEN);
 
@@ -77,7 +121,6 @@ public class GameMapCanvas extends View {
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
                 else if(r%10==2) {
-                    // fill
                     fillPaint.setStyle(Paint.Style.FILL);
                     fillPaint.setColor(Color.RED);
 
@@ -85,6 +128,7 @@ public class GameMapCanvas extends View {
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
                 else {
+                    //TODO: send i,j to database
                     box.setBounds(pos_i, pos_j, pos_i + TILE_SIZE, pos_j+TILE_SIZE);
                     box.draw(canvas);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
@@ -94,3 +138,5 @@ public class GameMapCanvas extends View {
         }
     }
 }
+
+
