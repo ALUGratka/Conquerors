@@ -99,10 +99,16 @@
             android:screenOrientation="fullSensor">
         </activity>
 
+        <activity android:name=".view.gameMap.GameMapActivity"
+            android:label="Map"
+            android:screenOrientation="fullSensor">
+        </activity>
+
         <activity android:name=".view.showGames.showGamesActivity"
             android:label="Show games"
             android:screenOrientation="fullSensor">
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
