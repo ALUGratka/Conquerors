@@ -5,7 +5,9 @@ import java.util.List;
 import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
+import pl.conquerors.app.model.EnemiesAchievementEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
+import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.model.UserEntity;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -37,11 +39,27 @@ public interface RestService {
     Call<UserEntity> updateUser(@Query("username") String username,
                                 @Body UserEntity userEntity);
 
+    @PUT("gameplay-treasures-achievement")
+    Call<TreasureAchievementEntity> updateTreasuresAchievement
+            (@Body TreasureAchievementEntity treasureAchievementEntity);
+
+    @PUT("gameplay-enemies-achievement")
+    Call<EnemiesAchievementEntity> updateEnemiesAchievement
+            (@Body EnemiesAchievementEntity enemiesAchievementEntity);
+
     @POST("create-character")
     Call<CharacterEntity> createCharacter(@Body CharacterEntity characterEntity);
 
     @POST("prize")
     Call<PrizeDateEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
+
+    @POST("gameplay-treasures-achievement")
+    Call<TreasureAchievementEntity> createTreasuresAchievement
+            (@Body TreasureAchievementEntity treasureAchievementEntity);
+
+    @POST("gameplay-enemies-achievement")
+    Call<EnemiesAchievementEntity> createEnemiesAchievement
+            (@Body EnemiesAchievementEntity enemiesAchievementEntity);
 
     @GET("users/{userId}/prizes")
     Call<List<PrizeDateEntity>> getPrizeDate(@Path("userId") int user);
@@ -52,4 +70,9 @@ public interface RestService {
     @GET("/characters/{characterId}/statistic")
     Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);
 
+    @GET("/gameplay-treasures-achievement")
+    Call<TreasureAchievementEntity> getTreasuresAchievement(@Query("gamePlayId") int gamePlayId);
+
+    @GET("/gameplay-enemies-achievement")
+    Call<EnemiesAchievementEntity> getEnemiesAchievement(@Query("gamePlayId") int gamePlayId);
 }
