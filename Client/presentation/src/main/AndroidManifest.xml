@@ -18,10 +18,10 @@
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-           <!-- <intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter> -->
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.home.HomeActivity"
@@ -108,10 +108,6 @@
         <activity android:name=".view.gameplay.GameActivity"
             android:label="Gameplay"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".view.showGames.showGamesActivity"
             android:label="Show games"
