@@ -2,13 +2,14 @@ package pl.conquerors.app.view.friends.profile;
 
 import android.util.Log;
 
-import java.util.ArrayList;
-
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.domain.model.UserRelationship;
 import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.UserRelationshipEntity;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
+import pl.conquerors.app.model.mapper.UserRelationshipMapper;
 import pl.conquerors.app.rest.RestClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +17,9 @@ import retrofit2.Response;
 
 public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
-    public FriendProfilePresenter() { }
+    UserRelationship userRelationship = new UserRelationship();
+
+    FriendProfilePresenter() { }
 
     @Override
     public void resume() {
@@ -25,39 +28,23 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
     }
 
     public void loadData() {
-        final Long userId = mView.getUserId();
+        final Long userId = mView.getUser().getUserId();
         Log.i("userID", String.valueOf(userId));
         if(userId!=null){
-            showProfile(userId);
+            showProfile();
+            getUserActions(mView.getUser());
         }
     }
 
-    private void showProfile(final Long userId) {
+    private void showProfile() {
         mView.showLoading();
 
-        User user = new User();
-        user.setUserId(userId);
-        user.setUserNick("Maciej");
-        user.setUserPoints("1234");
-        user.setCanInvite(false);
-        user.setCanAccept(true);
-        user.setCanRemove(false);
-        user.setCanIgnore(true);
-        user.setCharacters(new ArrayList<>());
-
-        mView.setupActionButton(user);
-        mView.setCurrentUserId(user.getUserId());
-        mView.setProfileActions(shouldShowActions(user));
-        mView.showProfileDetails(user);
-
-
-        /*Call<UserEntity> call = RestClient.getInstance().getFriend(userId);
+        Call<UserEntity> call = RestClient.getInstance().getFriend(mView.getUser().getUserId());
         call.enqueue(new Callback<UserEntity>() {
             @Override
             public void onResponse(Call<UserEntity> call, Response<UserEntity> response) {
                 User user = UserEntityMapper.transform(response.body());
-                mView.setCurrentUserId(user.getUserId());
-                mView.setProfileActions(shouldShowActions(user));
+                mView.setUser(user);
                 mView.showProfileDetails(user);
             }
 
@@ -65,38 +52,74 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onFailure(Call<UserEntity> call, Throwable t) {
                 handleError(t);
             }
-        });*/
+        });
 
+    }
+
+    private void getUserActions(final User user) {
+        Call<UserRelationshipEntity> call = RestClient.getInstance().checkUsersRelationship(mView.getCurrentUserId(), user.getUserId());
+
+        call.enqueue(new Callback<UserRelationshipEntity>() {
+            @Override
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
+            }
+
+            @Override
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
+
+            }
+        });
     }
 
     void attemptToAddFriend() {
         mView.showLoading();
-        Call<Void> call = RestClient.getInstance().addFriend(mView.getUserId());
-        call.enqueue(new Callback<Void>() {
+
+        final UserRelationshipEntity userRelationshipEntity = new UserRelationshipEntity();
+
+        userRelationshipEntity.setUser1Id(mView.getCurrentUserId());
+        userRelationshipEntity.setUser2Id((int)mView.getUser().getUserId());
+        userRelationshipEntity.setCanInvite(false);
+        userRelationshipEntity.setCanDelete(false);
+        userRelationshipEntity.setCanAccept(false);
+        userRelationshipEntity.setCanReject(false);
+        userRelationshipEntity.setCanUninvit(true);
+
+        Call<UserRelationshipEntity> call = RestClient.getInstance().addFriend(userRelationshipEntity);
+        call.enqueue(new Callback<UserRelationshipEntity>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                mView.onActionComplete(mView.getContext().getString(R.string.add_friend_title), getString(R.string.added_friend_message));
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                handleError(t);
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
+
             }
         });
+
     }
 
     void attemptToDeleteFriend() {
         mView.showLoading();
 
-        Call<Void> call = RestClient.getInstance().deleteFriend(mView.getUserId());
-        call.enqueue(new Callback<Void>() {
+        final UserRelationshipEntity userRelationshipEntity = new UserRelationshipEntity();
+
+        userRelationshipEntity.setUser1Id(mView.getCurrentUserId());
+        userRelationshipEntity.setUser2Id((int)mView.getUser().getUserId());
+
+        Call<UserRelationshipEntity> call = RestClient.getInstance().deleteFriend(userRelationshipEntity);
+        call.enqueue(new Callback<UserRelationshipEntity>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                mView.onActionComplete(getString(R.string.delete_friend_title), getString(R.string.deleted_friend_message));
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
 
             }
         });
@@ -105,15 +128,21 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
     void attemptToAcceptFriend() {
         mView.showLoading();
 
-        Call<Void> call = RestClient.getInstance().acceptFriend(mView.getUserId());
-        call.enqueue(new Callback<Void>() {
+        final UserRelationshipEntity userRelationshipEntity = new UserRelationshipEntity();
+
+        userRelationshipEntity.setUser1Id(mView.getCurrentUserId());
+        userRelationshipEntity.setUser2Id((int)mView.getUser().getUserId());
+
+        Call<UserRelationshipEntity> call = RestClient.getInstance().acceptFriend(userRelationshipEntity);
+        call.enqueue(new Callback<UserRelationshipEntity>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                mView.onActionComplete(getString(R.string.accept_friend_title), getString(R.string.accepted_friend_message));
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
 
             }
         });
@@ -122,26 +151,51 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
     void attemptToIgnoreFriend() {
         mView.showLoading();
 
-        Call<Void> call = RestClient.getInstance().ignoreFriend(mView.getUserId());
-        call.enqueue(new Callback<Void>() {
+        final UserRelationshipEntity userRelationshipEntity = new UserRelationshipEntity();
+
+        userRelationshipEntity.setUser1Id(mView.getCurrentUserId());
+        userRelationshipEntity.setUser2Id((int)mView.getUser().getUserId());
+
+        Call<UserRelationshipEntity> call = RestClient.getInstance().deleteFriend(userRelationshipEntity);
+        call.enqueue(new Callback<UserRelationshipEntity>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                mView.hideLoading();
-                mView.onActionComplete(getString(R.string.ignore_title), getString(R.string.ignored_message));
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
 
             }
         });
     }
 
-    private boolean shouldShowActions(final User user) {
-        return user.canInvite() || user.canIgnore() || user.canRemove() || user.canAccept();
+    void attemptToUnInviteFriend() {
+        mView.showLoading();
+
+        final UserRelationshipEntity userRelationshipEntity = new UserRelationshipEntity();
+
+        userRelationshipEntity.setUser1Id(mView.getCurrentUserId());
+        userRelationshipEntity.setUser2Id((int)mView.getUser().getUserId());
+
+        Call<UserRelationshipEntity> call = RestClient.getInstance().deleteFriend(userRelationshipEntity);
+        call.enqueue(new Callback<UserRelationshipEntity>() {
+            @Override
+            public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
+                UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
+                mView.setupActionButton(userRelationship);
+            }
+
+            @Override
+            public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
+
+            }
+        });
     }
 
     private String getString(final int resId) {
         return mView.getContext().getString(resId);
     }
+
 }

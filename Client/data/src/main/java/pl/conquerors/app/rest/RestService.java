@@ -6,6 +6,7 @@ import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.UserRelationshipEntity;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -56,37 +57,39 @@ public interface RestService {
             @Path("userId") long userId
     );
 
-    @GET("users/{userId}/friends")
-    Call<List<UserEntity>> getAllFriends(@Path("userId") long user);
+    @GET("/getAllFriends")
+    Call<List<UserEntity>> getAllFriends(
+            @Query("userId") final long user);
 
-    @FormUrlEncoded
-    @POST("users")
+    @GET("/getAllInvitations")
+    Call<List<UserEntity>> getAllInvitations(
+            @Query("userId") final long user);
+
+    @GET("/findUsers")
     Call<List<UserEntity>> findFriends(
-            @Field("phrase") final String query
+            @Query("phrase") final String query,
+            @Query("userId") final long userId
     );
 
-    @FormUrlEncoded
-    @POST("users")
-    Call<Void> addFriend(
-            @Field("userId") final long userId
+    @GET("/relationshipStatus")
+    Call<UserRelationshipEntity> checkUsersRelationship(
+            @Query("user1ID") final long user1Id,
+            @Query("user2ID") final long user2Id
     );
 
-    @FormUrlEncoded
-    @POST("users")
-    Call<Void> acceptFriend(
-            @Field("userId") final long userId
+    @PUT("/addFriend")
+    Call<UserRelationshipEntity> addFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
     );
 
-    @FormUrlEncoded
-    @POST("users")
-    Call<Void> deleteFriend(
-            @Field("userId") final long userId
+    @PUT("/deleteFriend")
+    Call<UserRelationshipEntity> deleteFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
     );
 
-    @FormUrlEncoded
-    @POST("users")
-    Call<Void> ignoreFriend(
-            @Field("userId") final long userId
+    @PUT("/acceptFriend")
+    Call<UserRelationshipEntity> acceptFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
     );
 
 }

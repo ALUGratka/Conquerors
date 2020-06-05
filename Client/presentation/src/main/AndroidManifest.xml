@@ -18,7 +18,10 @@
             android:name=".view.splash.SplashActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.Splash">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".view.home.HomeActivity"
@@ -104,16 +107,15 @@
             android:label="@string/tittle_activity_friends"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.profile.my.MyProfileActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".view.friends.search.FindFriendActivity"
             android:label="@string/tittle_activity_find_friend"
             android:screenOrientation="fullSensor"
-            android:parentActivityName=".view.friends.FriendsActivity"/>
+            android:parentActivityName=".view.friends.FriendsActivity">
+
+        </activity>
 
 
         <activity android:name=".view.friends.profile.FriendProfileActivity"

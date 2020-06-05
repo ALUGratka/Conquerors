@@ -8,7 +8,7 @@ public class User {
     private String userNick;
     private String userEmail;
     private String userPassword;
-    private String mBorn;
+    //private String mBorn;
     private String userPoints;
 
     private boolean canInvite;
@@ -19,6 +19,7 @@ public class User {
     private boolean isFriend;
 
     private List<Character>characters;
+    private List<User> friends;
 
     public long getUserId() { return userId; }
 
@@ -36,9 +37,9 @@ public class User {
 
     public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
 
-    public String getmBorn() { return mBorn; }
+    //public String getmBorn() { return mBorn; }
 
-    public void setmBorn(String mBorn) { this.mBorn = mBorn; }
+    //public void setmBorn(String mBorn) { this.mBorn = mBorn; }
 
     public boolean isFriend() {
         return isFriend;

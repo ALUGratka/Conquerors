@@ -9,7 +9,6 @@ public class RegistrationUseCase extends ResultUseCase<Void> {
     private String mNick;
     private String mEmail;
     private String mPassword;
-    private String mBorn;
 
     public RegistrationUseCase(ComposedScheduler scheduler) {
         super(scheduler);
@@ -23,11 +22,10 @@ public class RegistrationUseCase extends ResultUseCase<Void> {
         return null;
     }
 
-    public void setData(final String nick, final String email, final String password,  final String born) {
+    public void setData(final String nick, final String email, final String password) {
         mNick = nick;
         mEmail = email;
         mPassword = password;
-        mBorn = born;
     }
 
     public String getEmail() {return mEmail; }

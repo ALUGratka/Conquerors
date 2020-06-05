@@ -60,12 +60,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     @BindView(R.id.password_confirm_input)
     TextInputLayout mPasswordConfirmationInput;
 
-    @BindView(R.id.born)
-    EditText mBornView;
-
-    @BindView(R.id.born_input)
-    TextInputLayout mBornInput;
-
     @BindView(R.id.login_progress)
     View mProgressView;
 
@@ -96,9 +90,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
 
     @Override
     public String getPasswordConfirmation() { return mPasswordConfirmationView.getText().toString(); }
-
-    @Override
-    public String getBorn() { return mBornView.getText().toString(); }
 
     @Override
     public void setRegistrationButtonEnabled(boolean enabled) { mRegisterButton.setEnabled(enabled); }
@@ -166,17 +157,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     public void hidePasswordConfirmationError() {
         mPasswordConfirmationInput.setError(null);
         mPasswordConfirmationInput.setErrorEnabled(false);
-    }
-
-    @Override
-    public void showBornRequired() {
-        mBornInput.setError(getString(R.string.error_field_required));
-    }
-
-    @Override
-    public void hideBornError() {
-        mBornInput.setError(null);
-        mBornInput.setErrorEnabled(false);
     }
 
     @Override
@@ -270,32 +250,6 @@ public class RegistrationActivity extends BaseActivity implements RegistrationVi
     protected void onResume() {
         super.onResume();
         mRegistrationPresenter.resume();
-    }
-
-    @OnFocusChange(R.id.born)
-    protected void onBornFocused(final View view, final boolean hasFocus){
-        if(hasFocus) {
-            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
-                @Override
-                public void onDateSet(Date date) {
-                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
-                }
-            });
-        }
-    }
-
-    @OnTouch(R.id.born)
-    protected boolean onBornTouch (final View view, final MotionEvent motionEvent) {
-        if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            DialogUtil.showDatePicker(RegistrationActivity.this, new Date(), new DialogUtil.OnDateSetListener() {
-                @Override
-                public void onDateSet(Date date) {
-                    ((TextView)view).setText(DateUtil.getDateDottedString(date));
-                }
-            });
-            return true;
-        }
-        return false;
     }
 
     @OnCheckedChanged(R.id.rules_check_box)

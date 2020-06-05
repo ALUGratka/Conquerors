@@ -3,6 +3,7 @@ package pl.conquerors.app.navigation;
 import android.content.Context;
 import android.content.Intent;
 
+import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.view.createCharacter.CreateCharacterActivity;
 import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
 import pl.conquerors.app.view.createGame.createGameActivity;
@@ -90,7 +91,7 @@ public class Navigator {
         context.startActivity(FindFriendActivity.getStartingIntent(context));
     }
 
-    public static void startFriendProfile(Context context, final long userId) {
-        context.startActivity(FriendProfileActivity.getStartingIntent(context, userId));
+    public static void startFriendProfile(Context context, final User user) {
+        context.startActivity(FriendProfileActivity.getStartingIntent(context, user));
     }
 }

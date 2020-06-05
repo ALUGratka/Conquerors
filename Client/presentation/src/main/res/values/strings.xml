@@ -156,13 +156,13 @@
     <!-- Friends -->
     <string name="friend_level">Level</string>
     <string name="friend_points">Points</string>
-    <string name="invite_button">INVITE</string>
-    <string name="invited_button">INVITED</string>
+    <string name="go_to_profile_button">GO TO PROFILE</string>
     <string name="number_of_games">Games:</string>
     <string name="friend_label_add_friend">Add friend</string>
     <string name="friend_label_delete_friend">Delete friend</string>
     <string name="friend_label_accept_friend">Accept friend</string>
     <string name="friend_label_reject_friend">Reject friend</string>
+    <string name="friend_label_uninvite_friend">Cancel invitation</string>
     <string name="friend_characters">Number of characters</string>
 
     <!-- Friends actions -->
@@ -175,8 +175,15 @@
     <string name="accept_friend_title">Accept invitation</string>
     <string name="accept_friend_message">Are you sure you want to accept invitation?</string>
     <string name="accepted_friend_message">Invitation was accepted</string>
-    <string name="ignore_title">Ignoring</string>
-    <string name="ignore_message">Are you sure you want to ignore this player?</string>
-    <string name="ignored_message">From now on, this player is ignored</string>
+    <string name="ignore_title">Rejecting</string>
+    <string name="ignore_message">Are you sure you want to reject this invitation?</string>
+    <string name="ignored_message">Invitation was rejected</string>
+    <string name="uninvit_title">Uninviting</string>
+    <string name="uninvit_message">Are you sure you want to cancel this invitation?</string>
+    <string name="uninvited_message">Invitation was canceled</string>
+
+    <!-- Invitations -->
+    <string name="invitations_header">Invitations</string>
+
 
 </resources>

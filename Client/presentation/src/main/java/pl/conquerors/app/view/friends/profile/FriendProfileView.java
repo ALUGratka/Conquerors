@@ -2,10 +2,12 @@ package pl.conquerors.app.view.friends.profile;
 
 import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.domain.model.UserRelationship;
 
 public interface FriendProfileView extends BaseView {
 
-    Long getUserId();
+    User getUser();
+    void setUser(User user);
 
     void showProfileDetails(final User user);
 
@@ -13,7 +15,7 @@ public interface FriendProfileView extends BaseView {
 
     void onActionComplete(String title, String message);
 
-    void setCurrentUserId(final long id);
+    Long getCurrentUserId();
 
-    void setupActionButton(final User user);
+    void setupActionButton(final UserRelationship usersRelationship);
 }

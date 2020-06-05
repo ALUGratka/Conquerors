@@ -139,6 +139,17 @@
                 android:paddingRight="30dp"
                 android:text="@string/friend_label_reject_friend" />
 
+            <Button
+                android:id="@+id/uninvite_friend_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:text="@string/friend_label_uninvite_friend"
+                android:visibility="gone"/>
+
         </LinearLayout>
 
         <include layout="@layout/progress_bar" />

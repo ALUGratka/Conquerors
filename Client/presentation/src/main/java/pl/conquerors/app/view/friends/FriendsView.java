@@ -8,6 +8,13 @@ import pl.conquerors.app.domain.model.User;
 public interface FriendsView extends BaseView {
     Long getUserId();
 
-    void showFriends(List<User> friends);
+    void showInvitations(final List<User> invitations);
+
+    void showFriends(final List<User> friends);
+
+    void setInvitationVisible(final boolean visible);
+
+    void setFriendsVisible(final boolean visible);
+
     void handleError(Throwable error);
 }

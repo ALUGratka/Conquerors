@@ -156,18 +156,18 @@
     <!-- Friends -->
     <string name="friend_level">Poziom</string>
     <string name="friend_points">Punkty</string>
-    <string name="invite_button">ZAPROŚ</string>
-    <string name="invited_button">ZAPROSZONO</string>
+    <string name="go_to_profile_button">PRZEJDŹ DO PROFILU</string>
     <string name="number_of_games">Gry:</string>
     <string name="friend_label_add_friend">Dodaj znajomego</string>
     <string name="friend_label_delete_friend">Usuń znajomego</string>
     <string name="friend_label_accept_friend">Zaakceptuj zaproszenie</string>
     <string name="friend_label_reject_friend">Odrzuć zaproszenie</string>
+    <string name="friend_label_uninvite_friend">Anuluj zaproszenie</string>
     <string name="friend_characters">Liczba postaci</string>
 
     <!-- Friends actions -->
     <string name="add_friend_title">Dodawanie znajomego</string>
-    <string name="add_friend_message">Jesteś pewien, że chcesz wysłać zaproszenie do znajomych?</string>
+    <string name="add_friend_message">Jesteś pewien, że chcesz wysłać zaproszenie do tego użytkownika?</string>
     <string name="added_friend_message">Zaproszenie do znajomych zostało wysłane</string>
     <string name="delete_friend_title">Usuwanie znajomego</string>
     <string name="delete_friend_message">Jesteś pewien, że chcesz usunąć znajomego?</string>
@@ -175,8 +175,14 @@
     <string name="accept_friend_title">Akceptacja zaproszenia</string>
     <string name="accept_friend_message">Jesteś pewien, że chcesz zaakceptować zaproszenie?</string>
     <string name="accepted_friend_message">Zaproszenie zostało zaakceptowane</string>
-    <string name="ignore_title">Ignorowanie</string>
-    <string name="ignore_message">Jesteś pewien, że chcesz ignorować użytkownika?</string>
-    <string name="ignored_message">Użytkownik jest ignorowany</string>
+    <string name="ignore_title">Odrzucanie zaproszenia</string>
+    <string name="ignore_message">Jesteś pewien, że chcesz odrzucić zaproszenie do znajomych?</string>
+    <string name="ignored_message">Zaproszenie zostało odrzucone</string>
+    <string name="uninvit_title">Anulowanie zaproszenia</string>
+    <string name="uninvit_message">Jesteś pewien, że chcesz anulować zaproszenie do znajomych?</string>
+    <string name="uninvited_message">Zaproszenie zostało anulowane</string>
+
+    <!-- Invitations -->
+    <string name="invitations_header">Zaproszenia</string>
 
 </resources>

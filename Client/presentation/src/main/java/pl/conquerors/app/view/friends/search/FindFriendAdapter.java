@@ -61,25 +61,14 @@ public class FindFriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         @BindView(R.id.invite)
         View invite;
 
-        @BindView(R.id.joined_status)
-        View friendStatus;
-
         @OnClick(R.id.invite)
         protected void onInviteButtonClick() {
             if(invite.getVisibility()==View.VISIBLE){
-                Navigator.startFriendProfile(itemView.getContext(), userId);
+                Navigator.startFriendProfile(itemView.getContext(), user);
             }
         }
 
-        @OnClick(R.id.joined_status)
-        protected void onStatusButtonClick() {
-            if(friendStatus.getVisibility()==View.VISIBLE){
-                Navigator.startFriendProfile(itemView.getContext(), userId);
-            }
-        }
-
-
-        private long userId;
+        private User user;
 
         public FriendViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,11 +77,9 @@ public class FindFriendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         @Override
         public void bind(User user) {
-            userId = user.getUserId();
+            this.user = user;
             //TODO load image
             name.setText(user.getUserNick());
-            friendStatus.setVisibility(user.canInvite() ? View.GONE : View.VISIBLE);
-            invite.setVisibility(friendStatus.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE);
         }
     }
 }

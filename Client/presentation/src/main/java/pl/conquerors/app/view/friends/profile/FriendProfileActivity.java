@@ -13,11 +13,14 @@ import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.domain.model.UserRelationship;
 import pl.conquerors.app.util.DialogUtil;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class FriendProfileActivity extends BaseActivity implements FriendProfileView {
 
     private static final String USER_ID = FriendProfileActivity.class.getSimpleName() + "_USER_ID";
+    private static User friendUser;
 
     @BindView(R.id.friend_name)
     TextView name;
@@ -40,6 +43,9 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
     @BindView(R.id.reject_friend_button)
     Button rejectFriendButton;
 
+    @BindView(R.id.uninvite_friend_button)
+    Button uninviteFriendButton;
+
     private FriendProfilePresenter profilePresenter;
 
     @OnClick(R.id.add_friend_button)
@@ -60,19 +66,23 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
                 R.string.dialog_button_no, null);
     }
 
-    private boolean actionsVisible = false;
-
-    public static Intent getStartingIntent(Context context, final long userId) {
-        final Intent startingIntent = new Intent(context, FriendProfileActivity.class);
-        startingIntent.putExtra(USER_ID, userId);
-
-        return startingIntent;
-    }
-
     @OnClick(R.id.reject_friend_button)
     protected void onRejectButtonClicked(){
         DialogUtil.showSimpleDialog(this, getString(R.string.ignore_title), getString(R.string.ignore_message), R.string.dialog_button_yes, (dialog, which) -> profilePresenter.attemptToIgnoreFriend(),
                 R.string.dialog_button_no, null);
+    }
+
+    @OnClick(R.id.uninvite_friend_button)
+    protected void onUninviteButtonClicked(){
+        DialogUtil.showSimpleDialog(this, getString(R.string.uninvit_title), getString(R.string.uninvit_message), R.string.dialog_button_yes, (dialog, which) -> profilePresenter.attemptToUnInviteFriend(),
+                R.string.dialog_button_no, null);
+    }
+
+    public static Intent getStartingIntent(Context context, final User user) {
+        final Intent startingIntent = new Intent(context, FriendProfileActivity.class);
+        friendUser = user;
+
+        return startingIntent;
     }
 
     @Override
@@ -106,10 +116,15 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
 
     }
 
+
     @Override
-    public Long getUserId() {
-        final Bundle bundle = getIntent().getExtras();
-        return bundle != null ? bundle.getLong(USER_ID) : null;
+    public User getUser() {
+        return friendUser;
+    }
+
+    @Override
+    public void setUser(User user) {
+        friendUser = user;
     }
 
     @Override
@@ -130,15 +145,18 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
     }
 
     @Override
-    public void setCurrentUserId(long id) {
-
+    public Long getCurrentUserId() {
+        return SharedPreferenceUtil.getUser(this).getUserId();
     }
 
+
+
     @Override
-    public void setupActionButton(final User user) {
-        addFriendButton.setVisibility(user.canInvite() ? View.VISIBLE : View.GONE);
-        deleteFriendButton.setVisibility(user.canRemove() ? View.VISIBLE : View.GONE);
-        acceptFriendButton.setVisibility(user.canAccept() ? View.VISIBLE : View.GONE);
-        rejectFriendButton.setVisibility(user.canIgnore() ? View.VISIBLE : View.GONE);
+    public void setupActionButton(final UserRelationship usersRelationship) {
+        addFriendButton.setVisibility(usersRelationship.getCanInvite() ? View.VISIBLE : View.GONE);
+        deleteFriendButton.setVisibility(usersRelationship.getCanDelete() ? View.VISIBLE : View.GONE);
+        acceptFriendButton.setVisibility(usersRelationship.getCanAccept() ? View.VISIBLE : View.GONE);
+        rejectFriendButton.setVisibility(usersRelationship.getCanReject() ? View.VISIBLE : View.GONE);
+        uninviteFriendButton.setVisibility(usersRelationship.getCanUninvite() ? View.VISIBLE : View.GONE);
     }
 }

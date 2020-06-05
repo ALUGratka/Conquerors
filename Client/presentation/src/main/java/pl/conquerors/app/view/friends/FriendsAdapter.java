@@ -28,7 +28,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, final int viewType) {
         final View view;
         final RecyclerView.ViewHolder holder;
 
@@ -49,7 +49,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return friends.size();
     }
 
-    public void setItems(final List<User> friends) {
+    void setItems(final List<User> friends) {
         this.friends.clear();
         this.friends.addAll(friends);
         setUpItems();
@@ -57,12 +57,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     private void setUpItems() {
-        User testUser = new User();
-        testUser.setUserNick("Tester");
-        testUser.setUserId(1);
-
-        friends.add(testUser);
-
         if(!friends.isEmpty()) {
             for (User user : friends) {
                 mItemsToDisplay.add(new AdapterUser(user));
@@ -87,10 +81,10 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @OnClick(R.id.item_view)
         void userSelected() {
             //TODO start friend profile by id
-            Navigator.startFriendProfile(itemView.getContext(), boundUserId);
+            Navigator.startFriendProfile(itemView.getContext(), boundUser);
         }
 
-        private long boundUserId;
+        private User boundUser;
 
         FriendViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -101,7 +95,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public void bind(final AdapterUser adapterUser) {
             User user = adapterUser.getUser();
             name.setText(user.getUserNick());
-            boundUserId = user.getUserId();
+            boundUser = user;
             numberOfGames.setText("0");
             points.setText("123");
         }

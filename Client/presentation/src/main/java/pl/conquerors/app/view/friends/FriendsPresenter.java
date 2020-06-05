@@ -24,6 +24,7 @@ public class FriendsPresenter extends BasePresenter<FriendsView> {
     private void loadFriendsData() {
         Long userId = mView.getUserId();
         showFriends(userId);
+        loadInvitations();
     }
 
     private void showFriends(final Long userId) {
@@ -33,13 +34,39 @@ public class FriendsPresenter extends BasePresenter<FriendsView> {
         call.enqueue(new Callback<List<UserEntity>>() {
             @Override
             public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
-                List<User> users = UserEntityMapper.transform(response.body());
-                mView.showFriends(users);
+                if(response.body() != null)  {
+                    List<User> users = UserEntityMapper.transform(response.body());
+                    mView.showFriends(users);
+                }
+
             }
 
             @Override
             public void onFailure(Call<List<UserEntity>> call, Throwable t) {
+                handleError(t);
+            }
+        });
+    }
 
+    public void loadInvitations() {
+        mView.showLoading();
+
+        Call<List<UserEntity>> call = RestClient.getInstance().getAllInvitations(mView.getUserId());
+
+        call.enqueue(new Callback<List<UserEntity>>() {
+            @Override
+            public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
+                if(response.body() != null)  {
+                    List<User> users = UserEntityMapper.transform(response.body());
+                    mView.showInvitations(users);
+                    mView.setInvitationVisible(true);
+                }
+                else mView.setInvitationVisible(false);
+            }
+
+            @Override
+            public void onFailure(Call<List<UserEntity>> call, Throwable t) {
+                handleError(t);
             }
         });
     }
