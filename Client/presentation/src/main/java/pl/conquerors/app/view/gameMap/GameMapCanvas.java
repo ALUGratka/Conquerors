@@ -35,6 +35,7 @@ public class GameMapCanvas extends View {
         createTilemap();
     }
 
+
     public void createTilemap(){
         tileMap = new int[30][20];
         rows = tileMap.length;
