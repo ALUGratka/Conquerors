@@ -187,7 +187,7 @@ class GameplayTreasuresAchievements(db.Model):
     obtainedByCharacterId = db.Column(db.Integer, db.ForeignKey('character.id'), default=0, nullable=True)
 
     def __repr__(self):
-        return f"GameplayTreasuresAchievements('{self.id}', '{self.objectId}', '{self.gameplayId}', '{self.achievedByCharacterId}')"
+        return f"GameplayTreasuresAchievements('{self.id}', '{self.treasureId}', '{self.gameplayId}', '{self.obtainedByCharacterId}')"
 
     def to_dict(self):
         return {
@@ -212,10 +212,36 @@ class Gameplay(db.Model):
 
     def to_dict(self):
         return {
+            'id' : self.id,
             'player1id' : self.player1id,
             'player2id' : self.player2id
         }
 
+
+class UserRelationship(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+
+    user1Id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user2Id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    canDelete = db.Column(db.Boolean, nullable=False, default=False)
+    canInvite = db.Column(db.Boolean, nullable=False, default=True)
+    canAccept = db.Column(db.Boolean, nullable=False, default=False)
+    canReject = db.Column(db.Boolean, nullable=False, default=False)
+    canUninvite = db.Column(db.Boolean, nullable=False, default=False)
+
+    def __repr__(self):
+        return f"UserRelationship('{self.user1Id}', '{self.user2Id}')"
+
+    def to_dict(self):
+        return {
+            'user1Id': self.user1Id,
+            'user2Id': self.user2Id,
+            'canDelete': self.canDelete,
+            'canInvite': self.canInvite,
+            'canAccept': self.canAccept,
+            'canReject': self.canReject,
+            'canUninvite': self.canUninvite
+        }
 
 
 class LastLoggedIn(db.Model):

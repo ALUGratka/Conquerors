@@ -96,9 +96,10 @@ def delete_user():
     response = requests.delete(url=URL+endpoint, headers=headers, params=user_params)
     present_response(response)
 
+################################# user1
 
-def create_character1():
-    print('>Create character1:')
+def create_character1_user1():
+    print('>Create character1 for user 1:')
     character = {
         "userId" : 1,
         "level" : 0,
@@ -122,8 +123,8 @@ def create_character1():
     present_response(response)
 
 
-def create_character2():
-    print('>Create character2:')
+def create_character2_user1():
+    print('>Create character2 for user 1:')
     character = {
         "userId" : 1,
         "level" : 0,
@@ -145,6 +146,112 @@ def create_character2():
     endpoint = 'create-character'
     response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(character))
     present_response(response)
+
+
+################################# user2
+
+def create_character1_user2():
+    print('>Create character1 for user 2:')
+    character = {
+        "userId" : 2,
+        "level" : 0,
+        "charisma" : 2,
+        "intelligence": 5,
+        "agility" : 1,
+        "strength":2,
+        "nickname" : "Pierdola1",
+        "sex" : 0,
+        "characterClass" : 3,
+        "hair" : 0,
+        "hat" : 0,
+        "eyeColor" : 0,
+        "blouse" : 0,
+        "pants" : 0,
+        "shoes" : 0
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'create-character'
+    response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(character))
+    present_response(response)
+
+
+def create_character2_user2():
+    print('>Create character2 for user 2:')
+    character = {
+        "userId" : 2,
+        "level" : 0,
+        "charisma" : 2,
+        "intelligence": 2,
+        "agility" : 1,
+        "strength":5,
+        "nickname" : "Pierdola2",
+        "sex" : 0,
+        "characterClass" : 2,
+        "hair" : 0,
+        "hat" : 0,
+        "eyeColor" : 0,
+        "blouse" : 0,
+        "pants" : 0,
+        "shoes" : 0
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'create-character'
+    response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(character))
+    present_response(response)
+
+
+################################# user3
+
+def create_character1_user3():
+    print('>Create character1 for user 3:')
+    character = {
+        "userId" : 3,
+        "level" : 0,
+        "charisma" : 2,
+        "intelligence": 5,
+        "agility" : 1,
+        "strength":2,
+        "nickname" : "CZekoladka1",
+        "sex" : 0,
+        "characterClass" : 3,
+        "hair" : 0,
+        "hat" : 0,
+        "eyeColor" : 0,
+        "blouse" : 0,
+        "pants" : 0,
+        "shoes" : 0
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'create-character'
+    response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(character))
+    present_response(response)
+
+
+def create_character2_user3():
+    print('>Create character2 for user 3:')
+    character = {
+        "userId" : 3,
+        "level" : 0,
+        "charisma" : 2,
+        "intelligence": 2,
+        "agility" : 1,
+        "strength":5,
+        "nickname" : "CZekoladka2",
+        "sex" : 0,
+        "characterClass" : 2,
+        "hair" : 0,
+        "hat" : 0,
+        "eyeColor" : 0,
+        "blouse" : 0,
+        "pants" : 0,
+        "shoes" : 0
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'create-character'
+    response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(character))
+    present_response(response)
+
+################################################
 
 
 def get_characters_list():
@@ -218,7 +325,7 @@ def post_gameplay_23():
 def get_gameplay():
     print('>Get gameplay:')
     gameplay_params = {
-        'id' : 1
+        'id' : 4
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'gameplay'
@@ -241,7 +348,9 @@ def get_gameplays_by_users():
 def put_gameplay():
     print('>Put gameplay:')
     gameplay = {
-        'id':1
+        'id':3,
+        'player1id':2,
+        'player2id':1
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'gameplay'
@@ -252,7 +361,7 @@ def put_gameplay():
 def delete_gameplay():
     print('>Delete gameplay:')
     gameplay = {
-        'id':1
+        'id':4
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'gameplay'
@@ -260,39 +369,86 @@ def delete_gameplay():
     present_response(response) 
 
 
-def post_gameplay_achievement():
-    print('>Post gameplay achievement:')
+def post_gameplay_enemies_achievement():
+    print('>Post gameplay enemies achievement:')
     achievement = {
         'objectPositionX' : 50,
         'objectPositionY' : 50,
-        'objectId' : 3,
-        'gameplayId' : 1,
-        'objectType' : 0    # treasure
+        'enemyId' : 5,
+        'gameplayId' : 1
     }
     headers = {'Content-Type' : 'application/json'}
-    endpoint = 'gameplay-achievement'
+    endpoint = 'gameplay-enemies-achievement'
     response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(achievement))
     present_response(response)
 
 
-def update_gameplay_achievements():
-    print('>Update gameplay achievements:')
+def put_gameplay_enemies_achievement():
+    print('>Put gameplay enemies achievement:')
     achievement = {
-        'id' : 2,
-        'achievedByCharacterId' : 2
+        'id' : 1,
+        'defeatedByCharacterId' : 1
     }
     headers = {'Content-Type' : 'application/json'}
-    endpoint = 'gameplay-achievement'
+    endpoint = 'gameplay-enemies-achievement'
     response = requests.put(url=URL+endpoint, headers=headers, data=json.dumps(achievement))
+    present_response(response)
+
+
+def post_gameplay_treasures_achievement():
+    print('>Post gameplay treasures achievement:')
+    achievement = {
+        'objectPositionX' : 60,
+        'objectPositionY' : 50,
+        'treasureId' : 5,
+        'gameplayId' : 2
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'gameplay-treasures-achievement'
+    response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(achievement))
+    present_response(response)
+
+
+def put_gameplay_treasures_achievement():
+    print('>Put gameplay treasures achievement:')
+    achievement = {
+        'id' : 1,
+        'obtainedByCharacterId' : 2
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'gameplay-treasures-achievement'
+    response = requests.put(url=URL+endpoint, headers=headers, data=json.dumps(achievement))
+    present_response(response)
+
+
+def get_gameplay_treasures_achievement():
+    print('>Get gameplay treasures achievement:')
+    achievement = {
+        'gameplayId' : 2
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'gameplay-treasures-achievement'
+    response = requests.get(url=URL+endpoint, headers=headers, params=achievement)
+    present_response(response)
+
+
+def get_gameplay_enemies_achievement():
+    print('>Get gameplay enemies achievement:')
+    achievement = {
+        'gameplayId' : 1
+    }
+    headers = {'Content-Type' : 'application/json'}
+    endpoint = 'gameplay-enemies-achievement'
+    response = requests.get(url=URL+endpoint, headers=headers, params=achievement)
     present_response(response)
 
 
 if __name__ == '__main__':
     # User operations
 
-    register_user1()
-    register_user2()
-    register_user3()
+    # register_user1()
+    # register_user2()
+    # register_user3()
     
     #login_user()
     #get_user()
@@ -301,8 +457,12 @@ if __name__ == '__main__':
 
     # Character operations
 
-    #create_character1() # id 1
-    #create_character2() # id 2
+    # create_character1_user1()
+    # create_character1_user2()
+    # create_character1_user3() 
+    # create_character2_user1()
+    # create_character2_user2()
+    # create_character2_user3() 
     # nieważne :)
     # get_characters_list()
     # update_character()
@@ -310,18 +470,27 @@ if __name__ == '__main__':
 
     # Enemies and treasures operations
 
-    #get_enemies()
-    #get_treasures()
+    # get_enemies()
+    # get_treasures()
 
     # Gameplay operations
 
+    # post_gameplay_12()
+    # post_gameplay_23()
 
+    #get_gameplay()
+    #get_gameplays_by_users()
+    #put_gameplay()
+    #delete_gameplay()
 
     # Gameplay achievements operations
 
-    post_gameplay_achievement()
-    #put_gameplay_achievement()
+    #post_gameplay_treasures_achievement()
+    #put_gameplay_treasures_achievement()
 
-    
+    # post_gameplay_enemies_achievement()
+    # put_gameplay_enemies_achievement()
 
+    # get_gameplay_enemies_achievement()
+    # get_gameplay_treasures_achievement()
 
