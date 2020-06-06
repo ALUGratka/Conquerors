@@ -94,19 +94,22 @@ public class ShowCharactersAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             Character character = adapterCharacter.getCharacter();
             name.setText(character.getmNickname());
             characterId = character.getmId();
-            characterClass.setText(character.getmCharacterClass().name());
 
             if(character.getmCharacterClass().name().equals("Bard")){
                 characterClassSignatureImage.setImageResource(R.drawable.ic_bard_class);
+                characterClass.setText(itemView.getResources().getString(R.string.radio_bard));
             }
             else if (character.getmCharacterClass().name().equals("Thief")){
                 characterClassSignatureImage.setImageResource(R.drawable.ic_thief_class);
+                characterClass.setText(itemView.getResources().getString(R.string.radio_thief));
             }
             else if (character.getmCharacterClass().name().equals("Warrior")){
                 characterClassSignatureImage.setImageResource(R.drawable.ic_warior_class);
+                characterClass.setText(itemView.getResources().getString(R.string.radio_warrior));
             }
             else if (character.getmCharacterClass().name().equals("Wizard")){
                 characterClassSignatureImage.setImageResource(R.drawable.ic_wizard_class);
+                characterClass.setText(itemView.getResources().getString(R.string.radio_wizard));
             }
             Log.i("class", character.getmCharacterClass().name());
         }
