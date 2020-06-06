@@ -8,7 +8,6 @@ import java.util.Objects;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.model.UserEntity;
-import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.util.Validator;
@@ -66,8 +65,8 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
             //TODO REST API update Email
 
             User user = SharedPreferenceUtil.getUser(mView.getContext());
-            user.setmEmail(email);
-            Log.e("old_user", user.getmPassword());
+            user.setUserEmail(email);
+            Log.e("old_user", user.getUserPassword());
 
             UserEntity userEntity = new UserEntity(user);
 
@@ -82,7 +81,7 @@ public class ChangeEmailPresenter extends BasePresenter<ChangeEmailView> {
                     }
                     SharedPreferenceUtil.setUser(mView.getContext(),user);
 
-                    Log.e("new_user", user.getmPassword());
+                    Log.e("new_user", user.getUserPassword());
 
                     mView.onChangeEmailSucceeded();
                 }

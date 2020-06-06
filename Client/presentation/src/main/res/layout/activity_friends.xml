@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_no_borders"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            tools:ignore="NestedScrolling">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:paddingLeft="30dp"
+                android:paddingTop="60dp"
+                android:paddingRight="30dp"
+                android:paddingBottom="60dp"
+                tools:listitem="@layout/item_friend" />
+
+        </ScrollView>
+
+        <include layout="@layout/divider" />
+
+        <LinearLayout
+            android:id="@+id/invitationLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/theme_transparent_grey"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/invitations_header"
+                android:textSize="@dimen/font_huge" />
+
+            <include layout="@layout/divider" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="NestedScrolling">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="30dp"
+                    tools:listitem="@layout/item_friend_to_invite" />
+
+            </ScrollView>
+        </LinearLayout>
+
+        <include layout="@layout/divider" />
+
+    </LinearLayout>
+</ScrollView>

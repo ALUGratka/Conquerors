@@ -3,10 +3,15 @@ package pl.conquerors.app.navigation;
 import android.content.Context;
 import android.content.Intent;
 
+import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.view.characterStatistics.CharacterStatisticsActivity;
 import pl.conquerors.app.view.createCharacter.CreateCharacterActivity;
 import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
 import pl.conquerors.app.view.createGame.createGameActivity;
 import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
+import pl.conquerors.app.view.friends.FriendsActivity;
+import pl.conquerors.app.view.friends.profile.FriendProfileActivity;
+import pl.conquerors.app.view.friends.search.FindFriendActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
 import pl.conquerors.app.view.profile.my.MyProfileActivity;
@@ -15,7 +20,7 @@ import pl.conquerors.app.view.settings.SettingsActivity;
 import pl.conquerors.app.view.settings.email.ChangeEmailActivity;
 import pl.conquerors.app.view.settings.password.ChangePasswordActivity;
 import pl.conquerors.app.view.showGames.showGamesActivity;
-import pl.conquerors.app.view.showCharacters.ShowCharactersAcitivity;
+import pl.conquerors.app.view.showCharacters.ShowCharactersActivity;
 
 public class Navigator {
 
@@ -50,7 +55,11 @@ public class Navigator {
     }
 
     public static void startMyCharacters(Context context){
-        context.startActivity(ShowCharactersAcitivity.getStartingIntents(context));
+        context.startActivity(ShowCharactersActivity.getStartingIntents(context));
+    }
+
+    public static void startCharacterStatistics(Context context, int characterId) {
+        context.startActivity(CharacterStatisticsActivity.getStartingIntents(context, characterId));
     }
 
     public static void startSettings(Context context) {
@@ -77,5 +86,17 @@ public class Navigator {
     public static void startShowGames(Context context)
     {
         context.startActivity(showGamesActivity.getStartingIntents(context));
+    }
+
+    public static void startFriends(Context context) {
+        context.startActivity(FriendsActivity.getStartingIntent(context));
+    }
+
+    public static void startFindFriend(Context context) {
+        context.startActivity(FindFriendActivity.getStartingIntent(context));
+    }
+
+    public static void startFriendProfile(Context context, final User user) {
+        context.startActivity(FriendProfileActivity.getStartingIntent(context, user));
     }
 }

@@ -2,8 +2,6 @@ package pl.conquerors.app.view.createCharacter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
@@ -18,7 +16,6 @@ import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCase;
-import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
@@ -128,7 +125,7 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
                 break;
             case 4:
                 User currentUser = SharedPreferenceUtil.getUser(this.getContext());
-                int userId = new BigDecimal(currentUser.getmId()).intValueExact();
+                int userId = new BigDecimal(currentUser.getUserId()).intValueExact();
 
                 createCharacterPresenter.setUserId(userId);
 

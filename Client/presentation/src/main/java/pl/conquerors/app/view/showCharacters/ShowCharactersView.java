@@ -6,5 +6,8 @@ import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.domain.model.Character;
 
 public interface ShowCharactersView extends BaseView {
-    public void showCharacters(List<Character> characters);
+
+    void showCharacters(List<Character> characters);
+
+    int getUserId();
 }

@@ -2,13 +2,13 @@ package pl.conquerors.app.rest;
 
 import java.util.List;
 
-import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.model.UserEntity;
+import pl.conquerors.app.model.UserRelationshipEntity;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -75,4 +75,44 @@ public interface RestService {
 
     @GET("/gameplay-enemies-achievement")
     Call<EnemiesAchievementEntity> getEnemiesAchievement(@Query("gamePlayId") int gamePlayId);
+    @GET("users/{userId}")
+    Call<UserEntity> getFriend(
+            @Path("userId") long userId
+    );
+
+    @GET("/getAllFriends")
+    Call<List<UserEntity>> getAllFriends(
+            @Query("userId") final long user);
+
+    @GET("/getAllInvitations")
+    Call<List<UserEntity>> getAllInvitations(
+            @Query("userId") final long user);
+
+    @GET("/findUsers")
+    Call<List<UserEntity>> findFriends(
+            @Query("phrase") final String query,
+            @Query("userId") final long userId
+    );
+
+    @GET("/relationshipStatus")
+    Call<UserRelationshipEntity> checkUsersRelationship(
+            @Query("user1ID") final long user1Id,
+            @Query("user2ID") final long user2Id
+    );
+
+    @PUT("/addFriend")
+    Call<UserRelationshipEntity> addFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
+    );
+
+    @PUT("/deleteFriend")
+    Call<UserRelationshipEntity> deleteFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
+    );
+
+    @PUT("/acceptFriend")
+    Call<UserRelationshipEntity> acceptFriend(
+            @Body UserRelationshipEntity userRelationshipEntity
+    );
+
 }

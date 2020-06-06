@@ -1,30 +1,97 @@
 package pl.conquerors.app.domain.model;
 
+import java.util.List;
+
 public class User {
 
-    private long mId;
-    private String mNick;
-    private String mEmail;
-    private String mPassword;
-    private String mBorn;
+    private long userId;
+    private String userNick;
+    private String userEmail;
+    private String userPassword;
+    //private String mBorn;
+    private String userPoints;
 
-    public long getmId() { return mId; }
+    private boolean canInvite;
+    private boolean canIgnore;
+    private boolean canRemove;
+    private boolean canAccept;
 
-    public void setmId(long mId) { this.mId = mId; }
+    private boolean isFriend;
 
-    public String getmNick() { return mNick; }
+    private List<Character>characters;
+    private List<User> friends;
 
-    public void setmNick(String mNick) { this.mNick = mNick; }
+    public long getUserId() { return userId; }
 
-    public String getmEmail() { return mEmail; }
+    public void setUserId(long userId) { this.userId = userId; }
 
-    public void setmEmail(String mEmail) { this.mEmail = mEmail; }
+    public String getUserNick() { return userNick; }
 
-    public String getmPassword() { return mPassword; }
+    public void setUserNick(String userNick) { this.userNick = userNick; }
 
-    public void setmPassword(String mPassword) { this.mPassword = mPassword; }
+    public String getUserEmail() { return userEmail; }
 
-    public String getmBorn() { return mBorn; }
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
-    public void setmBorn(String mBorn) { this.mBorn = mBorn; }
+    public String getUserPassword() { return userPassword; }
+
+    public void setUserPassword(String userPassword) { this.userPassword = userPassword; }
+
+    //public String getmBorn() { return mBorn; }
+
+    //public void setmBorn(String mBorn) { this.mBorn = mBorn; }
+
+    public boolean isFriend() {
+        return isFriend;
+    }
+
+    public void setFriend(final boolean friend) { isFriend = friend; }
+
+    public String getUserPoints() {
+        return userPoints;
+    }
+
+    public void setUserPoints(String userPoints) {
+        this.userPoints = userPoints;
+    }
+
+    public List<Character> getCharacters() {
+        return characters;
+    }
+
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
+    }
+
+    public boolean canInvite() {
+        return canInvite;
+    }
+
+    public void setCanInvite(boolean canInvite) {
+        this.canInvite = canInvite;
+    }
+
+    public boolean canIgnore() {
+        return canIgnore;
+    }
+
+    public void setCanIgnore(boolean canIgnore) {
+        this.canIgnore = canIgnore;
+    }
+
+    public boolean canRemove() {
+        return canRemove;
+    }
+
+    public void setCanRemove(boolean canRemove) {
+        this.canRemove = canRemove;
+    }
+
+    public boolean canAccept() {
+        return canAccept;
+    }
+
+    public void setCanAccept(boolean canAccept) {
+        this.canAccept = canAccept;
+    }
 }

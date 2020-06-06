@@ -8,7 +8,6 @@ public interface RegistrationView extends BaseView {
     String getEmail();
     String getPassword();
     String getPasswordConfirmation();
-    String getBorn();
 
     void setRegistrationButtonEnabled(boolean enabled);
 
@@ -29,10 +28,6 @@ public interface RegistrationView extends BaseView {
     void showPasswordsDoNotMatch();
     void hidePasswordError();
     void hidePasswordConfirmationError();
-
-    //born
-    void showBornRequired();
-    void hideBornError();
 
     //callback
     void onRegistrationSucceeded(String email);

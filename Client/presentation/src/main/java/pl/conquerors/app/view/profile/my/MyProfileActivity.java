@@ -43,7 +43,7 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
     protected void showMyCharacters() {
         mCharactersLayout.setBackgroundResource(R.color.theme_transparent_grey);
         Navigator.startMyCharacters(this.getContext());
-        //TODO show my characters
+        mCharactersLayout.setBackgroundResource(0);
     }
 
     @OnClick(R.id.layout_my_games)
@@ -58,7 +58,7 @@ public class MyProfileActivity extends BaseActivity implements MyProfileView {
 
     @OnClick(R.id.layout_my_friends)
     protected void showMyFriends() {
-        //TODO show my characters
+        Navigator.startFriends(this);
     }
 
     public static Intent getStartingIntents(Context context) {

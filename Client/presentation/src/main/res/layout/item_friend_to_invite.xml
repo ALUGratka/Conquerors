@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/friend_to_invite_item_view"
+    android:gravity="center_vertical"
+    android:minHeight="56dp"
+    android:paddingEnd="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingStart="16dp">
+
+    <ImageView
+        android:id="@+id/profile_avatar"
+        android:layout_width="@dimen/image_normal"
+        android:layout_height="@dimen/image_normal"
+        tools:ignore="ContentDescription"
+        android:src="@drawable/my_profile_message"/>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingEnd="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingStart="16dp"
+        android:textSize="@dimen/font_huge"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/invite"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@drawable/rounded_background_green"
+        android:gravity="center"
+        android:text="@string/go_to_profile_button"
+        android:textColor="@android:color/white"/>
+
+
+</LinearLayout>

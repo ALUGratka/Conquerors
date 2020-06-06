@@ -107,6 +107,9 @@ public class HomeActivity extends BaseActivity implements HomeView {
     }
 
     @Override
+    public void showMyFriends() { Navigator.startFriends(this); }
+
+    @Override
     public void showMyGames() {Navigator.startShowGames(this);}
 
     @Override

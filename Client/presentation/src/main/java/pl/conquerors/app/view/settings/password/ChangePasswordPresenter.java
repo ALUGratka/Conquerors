@@ -1,6 +1,5 @@
 package pl.conquerors.app.view.settings.password;
 
-import android.icu.lang.UScript;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -75,7 +74,7 @@ public class ChangePasswordPresenter extends BasePresenter<ChangePasswordView> {
         else {
             //TODO REST API update Password
             User user = SharedPreferenceUtil.getUser(mView.getContext());
-            user.setmPassword(newPassword);
+            user.setUserPassword(newPassword);
             UserEntity userEntity = new UserEntity(user);
 
             Call<UserEntity> call = RestClient.getInstance().updateUser(userEntity.getUserName(), userEntity);

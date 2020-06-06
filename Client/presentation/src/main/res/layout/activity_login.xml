@@ -52,7 +52,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/prompt_password"
-                android:inputType="textPassword"
                 android:maxLines="1"
                 android:nextFocusForward="@+id/password_confirm"
                 android:singleLine="true"/>
@@ -61,14 +60,12 @@
 
         <Button
             android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginEnd="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/login_button"
-            android:layout_marginLeft="35dp"
-            android:layout_marginRight="35dp" />
+            android:layout_gravity="center"
+            android:text="@string/action_login"
+            android:background="@drawable/button"/>
 
         <TextView
             android:id="@+id/link_sign_up"
@@ -76,7 +73,7 @@
             android:layout_height="wrap_content"
             android:text="@string/action_not_logged_in"
             android:gravity="center"
-            android:textSize="10dp"/>
+            android:textSize="13sp"/>
 
     </LinearLayout>
 

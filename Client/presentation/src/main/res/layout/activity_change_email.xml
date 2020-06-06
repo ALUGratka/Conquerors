@@ -1,69 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/change_email_form"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_no_borders"
     android:orientation="vertical"
-    android:padding="60dp"
-    android:background="@drawable/background"
     tools:context=".view.settings.email.ChangeEmailActivity">
 
-    <ScrollView
-        android:id="@+id/change_email_form"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@drawable/background"
+        android:orientation="vertical"
+        android:padding="60dp">
 
-        <LinearLayout
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/new_email_input"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_new_email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/email_confirm"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/new_email_confirm_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/new_email_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/prompt_new_email_confirm"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:nextFocusForward="@+id/change_email_button"
+                android:singleLine="true" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/change_email_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:background="@drawable/button"
+            android:text="@string/action_change_email" />
 
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/new_email_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/new_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_new_email"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:nextFocusForward="@+id/email_confirm"
-                    android:singleLine="true"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/new_email_confirm_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/new_email_confirm"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_new_email_confirm"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:nextFocusForward="@+id/change_email_button"
-                    android:singleLine="true"/>
-
-            </android.support.design.widget.TextInputLayout>
-
-            <Button
-                android:id="@+id/change_email_button"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@drawable/change_email_button"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp" />
-
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

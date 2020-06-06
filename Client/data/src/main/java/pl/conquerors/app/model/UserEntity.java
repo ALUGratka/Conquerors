@@ -18,22 +18,17 @@ public class UserEntity {
     @SerializedName("password")
     private String password;
 
-    @SerializedName("birthDate")
-    private String born;
-
     public UserEntity(User user) {
-        this.userId = (int)user.getmId();
-        this.userName = user.getmNick();
-        this.email = user.getmEmail();
-        this.password = user.getmPassword();
-        this.born = user.getmBorn();
+        this.userId = (int)user.getUserId();
+        this.userName = user.getUserNick();
+        this.email = user.getUserEmail();
+        this.password = user.getUserPassword();
     }
 
-    public UserEntity(String email,String userName, String password, String born) {
+    public UserEntity(String email,String userName, String password) {
         this.userName = userName;
         this.email = email;
         this.password = password;
-        this.born = born;
     }
 
     public UserEntity(String userName, String password) {
@@ -66,9 +61,5 @@ public class UserEntity {
 
     public String getPassword() {
         return password;
-    }
-
-    public String getBorn() {
-        return born;
     }
 }

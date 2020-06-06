@@ -9,7 +9,7 @@ public class Character {
     }
 
     public enum CharacterClass {
-        Bard, Warrior, Thief, Wizard
+        Bard, Thief, Warrior, Wizard
     }
 
     public enum Hair {
@@ -176,9 +176,9 @@ public class Character {
         if (mCharacterClass == 0) {
             this.mCharacterClass = CharacterClass.Bard;
         } else if (mCharacterClass == 1) {
-            this.mCharacterClass = CharacterClass.Warrior;
-        } else if (mCharacterClass == 2) {
             this.mCharacterClass = CharacterClass.Thief;
+        } else if (mCharacterClass == 2) {
+            this.mCharacterClass = CharacterClass.Warrior;
         } else if (mCharacterClass == 3) {
             this.mCharacterClass = CharacterClass.Wizard;
         } else {

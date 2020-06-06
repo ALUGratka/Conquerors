@@ -52,22 +52,22 @@
 
         <activity
             android:name=".view.characterStatistics.CharacterStatisticsActivity"
-            android:label="Character Statistics"
-            android:screenOrientation="fullSensor">
+            android:label="@string/tittle_activity_character_statistics"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.showCharacters.ShowCharactersActivity">
         </activity>
 
         <activity
-            android:name=".view.showCharacters.ShowCharactersAcitivity"
-            android:label="Your Characters"
-            android:screenOrientation="fullSensor">
+            android:name=".view.showCharacters.ShowCharactersActivity"
+            android:label="@string/tittle_activity_my_characters"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.profile.my.MyProfileActivity">
         </activity>
 
         <activity android:name=".view.profile.my.MyProfileActivity"
             android:label="@string/tittle_activity_my_profile"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.home.HomeActivity">
-
-
         </activity>
 
         <activity android:name=".view.settings.SettingsActivity"
@@ -112,6 +112,28 @@
         <activity android:name=".view.showGames.showGamesActivity"
             android:label="Show games"
             android:screenOrientation="portrait">
+        </activity>
+
+
+        <activity android:name=".view.friends.FriendsActivity"
+            android:label="@string/tittle_activity_friends"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.profile.my.MyProfileActivity">
+
+        </activity>
+
+        <activity android:name=".view.friends.search.FindFriendActivity"
+            android:label="@string/tittle_activity_find_friend"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.friends.FriendsActivity">
+
+        </activity>
+
+
+        <activity android:name=".view.friends.profile.FriendProfileActivity"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.friends.FriendsActivity">
+
         </activity>
 
         <meta-data
