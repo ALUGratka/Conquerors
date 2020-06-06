@@ -57,7 +57,7 @@ public class chooseOpponentActivity extends BaseActivity implements chooseOppone
 
     protected void createNewMap()
     {
-        int gameId =3;
+        int gameId =1;
         int treasureId, enemyId;
 
         int rows =30;
