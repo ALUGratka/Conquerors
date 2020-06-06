@@ -60,7 +60,12 @@ public class TreasureAchievementEntity {
         this.objectPositionY = objectPositionY;
     }
 
-    public TreasureAchievementEntity(int gamePlayId) {
+    public TreasureAchievementEntity(int gamePlayId, int treasureId, String objectPositionX, String objectPositionY) {
         this.gamePlayId = gamePlayId;
+        this.treasureId = treasureId;
+        this.objectPositionX = objectPositionX;
+        this.objectPositionY = objectPositionY;
     }
+
+    public TreasureAchievementEntity() {}
 }
