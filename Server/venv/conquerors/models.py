@@ -10,7 +10,6 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(20), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    birthDate = db.Column(db.String(10), nullable=False) #day/month/year
     # relations
     characters = db.relationship('Character', backref='user_id', lazy=True)
     lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='last_logged_in', lazy=True)
@@ -23,8 +22,7 @@ class User(db.Model):
             'id' : self.id,
             'email' : self.email,
             'username' : self.username,
-            'password' : self.password,
-            'birthDate' : self.birthDate
+            'password' : self.password
         }
 
 

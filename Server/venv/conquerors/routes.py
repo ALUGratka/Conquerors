@@ -155,7 +155,6 @@ def register():
         email = data['email']
         username = data['username']
         password = data['password']
-        birth_date = data['birthDate']
         hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
         # checking if username taken
         if User.query.filter_by(username=username).first():
@@ -174,8 +173,7 @@ def register():
             response.headers['Content-Type'] = 'application/json'
             return response
         # if not, create new user
-        user = User(username=username, email=email, password=hashed_password,
-         birthDate=birth_date)
+        user = User(username=username, email=email, password=hashed_password)
         print(user)
         db.session.add(user)
         db.session.commit()
@@ -916,12 +914,22 @@ def get_user_friends():
         for friend in friends:
             id = friend.user2Id
             user = User.query.filter_by(id=id).first()
-            usersJson.append(user.to_dict())
+            if user:
+                usersJson.append(user.to_dict())
 
-        response = make_response(json.dumps(usersJson, default=str))
-        response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
-        return response
+        if not usersJson:
+            message = {
+                'response': 'User does not have any friends'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 204
+            return response
+        else:
+            response = make_response(json.dumps(usersJson, default=str))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200 # success
+            return response
 
 
 @app.route("/getAllInvitations", methods=['GET'])
@@ -935,10 +943,20 @@ def get_user_invitations():
         for friend in friends:
             id = friend.user2Id
             user = User.query.filter_by(id=id).first()
-            usersJson.append(user.to_dict())
+            if user:
+                usersJson.append(user.to_dict())
 
-        response = make_response(json.dumps(usersJson, default=str))
-        response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
-        return response
+        if not usersJson:
+            message = {
+                'response': 'User does not have any invitations'
+            }
+            response = make_response(json.dumps(message))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 204
+            return response
+        else:
+            response = make_response(json.dumps(usersJson, default=str))
+            response.headers['Content-Type'] = 'application/json'
+            response.status_code = 200  # success
+            return response
 
