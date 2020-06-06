@@ -53,14 +53,16 @@
 
         <activity
             android:name=".view.characterStatistics.CharacterStatisticsActivity"
-            android:label="Character Statistics"
-            android:screenOrientation="fullSensor">
+            android:label="@string/tittle_activity_character_statistics"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.showCharacters.ShowCharactersActivity">
         </activity>
 
         <activity
-            android:name=".view.showCharacters.ShowCharactersAcitivity"
-            android:label="Your Characters"
-            android:screenOrientation="fullSensor">
+            android:name=".view.showCharacters.ShowCharactersActivity"
+            android:label="@string/tittle_activity_my_characters"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.profile.my.MyProfileActivity">
         </activity>
 
         <activity android:name=".view.profile.my.MyProfileActivity"

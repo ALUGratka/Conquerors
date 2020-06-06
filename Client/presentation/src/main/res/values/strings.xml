@@ -12,6 +12,8 @@
     <string name="tittle_activity_change_password">Change password</string>
     <string name="tittle_activity_friends">Friends</string>
     <string name="tittle_activity_find_friend">Find friend</string>
+    <string name="tittle_activity_character_statistics">Character statistics</string>
+    <string name="tittle_activity_my_characters">My characters</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -118,6 +120,7 @@
     <string name="character_current_level">Current character level</string>
     <string name="user_current_skillpoints">Current skill points</string>
     <string name="character_skills">Skills</string>
+    <string name="go_to_character_statistics">SHOW STATISTICS</string>
 
     <!-- My Profile -->
     <string name="my_profile_my_characters">My characters</string>
@@ -184,6 +187,7 @@
 
     <!-- Invitations -->
     <string name="invitations_header">Invitations</string>
+
 
 
 </resources>

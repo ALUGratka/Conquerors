@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.view.characterStatistics.CharacterStatisticsActivity;
 import pl.conquerors.app.view.createCharacter.CreateCharacterActivity;
 import pl.conquerors.app.view.createGame.chooseOpponent.chooseOpponentActivity;
 import pl.conquerors.app.view.createGame.createGameActivity;
@@ -19,7 +20,7 @@ import pl.conquerors.app.view.settings.SettingsActivity;
 import pl.conquerors.app.view.settings.email.ChangeEmailActivity;
 import pl.conquerors.app.view.settings.password.ChangePasswordActivity;
 import pl.conquerors.app.view.showGames.showGamesActivity;
-import pl.conquerors.app.view.showCharacters.ShowCharactersAcitivity;
+import pl.conquerors.app.view.showCharacters.ShowCharactersActivity;
 
 public class Navigator {
 
@@ -54,7 +55,11 @@ public class Navigator {
     }
 
     public static void startMyCharacters(Context context){
-        context.startActivity(ShowCharactersAcitivity.getStartingIntents(context));
+        context.startActivity(ShowCharactersActivity.getStartingIntents(context));
+    }
+
+    public static void startCharacterStatistics(Context context, int characterId) {
+        context.startActivity(CharacterStatisticsActivity.getStartingIntents(context, characterId));
     }
 
     public static void startSettings(Context context) {

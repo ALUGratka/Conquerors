@@ -13,6 +13,8 @@
     <string name="tittle_activity_change_password">Zmień hasło</string>
     <string name="tittle_activity_friends">Znajomi</string>
     <string name="tittle_activity_find_friend">Znajdź znajomego</string>
+    <string name="tittle_activity_character_statistics">Statystyki postaci</string>
+    <string name="tittle_activity_my_characters">Moje postaci</string>
 
     <!-- Login and Registration -->
     <!-- General -->
@@ -118,6 +120,7 @@
     <string name="character_current_level">Aktualny poziom postaci</string>
     <string name="user_current_skillpoints">Aktualne punkty użytkownika</string>
     <string name="character_skills">Umiejętności</string>
+    <string name="go_to_character_statistics">POKAŻ STATYSTYKI</string>
 
     <!-- My Profile -->
     <string name="my_profile_my_characters">Moje postaci</string>

@@ -21,7 +21,7 @@ import pl.conquerors.app.navigation.Navigator;
 
 public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private final List<Object> mItemsToDisplay = new ArrayList<>();
+    private final List<Object> itemsToDisplay = new ArrayList<>();
     private final List<User> friends = new ArrayList<>();
 
     public FriendsAdapter() { setUpItems();}
@@ -41,7 +41,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, final int position) {
         final CollectionViewHolder recycleHolder = (CollectionViewHolder) viewHolder;
-        recycleHolder.bind(mItemsToDisplay.get(position));
+        recycleHolder.bind(itemsToDisplay.get(position));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private void setUpItems() {
         if(!friends.isEmpty()) {
             for (User user : friends) {
-                mItemsToDisplay.add(new AdapterUser(user));
+                itemsToDisplay.add(new AdapterUser(user));
             }
         }
     }
@@ -97,7 +97,7 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             name.setText(user.getUserNick());
             boundUser = user;
             numberOfGames.setText("0");
-            points.setText("123");
+            points.setText(user.getUserPoints());
         }
     }
 

@@ -19,10 +19,22 @@ import static android.support.constraint.Constraints.TAG;
 import static pl.conquerors.app.model.mapper.CharacterEntityMapper.transform;
 
 public class ShowCharactersPresenter extends BasePresenter<ShowCharactersView> {
+
     CreateCharacterUseCase mUseCase;
 
     public ShowCharactersPresenter(CreateCharacterUseCase useCase) {
         mUseCase = useCase;
+    }
+
+    @Override
+    public void resume() {
+        super.resume();
+        loadCharactersData();
+    }
+
+    private void loadCharactersData() {
+        int userId = mView.getUserId();
+        getCharacters(userId);
     }
 
     public void getCharacters(int userId) {

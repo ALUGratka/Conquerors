@@ -10,6 +10,7 @@ public interface HomeView extends BaseView {
     void showMyGames();
     void showAddGame();
     void showMyProfile();
+    void showMyFriends();
     void showLogout();
     void showSettings();
 

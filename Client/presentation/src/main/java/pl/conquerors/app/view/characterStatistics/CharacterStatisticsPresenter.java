@@ -21,7 +21,7 @@ public class CharacterStatisticsPresenter extends BasePresenter<CharacterStatist
     public CharacterStatisticsPresenter(final CharacterStatisticsUseCase useCase) { mUseCase = useCase; }
 
     public void getCharacterStatistic() {
-        int character = 1;
+        int character = mView.getCharacterId();
         Call<CharacterStatisticsEntity> call = RestClient.getInstance().getCharacterStatistic(character);
 
         call.enqueue(new Callback<CharacterStatisticsEntity>() {

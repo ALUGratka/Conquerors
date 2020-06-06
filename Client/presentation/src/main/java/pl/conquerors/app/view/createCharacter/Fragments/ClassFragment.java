@@ -62,19 +62,19 @@ public class ClassFragment extends BaseFragment {
 
     @OnClick(R.id.radioBard)
     public void onRadioBardClicked() {
-        classImageView.setImageResource(R.drawable.note);
+        classImageView.setImageResource(R.drawable.ic_bard_class);
         SharedPreferenceUtil.setCharacterClass(this.getContext(), 0);
     }
 
     @OnClick(R.id.radioThief)
     public void onRadioThiefClicked() {
-        classImageView.setImageResource(R.drawable.sword);
+        classImageView.setImageResource(R.drawable.ic_thief_class);
         SharedPreferenceUtil.setCharacterClass(this.getContext(), 1);
     }
 
     @OnClick(R.id.radioWarrior)
     public void onRadioWarriorClicked() {
-        classImageView.setImageResource(R.drawable.warrior_shield);
+        classImageView.setImageResource(R.drawable.ic_warior_class);
         SharedPreferenceUtil.setCharacterClass(this.getContext(), 2);
     }
 
