@@ -71,10 +71,10 @@ public interface RestService {
     Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);
 
     @GET("/gameplay-treasures-achievement")
-    Call<TreasureAchievementEntity> getTreasuresAchievement(@Query("gamePlayId") int gamePlayId);
+    Call<List<TreasureAchievementEntity>> getTreasuresAchievement(@Query("gameplayId") int gamePlayId);
 
     @GET("/gameplay-enemies-achievement")
-    Call<EnemiesAchievementEntity> getEnemiesAchievement(@Query("gamePlayId") int gamePlayId);
+    Call<List<EnemiesAchievementEntity>> getEnemiesAchievement(@Query("gameplayId") int gamePlayId);
     @GET("users/{userId}")
     Call<UserEntity> getFriend(
             @Path("userId") long userId

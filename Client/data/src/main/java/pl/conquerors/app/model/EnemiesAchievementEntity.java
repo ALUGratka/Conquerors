@@ -18,6 +18,13 @@ public class EnemiesAchievementEntity {
     @SerializedName("objectPositionY")
     private String  objectPositionY;
 
+    public EnemiesAchievementEntity(int gamePlayId, int enemyId, String objectPositionX, String objectPositionY) {
+        this.gamePlayId = gamePlayId;
+        this.enemyId = enemyId;
+        this.objectPositionX = objectPositionX;
+        this.objectPositionY = objectPositionY;
+    }
+
     public int getGamePlayId() {
         return gamePlayId;
     }
