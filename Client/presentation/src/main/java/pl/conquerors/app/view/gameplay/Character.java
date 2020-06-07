@@ -40,8 +40,21 @@ public class Character implements Object {
         return xy;
     }
 
+    public void clear_position() {
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (overlay[i][j] == 3 || overlay[i][j] == 4) {
+                    overlay[i][j] = 1;
+                }
+            }
+        }
+    }
+
     public void update(Point point) {
-        overlay = tileMap;
-        overlay[point.x][point.y] = 3;
+        //overlay = tileMap;
+        if (overlay[point.x][point.y] == 4) {
+            clear_position();
+            overlay[point.x][point.y] = 3;
+        }
     }
 }
