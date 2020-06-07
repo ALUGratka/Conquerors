@@ -16,7 +16,9 @@ import java.util.List;
 import java.util.Random;
 
 import pl.conquerors.app.R;
+import pl.conquerors.app.domain.model.EnemiesAchievement;
 import pl.conquerors.app.domain.model.TreasureAchievement;
+import pl.conquerors.app.model.EnemiesAchievementEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.rest.RestClient;
 import retrofit2.Call;
@@ -24,7 +26,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.support.constraint.Constraints.TAG;
-import static pl.conquerors.app.model.mapper.TreasureAchievementMapper.transform;
+import pl.conquerors.app.model.mapper.TreasureAchievementMapper;
+import pl.conquerors.app.model.mapper.EnemiesAchievementEntityMapper;
 
 public class Map extends View {
     private final int TILE_SIZE = 100;
@@ -34,6 +37,7 @@ public class Map extends View {
     private Drawable box;
     Paint strokePaint, fillPaint;
     List<TreasureAchievement> treasureAchievements;
+    List<EnemiesAchievement> enemiesAchievements;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public Map(Context context) {
@@ -143,10 +147,19 @@ public class Map extends View {
         {
             int x = Integer.parseInt(treasureAchievement.getmObjectPositionX());
             int y = Integer.parseInt(treasureAchievement.getmObjectPositionY());
-
+            int treasureId = treasureAchievement.getmTreasureId();
+            overlay[x][y] = 10 + treasureId;
             box.setBounds(x * TILE_SIZE, y * TILE_SIZE, x * TILE_SIZE + TILE_SIZE, y * TILE_SIZE + TILE_SIZE);
             box.draw(canvas);
             canvas.drawRect(x * TILE_SIZE, y * TILE_SIZE, x * TILE_SIZE + TILE_SIZE, y * TILE_SIZE + TILE_SIZE, strokePaint);
+        }
+
+        for(EnemiesAchievement enemiesAchievement:enemiesAchievements)
+        {
+            int x = Integer.parseInt(enemiesAchievement.getmObjectPositionX());
+            int y = Integer.parseInt(enemiesAchievement.getmObjectPositionY());
+            int enemyId = enemiesAchievement.getmEnemyId();
+            overlay[x][y] = 30 + enemyId;
         }
     }
 
@@ -162,11 +175,28 @@ public class Map extends View {
             @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<List<TreasureAchievementEntity>> call, Response<List<TreasureAchievementEntity>> response) {
-                treasureAchievements = transform(response.body());
+                treasureAchievements = TreasureAchievementMapper.transform(response.body());
             }
             @Override
             public void onFailure(Call<List<TreasureAchievementEntity>> call, Throwable throwable) {
                 treasureAchievements = new ArrayList<TreasureAchievement>();
+                Log.e(TAG, throwable.toString());
+            }
+        });
+    }
+
+    public void getEnemiesAchievement(int gameId) {
+        Call<List<EnemiesAchievementEntity>> call = RestClient.getInstance().getEnemiesAchievement(gameId);
+
+        call.enqueue(new Callback<List<EnemiesAchievementEntity>>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<List<EnemiesAchievementEntity>> call, Response<List<EnemiesAchievementEntity>> response) {
+                enemiesAchievements = EnemiesAchievementEntityMapper.transform(response.body());
+            }
+            @Override
+            public void onFailure(Call<List<EnemiesAchievementEntity>> call, Throwable throwable) {
+                enemiesAchievements = new ArrayList<EnemiesAchievement>();
                 Log.e(TAG, throwable.toString());
             }
         });
