@@ -5,6 +5,8 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
+import java.lang.Math.*;
+
 import pl.conquerors.app.view.gameplay.Map;
 
 import static pl.conquerors.app.view.gameplay.Map.tileMap;
@@ -51,10 +53,45 @@ public class Character implements Object {
     }
 
     public void update(Point point) {
-        //overlay = tileMap;
+        int[] xy = new int[2];
+
+        for (int i = 0; i < 30; i++) {
+            for (int j = 0; j < 20; j++) {
+                if (overlay[i][j] == 3) {
+                    xy[0] = i;
+                    xy[1] = j;
+                }
+            }
+        }
+
+        int dis_x = Math.abs(xy[0] - point.x);
+        int dis_y = Math.abs(xy[1] - point.y);
+
+        int distance = dis_x + dis_y;
+
         if (overlay[point.x][point.y] == 4) {
             clear_position();
             overlay[point.x][point.y] = 3;
         }
+        else if (overlay[point.x][point.y] > 5 && overlay[point.x][point.y] < 30 && distance == 1) {
+            //overlay[point.x][point.y] = 31; -------jak sie najdzie na skrzynke to niebieskie
+            get_treasure();
+        }
+        else if (overlay[point.x][point.y] > 30 && distance == 1) {
+            //overlay[point.x][point.y] = 31; -------jak sie najdzie na skrzynke to niebieskie
+            begin_fight();
+            System.out.println("duża dupa");
+        }
+
     }
+
+    public void get_treasure(){
+
+    }
+
+    public void begin_fight(){
+
+    }
+
+
 }

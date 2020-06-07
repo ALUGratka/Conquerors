@@ -97,31 +97,30 @@ public class Map extends View {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 if (overlay[i][j] == 3) {
-
-                    if (overlay[i + 1][j + 1] != 0)
+                    if (overlay[i + 1][j + 1] != 0 && overlay[i + 1][j + 1] < 5)
                         if (!(overlay[i][j + 1] == 0 && overlay[i + 1][j] == 0))
                             overlay[i + 1][j + 1] = 4;
 
-                    if (overlay[i + 1][j - 1] != 0)
+                    if (overlay[i + 1][j - 1] != 0 && overlay[i + 1][j - 1] < 5)
                         if (!(overlay[i][j - 1] == 0 && overlay[i + 1][j] == 0))
                             overlay[i + 1][j - 1] = 4;
 
-                    if (overlay[i - 1][j + 1] != 0)
+                    if (overlay[i - 1][j + 1] != 0 && overlay[i - 1][j + 1] < 5)
                         if (!(overlay[i - 1][j] == 0 && overlay[i][j + 1] == 0))
                             overlay[i - 1][j + 1] = 4;
 
-                    if (overlay[i - 1][j - 1] != 0)
+                    if (overlay[i - 1][j - 1] != 0 && overlay[i - 1][j - 1] < 5)
                         if (!(overlay[i][j - 1] == 0 && overlay[i - 1][j] == 0))
                             overlay[i - 1][j - 1] = 4;
 
-                    if (overlay[i][j + 1] != 0)
+                    if (overlay[i][j + 1] != 0 && overlay[i][j + 1] < 5)
                         overlay[i][j + 1] = 4;
-                    if (overlay[i][j - 1] != 0)
+                    if (overlay[i][j - 1] != 0 && overlay[i][j - 1] < 5)
                         overlay[i][j - 1] = 4;
 
-                    if (overlay[i + 1][j] != 0)
+                    if (overlay[i + 1][j] != 0 && overlay[i + 1][j] < 5)
                         overlay[i + 1][j] = 4;
-                    if (overlay[i - 1][j] != 0)
+                    if (overlay[i - 1][j] != 0 && overlay[i - 1][j] < 5)
                         overlay[i - 1][j] = 4;
 
                 }
