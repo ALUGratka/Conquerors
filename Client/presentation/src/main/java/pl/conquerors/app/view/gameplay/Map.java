@@ -67,6 +67,7 @@ public class Map extends View {
             }
         }
         overlay = tileMap;
+        overlay[2][15] = 3;
     }
 
     public void makeTreasures()
