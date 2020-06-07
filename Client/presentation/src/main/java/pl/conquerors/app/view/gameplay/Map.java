@@ -47,7 +47,8 @@ public class Map extends View {
         fillPaint = new Paint();
         strokePaint = new Paint();
         create_map();
-
+        getTreasureAchievement(1);
+        getEnemiesAchievement(1);
     }
 
     public void create_map() {
@@ -66,8 +67,30 @@ public class Map extends View {
             }
         }
         overlay = tileMap;
-        getTreasureAchievement(1);
     }
+
+    public void makeTreasures()
+    {
+        for(TreasureAchievement treasureAchievement:treasureAchievements)
+        {
+            int x = Integer.parseInt(treasureAchievement.getmObjectPositionX());
+            int y = Integer.parseInt(treasureAchievement.getmObjectPositionY());
+            int treasureId = treasureAchievement.getmTreasureId();
+            overlay[x][y] = 10 + treasureId;
+        }
+    }
+
+    public void makeEnemies()
+    {
+        for(EnemiesAchievement enemiesAchievement:enemiesAchievements)
+        {
+            int x = Integer.parseInt(enemiesAchievement.getmObjectPositionX());
+            int y = Integer.parseInt(enemiesAchievement.getmObjectPositionY());
+            int enemyId = enemiesAchievement.getmEnemyId();
+            overlay[x][y] = 30 + enemyId;
+        }
+    }
+
 
     public void show_move() {
         for (int i = 0; i < rows; i++) {
@@ -106,6 +129,7 @@ public class Map extends View {
     }
 
     public void showMap(Canvas canvas) {
+
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setColor(Color.BLACK);
         strokePaint.setStrokeWidth(3);
@@ -141,25 +165,21 @@ public class Map extends View {
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
-            }
-        }
-        for(TreasureAchievement treasureAchievement:treasureAchievements)
-        {
-            int x = Integer.parseInt(treasureAchievement.getmObjectPositionX());
-            int y = Integer.parseInt(treasureAchievement.getmObjectPositionY());
-            int treasureId = treasureAchievement.getmTreasureId();
-            overlay[x][y] = 10 + treasureId;
-            box.setBounds(x * TILE_SIZE, y * TILE_SIZE, x * TILE_SIZE + TILE_SIZE, y * TILE_SIZE + TILE_SIZE);
-            box.draw(canvas);
-            canvas.drawRect(x * TILE_SIZE, y * TILE_SIZE, x * TILE_SIZE + TILE_SIZE, y * TILE_SIZE + TILE_SIZE, strokePaint);
-        }
 
-        for(EnemiesAchievement enemiesAchievement:enemiesAchievements)
-        {
-            int x = Integer.parseInt(enemiesAchievement.getmObjectPositionX());
-            int y = Integer.parseInt(enemiesAchievement.getmObjectPositionY());
-            int enemyId = enemiesAchievement.getmEnemyId();
-            overlay[x][y] = 30 + enemyId;
+                else if(overlay[i][j] > 10 && overlay[i][j]<30){
+                    box.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
+                    box.draw(canvas);
+                    canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);
+                }
+
+                else if(overlay[i][j] > 30){
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.BLUE);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
+                }
+            }
         }
     }
 
@@ -176,10 +196,11 @@ public class Map extends View {
             @Override
             public void onResponse(Call<List<TreasureAchievementEntity>> call, Response<List<TreasureAchievementEntity>> response) {
                 treasureAchievements = TreasureAchievementMapper.transform(response.body());
+                makeTreasures();
             }
             @Override
             public void onFailure(Call<List<TreasureAchievementEntity>> call, Throwable throwable) {
-                treasureAchievements = new ArrayList<TreasureAchievement>();
+                treasureAchievements = new ArrayList<>();
                 Log.e(TAG, throwable.toString());
             }
         });
@@ -193,13 +214,13 @@ public class Map extends View {
             @Override
             public void onResponse(Call<List<EnemiesAchievementEntity>> call, Response<List<EnemiesAchievementEntity>> response) {
                 enemiesAchievements = EnemiesAchievementEntityMapper.transform(response.body());
+                makeEnemies();
             }
             @Override
             public void onFailure(Call<List<EnemiesAchievementEntity>> call, Throwable throwable) {
-                enemiesAchievements = new ArrayList<EnemiesAchievement>();
+                enemiesAchievements = new ArrayList<>();
                 Log.e(TAG, throwable.toString());
             }
         });
     }
-
 }
