@@ -13,4 +13,5 @@ public class PreferencesUtility {
     public static final String APPEARANCE_PANTS_SELECTED = "appearance_pants_selected";
     public static final String APPEARANCE_SHOES_SELECTED = "appearance_shoes_selected";
     public static final String NAME_SELECTED = "name_selected";
+    public static final String OPPONENT_SELECTED = "opponent_selected";
 }

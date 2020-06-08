@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,20 +13,20 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/background"
+            android:layout_height="500dp"
             tools:ignore="NestedScrolling">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
                 android:paddingLeft="30dp"
                 android:paddingTop="60dp"
                 android:paddingRight="30dp"
                 android:paddingBottom="60dp"
-                tools:listitem="@layout/item_friend" />
+                tools:listitem="@layout/item_friend"
+                android:background="@drawable/background"/>
 
         </ScrollView>
 
@@ -69,4 +69,4 @@
         <include layout="@layout/divider" />
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

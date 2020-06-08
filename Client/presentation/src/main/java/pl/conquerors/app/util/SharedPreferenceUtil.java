@@ -21,6 +21,7 @@ import static pl.conquerors.app.util.PreferencesUtility.APPEARANCE_SHOES_SELECTE
 import static pl.conquerors.app.util.PreferencesUtility.CHARACTER_CLASS_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.LOGGED_IN_PREF;
 import static pl.conquerors.app.util.PreferencesUtility.NAME_SELECTED;
+import static pl.conquerors.app.util.PreferencesUtility.OPPONENT_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.SEX_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.USER_NAME_PREF;
 import static pl.conquerors.app.util.PreferencesUtility.USER_PREF;
@@ -152,6 +153,20 @@ public class SharedPreferenceUtil {
     public static User getUser(Context context) {
         Gson gson = new Gson();
         String json = getPreferences(context).getString(USER_PREF, null);
+        return gson.fromJson(json, User.class);
+    }
+
+    public static void setOpponent(Context context, User opponent){
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(opponent);
+        editor.putString(OPPONENT_SELECTED, json);
+        editor.apply();
+    }
+
+    public static User getOpponent(Context context) {
+        Gson gson = new Gson();
+        String json = getPreferences(context).getString(OPPONENT_SELECTED, null);
         return gson.fromJson(json, User.class);
     }
 }

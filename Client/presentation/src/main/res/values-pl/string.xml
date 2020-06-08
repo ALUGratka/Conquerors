@@ -65,6 +65,8 @@
     <string name="menu_item_my_events">Moje rozgrywki</string>
     <string name="menu_item_add_event">Stwórz rozgrywkę</string>
     <string name="menu_item_add_friend">Dodaj znajomego</string>
+    <string name="menu_item_characters">Moje postaci</string>
+    <string name="menu_item_add_character">Stwórz postać</string>
     <string name="menu_item_profile">Profil</string>
     <string name="menu_item_friends">Znajomi</string>
     <string name="menu_item_settings">Ustawienia</string>
@@ -155,6 +157,11 @@
     <string name="opponent">Przeciwnik</string>
     <string name="date">Data</string>
     <string name="character">Postać</string>
+    <string name="create_event_cancel_title">Tworzenie rozgrywki</string>
+    <string name="create_event_cancel_message">Jesteś pewien, że chcesz anulować?</string>
+    <string name="create_game_no_opponent_choose_error">Wybierz przeciwnika!</string>
+    <string name="no_character_message">Nie masz jeszcze postaci</string>
+    <string name="no_character_action_button">Stwórz ją!</string>
 
     <!-- Friends -->
     <string name="friend_level">Poziom</string>
@@ -187,5 +194,15 @@
 
     <!-- Invitations -->
     <string name="invitations_header">Zaproszenia</string>
+
+    <!-- Home -->
+    <string name="home_hello_user">Witaj </string>
+    <string name="home_get_daily_prize_button">Odbierz codzienną nagrodę!</string>
+    <string name="home_your_games">Twoje gry</string>
+    <string name="home_no_games_message">Nie masz jeszcze żadnych gier</string>
+    <string name="home_no_games_action_button">Stwórz nową!</string>
+    <string name="home_play_game_button">Graj</string>
+    <string name="home_it_is_opponent_turn_button">Tura przeciwnika</string>
+
 
 </resources>

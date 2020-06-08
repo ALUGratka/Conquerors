@@ -12,6 +12,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -23,12 +24,6 @@ import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class HomeActivity extends BaseActivity implements HomeView {
 
-    @BindView(R.id.homePrizeButton)
-    Button mHomePrizeButton;
-
-    @BindView(R.id.homeCreatorButton)
-    Button mHomeCreatorButton;
-
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawer;
 
@@ -37,6 +32,14 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @BindView(R.id.nav_view)
     NavigationView mNavigationView;
+
+    @BindView(R.id.hello_user_textView)
+    TextView helloUser;
+
+    @OnClick(R.id.daily_prize_button)
+    protected void startDailyPrize(){
+        Navigator.startPrize(this);
+    }
 
     private HomePresenter homePresenter;
 
@@ -62,6 +65,7 @@ public class HomeActivity extends BaseActivity implements HomeView {
         mDrawer.addDrawerListener(toggle);
         toggle.syncState();
         mNavigationView.setNavigationItemSelectedListener(onNavigationItemSelectedListener);
+        setHelloUser();
 
         homePresenter = new HomePresenter();
         homePresenter.setmView(this);
@@ -80,15 +84,6 @@ public class HomeActivity extends BaseActivity implements HomeView {
         super.onBackPressed();
     }
 
-    @OnClick(R.id.homePrizeButton)
-    public void onPrizeButtonClicked() {
-        Navigator.startPrize(this);
-    }
-
-    @OnClick(R.id.homeCreatorButton)
-    public void onCreatorButtonClicked() {
-        Navigator.startCreateCharacter(this);
-    }
 
     @Override
     public void showLoading() { }
@@ -117,6 +112,17 @@ public class HomeActivity extends BaseActivity implements HomeView {
 
     @Override
     public void showSettings() { Navigator.startSettings(this); }
+
+    @Override
+    public void showMyCharacters() { Navigator.startMyCharacters(this);}
+
+    @Override
+    public void showAddCharacter() { Navigator.startCreateCharacter(this); }
+
+    @Override
+    public void setHelloUser() {
+        helloUser.setText(getString(R.string.home_hello_user).concat(" ").concat(SharedPreferenceUtil.getUser(this).getUserNick()));
+    }
 
     @Override
     public void showLogout() {

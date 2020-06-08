@@ -65,6 +65,8 @@
     <string name="menu_item_my_events">My games</string>
     <string name="menu_item_add_event">Add game</string>
     <string name="menu_item_add_friend">Add friend</string>
+    <string name="menu_item_characters">My characters</string>
+    <string name="menu_item_add_character">Add character</string>
     <string name="menu_item_profile">Profile</string>
     <string name="menu_item_friends">Friends</string>
     <string name="menu_item_settings">Settings</string>
@@ -155,6 +157,11 @@
     <string name="opponent">Opponent</string>
     <string name="date">Date</string>
     <string name="character">Character</string>
+    <string name="create_event_cancel_title">Game creation</string>
+    <string name="create_event_cancel_message">Are you sure, you want to cancel?</string>
+    <string name="create_game_no_opponent_choose_error">Choose opponent!</string>
+    <string name="no_character_message">You do not have any character yet</string>
+    <string name="no_character_action_button">Create one!</string>
 
     <!-- Friends -->
     <string name="friend_level">Level</string>
@@ -187,6 +194,16 @@
 
     <!-- Invitations -->
     <string name="invitations_header">Invitations</string>
+
+    <!-- Home -->
+    <string name="home_hello_user">Hello </string>
+    <string name="home_get_daily_prize_button">Get daily prize!</string>
+    <string name="home_your_games">Your games</string>
+    <string name="home_no_games_message">You do not have any games yet</string>
+    <string name="home_no_games_action_button">Create one!</string>
+    <string name="home_play_game_button">Play</string>
+    <string name="home_it_is_opponent_turn_button">Opponent turn</string>
+
 
 
 
