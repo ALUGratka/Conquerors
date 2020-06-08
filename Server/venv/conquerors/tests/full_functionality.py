@@ -13,18 +13,17 @@ def present_response(response):
     print('Content: ' + str(response.text))
 
 
-def create_user(email, username, password, birth_date):
+def create_user(email, username, password):
     return {
         "email" : email,
         "username" : username,
-        "password" : password,
-        "birthDate" : birth_date, 
+        "password" : password
     }
 
 
 def register_user1():
     print('>Register user1:')
-    user = create_user('izabela@gmail.com', 'izabelka', 'izabelaizabela', '22/06/1998')
+    user = create_user('izabela@gmail.com', 'izabelka', 'izabelaizabela')
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'register' 
     response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(user))
@@ -33,7 +32,7 @@ def register_user1():
 
 def register_user2():
     print('>Register user2:')
-    user = create_user('marcysia@gmail.com', 'marcyska', 'marcysiamarcysia', '22/06/1998')
+    user = create_user('marcysia@gmail.com', 'marcyska', 'marcysiamarcysia')
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'register' 
     response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(user))
@@ -42,7 +41,7 @@ def register_user2():
 
 def register_user3():
     print('>Register user3:')
-    user = create_user('piotr@gmail.com', 'piotrus', 'piotrpiotr', '22/06/1998')
+    user = create_user('piotr@gmail.com', 'piotrus', 'piotrpiotr')
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'register' 
     response = requests.post(url=URL+endpoint, headers=headers, data=json.dumps(user))
@@ -115,7 +114,8 @@ def create_character1_user1():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -140,7 +140,8 @@ def create_character2_user1():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -167,7 +168,8 @@ def create_character1_user2():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -192,7 +194,8 @@ def create_character2_user2():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -219,7 +222,8 @@ def create_character1_user3():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -244,7 +248,8 @@ def create_character2_user3():
         "eyeColor" : 0,
         "blouse" : 0,
         "pants" : 0,
-        "shoes" : 0
+        "shoes" : 0,
+        "skillPoints" : 0
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'create-character'
@@ -303,6 +308,18 @@ def post_gameplay_12():
     gameplay = {
         'player1id' : 1,
         'player2id' : 2,
+        'character1id' : 1,
+        'character2id' : 1,
+        'turn' : 1,
+        'round' : 1,
+        'player1PositionX' : 10,
+        'player1PositionY' : 10,
+        'player2PositionX' : 50,
+        'player2PositionY' : 50,
+        'canPlay1' : True,
+        'canPlay2' : True,
+        'canAccept1' : False,
+        'canAccept2' : False
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'gameplay'
@@ -315,6 +332,18 @@ def post_gameplay_23():
     gameplay = {
         'player1id' : 2,
         'player2id' : 3,
+        'character1id' : 1,
+        'character2id' : 1,
+        'turn' : 1,
+        'round' : 1,
+        'player1PositionX' : 10,
+        'player1PositionY' : 10,
+        'player2PositionX' : 50,
+        'player2PositionY' : 50,
+        'canPlay1' : True,
+        'canPlay2' : True,
+        'canAccept1' : False,
+        'canAccept2' : False
     }
     headers = {'Content-Type' : 'application/json'}
     endpoint = 'gameplay'
@@ -475,8 +504,8 @@ if __name__ == '__main__':
 
     # Gameplay operations
 
-    # post_gameplay_12()
-    # post_gameplay_23()
+    #post_gameplay_12()
+    post_gameplay_23()
 
     #get_gameplay()
     #get_gameplays_by_users()

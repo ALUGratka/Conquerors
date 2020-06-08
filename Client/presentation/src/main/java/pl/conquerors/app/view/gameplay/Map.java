@@ -36,6 +36,9 @@ public class Map extends View {
     public static int[][] overlay;
     private static int rows, columns;
     private Drawable box, enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10, enemy11, enemy12, enemy13, enemy14, enemy15;
+    private Drawable treasure1, treasure2, treasure3, treasure4, treasure5, treasure6, treasure7, treasure8;
+    private Drawable treasure9, treasure10, treasure11, treasure12, treasure13, treasure14, treasure15;
+    private Drawable popupBackground;
     Paint strokePaint, fillPaint;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
@@ -60,6 +63,24 @@ public class Map extends View {
         enemy13 = getResources().getDrawable(R.drawable.enemy13, null);
         enemy14 = getResources().getDrawable(R.drawable.enemy14, null);
         enemy15 = getResources().getDrawable(R.drawable.enemy15, null);
+
+        treasure1 = getResources().getDrawable(R.drawable.treasure1, null);
+        treasure2 = getResources().getDrawable(R.drawable.treasure2, null);
+        treasure3 = getResources().getDrawable(R.drawable.treasure3, null);
+        treasure4 = getResources().getDrawable(R.drawable.treasure4, null);
+        treasure5 = getResources().getDrawable(R.drawable.treasure5, null);
+        treasure6 = getResources().getDrawable(R.drawable.treasure6, null);
+        treasure7 = getResources().getDrawable(R.drawable.treasure7, null);
+        treasure8 = getResources().getDrawable(R.drawable.treasure8, null);
+        treasure9 = getResources().getDrawable(R.drawable.treasure9, null);
+        treasure10 = getResources().getDrawable(R.drawable.treasure10, null);
+        treasure11 = getResources().getDrawable(R.drawable.treasure11, null);
+        treasure12 = getResources().getDrawable(R.drawable.treasure12, null);
+        treasure13 = getResources().getDrawable(R.drawable.treasure13, null);
+        treasure14 = getResources().getDrawable(R.drawable.treasure14, null);
+        treasure15 = getResources().getDrawable(R.drawable.treasure15, null);
+
+        popupBackground = getResources().getDrawable(R.drawable.popup_background, null);
 
         fillPaint = new Paint();
         strokePaint = new Paint();
@@ -105,6 +126,36 @@ public class Map extends View {
         }
     }
 
+    public void showTreasurePopUp(Canvas canvas, Character character) {
+        if (character.currentTreasure!=null){
+            String name = character.currentTreasure.getmName();
+            String description = character.currentTreasure.getmDescription();
+            int agility = character.currentTreasure.getmAgility();
+            int charisma = character.currentTreasure.getmCharisma();
+            int intelligence = character.currentTreasure.getmIntelligence();
+            int strength = character.currentTreasure.getmStrength();
+            int skillPoints = character.currentTreasure.getmSkillPoints();
+            System.out.println(name);
+            System.out.println(description);
+            popupBackground.setBounds( 2 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE + TILE_SIZE, 10 * TILE_SIZE + TILE_SIZE);
+            popupBackground.draw(canvas);
+        }
+
+    }
+
+    public void showEnemyPopUp(Canvas canvas, Character character) {
+        if (character.currentEnemy!=null){
+            String name = character.currentEnemy.getmName();
+            String description = character.currentEnemy.getmDescription();
+            int agility = character.currentEnemy.getmAgility();
+            int charisma = character.currentEnemy.getmCharisma();
+            int intelligence = character.currentEnemy.getmIntelligence();
+            int strength = character.currentEnemy.getmStrength();
+            System.out.println(name);
+            System.out.println(description);
+        }
+
+    }
 
     public void show_move() {
         for (int i = 0; i < rows; i++) {
@@ -168,13 +219,15 @@ public class Map extends View {
         }
     }
 
-    public void showMap(Canvas canvas) {
+    public void showMap(Canvas canvas, Character character) {
 
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setColor(Color.BLACK);
         strokePaint.setStrokeWidth(3);
 
         show_move();
+        showTreasurePopUp(canvas, character);
+        showEnemyPopUp(canvas, character);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int pos_i = TILE_SIZE * i;
@@ -204,9 +257,7 @@ public class Map extends View {
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
-                }
-
-               else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
+                } else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
                     box.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
                     box.draw(canvas);
                     canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);
@@ -216,7 +267,7 @@ public class Map extends View {
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     int enemyId = overlay[i][j] - 30;
-                    switch (enemyId){
+                    switch (enemyId) {
                         case 1:
                             enemy1.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
                             enemy1.draw(canvas);

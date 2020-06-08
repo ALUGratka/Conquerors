@@ -34,34 +34,20 @@ import static pl.conquerors.app.view.gameplay.Map.overlay;
 
 public class Character implements Object {
 
-    private Rect rectangle;
-    private int color;
     List<Enemy> enemies;
     List<Treasure> treasures;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
+    Treasure currentTreasure;
+    Enemy currentEnemy;
 
-    public Character(Rect rectangle, int color) {
-        this.rectangle = rectangle;
-        this.color = color;
+    public Character() {
         getEnemies();
         getTreasures();
         getEnemiesAchievement(1);
         getTreasureAchievement(1);
     }
 
-    @Override
-    public void draw(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(color);
-        canvas.drawRect(rectangle, paint);
-        //overlay[2][15] = 3;
-    }
-
-    @Override
-    public void update() {
-
-    }
 
     public int[] getTile(int x, int y) {
         int[] xy = new int[2];
@@ -116,33 +102,20 @@ public class Character implements Object {
     }
 
     public void get_treasure(int treasureId) {
-        Treasure treasure;
-        for (Treasure t : treasures){
-            if (t.getmId() == treasureId){
-                treasure = t;
-                drawTreasure(treasure);
+        for (Treasure t : treasures) {
+            if (t.getmId() == treasureId) {
+                currentTreasure = t;
             }
         }
     }
 
     public void begin_fight(int enemyId) {
-        Enemy enemy;
-        for (Enemy e : enemies){
-            if (e.getmId() == enemyId){
-                enemy = e;
-                drawEnemy(enemy);
+        for (Enemy e : enemies) {
+            if (e.getmId() == enemyId) {
+                currentEnemy = e;
             }
         }
     }
-
-    public void drawTreasure(Treasure treasure){
-
-    }
-
-    public void drawEnemy(Enemy enemy){
-
-    }
-
 
     public void getEnemies() {
         Call<List<EnemyEntity>> call = RestClient.getInstance().getEnemyEntity();
@@ -216,4 +189,13 @@ public class Character implements Object {
         });
     }
 
+    @Override
+    public void draw(Canvas canvas) {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
 }

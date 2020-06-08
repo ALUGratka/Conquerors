@@ -27,7 +27,7 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
 
         thread = new MainThread(getHolder(), this);
 
-        character = new Character(new Rect(100, 100, 200, 200), Color.WHITE);
+        character = new Character();
         characterPoint = new Point(2,15);
         mapCanvas = new Map(context);
         setFocusable(true);
@@ -83,7 +83,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas){
         super.draw(canvas);
 
-        mapCanvas.showMap(canvas);
-       // character.draw(canvas);
+        mapCanvas.showMap(canvas, character);
     }
 }
