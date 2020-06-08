@@ -174,6 +174,7 @@
     <string name="friend_label_reject_friend">Reject friend</string>
     <string name="friend_label_uninvite_friend">Cancel invitation</string>
     <string name="friend_characters">Number of characters</string>
+    <string name="friend_games">Number of games</string>
 
     <!-- Friends actions -->
     <string name="add_friend_title">Adding friend</string>
@@ -205,6 +206,7 @@
     <string name="home_no_games_action_button">Create one!</string>
     <string name="home_play_game_button">Play</string>
     <string name="home_it_is_opponent_turn_button">Opponent turn</string>
+
 
 
 </resources>
