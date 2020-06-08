@@ -5,6 +5,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,7 +54,7 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selected = position;
+                selected = viewHolder.getAdapterPosition();
                 notifyDataSetChanged();
             }
         });
@@ -107,6 +108,7 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @OnClick(R.id.item_view)
         void userSelected() {
             SharedPreferenceUtil.setOpponent(itemView.getContext(), boundUser);
+            Log.i("opponent",SharedPreferenceUtil.getOpponent(itemView.getContext()).getUserNick());
         }
 
         private User boundUser;

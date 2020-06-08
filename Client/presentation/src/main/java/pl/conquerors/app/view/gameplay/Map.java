@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -42,6 +41,7 @@ public class Map extends View {
     private Drawable popupBackground;
     Paint strokePaint, fillPaint, namePaint, description1Paint, description2Paint;
     Paint agilityPaint, charismaPaint, strengthPaint, intelligencePaint;
+    Paint cancelTextPaint, collectTextPaint, runTextPaint, fightTextPaint;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
 
@@ -93,6 +93,10 @@ public class Map extends View {
         charismaPaint = new Paint();
         strengthPaint = new Paint();
         intelligencePaint = new Paint();
+        cancelTextPaint = new Paint();
+        collectTextPaint = new Paint();
+        runTextPaint = new Paint();
+        fightTextPaint = new Paint();
 
         namePaint.setColor(Color.BLACK);
         namePaint.setTextSize(50);
@@ -109,6 +113,16 @@ public class Map extends View {
         strengthPaint.setTextSize(35);
         intelligencePaint.setColor(Color.BLACK);
         intelligencePaint.setTextSize(35);
+
+        cancelTextPaint.setColor(Color.WHITE);
+        cancelTextPaint.setTextSize(50);
+        collectTextPaint.setColor(Color.WHITE);
+        collectTextPaint.setTextSize(50);
+        runTextPaint.setColor(Color.WHITE);
+        runTextPaint.setTextSize(50);
+        fightTextPaint.setColor(Color.WHITE);
+        fightTextPaint.setTextSize(50);
+
         create_map();
         getTreasureAchievement(1);
         getEnemiesAchievement(1);
@@ -178,10 +192,16 @@ public class Map extends View {
             if (descriptionParts.size() >= 2) {
                 canvas.drawText(descriptionParts.get(1), 2 * TILE_SIZE, (float) 7.0 * TILE_SIZE, description2Paint);
             }
-            canvas.drawText("Zrecznosc: " + String.valueOf(agility), 2 * TILE_SIZE, (float) 7.5 * TILE_SIZE, agilityPaint);
-            canvas.drawText("Sila: " + String.valueOf(strength), 2 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
-            canvas.drawText("Inteligencja: " + String.valueOf(intelligence), 6 * TILE_SIZE, (float) 7.5 * TILE_SIZE, agilityPaint);
-            canvas.drawText("Charyzma: " + String.valueOf(charisma), 6 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Zrecznosc: " + String.valueOf(agility), 2 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Sila: " + String.valueOf(strength), 2 * TILE_SIZE, (float) 8.5 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Inteligencja: " + String.valueOf(intelligence), 6 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Charyzma: " + String.valueOf(charisma), 6 * TILE_SIZE, (float) 8.5 * TILE_SIZE, agilityPaint);
+
+            canvas.drawRect(2*TILE_SIZE, (float)9.0*TILE_SIZE, 5*TILE_SIZE, (float)10*TILE_SIZE,character.cancelButtonPaint);
+            canvas.drawRect(6*TILE_SIZE, (float)9.0*TILE_SIZE, 9*TILE_SIZE, (float)10*TILE_SIZE,character.collectButtonPaint);
+            canvas.drawText("ZREZYGNUJ", (float) 2.1 * TILE_SIZE, (float) 9.5 * TILE_SIZE, cancelTextPaint);
+            canvas.drawText("WEZ", (float) 7 * TILE_SIZE, (float) 9.5 * TILE_SIZE, cancelTextPaint);
+
             switch (id) {
                 case 1:
                     treasure1.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
@@ -265,8 +285,7 @@ public class Map extends View {
             for (int start = 0; start < description.length(); start += size) {
                 descriptionParts.add(description.substring(start, Math.min(description.length(), start + size)));
             }
-            System.out.println("SIZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-            System.out.println(descriptionParts.size());
+
             popupBackground.setBounds(1 * TILE_SIZE, 1 * TILE_SIZE, 9 * TILE_SIZE + TILE_SIZE, 10 * TILE_SIZE + TILE_SIZE);
             popupBackground.draw(canvas);
             canvas.drawText(name, 2 * TILE_SIZE, 6 * TILE_SIZE, namePaint);
@@ -276,6 +295,12 @@ public class Map extends View {
             if (descriptionParts.size() >= 2) {
                 canvas.drawText(descriptionParts.get(1), 2 * TILE_SIZE, (float) 7.0 * TILE_SIZE, description2Paint);
             }
+
+            canvas.drawRect(2*TILE_SIZE, (float)9.0*TILE_SIZE, 5*TILE_SIZE, (float)10*TILE_SIZE,character.runButtonPaint);
+            canvas.drawRect(6*TILE_SIZE, (float)9.0*TILE_SIZE, 9*TILE_SIZE, (float)10*TILE_SIZE,character.fightButtonPaint);
+            canvas.drawText("UCIEKAJ", (float) 2.1 * TILE_SIZE, (float) 9.5 * TILE_SIZE, runTextPaint);
+            canvas.drawText("WALCZ", (float) 7 * TILE_SIZE, (float) 9.5 * TILE_SIZE, fightTextPaint);
+
 
             switch (id) {
                 case 1:
