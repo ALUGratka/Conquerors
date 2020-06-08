@@ -18,8 +18,8 @@ import retrofit2.Response;
 public class ChooseCharacterPresenter extends BasePresenter<ChooseCharacterView> {
 
     @Override
-    public void created() {
-        super.created();
+    public void resume() {
+        super.resume();
         attemptToLoadAllCharacters();
     }
 
@@ -40,6 +40,7 @@ public class ChooseCharacterPresenter extends BasePresenter<ChooseCharacterView>
                     mView.setNextButtonVisible(false);
                 }
                 else {
+                    mView.setCharacterCardVisible(true);
                     if(characters.size()==1) mView.setArrowsVisible(false);
                     mView.setCharacters(characters);
                     mView.setCharacterCard(0);
@@ -48,8 +49,12 @@ public class ChooseCharacterPresenter extends BasePresenter<ChooseCharacterView>
 
             @Override
             public void onFailure(Call<List<CharacterEntity>> call, Throwable t) {
-
+                handleError(t);
             }
         });
+    }
+
+    void attemptToLoadCharacterCard(final int counter) {
+        mView.setCharacterCard(counter);
     }
 }

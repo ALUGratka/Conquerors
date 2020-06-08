@@ -94,7 +94,7 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         if(counter!=-1){
             counter--;
         }
-        setCharacterCard(counter);
+        presenter.attemptToLoadCharacterCard(counter);
     }
 
     @OnClick(R.id.nextButton)
@@ -102,7 +102,8 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         if(counter!=characters.size()){
             counter++;
         }
-        setCharacterCard(counter);
+        Log.i("character",characters.get(counter).getmNickname());
+        presenter.attemptToLoadCharacterCard(counter);
     }
 
     @OnClick(R.id.backButton)
@@ -119,6 +120,7 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         finish();
     }
 
+    ChooseCharacterPresenter presenter;
     public List<Character>characters = new ArrayList<>();
     private int counter = 0;
 
@@ -131,11 +133,15 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_character);
 
-        counter = 0;
-        ChooseCharacterPresenter presenter = new ChooseCharacterPresenter();
-        presenter.setmView(this);
-        presenter.created();
 
+        presenter = new ChooseCharacterPresenter();
+        presenter.setmView(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.resume();
     }
 
     @Override
@@ -155,7 +161,12 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
 
     @Override
     public void setCharacters(List<Character> characters) {
-        this.characters = characters;
+        this.characters.addAll(characters);
+    }
+
+    @Override
+    public int getCharactersListSize() {
+        return characters.size();
     }
 
     @Override
@@ -184,6 +195,7 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
 
     @Override
     public void setCharacterCard(int index) {
+        setCharacterCardVisible(true);
         Character character = characters.get(index);
 
         characterName.setText(character.getmNickname());
@@ -200,6 +212,8 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         else if(character.getmCharacterClass()==3){
             characterClassName.setText(getResources().getString(R.string.radio_wizard));
         }
+
+        Log.i("class", characterClassName.getText().toString());
 
         characterStrength.setText(String.valueOf(character.getmStrength()));
         characterCharisma.setText(String.valueOf(character.getmCharisma()));
@@ -231,7 +245,6 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
     @Override
     public void setNextArrowVisible(boolean visible) {
         nextArrowButton.setVisibility(visible ? View.VISIBLE : View.GONE);
-        setCharacterCardVisible(!visible);
     }
 
     @Override

@@ -79,7 +79,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<List<CharacterEntity>> call, Throwable t) {
-
+                handleError(t);
             }
         });
 
@@ -97,7 +97,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
     }
@@ -126,7 +126,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
 
@@ -151,7 +151,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
     }
@@ -175,7 +175,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
     }
@@ -199,7 +199,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
     }
@@ -223,7 +223,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
 
             @Override
             public void onFailure(Call<UserRelationshipEntity> call, Throwable t) {
-
+                handleError(t);
             }
         });
     }

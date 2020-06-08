@@ -948,7 +948,7 @@ def put_user_status_after_accept():
         relationship1.canUninvite = bool(False)
 
         relationship2.canDelete = bool(True)
-        relationship2.canInvite = bool(True)
+        relationship2.canInvite = bool(False)
         relationship2.canAccept = bool(False)
         relationship2.canReject = bool(False)
         relationship2.canUninvite = bool(False)

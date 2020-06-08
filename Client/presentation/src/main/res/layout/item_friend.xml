@@ -64,10 +64,6 @@
         android:layout_toEndOf="@+id/friend_image"
         android:layout_toRightOf="@+id/friend_image"
         android:orientation="vertical"
-        android:paddingEnd="16dp"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingStart="16dp"
         tools:ignore="RtlSymmetry">
 
         <LinearLayout
@@ -88,7 +84,7 @@
                 tools:text="Header text here it is for not too long input because we do not want it to break into multiline text"/>
         </LinearLayout>
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/friend_name_layout"
@@ -161,7 +157,7 @@
                     tools:text="12345"/>
             </LinearLayout>
 
-        </LinearLayout>
+        </LinearLayout>-->
 
 
     </RelativeLayout>

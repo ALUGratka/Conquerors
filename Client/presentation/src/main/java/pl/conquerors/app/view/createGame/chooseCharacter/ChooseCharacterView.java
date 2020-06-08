@@ -11,6 +11,7 @@ public interface ChooseCharacterView extends BaseView {
     long getUserId();
 
     void setCharacters(List<Character>characters);
+    int getCharactersListSize();
 
     void startCreateCharacter(boolean visible);
     void setCharacterCard(int index);

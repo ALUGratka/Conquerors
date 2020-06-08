@@ -96,11 +96,11 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @BindView(R.id.friend_name)
         TextView name;
 
-        @BindView(R.id.friend_characters)
+        /*@BindView(R.id.friend_characters)
         TextView characters;
 
         @BindView(R.id.friend_games)
-        TextView games;
+        TextView games;*/
 
         @BindView(R.id.item_view)
         View itemView;

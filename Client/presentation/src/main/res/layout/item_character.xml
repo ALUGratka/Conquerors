@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/character_class_signature"
-        android:layout_width="@dimen/image_medium"
-        android:layout_height="@dimen/image_medium"
+        android:layout_width="@dimen/image_big"
+        android:layout_height="@dimen/image_big"
         android:layout_centerVertical="true"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"

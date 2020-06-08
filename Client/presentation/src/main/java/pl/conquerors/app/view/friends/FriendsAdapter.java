@@ -72,11 +72,11 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @BindView(R.id.friend_name)
         TextView name;
 
-        @BindView(R.id.friend_characters)
+        /*@BindView(R.id.friend_characters)
         TextView characters;
 
         @BindView(R.id.friend_games)
-        TextView games;
+        TextView games;*/
 
         @OnClick(R.id.item_view)
         void userSelected() {
