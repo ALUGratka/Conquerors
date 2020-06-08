@@ -103,25 +103,46 @@ public class Character implements Object {
         }
         //dla skrzynek
         else if (overlay[point.x][point.y] > 5 && overlay[point.x][point.y] < 30 && distance == 1) {
-            int treasure_id = overlay[point.x][point.y] - 10;
-            get_treasure();
+            int treasureId = overlay[point.x][point.y] - 10;
+            get_treasure(treasureId);
 
         }
         //dla wrogów
         else if (overlay[point.x][point.y] > 30 && distance == 1) {
-            int enemy_id = overlay[point.x][point.y] - 30;
-            begin_fight();
+            int enemyId = overlay[point.x][point.y] - 30;
+            begin_fight(enemyId);
         }
 
     }
 
-    public void get_treasure() {
+    public void get_treasure(int treasureId) {
+        Treasure treasure;
+        for (Treasure t : treasures){
+            if (t.getmId() == treasureId){
+                treasure = t;
+                drawTreasure(treasure);
+            }
+        }
+    }
+
+    public void begin_fight(int enemyId) {
+        Enemy enemy;
+        for (Enemy e : enemies){
+            if (e.getmId() == enemyId){
+                enemy = e;
+                drawEnemy(enemy);
+            }
+        }
+    }
+
+    public void drawTreasure(Treasure treasure){
 
     }
 
-    public void begin_fight() {
+    public void drawEnemy(Enemy enemy){
 
     }
+
 
     public void getEnemies() {
         Call<List<EnemyEntity>> call = RestClient.getInstance().getEnemyEntity();
