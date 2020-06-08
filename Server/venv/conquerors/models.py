@@ -53,7 +53,7 @@ class Character(db.Model):
     lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='character_id', lazy=True)
 
     def __repr__(self):
-        return f"Character('{self.id}', '{self.nickname}', '{self.level}', '{self.characterClass}')"
+        return f"Character('{self.id}', '{self.nickname}', '{self.sex}', '{self.characterClass}')"
 
     def to_dict(self):
         return {
@@ -87,8 +87,7 @@ class Character(db.Model):
             'strength': self.strength,
             'nickname': self.nickname,
             'characterClass': self.characterClass,
-            'userId': self.userId,
-            'skillPoints': user.skillPoints
+            'userId': self.userId
         }
 
 

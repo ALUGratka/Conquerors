@@ -1,49 +1,6 @@
 package pl.conquerors.app.domain.model;
 
 public class Character {
-    /**
-     * enums
-     **/
-    public enum Sex {
-        Man, Woman
-    }
-
-    public enum CharacterClass {
-        Bard, Thief, Warrior, Wizard
-    }
-
-    public enum Hair {
-        Blond, Brown, Black
-    }
-
-    public enum EyeColor {
-        Blue, Brown, Green
-    }
-
-    public enum Hat {
-        Hat1, Hat2, Hat3
-    }
-
-    public enum Blouse {
-        BlouseBlue, BlouseRed, BlouseYellow
-    }
-
-    //woman -> blue, gray, yellow
-    //man -> brown, gray, red
-    public enum Pants {
-        Pants1, Pants2, Pants3
-    }
-
-    // woman -> pink, red
-    //man -> gray, red, white
-    public enum Shoes {
-        Shoes1, Shoes2, Shoes3
-    }
-
-    /**
-     * variables
-     **/
-
     private int mId;
     private int mLevel;
     private int mCharisma;
@@ -51,15 +8,16 @@ public class Character {
     private int mAgility;
     private int mStrength;
     private String mNickname;
-    private Sex mSex;
-    private CharacterClass mCharacterClass;
-    private Hair mHair;
-    private Hat mHat;
-    private EyeColor mEyeColor;
-    private Blouse mBlouse;
-    private Pants mPants;
-    private Shoes mShoes;
+    private int mSex;
+    private int mCharacterClass;
+    private int mHair;
+    private int mHat;
+    private int mEyeColor;
+    private int mBlouse;
+    private int mPants;
+    private int mShoes;
     private int mUserId;
+    private int mSkillPoints;
 
     /**
      * getters
@@ -93,37 +51,43 @@ public class Character {
         return mNickname;
     }
 
-    public Sex getmSex() {
+    public int getmSex() {
         return mSex;
     }
 
-    public CharacterClass getmCharacterClass() {
+    public int getmCharacterClass() {
         return mCharacterClass;
     }
 
-    public Hair getmHair() {
+    public int getmHair() {
         return mHair;
     }
 
-    public EyeColor getmEyeColor() {
+    public int getmHat() {
+        return mHat;
+    }
+
+    public int getmEyeColor() {
         return mEyeColor;
     }
 
-    public Blouse getmBlouse() {
+    public int getmBlouse() {
         return mBlouse;
     }
 
-    public Pants getmPants() {
+    public int getmPants() {
         return mPants;
     }
 
-    public Shoes getmShoes() {
+    public int getmShoes() {
         return mShoes;
     }
 
     public int getmUserId() {
         return mUserId;
     }
+
+    public int getmSkillPoints() {return mSkillPoints;}
 
 
     /**
@@ -162,100 +126,113 @@ public class Character {
         this.mStrength = mStrength;
     }
 
-    public void setmSex(int mSex) {
-        if (mSex == 0) {
-            this.mSex = Sex.Man;
-        } else if (mSex == 1) {
-            this.mSex = Sex.Woman;
-        } else {
-            System.out.println("Invalid number given");
-        }
+    public void setmSkillPoints(int mSkillPoints) {this.mSkillPoints = mSkillPoints;}
+
+    public void setmSex(int mSex) { this.mSex=mSex;
+//        if (mSex == 0) {
+//            this.mSex = Sex.Man;
+//        } else if (mSex == 1) {
+//            this.mSex = Sex.Woman;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmCharacterClass(int mCharacterClass) {
-        if (mCharacterClass == 0) {
-            this.mCharacterClass = CharacterClass.Bard;
-        } else if (mCharacterClass == 1) {
-            this.mCharacterClass = CharacterClass.Thief;
-        } else if (mCharacterClass == 2) {
-            this.mCharacterClass = CharacterClass.Warrior;
-        } else if (mCharacterClass == 3) {
-            this.mCharacterClass = CharacterClass.Wizard;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mCharacterClass=mCharacterClass;
+//        if (mCharacterClass == 0) {
+//            this.mCharacterClass = CharacterClass.Bard;
+//        } else if (mCharacterClass == 1) {
+//            this.mCharacterClass = CharacterClass.Thief;
+//        } else if (mCharacterClass == 2) {
+//            this.mCharacterClass = CharacterClass.Warrior;
+//        } else if (mCharacterClass == 3) {
+//            this.mCharacterClass = CharacterClass.Wizard;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmHair(int mHair) {
-        if (mHair == 0) {
-            this.mHair = Hair.Blond;
-        } else if (mHair == 1) {
-            this.mHair = Hair.Brown;
-        } else if (mHair == 2) {
-            this.mHair = Hair.Black;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mHair=mHair;
+//        if (mHair == 0) {
+//            this.mHair = Hair.Blond;
+//        } else if (mHair == 1) {
+//            this.mHair = Hair.Brown;
+//        } else if (mHair == 2) {
+//            this.mHair = Hair.Black;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
+    }
+
+    public void setmHaT(int mHat){
+        this.mHat = mHat;
     }
 
     public void setmHat(int mHat) {
-        if (mHat == 0) {
-            this.mHat = Hat.Hat1;
-        } else if (mHat == 1) {
-            this.mHat = Hat.Hat2;
-        } else if (mHat == 2) {
-            this.mHat = Hat.Hat3;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mHat=mHat;
+//        if (mHat == 0) {
+//            this.mHat = Hat.Hat1;
+//        } else if (mHat == 1) {
+//            this.mHat = Hat.Hat2;
+//        } else if (mHat == 2) {
+//            this.mHat = Hat.Hat3;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmEyeColor(int mEyeColor) {
-        if (mEyeColor == 0) {
-            this.mEyeColor = EyeColor.Blue;
-        } else if (mEyeColor == 1) {
-            this.mEyeColor = EyeColor.Brown;
-        } else if (mEyeColor == 2) {
-            this.mEyeColor = EyeColor.Green;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mEyeColor=mEyeColor;
+//        if (mEyeColor == 0) {
+//            this.mEyeColor = EyeColor.Blue;
+//        } else if (mEyeColor == 1) {
+//            this.mEyeColor = EyeColor.Brown;
+//        } else if (mEyeColor == 2) {
+//            this.mEyeColor = EyeColor.Green;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmBlouse(int mBlouse) {
-        if (mBlouse == 0) {
-            this.mBlouse = Blouse.BlouseBlue;
-        } else if (mBlouse == 1) {
-            this.mBlouse = Blouse.BlouseRed;
-        } else if (mBlouse == 2) {
-            this.mBlouse = Blouse.BlouseYellow;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mBlouse=mBlouse;
+//        if (mBlouse == 0) {
+//            this.mBlouse = Blouse.BlouseBlue;
+//        } else if (mBlouse == 1) {
+//            this.mBlouse = Blouse.BlouseRed;
+//        } else if (mBlouse == 2) {
+//            this.mBlouse = Blouse.BlouseYellow;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmPants(int mPants) {
-        if (mPants == 0) {
-            this.mPants = Pants.Pants1;
-        } else if (mPants == 1) {
-            this.mPants = Pants.Pants2;
-        } else if (mPants == 2) {
-            this.mPants = Pants.Pants3;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mPants=mPants;
+//        if (mPants == 0) {
+//            this.mPants = Pants.Pants1;
+//        } else if (mPants == 1) {
+//            this.mPants = Pants.Pants2;
+//        } else if (mPants == 2) {
+//            this.mPants = Pants.Pants3;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
     public void setmShoes(int mShoes) {
-        if (mShoes == 0) {
-            this.mShoes = Shoes.Shoes1;
-        } else if (mShoes == 1) {
-            this.mShoes = Shoes.Shoes2;
-        } else if (mShoes == 2) {
-            this.mShoes = Shoes.Shoes3;
-        } else {
-            System.out.println("Invalid number given");
-        }
+        this.mShoes=mShoes;
+//        if (mShoes == 0) {
+//            this.mShoes = Shoes.Shoes1;
+//        } else if (mShoes == 1) {
+//            this.mShoes = Shoes.Shoes2;
+//        } else if (mShoes == 2) {
+//            this.mShoes = Shoes.Shoes3;
+//        } else {
+//            System.out.println("Invalid number given");
+//        }
     }
 
 }

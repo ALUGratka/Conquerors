@@ -217,12 +217,13 @@ def create_character():
         blouse = data['blouse']
         pants = data['pants']
         shoes = data['shoes']
+        skillPoints = data['skillPoints']
         
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
             # if so create character and add to db
             character = Character(level=level, charisma=charisma, intelligence=intelligence,
-            agility=agility, strength=strength, nickname=nickname, sex=sex,
+            agility=agility, strength=strength, skillPoints=skillPoints, nickname=nickname, sex=sex,
             characterClass=characterClass, hair=hair, hat=hat, eyeColor=eyeColor, blouse=blouse,
             pants=pants, shoes=shoes, userId=userId)
 
@@ -414,7 +415,8 @@ def get_user_characters(userId):
 def get_character_statistic(characterId):
     if request.method == 'GET':
         character = Character.query.get(characterId)
-        message = character.to_statistic_dict()
+        print(character)
+        message = character.to_dict()
         response = make_response(json.dumps(message, default=str))
         response.headers['Content-Type'] = 'application/json'
         response.status_code = 200 # success
