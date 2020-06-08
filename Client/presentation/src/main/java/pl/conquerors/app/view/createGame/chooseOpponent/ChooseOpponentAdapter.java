@@ -54,13 +54,14 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selected = viewHolder.getAdapterPosition();
+                selected = position;
                 notifyDataSetChanged();
             }
         });
 
         if(selected==position){
             viewHolder.itemView.setBackgroundResource(R.color.theme_transparent_grey);
+            SharedPreferenceUtil.setOpponent(viewHolder.itemView.getContext(), friends.get(position));
         }
         else {
             viewHolder.itemView.setBackgroundResource(0);
@@ -95,11 +96,11 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @BindView(R.id.friend_name)
         TextView name;
 
-        @BindView(R.id.friend_points)
-        TextView points;
+        @BindView(R.id.friend_characters)
+        TextView characters;
 
-        @BindView(R.id.number_of_games)
-        TextView numberOfGames;
+        @BindView(R.id.friend_games)
+        TextView games;
 
         @BindView(R.id.item_view)
         View itemView;
@@ -107,8 +108,7 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
         @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
         @OnClick(R.id.item_view)
         void userSelected() {
-            SharedPreferenceUtil.setOpponent(itemView.getContext(), boundUser);
-            Log.i("opponent",SharedPreferenceUtil.getOpponent(itemView.getContext()).getUserNick());
+           // SharedPreferenceUtil.setOpponent(itemView.getContext(), boundUser);
         }
 
         private User boundUser;
@@ -123,8 +123,7 @@ public class ChooseOpponentAdapter extends RecyclerView.Adapter<RecyclerView.Vie
             User user = adapterUser.getUser();
             name.setText(user.getUserNick());
             boundUser = user;
-            numberOfGames.setText("0");
-            points.setText(user.getUserPoints());
+
         }
     }
 

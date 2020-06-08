@@ -174,6 +174,7 @@
     <string name="friend_label_reject_friend">Odrzuć zaproszenie</string>
     <string name="friend_label_uninvite_friend">Anuluj zaproszenie</string>
     <string name="friend_characters">Liczba postaci</string>
+    <string name="friend_games">Liczba gier</string>
 
     <!-- Friends actions -->
     <string name="add_friend_title">Dodawanie znajomego</string>

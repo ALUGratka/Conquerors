@@ -1,14 +1,21 @@
 package pl.conquerors.app.view.friends.profile;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.List;
+
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.domain.model.UserRelationship;
+import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.model.UserRelationshipEntity;
+import pl.conquerors.app.model.mapper.CharacterEntityMapper;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.model.mapper.UserRelationshipMapper;
 import pl.conquerors.app.rest.RestClient;
@@ -33,6 +40,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
         Log.i("userID", String.valueOf(userId));
         if(userId!=null){
             showProfile();
+            attemptToGetUserCharactersNumber();
             getUserActions(mView.getUser());
         }
     }
@@ -52,6 +60,26 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             @Override
             public void onFailure(Call<UserEntity> call, Throwable t) {
                 handleError(t);
+            }
+        });
+
+    }
+
+    private void attemptToGetUserCharactersNumber(){
+        mView.showLoading();
+
+        Call<List<CharacterEntity>> call = RestClient.getInstance().getCharacter((int)mView.getUser().getUserId());
+
+        call.enqueue(new Callback<List<CharacterEntity>>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onResponse(Call<List<CharacterEntity>> call, Response<List<CharacterEntity>> response) {
+                mView.setNumberOfCharacters(response.body().size());
+            }
+
+            @Override
+            public void onFailure(Call<List<CharacterEntity>> call, Throwable t) {
+
             }
         });
 
