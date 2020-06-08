@@ -11,7 +11,7 @@ import pl.conquerors.app.domain.model.Treasure;
 import pl.conquerors.app.model.EnemyEntity;
 
 
-public class EnemyMapper {
+public class EnemyEntityMapper {
 
     public static Enemy transform (EnemyEntity enemyEntity) {
         Enemy enemy = null;

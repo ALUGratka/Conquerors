@@ -9,7 +9,7 @@ import java.util.List;
 import pl.conquerors.app.domain.model.Treasure;
 import pl.conquerors.app.model.TreasureEntity;
 
-public class TreasureMapper {
+public class TreasureEntityMapper {
     public static Treasure transform (TreasureEntity treasureEntity) {
         Treasure treasure = null;
         if(treasureEntity!=null){
