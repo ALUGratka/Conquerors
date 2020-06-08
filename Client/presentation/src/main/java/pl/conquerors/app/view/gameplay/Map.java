@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -39,7 +40,8 @@ public class Map extends View {
     private Drawable treasure1, treasure2, treasure3, treasure4, treasure5, treasure6, treasure7, treasure8;
     private Drawable treasure9, treasure10, treasure11, treasure12, treasure13, treasure14, treasure15;
     private Drawable popupBackground;
-    Paint strokePaint, fillPaint;
+    Paint strokePaint, fillPaint, namePaint, description1Paint, description2Paint;
+    Paint agilityPaint, charismaPaint, strengthPaint, intelligencePaint;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
 
@@ -84,6 +86,29 @@ public class Map extends View {
 
         fillPaint = new Paint();
         strokePaint = new Paint();
+        namePaint = new Paint();
+        description1Paint = new Paint();
+        description2Paint = new Paint();
+        agilityPaint = new Paint();
+        charismaPaint = new Paint();
+        strengthPaint = new Paint();
+        intelligencePaint = new Paint();
+
+        namePaint.setColor(Color.BLACK);
+        namePaint.setTextSize(50);
+        description1Paint.setColor(Color.BLACK);
+        description1Paint.setTextSize(40);
+        description2Paint.setColor(Color.BLACK);
+        description2Paint.setTextSize(40);
+
+        agilityPaint.setColor(Color.BLACK);
+        agilityPaint.setTextSize(35);
+        charismaPaint.setColor(Color.BLACK);
+        charismaPaint.setTextSize(35);
+        strengthPaint.setColor(Color.BLACK);
+        strengthPaint.setTextSize(35);
+        intelligencePaint.setColor(Color.BLACK);
+        intelligencePaint.setTextSize(35);
         create_map();
         getTreasureAchievement(1);
         getEnemiesAchievement(1);
@@ -127,7 +152,8 @@ public class Map extends View {
     }
 
     public void showTreasurePopUp(Canvas canvas, Character character) {
-        if (character.currentTreasure!=null){
+        if (character.currentTreasure != null) {
+            int id = character.currentTreasure.getmId();
             String name = character.currentTreasure.getmName();
             String description = character.currentTreasure.getmDescription();
             int agility = character.currentTreasure.getmAgility();
@@ -135,24 +161,185 @@ public class Map extends View {
             int intelligence = character.currentTreasure.getmIntelligence();
             int strength = character.currentTreasure.getmStrength();
             int skillPoints = character.currentTreasure.getmSkillPoints();
-            System.out.println(name);
-            System.out.println(description);
-            popupBackground.setBounds( 2 * TILE_SIZE, 2 * TILE_SIZE, 2 * TILE_SIZE + TILE_SIZE, 10 * TILE_SIZE + TILE_SIZE);
+
+            int size = 40;
+            List<String> descriptionParts = new ArrayList<String>((description.length() + size - 1) / size);
+
+            for (int start = 0; start < description.length(); start += size) {
+                descriptionParts.add(description.substring(start, Math.min(description.length(), start + size)));
+            }
+
+            popupBackground.setBounds(1 * TILE_SIZE, 1 * TILE_SIZE, 9 * TILE_SIZE + TILE_SIZE, 10 * TILE_SIZE + TILE_SIZE);
             popupBackground.draw(canvas);
+            canvas.drawText(name, 2 * TILE_SIZE, 6 * TILE_SIZE, namePaint);
+            if (descriptionParts.size() >= 1) {
+                canvas.drawText(descriptionParts.get(0), 2 * TILE_SIZE, (float) 6.5 * TILE_SIZE, description1Paint);
+            }
+            if (descriptionParts.size() >= 2) {
+                canvas.drawText(descriptionParts.get(1), 2 * TILE_SIZE, (float) 7.0 * TILE_SIZE, description2Paint);
+            }
+            canvas.drawText("Zrecznosc: " + String.valueOf(agility), 2 * TILE_SIZE, (float) 7.5 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Sila: " + String.valueOf(strength), 2 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Inteligencja: " + String.valueOf(intelligence), 6 * TILE_SIZE, (float) 7.5 * TILE_SIZE, agilityPaint);
+            canvas.drawText("Charyzma: " + String.valueOf(charisma), 6 * TILE_SIZE, (float) 8.0 * TILE_SIZE, agilityPaint);
+            switch (id) {
+                case 1:
+                    treasure1.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure1.draw(canvas);
+                    break;
+                case 2:
+                    treasure2.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure2.draw(canvas);
+                    break;
+                case 3:
+                    treasure3.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure3.draw(canvas);
+                    break;
+                case 4:
+                    treasure4.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure4.draw(canvas);
+                    break;
+                case 5:
+                    treasure5.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure5.draw(canvas);
+                    break;
+                case 6:
+                    treasure6.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure6.draw(canvas);
+                    break;
+                case 7:
+                    treasure7.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure7.draw(canvas);
+                    break;
+                case 8:
+                    treasure8.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure8.draw(canvas);
+                    break;
+                case 9:
+                    treasure9.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure9.draw(canvas);
+                    break;
+                case 10:
+                    treasure10.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure10.draw(canvas);
+                    break;
+                case 11:
+                    treasure11.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure11.draw(canvas);
+                    break;
+                case 12:
+                    treasure12.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure12.draw(canvas);
+                    break;
+                case 13:
+                    treasure13.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure13.draw(canvas);
+                    break;
+                case 14:
+                    treasure14.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure14.draw(canvas);
+                    break;
+                case 15:
+                    treasure15.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    treasure15.draw(canvas);
+                    break;
+            }
+
         }
 
     }
 
     public void showEnemyPopUp(Canvas canvas, Character character) {
-        if (character.currentEnemy!=null){
+        if (character.currentEnemy != null) {
+            int id = character.currentEnemy.getmId();
             String name = character.currentEnemy.getmName();
             String description = character.currentEnemy.getmDescription();
             int agility = character.currentEnemy.getmAgility();
             int charisma = character.currentEnemy.getmCharisma();
             int intelligence = character.currentEnemy.getmIntelligence();
             int strength = character.currentEnemy.getmStrength();
-            System.out.println(name);
-            System.out.println(description);
+
+            int size = 40;
+            List<String> descriptionParts = new ArrayList<String>((description.length() + size - 1) / size);
+
+            for (int start = 0; start < description.length(); start += size) {
+                descriptionParts.add(description.substring(start, Math.min(description.length(), start + size)));
+            }
+            System.out.println("SIZEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+            System.out.println(descriptionParts.size());
+            popupBackground.setBounds(1 * TILE_SIZE, 1 * TILE_SIZE, 9 * TILE_SIZE + TILE_SIZE, 10 * TILE_SIZE + TILE_SIZE);
+            popupBackground.draw(canvas);
+            canvas.drawText(name, 2 * TILE_SIZE, 6 * TILE_SIZE, namePaint);
+            if (descriptionParts.size() >= 1) {
+                canvas.drawText(descriptionParts.get(0), 2 * TILE_SIZE, (float) 6.5 * TILE_SIZE, description1Paint);
+            }
+            if (descriptionParts.size() >= 2) {
+                canvas.drawText(descriptionParts.get(1), 2 * TILE_SIZE, (float) 7.0 * TILE_SIZE, description2Paint);
+            }
+
+            switch (id) {
+                case 1:
+                    enemy1.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy1.draw(canvas);
+                    break;
+                case 2:
+                    enemy2.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy2.draw(canvas);
+                    break;
+                case 3:
+                    enemy3.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy3.draw(canvas);
+                    break;
+                case 4:
+                    enemy4.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy4.draw(canvas);
+                    break;
+                case 5:
+                    enemy5.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy5.draw(canvas);
+                    break;
+                case 6:
+                    enemy6.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy6.draw(canvas);
+                    break;
+                case 7:
+                    enemy7.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy7.draw(canvas);
+                    break;
+                case 8:
+                    enemy8.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy8.draw(canvas);
+                    break;
+                case 9:
+                    enemy9.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy9.draw(canvas);
+                    break;
+                case 10:
+                    enemy10.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy10.draw(canvas);
+                    break;
+                case 11:
+                    enemy11.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy11.draw(canvas);
+                    break;
+                case 12:
+                    enemy12.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy12.draw(canvas);
+                    break;
+                case 13:
+                    enemy13.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy13.draw(canvas);
+                    break;
+                case 14:
+                    enemy14.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy14.draw(canvas);
+                    break;
+                case 15:
+                    enemy15.setBounds(2 * TILE_SIZE, 2 * TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE, 4 * TILE_SIZE + TILE_SIZE);
+                    enemy15.draw(canvas);
+                    break;
+            }
+
         }
 
     }
@@ -226,8 +413,6 @@ public class Map extends View {
         strokePaint.setStrokeWidth(3);
 
         show_move();
-        showTreasurePopUp(canvas, character);
-        showEnemyPopUp(canvas, character);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int pos_i = TILE_SIZE * i;
@@ -333,6 +518,8 @@ public class Map extends View {
                 }
             }
         }
+        showTreasurePopUp(canvas, character);
+        showEnemyPopUp(canvas, character);
     }
 
 
