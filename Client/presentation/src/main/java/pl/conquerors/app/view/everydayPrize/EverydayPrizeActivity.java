@@ -134,6 +134,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
         {
             charactersString.add(character.getmNickname());
         }
+        builder.setTitle("Choose Character");
         builder.setItems(charactersString.toArray(new String[0]), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
