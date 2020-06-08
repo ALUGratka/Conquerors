@@ -46,7 +46,6 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
 
     @OnClick(R.id.forthButton)
     public void onNextButtonClicker(){
-        createNewMap();
         if(SharedPreferenceUtil.getOpponent(this) ==null) {
             Toast.makeText(this, getString(R.string.create_game_no_opponent_choose_error), Toast.LENGTH_SHORT).show();
         }
@@ -65,6 +64,7 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
                 @Override
                 public void onResponse(Call<GameplayEntity> call, Response<GameplayEntity> response) {
                         Log.e("Gameplay created", "Code: " + response.code());
+                        createNewMap(response.body().getId());
                 }
 
                 @Override
@@ -131,9 +131,8 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
     @Override
     public void hideLoading() { }
 
-    protected void createNewMap()
+    protected void createNewMap(int gameId)
     {
-        int gameId =1;
         int treasureId, enemyId;
 
         int rows =30;
