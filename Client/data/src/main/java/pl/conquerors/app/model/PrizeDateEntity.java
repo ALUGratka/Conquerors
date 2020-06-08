@@ -14,6 +14,8 @@ public class PrizeDateEntity {
     @SerializedName("lastDate")
     private String prizeDate;
 
+    private int characterId;
+
     public int getUserId() {
         return userId;
     }
@@ -25,7 +27,8 @@ public class PrizeDateEntity {
         this.userId = userId;
     }
 
-    public PrizeDateEntity(int userId) {
+    public PrizeDateEntity(int userId, int characterId) {
+        this.characterId = characterId;
         this.userId = userId;
     }
 }
