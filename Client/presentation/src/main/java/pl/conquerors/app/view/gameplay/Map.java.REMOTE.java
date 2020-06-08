@@ -35,7 +35,7 @@ public class Map extends View {
     public static int[][] tileMap;
     public static int[][] overlay;
     private static int rows, columns;
-    private Drawable box, enemy1, enemy2, enemy3, enemy4, enemy5, enemy6, enemy7, enemy8, enemy9, enemy10, enemy11, enemy12, enemy13, enemy14, enemy15;
+    private Drawable box;
     Paint strokePaint, fillPaint;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
@@ -45,22 +45,6 @@ public class Map extends View {
         super(context);
         box = getResources().getDrawable(R.mipmap.skarb, null);
         box.mutate().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
-        enemy1 = getResources().getDrawable(R.drawable.enemy1, null);
-        enemy2 = getResources().getDrawable(R.drawable.enemy2, null);
-        enemy3 = getResources().getDrawable(R.drawable.enemy3, null);
-        enemy4 = getResources().getDrawable(R.drawable.enemy4, null);
-        enemy5 = getResources().getDrawable(R.drawable.enemy5, null);
-        enemy6 = getResources().getDrawable(R.drawable.enemy6, null);
-        enemy7 = getResources().getDrawable(R.drawable.enemy7, null);
-        enemy8 = getResources().getDrawable(R.drawable.enemy8, null);
-        enemy9 = getResources().getDrawable(R.drawable.enemy9, null);
-        enemy10 = getResources().getDrawable(R.drawable.enemy10, null);
-        enemy11 = getResources().getDrawable(R.drawable.enemy11, null);
-        enemy12 = getResources().getDrawable(R.drawable.enemy12, null);
-        enemy13 = getResources().getDrawable(R.drawable.enemy13, null);
-        enemy14 = getResources().getDrawable(R.drawable.enemy14, null);
-        enemy15 = getResources().getDrawable(R.drawable.enemy15, null);
-
         fillPaint = new Paint();
         strokePaint = new Paint();
         create_map();
@@ -204,80 +188,15 @@ public class Map extends View {
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
-                }
-
-               else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
+                } else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
                     box.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
                     box.draw(canvas);
                     canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);
                 } else if (overlay[i][j] > 30) {
                     fillPaint.setStyle(Paint.Style.FILL);
-                    fillPaint.setColor(Color.GREEN);
+                    fillPaint.setColor(Color.BLUE);
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
-                    int enemyId = overlay[i][j] - 30;
-                    switch (enemyId){
-                        case 1:
-                            enemy1.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy1.draw(canvas);
-                            break;
-                        case 2:
-                            enemy2.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy2.draw(canvas);
-                            break;
-                        case 3:
-                            enemy3.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy3.draw(canvas);
-                            break;
-                        case 4:
-                            enemy4.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy4.draw(canvas);
-                            break;
-                        case 5:
-                            enemy5.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy5.draw(canvas);
-                            break;
-                        case 6:
-                            enemy6.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy6.draw(canvas);
-                            break;
-                        case 7:
-                            enemy7.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy7.draw(canvas);
-                            break;
-                        case 8:
-                            enemy8.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy8.draw(canvas);
-                            break;
-                        case 9:
-                            enemy9.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy9.draw(canvas);
-                            break;
-                        case 10:
-                            enemy10.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy10.draw(canvas);
-                            break;
-                        case 11:
-                            enemy11.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy11.draw(canvas);
-                            break;
-                        case 12:
-                            enemy12.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy12.draw(canvas);
-                            break;
-                        case 13:
-                            enemy13.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy13.draw(canvas);
-                            break;
-                        case 14:
-                            enemy14.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy14.draw(canvas);
-                            break;
-                        case 15:
-                            enemy15.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
-                            enemy15.draw(canvas);
-                            break;
-                    }
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 }
             }

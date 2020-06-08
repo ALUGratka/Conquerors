@@ -13,37 +13,37 @@ public class CreateCharacterUseCase extends ResultUseCase<Void> {
     private int mAgility;
     private int mStrength;
     private String mNickname;
-    private Character.Sex mSex;
-    private Character.CharacterClass mCharacterClass;
-    private Character.Hair mHair;
-    private Character.Hat mHat;
-    private Character.EyeColor mEyeColor;
-    private Character.Blouse mBlouse;
-    private Character.Pants mPants;
-    private Character.Shoes mShoes;
+    private int mSex;
+    private int mCharacterClass;
+    private int mHair;
+    private int mHat;
+    private int mEyeColor;
+    private int mBlouse;
+    private int mPants;
+    private int mShoes;
     private int mUserId;
 
     public CreateCharacterUseCase(ComposedScheduler scheduler) {
         super(scheduler);
     }
 
-    private void setCharacterSkillPoints(Character.CharacterClass characterClass) {
-        if (characterClass == Character.CharacterClass.Bard) {
+    private void setCharacterSkillPoints(int characterClass) {
+        if (characterClass == 0) {
             mCharisma = 10;
             mIntelligence = 3;
             mAgility = 5;
             mStrength = 2;
-        } else if (characterClass == Character.CharacterClass.Wizard) {
+        } else if (characterClass == 3) {
             mCharisma = 3;
             mIntelligence = 10;
             mAgility = 2;
             mStrength = 5;
-        } else if (characterClass == Character.CharacterClass.Thief) {
+        } else if (characterClass == 1) {
             mCharisma = 5;
             mIntelligence = 3;
             mAgility = 10;
             mStrength = 2;
-        } else if (characterClass == Character.CharacterClass.Warrior) {
+        } else if (characterClass == 2) {
             mCharisma = 3;
             mIntelligence = 2;
             mAgility = 5;
@@ -58,8 +58,8 @@ public class CreateCharacterUseCase extends ResultUseCase<Void> {
         return null;
     }
 
-    public void setData(final String nickname, final Character.Sex sex, final Character.CharacterClass characterClass, final Character.Hair hair, final Character.Hat hat,
-                        Character.EyeColor eyeColor, Character.Blouse blouse, Character.Pants pants, Character.Shoes shoes, int userId) {
+    public void setData(final String nickname, final int sex, final int characterClass, final int hair, final int hat,
+                        int eyeColor, int blouse, int pants, int shoes, int userId) {
         mLevel = 0;
 
         mNickname = nickname;
@@ -101,35 +101,35 @@ public class CreateCharacterUseCase extends ResultUseCase<Void> {
         return mNickname;
     }
 
-    public Character.Sex getmSex() {
+    public int getmSex() {
         return mSex;
     }
 
-    public Character.CharacterClass getmCharacterClass() {
+    public int getmCharacterClass() {
         return mCharacterClass;
     }
 
-    public Character.Hair getmHair() {
+    public int getmHair() {
         return mHair;
     }
 
-    public Character.Hat getmHat() {
+    public int getmHat() {
         return mHat;
     }
 
-    public Character.EyeColor getmEyeColor() {
+    public int getmEyeColor() {
         return mEyeColor;
     }
 
-    public Character.Blouse getmBlouse() {
+    public int getmBlouse() {
         return mBlouse;
     }
 
-    public Character.Pants getmPants() {
+    public int getmPants() {
         return mPants;
     }
 
-    public Character.Shoes getmShoes() {
+    public int getmShoes() {
         return mShoes;
     }
 

@@ -68,7 +68,7 @@ public interface RestService {
     Call<List<CharacterEntity>> getCharacter(@Path("userId") int user);
 
     @GET("/characters/{characterId}/statistic")
-    Call<CharacterStatisticsEntity> getCharacterStatistic(@Path("characterId") int character);
+    Call<CharacterEntity> getCharacterStatistic(@Path("characterId") int character);
 
     @GET("/gameplay-treasures-achievement")
     Call<List<TreasureAchievementEntity>> getTreasuresAchievement(@Query("gameplayId") int gamePlayId);

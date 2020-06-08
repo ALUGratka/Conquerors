@@ -5,9 +5,6 @@ import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
 
-import java.lang.Math.*;
-
-import pl.conquerors.app.view.gameplay.Map;
 
 import static pl.conquerors.app.view.gameplay.Map.tileMap;
 import static pl.conquerors.app.view.gameplay.Map.overlay;
@@ -73,23 +70,22 @@ public class Character implements Object {
             clear_position();
             overlay[point.x][point.y] = 3;
         }
+        //dla skrzynek
         else if (overlay[point.x][point.y] > 5 && overlay[point.x][point.y] < 30 && distance == 1) {
-            //overlay[point.x][point.y] = 31; -------jak sie najdzie na skrzynke to niebieskie
             get_treasure();
         }
+        //dla wrogów
         else if (overlay[point.x][point.y] > 30 && distance == 1) {
-            //overlay[point.x][point.y] = 31; -------jak sie najdzie na skrzynke to niebieskie
             begin_fight();
-            System.out.println("duża dupa");
         }
 
     }
 
-    public void get_treasure(){
+    public void get_treasure() {
 
     }
 
-    public void begin_fight(){
+    public void begin_fight() {
 
     }
 

@@ -204,9 +204,17 @@ public class Map extends View {
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
+<<<<<<< HEAD
                 }
 
-               else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
+                else if(overlay[i][j] > 10 && overlay[i][j]<30){
+                    fillPaint.setStyle(Paint.Style.FILL);
+                    fillPaint.setColor(Color.GREEN);
+
+                    canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
+=======
+                } else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
+>>>>>>> 893150405ab45077c0810b31bf51cbe71dd4d076
                     box.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
                     box.draw(canvas);
                     canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);

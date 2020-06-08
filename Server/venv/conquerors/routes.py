@@ -1,6 +1,7 @@
 from flask import request, make_response
 from conquerors import app, db, bcrypt
-from conquerors.models import User, Character, LastPrize, Enemy, Treasure, GameplayEnemiesAchievements, GameplayTreasuresAchievements, Gameplay, UserRelationship
+from conquerors.models import User, Character, LastPrize, Enemy, Treasure, GameplayEnemiesAchievements, \
+    GameplayTreasuresAchievements, Gameplay, UserRelationship
 import json
 from datetime import date
 
@@ -16,21 +17,21 @@ def login():
         data = json.loads(request.data)
         username = data['username']
         password = data['password']
-        user = User.query.filter_by(username=username).first() 
+        user = User.query.filter_by(username=username).first()
 
         if user and bcrypt.check_password_hash(user.password, password):
             message = user.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
-    
+
     message = {
-        'response' : 'User not found'
+        'response': 'User not found'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -39,21 +40,21 @@ def get_user_by_username():
     if request.method == 'GET':
         username = request.args.get('username')
 
-        user = User.query.filter_by(username=username).first() 
+        user = User.query.filter_by(username=username).first()
 
         if user:
             message = user.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
 
         message = {
-            'response' : 'User with given id does not exists in db'
+            'response': 'User with given id does not exists in db'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 400 # bad request
+        response.status_code = 400  # bad request
         return response
 
 
@@ -67,21 +68,21 @@ def delete_user_by_email():
         if user:
             db.session.delete(user)
             db.session.commit()
-            
+
             message = {
-                'response' : 'User deleted from db'
+                'response': 'User deleted from db'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
 
     message = {
-        'response' : 'User with given email not found in db'
+        'response': 'User with given email not found in db'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -99,7 +100,7 @@ def update_user():
         if user.email != email:
             if User.query.filter_by(email=email).first():
                 message = {
-                    'response' : 'Email taken'
+                    'response': 'Email taken'
                 }
                 response = make_response(json.dumps(message))
                 response.headers['Content-Type'] = 'application/json'
@@ -109,7 +110,7 @@ def update_user():
         if user.username != username:
             if User.query.filter_by(username=username).first():
                 message = {
-                    'response' : 'Username taken'
+                    'response': 'Username taken'
                 }
                 response = make_response(json.dumps(message))
                 response.headers['Content-Type'] = 'application/json'
@@ -119,11 +120,11 @@ def update_user():
         if bcrypt.check_password_hash(user.password, password):
             db.session.commit()
             message = {
-                'response' : 'User updated'
+                'response': 'User updated'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
         else:
             hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
@@ -132,19 +133,19 @@ def update_user():
         db.session.commit()
 
         message = {
-            'response' : 'User updated'
+            'response': 'User updated'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     message = {
-        'response' : 'Error, user not updated'
+        'response': 'Error, user not updated'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -159,7 +160,7 @@ def register():
         # checking if username taken
         if User.query.filter_by(username=username).first():
             message = {
-                'response' : 'User with given username already exists'
+                'response': 'User with given username already exists'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
@@ -167,7 +168,7 @@ def register():
         # checking if email taken
         if User.query.filter_by(email=email).first():
             message = {
-                'response' : 'User with given email already exists'
+                'response': 'User with given email already exists'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
@@ -179,15 +180,15 @@ def register():
         db.session.commit()
         # send response
         message = {
-            'response' : 'User created'
+            'response': 'User created'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 201 # created
+        response.status_code = 201  # created
         return response
     # if else
     message = {
-        'response' : 'Error'
+        'response': 'Error'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
@@ -199,7 +200,7 @@ def register():
 def create_character():
     if request.method == 'POST':
         data = json.loads(request.data)
-        
+
         userId = data['userId']
         level = data['level']
 
@@ -217,12 +218,14 @@ def create_character():
         blouse = data['blouse']
         pants = data['pants']
         shoes = data['shoes']
+        skillPoints = data['skillPoints']
         
+
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
             # if so create character and add to db
             character = Character(level=level, charisma=charisma, intelligence=intelligence,
-            agility=agility, strength=strength, nickname=nickname, sex=sex,
+            agility=agility, strength=strength, skillPoints=skillPoints, nickname=nickname, sex=sex,
             characterClass=characterClass, hair=hair, hat=hat, eyeColor=eyeColor, blouse=blouse,
             pants=pants, shoes=shoes, userId=userId)
 
@@ -233,11 +236,11 @@ def create_character():
             message = character.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 201 # created
+            response.status_code = 201  # created
             return response
         else:
             message = {
-                'response' : 'User with given id does not exists in db'
+                'response': 'User with given id does not exists in db'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
@@ -245,7 +248,7 @@ def create_character():
 
     # if any other error occours
     message = {
-        'response' : 'Error'
+        'response': 'Error'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
@@ -258,7 +261,7 @@ def create_character():
 def update_character():
     if request.method == 'PUT':
         data = json.loads(request.data)
-        
+
         id = data['id']
         level = data['level']
         charisma = data['charisma']
@@ -268,7 +271,7 @@ def update_character():
         skillPoints = data['skillPoints']
 
         character = Character.query.filter_by(id=int(id)).first()
-        
+
         if character:
             character.level = level
             character.charisma = charisma
@@ -282,11 +285,11 @@ def update_character():
             message = character.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 204 # source updated successfully
+            response.status_code = 204  # source updated successfully
             return response
         else:
             message = {
-                'response' : 'Character with given id not found in db'
+                'response': 'Character with given id not found in db'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
@@ -294,7 +297,7 @@ def update_character():
 
     # if any other error occours
     message = {
-        'response' : 'Error'
+        'response': 'Error'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
@@ -318,7 +321,7 @@ def get_characters():
             response.status_code = 200
             return response
         message = {
-            'response' : 'This user did not created any characters'
+            'response': 'This user did not created any characters'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
@@ -326,7 +329,7 @@ def get_characters():
 
     # if any other error occours
     message = {
-        'response' : 'Error'
+        'response': 'Error'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
@@ -344,7 +347,7 @@ def createPrizeDate():
 
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
-            if(LastPrize.query.filter_by(userId=int(userId), lastDate=str(lastDate)).first()):
+            if (LastPrize.query.filter_by(userId=int(userId), lastDate=str(lastDate)).first()):
                 message = {
                     'response': 'You already got a prize today'
                 }
@@ -356,8 +359,8 @@ def createPrizeDate():
                 # if so create character and add to db
                 prizeDate = LastPrize(lastDate=lastDate, userId=userId)
                 db.session.add(prizeDate)
-                user =  User.query.get(userId)
-                user.skillPoints = user.skillPoints+2
+                user = User.query.get(userId)
+                user.skillPoints = user.skillPoints + 2
                 db.session.commit()
                 # send response
                 message = {
@@ -394,8 +397,9 @@ def get_user_prizes(userId):
             prizesJson.append(prize.to_dict())
         response = make_response(json.dumps(prizesJson, default=str))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
+
 
 @app.route("/users/<userId>/characters", methods=['GET'])
 def get_user_characters(userId):
@@ -406,7 +410,7 @@ def get_user_characters(userId):
             charactersJson.append(character.to_dict())
         response = make_response(json.dumps(charactersJson, default=str))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
 
@@ -414,16 +418,17 @@ def get_user_characters(userId):
 def get_character_statistic(characterId):
     if request.method == 'GET':
         character = Character.query.get(characterId)
-        message = character.to_statistic_dict()
+        print(character)
+        message = character.to_dict()
         response = make_response(json.dumps(message, default=str))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
 
 @app.route("/enemies", methods=['GET'])
 def get_enemies():
-    if request.method == 'GET': 
+    if request.method == 'GET':
         enemies = Enemy.query.all()
 
         if enemies:
@@ -432,21 +437,21 @@ def get_enemies():
                 message.append(enemy.to_dict())
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
 
         message = {
-            'response' : 'No enemies in db'
+            'response': 'No enemies in db'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 400 # bad request
+        response.status_code = 400  # bad request
         return response
 
 
 @app.route("/treasures", methods=['GET'])
 def get_treasures():
-    if request.method == 'GET': 
+    if request.method == 'GET':
         treasures = Treasure.query.all()
 
         if treasures:
@@ -455,15 +460,15 @@ def get_treasures():
                 message.append(treasure.to_dict())
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
 
         message = {
-            'response' : 'No treasures in db'
+            'response': 'No treasures in db'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 400 # bad request
+        response.status_code = 400  # bad request
         return response
 
 
@@ -473,8 +478,24 @@ def post_gameplay():
 
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
+    turn = data['turn']
+    round = data['round']
+    player1PositionX = data['player1PositionX']
+    player1PositionY = data['player1PositionY']
+    player2PositionX = data['player2PositionX']
+    player2PositionY = data['player2PositionY']
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
+    gameplay = Gameplay(player1id=player1id, player2id=player2id,character1id=character1id, character2id=character2id,
+                        turn=turn, round=round,
+                        player1PositionX=player1PositionX, player1PositionY=player1PositionY,
+                        player2PositionX=player2PositionX, player2PositionY=player2PositionY,
+                        canPlay1=canPlay1, canPlay2=canPlay2, canAccept1=canAccept1, canAccept2=canAccept2)
 
-    gameplay = Gameplay(player1id=player1id, player2id=player2id)
     db.session.add(gameplay)
     db.session.commit()
     message = gameplay.to_dict()
@@ -491,12 +512,37 @@ def put_gameplay():
     id = data['id']
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
+    turn = data['turn']
+    round = data['round']
+    player1PositionX = data['player1PositionX']
+    player1PositionY = data['player1PositionY']
+    player2PositionX = data['player2PositionX']
+    player2PositionY = data['player2PositionY']
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
 
     gameplay = Gameplay.query.filter_by(id=int(id)).first()
 
     if gameplay:
         gameplay.player1id = player1id
         gameplay.player2id = player2id
+        gameplay.character1id = character1id
+        gameplay.character2id = character2id
+        gameplay.turn = turn
+        gameplay.round = round
+        gameplay.player1PositionX = player1PositionX
+        gameplay.player1PositionY = player1PositionY
+        gameplay.player2PositionX = player2PositionX
+        gameplay.player2PositionY = player2PositionY
+        gameplay.canPlay1 = canPlay1
+        gameplay.canPlay2 = canPlay2
+        gameplay.canAccept1 = canAccept1
+        gameplay.canAccept2 = canAccept2
+
         db.session.commit()
         message = gameplay.to_dict()
         response = make_response(json.dumps(message))
@@ -505,11 +551,11 @@ def put_gameplay():
         return response
 
     message = {
-        'response' : 'No gameplay in db'
+        'response': 'No gameplay in db'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -522,21 +568,21 @@ def delete_gameplay():
     if gameplay:
         db.session.delete(gameplay)
         db.session.commit()
-        
+
         message = {
-            'response' : 'Gameplay deleted from db'
+            'response': 'Gameplay deleted from db'
         }
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     message = {
-        'response' : 'No gameplay in db'
+        'response': 'No gameplay in db'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -549,15 +595,15 @@ def get_gameplay():
         message = gameplay.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     message = {
-        'response' : 'No gameplay in db'
+        'response': 'No gameplay in db'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -571,7 +617,7 @@ def get_gameplays():
         message = gameplay.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
     else:
         gameplay = Gameplay.query.filter_by(player1id=int(player2id), player2id=int(player1id)).first()
@@ -579,15 +625,15 @@ def get_gameplays():
             message = gameplay.to_dict()
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
         else:
             message = {
-                'response' : 'Gameplay invalid'
+                'response': 'Gameplay invalid'
             }
             response = make_response(json.dumps(message))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 400 # bad request
+            response.status_code = 400  # bad request
             return response
 
 
@@ -611,7 +657,7 @@ def post_put_gameplay_enemies_achievement():
         message = gameplay_enemies_achievement.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     if request.method == 'PUT':
@@ -629,15 +675,15 @@ def post_put_gameplay_enemies_achievement():
         message = gameplay_enemies_achievement.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     message = {
-        'response' : 'Gameplay enemies achievement invalid'
+        'response': 'Gameplay enemies achievement invalid'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -661,7 +707,7 @@ def post_put_gameplay_treasures_achievement():
         message = gameplay_treasures_achievement.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     if request.method == 'PUT':
@@ -679,15 +725,15 @@ def post_put_gameplay_treasures_achievement():
         message = gameplay_treasures_achievement.to_dict()
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
     message = {
-        'response' : 'Gameplay treasures achievement invalid'
+        'response': 'Gameplay treasures achievement invalid'
     }
     response = make_response(json.dumps(message))
     response.headers['Content-Type'] = 'application/json'
-    response.status_code = 400 # bad request
+    response.status_code = 400  # bad request
     return response
 
 
@@ -702,7 +748,7 @@ def get_gameplay_enemies_achievement():
             message.append(achievement.to_dict())
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
 
@@ -717,7 +763,7 @@ def get_gameplay_treasures_achievement():
             message.append(achievement.to_dict())
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200 # success
+        response.status_code = 200  # success
         return response
 
 
@@ -752,7 +798,6 @@ def find_user_friends():
 
         looking_for = '%{0}%'.format(phrase)
 
-        
         friends = db.session.query(User).filter(User.username.like(looking_for), User.id != userID)
 
         usersJson = []
@@ -770,8 +815,9 @@ def find_user_friends():
         else:
             response = make_response(json.dumps(usersJson, default=str))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
+
 
 @app.route("/relationshipStatus", methods=['GET'])
 def get_users_status():
@@ -801,6 +847,7 @@ def get_users_status():
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200  # success
             return response
+
 
 @app.route("/addFriend", methods=['PUT'])
 def put_user_status_after_add():
@@ -928,7 +975,7 @@ def get_user_friends():
         else:
             response = make_response(json.dumps(usersJson, default=str))
             response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200 # success
+            response.status_code = 200  # success
             return response
 
 
@@ -959,4 +1006,3 @@ def get_user_invitations():
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200  # success
             return response
-
