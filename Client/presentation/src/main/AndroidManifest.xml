@@ -28,7 +28,6 @@
             android:label="@string/title_activity_home"
             android:screenOrientation="fullSensor"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity
             android:name=".view.register.RegistrationActivity"
@@ -102,10 +101,19 @@
             android:parentActivityName=".view.createGame.chooseCharacter.ChooseCharacterActivity">
         </activity>
 
+        <activity android:name=".view.gameplay.GameActivity"
+            android:label="Gameplay"
+            android:screenOrientation="fullSensor">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity android:name=".view.showGames.showGamesActivity"
             android:label="Show games"
             android:screenOrientation="fullSensor">
         </activity>
+
 
         <activity android:name=".view.friends.FriendsActivity"
             android:label="@string/tittle_activity_friends"
@@ -132,7 +140,8 @@
         <activity android:name=".view.createGame.chooseCharacter.ChooseCharacterActivity"
             android:label="@string/choose_character"
             android:screenOrientation="fullSensor"
-            android:parentActivityName=".view.home.HomeActivity"/>
+            android:parentActivityName=".view.home.HomeActivity">
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

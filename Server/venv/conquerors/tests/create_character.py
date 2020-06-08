@@ -6,7 +6,6 @@ url = 'http://127.0.0.1:80/'
 
 
 def create_character():
-    # to do
     character = {
         "userId" : 1,
         "level" : 0,

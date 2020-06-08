@@ -22,6 +22,7 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
     private int hat;
     private String nickname = "Lamus";
     private int userId;
+    private int skillPoints;
 
     public CreateCharacterPresenter() {
     }
@@ -66,9 +67,12 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
         this.userId = userId;
     }
 
+    public void setSkillPoints(int skillPoints) {this.skillPoints = skillPoints;}
+
     public void performCharacterCreation() {
 
         int level = 0;
+        int skillPoints = 0;
         int strength;
         int charisma;
         int agility;
@@ -98,7 +102,7 @@ public class CreateCharacterPresenter extends BasePresenter<CreateCharacterView>
 
         Call<CharacterEntity> call = RestClient.getInstance().createCharacter(new CharacterEntity(level, charisma, intelligence, agility,
                 strength, nickname, sex, characterClass, hair, hat, eyeColor, blouse, pants,
-                shoes, userId));
+                shoes, userId, skillPoints));
 
         call.enqueue(new Callback<CharacterEntity>() {
             @Override

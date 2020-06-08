@@ -2,6 +2,7 @@ package pl.conquerors.app.view.createGame.chooseCharacter;
 
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.util.Log;
 
 import java.util.List;
 
@@ -32,13 +33,14 @@ public class ChooseCharacterPresenter extends BasePresenter<ChooseCharacterView>
             @Override
             public void onResponse(Call<List<CharacterEntity>> call, Response<List<CharacterEntity>> response) {
                 List<Character> characters = CharacterEntityMapper.transform(response.body());
+                Log.i("characters_size", String.valueOf(characters.size()));
                 if(characters.isEmpty()){
                     mView.startCreateCharacter(true);
                     mView.setCharacterCardVisible(false);
                     mView.setNextButtonVisible(false);
                 }
                 else {
-                    if(characters.size()>1) mView.setArrowsVisible(true);
+                    if(characters.size()==1) mView.setArrowsVisible(false);
                     mView.setCharacters(characters);
                     mView.setCharacterCard(0);
                 }

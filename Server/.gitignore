@@ -5,3 +5,4 @@ venv/Scripts
 venv/__pycache__
 pyvenv.cfg
 venv/conquerors/__pycache__
+venv/conquerors/helpers/__pycache__

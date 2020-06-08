@@ -6,19 +6,30 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.R;
+import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.model.EnemiesAchievementEntity;
+import pl.conquerors.app.model.GameplayEntity;
+import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.navigation.Navigator;
+import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.view.createGame.chooseCharacter.ChooseCharacterPresenter;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChooseOpponentActivity extends BaseActivity implements ChooseOpponentView {
 
@@ -34,11 +45,20 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
 
     @OnClick(R.id.forthButton)
     public void onNextButtonClicker(){
+        createNewMap();
         if(SharedPreferenceUtil.getOpponent(this) ==null) {
             Toast.makeText(this, getString(R.string.create_game_no_opponent_choose_error), Toast.LENGTH_SHORT).show();
         }
         else {
             //TODO send game info to database
+            final int userId = (int)SharedPreferenceUtil.getUser(this).getUserId();
+            Character character = SharedPreferenceUtil.getGameCharacter(this);
+            User opponent = SharedPreferenceUtil.getOpponent(this);
+
+            GameplayEntity gameplay = new GameplayEntity(0, userId, (int)opponent.getUserId(), character.getmId(), 0, 1, 1, 2, 15, 8,2, false, false, false,  true);
+
+
+
             finish();
             Toast.makeText(this, getString(R.string.game_created), Toast.LENGTH_SHORT).show();
         }
@@ -97,4 +117,72 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
     @Override
     public void hideLoading() { }
 
+    protected void createNewMap()
+    {
+        int gameId =1;
+        int treasureId, enemyId;
+
+        int rows =30;
+        int columns = 20;
+        Random random = new Random();
+        for (int i = 0; i < rows; i++){
+            for (int j = 0; j < columns; j++){
+                int r  = random.nextInt(10);
+                if(r%10==1) {
+                    treasureId=random.nextInt(15)+1;
+                    createTreasureAchievement(gameId, treasureId, String.valueOf(i), String.valueOf(j));
+                }
+                else if(r%10==2) {
+                    enemyId=random.nextInt(15)+1;
+                    createEnemiesAchievement(gameId, enemyId, String.valueOf(i), String.valueOf(j));
+                }
+            }
+        }
+    }
+
+    public void createTreasureAchievement(int gameId, int treasureId, String objectPositionX,
+                                          String objectPositionY) {
+        Call<TreasureAchievementEntity> call =
+                RestClient.getInstance().createTreasuresAchievement
+                        (new TreasureAchievementEntity(gameId, treasureId, objectPositionX,
+                                objectPositionY));
+
+        call.enqueue(new Callback<TreasureAchievementEntity>() {
+            @Override
+            public void onResponse(Call<TreasureAchievementEntity> call, Response<TreasureAchievementEntity> response) {
+                if (!response.isSuccessful()) {
+                    Log.e("Treasure Achievement", "Code: " + response.code());
+                    return;
+                }
+                Log.e("Treasure created!", "Code: " + response.code());
+            }
+            @Override
+            public void onFailure(Call<TreasureAchievementEntity> call, Throwable t) {
+                Log.e("Treasure Achievement", t.getMessage());
+            }
+        });
+    }
+
+    public void createEnemiesAchievement(int gameId, int enemyId, String objectPositionX,
+                                         String objectPositionY) {
+        Call<EnemiesAchievementEntity> call =
+                RestClient.getInstance().createEnemiesAchievement
+                        (new EnemiesAchievementEntity(gameId, enemyId, objectPositionX,
+                                objectPositionY));
+
+        call.enqueue(new Callback<EnemiesAchievementEntity>() {
+            @Override
+            public void onResponse(Call<EnemiesAchievementEntity> call, Response<EnemiesAchievementEntity> response) {
+                if (!response.isSuccessful()) {
+                    Log.e("Enemies Achievement", "Code: " + response.code());
+                    return;
+                }
+                Log.e("Enemies created!", "Code: " + response.code());
+            }
+            @Override
+            public void onFailure(Call<EnemiesAchievementEntity> call, Throwable t) {
+                Log.e("Treasure Achievement", t.getMessage());
+            }
+        });
+    }
 }

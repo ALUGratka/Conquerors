@@ -51,7 +51,7 @@ class Character(db.Model):
     lastLoggedInCalendar = db.relationship('LastLoggedIn', backref='character_id', lazy=True)
 
     def __repr__(self):
-        return f"Character('{self.id}', '{self.nickname}', '{self.level}', '{self.characterClass}')"
+        return f"Character('{self.id}', '{self.nickname}', '{self.sex}', '{self.characterClass}')"
 
     def to_dict(self):
         return {
@@ -85,8 +85,7 @@ class Character(db.Model):
             'strength': self.strength,
             'nickname': self.nickname,
             'characterClass': self.characterClass,
-            'userId': self.userId,
-            'skillPoints': user.skillPoints
+            'userId': self.userId
         }
 
 
@@ -197,6 +196,18 @@ class Gameplay(db.Model):
     # foreign keys
     player1id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     player2id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    character1id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    character2id = db.Column(db.Integer, db.ForeignKey('character.id'), nullable=False)
+    turn = db.Column(db.Integer, unique=False, nullable=False)
+    round = db.Column(db.Integer, unique=False, nullable=False)
+    player1PositionX = db.Column(db.Integer, unique=False, nullable=False)
+    player1PositionY = db.Column(db.Integer, unique=False, nullable=False)
+    player2PositionX = db.Column(db.Integer, unique=False, nullable=False)
+    player2PositionY = db.Column(db.Integer, unique=False, nullable=False)
+    canPlay1 = db.Column(db.Boolean, unique=False, nullable=False)
+    canPlay2 = db.Column(db.Boolean, unique=False, nullable=False)
+    canAccept1 = db.Column(db.Boolean, unique=False, nullable=False)
+    canAccept2 = db.Column(db.Boolean, unique=False, nullable=False)
 
     def __repr__(self):
         return f"Gameplay('{self.id}', '{self.player1id}', '{self.player2id}')"
@@ -205,7 +216,19 @@ class Gameplay(db.Model):
         return {
             'id': self.id,
             'player1id': self.player1id,
-            'player2id': self.player2id
+            'player2id': self.player2id,
+            'character1id': self.character1id,
+            'character2id': self.character2id,
+            'turn': self.turn,
+            'round': self.round,
+            'player1PositionX': self.player1PositionX,
+            'player1PositionY': self.player1PositionY,
+            'player2PositionX': self.player2PositionX,
+            'player2PositionY': self.player2PositionY,
+            'canPlay1': self.canPlay1,
+            'canPlay2': self.canPlay2,
+            'canAccept1': self.canAccept1,
+            'canAccept2': self.canAccept2,
         }
 
 

@@ -4,6 +4,7 @@ from conquerors.models import User, Character, LastPrize, Enemy, Treasure, Gamep
     GameplayTreasuresAchievements, Gameplay, UserRelationship
 import json
 from datetime import date
+from random import randint
 
 
 @app.route("/")
@@ -218,14 +219,16 @@ def create_character():
         blouse = data['blouse']
         pants = data['pants']
         shoes = data['shoes']
+        skillPoints = data['skillPoints']
+
 
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
             # if so create character and add to db
             character = Character(level=level, charisma=charisma, intelligence=intelligence,
-                                  agility=agility, strength=strength, nickname=nickname, sex=sex,
-                                  characterClass=characterClass, hair=hair, hat=hat, eyeColor=eyeColor, blouse=blouse,
-                                  pants=pants, shoes=shoes, userId=userId)
+            agility=agility, strength=strength, skillPoints=skillPoints, nickname=nickname, sex=sex,
+            characterClass=characterClass, hair=hair, hat=hat, eyeColor=eyeColor, blouse=blouse,
+            pants=pants, shoes=shoes, userId=userId)
 
             print(character)
             db.session.add(character)
@@ -342,6 +345,7 @@ def createPrizeDate():
 
         userId = data['userId']
         lastDate = date.today()
+        characterId = data['characterId']
 
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
@@ -354,15 +358,23 @@ def createPrizeDate():
                 response.status_code = 403
                 return response
             else:
-                # if so create character and add to db
                 prizeDate = LastPrize(lastDate=lastDate, userId=userId)
                 db.session.add(prizeDate)
                 user = User.query.get(userId)
-                user.skillPoints = user.skillPoints + 2
+                character = Character.query.get(characterId)
+                attribute = randint(0, 3)
+                if(attribute==0):
+                    character.agility = character.agility +2
+                if (attribute == 1):
+                    character.charisma = character.charisma+2
+                if (attribute == 2):
+                    character.strength = character.strength + 2
+                if (attribute == 3):
+                    character.intelligence = character.intelligence + 2
                 db.session.commit()
                 # send response
                 message = {
-                    'response': 'Prize Date created'
+                    'attributeId': attribute
                 }
                 response = make_response(json.dumps(message))
                 response.headers['Content-Type'] = 'application/json'
@@ -416,7 +428,8 @@ def get_user_characters(userId):
 def get_character_statistic(characterId):
     if request.method == 'GET':
         character = Character.query.get(characterId)
-        message = character.to_statistic_dict()
+        print(character)
+        message = character.to_dict()
         response = make_response(json.dumps(message, default=str))
         response.headers['Content-Type'] = 'application/json'
         response.status_code = 200  # success
@@ -475,8 +488,26 @@ def post_gameplay():
 
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
+    turn = data['turn']
+    round = data['round']
+    player1PositionX = data['player1PositionX']
+    player1PositionY = data['player1PositionY']
+    player2PositionX = data['player2PositionX']
+    player2PositionY = data['player2PositionY']
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
 
-    gameplay = Gameplay(player1id=player1id, player2id=player2id)
+
+    gameplay = Gameplay(player1id=player1id, player2id=player2id, character1id=character1id, character2id=character2id,
+                        turn=turn, round=round,
+                        player1PositionX=player1PositionX, player1PositionY=player1PositionY,
+                        player2PositionX=player2PositionX, player2PositionY=player2PositionY,
+                        canPlay1=canPlay1, canPlay2=canPlay2, canAccept1=canAccept1, canAccept2=canAccept2)
+
     db.session.add(gameplay)
     db.session.commit()
     message = gameplay.to_dict()
@@ -493,12 +524,37 @@ def put_gameplay():
     id = data['id']
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
+    turn = data['turn']
+    round = data['round']
+    player1PositionX = data['player1PositionX']
+    player1PositionY = data['player1PositionY']
+    player2PositionX = data['player2PositionX']
+    player2PositionY = data['player2PositionY']
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
 
     gameplay = Gameplay.query.filter_by(id=int(id)).first()
 
     if gameplay:
         gameplay.player1id = player1id
         gameplay.player2id = player2id
+        gameplay.character1id = character1id
+        gameplay.character2id = character2id
+        gameplay.turn = turn
+        gameplay.round = round
+        gameplay.player1PositionX = player1PositionX
+        gameplay.player1PositionY = player1PositionY
+        gameplay.player2PositionX = player2PositionX
+        gameplay.player2PositionY = player2PositionY
+        gameplay.canPlay1 = canPlay1
+        gameplay.canPlay2 = canPlay2
+        gameplay.canAccept1 = canAccept1
+        gameplay.canAccept2 = canAccept2
+
         db.session.commit()
         message = gameplay.to_dict()
         response = make_response(json.dumps(message))
@@ -567,30 +623,30 @@ def get_gameplay():
 @app.route("/gameplays", methods=['GET'])
 def get_gameplays():
     player1id = request.args.get('player1id')
-    player2id = request.args.get('player2id')
-    gameplay = Gameplay.query.filter_by(player1id=int(player1id), player2id=int(player2id)).first()
-    if gameplay:
-        message = gameplay.to_dict()
+    gameplay = Gameplay.query.filter_by(player1id=int(player1id)).all()
+    gameplay2 = Gameplay.query.filter_by(player2id=int(player1id)).all()
+    gameplaysJson = []
+
+    for g in gameplay:
+        id = g.player1id
+        gmp = Gameplay.query.filter_by(player1id=id).first()
+        gameplaysJson.append(gmp.to_dict())
+    for g in gameplay2:
+        id2 = g.player2id
+        gmp2 = Gameplay.query.filter_by(player2id=id2).first()
+        gameplaysJson.append(gmp2.to_dict())
+
+    if not gameplaysJson:
+        message = {'response' : 'User does not have any started games'}
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200  # success
+        response.status_code = 204
         return response
     else:
-        gameplay = Gameplay.query.filter_by(player1id=int(player2id), player2id=int(player1id)).first()
-        if gameplay:
-            message = gameplay.to_dict()
-            response = make_response(json.dumps(message))
-            response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200  # success
-            return response
-        else:
-            message = {
-                'response': 'Gameplay invalid'
-            }
-            response = make_response(json.dumps(message))
-            response.headers['Content-Type'] = 'application/json'
-            response.status_code = 400  # bad request
-            return response
+        response = make_response(json.dumps(gameplaysJson, default=str))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200
+        return response
 
 
 @app.route("/gameplay-enemies-achievement", methods=['POST', 'PUT'])
@@ -962,3 +1018,6 @@ def get_user_invitations():
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200  # success
             return response
+
+        response.status_code = 200  # success
+        return response

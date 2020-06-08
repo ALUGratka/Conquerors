@@ -55,10 +55,13 @@ public class CharacterEntity {
     @SerializedName("userId")
     private int userId;
 
+    @SerializedName("skillPoints")
+    private int skillPoints;
+
     public CharacterEntity(int level, int charisma, int intelligence, int agility,
                            int strength, String nickname, int sex, int characterClass,
                            int hair, int hat, int eyeColor, int blouse, int pants,
-                           int shoes, int userId) {
+                           int shoes, int userId, int skillPoints) {
         this.level = level;
         this.charisma = charisma;
         this.intelligence = intelligence;
@@ -74,6 +77,7 @@ public class CharacterEntity {
         this.pants = pants;
         this.shoes = shoes;
         this.userId = userId;
+        this.skillPoints = skillPoints;
     }
 
     /**
@@ -144,6 +148,8 @@ public class CharacterEntity {
         return hat;
     }
 
+    public int getSkillPoints() {return skillPoints;}
+
     /**
      * setters
      **/
@@ -207,4 +213,6 @@ public class CharacterEntity {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
+    public void setSkillPoints(int skillPoints) {this.skillPoints = skillPoints;}
 }

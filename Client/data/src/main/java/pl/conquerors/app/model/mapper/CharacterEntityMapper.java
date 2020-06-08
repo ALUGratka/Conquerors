@@ -31,6 +31,7 @@ public class CharacterEntityMapper {
             character.setmPants(characterEntity.getPants());
             character.setmShoes(characterEntity.getShoes());
             character.setmUserId(characterEntity.getUserId());
+            character.setmSkillPoints(characterEntity.getSkillPoints());
         }
         return character;
     }

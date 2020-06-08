@@ -1,6 +1,8 @@
 package pl.conquerors.app.view.everydayPrize;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +24,7 @@ import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.domain.model.PrizeDate;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
@@ -93,29 +97,55 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     }
 
-    @Override
-    public void getPrize() {
-        showPrizeView(100);
-    }
-
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
-        mEverydayPrizePresenter.performEverydayPrize(userId);
+        int characterId = 5;
+        mEverydayPrizePresenter.getCharacters(userId);
     }
 
-    @Override
-    public void showPrizeView(Integer points) {
-        Toast.makeText(this, getString(R.string.info_got_gift, points), Toast.LENGTH_SHORT).show();
-        Navigator.startHome(this);
-    }
 
     public void showAlreadyGifted(){
         Toast.makeText(this, "You already got a prize", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onEverydayPrizeSucceeded() {
-        Toast.makeText(this, getString(R.string.info_got_gift, 2), Toast.LENGTH_SHORT).show();
+    public void onEverydayPrizeSucceeded(int attributeId) {
+        switch(attributeId){
+            case 0:
+                Toast.makeText(this, "You have been gifted 2 agility points", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                Toast.makeText(this, "You have been gifted 2 charisma points", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "You have been gifted 2 strength points", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(this, "You have been gifted 2 intelligence points", Toast.LENGTH_SHORT).show();
+                break;
+        }
         Navigator.startHome(this);
+    }
+
+    public void openDialog(List<Character> characters){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        List<String> charactersString = new ArrayList<String>();
+        for(Character character:characters)
+        {
+            charactersString.add(character.getmNickname());
+        }
+        builder.setTitle("Choose Character");
+        builder.setItems(charactersString.toArray(new String[0]), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Character character = characters.get(i);
+                int characterId = character.getmId();
+                mEverydayPrizePresenter.performEverydayPrize(userId, characterId);
+            }
+        });
+        builder.create();
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

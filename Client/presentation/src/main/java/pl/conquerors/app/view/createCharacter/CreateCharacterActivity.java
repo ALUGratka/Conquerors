@@ -79,7 +79,6 @@ public class CreateCharacterActivity extends BaseActivity implements CreateChara
             case 0:
                 int sex = SharedPreferenceUtil.getCharacterSex(this.getContext());
                 createCharacterPresenter.setSex(sex);
-
                 transaction.replace(R.id.fragment, classFragment);
                 transaction.addToBackStack("CLASS_FRAGMENT_TAG");
 
