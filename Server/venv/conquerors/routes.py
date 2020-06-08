@@ -475,16 +475,23 @@ def post_gameplay():
 
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
     turn = data['turn']
     round = data['round']
     player1PositionX = data['player1PositionX']
     player1PositionY = data['player1PositionY']
     player2PositionX = data['player2PositionX']
     player2PositionY = data['player2PositionY']
-
-    gameplay = Gameplay(player1id=player1id, player2id=player2id, turn=turn, round=round,
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
+    gameplay = Gameplay(player1id=player1id, player2id=player2id,character1id=character1id, character2id=character2id,
+                        turn=turn, round=round,
                         player1PositionX=player1PositionX, player1PositionY=player1PositionY,
-                        player2PositionX=player2PositionX, player2PositionY=player2PositionY)
+                        player2PositionX=player2PositionX, player2PositionY=player2PositionY,
+                        canPlay1=canPlay1, canPlay2=canPlay2, canAccept1=canAccept1, canAccept2=canAccept2)
 
     db.session.add(gameplay)
     db.session.commit()
@@ -502,24 +509,36 @@ def put_gameplay():
     id = data['id']
     player1id = data['player1id']
     player2id = data['player2id']
+    character1id = data['character1id']
+    character2id = data['character2id']
     turn = data['turn']
     round = data['round']
     player1PositionX = data['player1PositionX']
     player1PositionY = data['player1PositionY']
     player2PositionX = data['player2PositionX']
     player2PositionY = data['player2PositionY']
+    canPlay1 = data['canPlay1']
+    canPlay2 = data['canPlay2']
+    canAccept1 = data['canAccept1']
+    canAccept2 = data['canAccept2']
 
     gameplay = Gameplay.query.filter_by(id=int(id)).first()
 
     if gameplay:
         gameplay.player1id = player1id
         gameplay.player2id = player2id
+        gameplay.character1id = character1id
+        gameplay.character2id = character2id
         gameplay.turn = turn
         gameplay.round = round
         gameplay.player1PositionX = player1PositionX
         gameplay.player1PositionY = player1PositionY
         gameplay.player2PositionX = player2PositionX
         gameplay.player2PositionY = player2PositionY
+        gameplay.canPlay1 = canPlay1
+        gameplay.canPlay2 = canPlay2
+        gameplay.canAccept1 = canAccept1
+        gameplay.canAccept2 = canAccept2
 
         db.session.commit()
         message = gameplay.to_dict()
