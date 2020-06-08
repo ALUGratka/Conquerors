@@ -99,7 +99,6 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
-        int characterId = 5;
         mEverydayPrizePresenter.getCharacters(userId);
     }
 
@@ -124,6 +123,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
                 Toast.makeText(this, "You have been gifted 2 intelligence points", Toast.LENGTH_SHORT).show();
                 break;
         }
+        finish();
         Navigator.startHome(this);
     }
 
