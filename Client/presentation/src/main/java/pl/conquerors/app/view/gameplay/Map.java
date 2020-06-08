@@ -26,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.support.constraint.Constraints.TAG;
+
 import pl.conquerors.app.model.mapper.TreasureAchievementMapper;
 import pl.conquerors.app.model.mapper.EnemiesAchievementEntityMapper;
 
@@ -70,10 +71,8 @@ public class Map extends View {
         overlay[2][15] = 3;
     }
 
-    public void makeTreasures()
-    {
-        for(TreasureAchievement treasureAchievement:treasureAchievements)
-        {
+    public void makeTreasures() {
+        for (TreasureAchievement treasureAchievement : treasureAchievements) {
             int x = Integer.parseInt(treasureAchievement.getmObjectPositionX());
             int y = Integer.parseInt(treasureAchievement.getmObjectPositionY());
             int treasureId = treasureAchievement.getmTreasureId();
@@ -81,10 +80,8 @@ public class Map extends View {
         }
     }
 
-    public void makeEnemies()
-    {
-        for(EnemiesAchievement enemiesAchievement:enemiesAchievements)
-        {
+    public void makeEnemies() {
+        for (EnemiesAchievement enemiesAchievement : enemiesAchievements) {
             int x = Integer.parseInt(enemiesAchievement.getmObjectPositionX());
             int y = Integer.parseInt(enemiesAchievement.getmObjectPositionY());
             int enemyId = enemiesAchievement.getmEnemyId();
@@ -96,33 +93,60 @@ public class Map extends View {
     public void show_move() {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
+
                 if (overlay[i][j] == 3) {
-                    if (overlay[i + 1][j + 1] != 0 && overlay[i + 1][j + 1] < 5)
-                        if (!(overlay[i][j + 1] == 0 && overlay[i + 1][j] == 0))
-                            overlay[i + 1][j + 1] = 4;
 
-                    if (overlay[i + 1][j - 1] != 0 && overlay[i + 1][j - 1] < 5)
-                        if (!(overlay[i][j - 1] == 0 && overlay[i + 1][j] == 0))
-                            overlay[i + 1][j - 1] = 4;
+                    try {
+                        if (overlay[i + 1][j + 1] != 0 && overlay[i + 1][j + 1] < 5)
+                            if (!(overlay[i][j + 1] == 0 && overlay[i + 1][j] == 0))
+                                overlay[i + 1][j + 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
 
-                    if (overlay[i - 1][j + 1] != 0 && overlay[i - 1][j + 1] < 5)
-                        if (!(overlay[i - 1][j] == 0 && overlay[i][j + 1] == 0))
-                            overlay[i - 1][j + 1] = 4;
+                    try {
+                        if (overlay[i + 1][j - 1] != 0 && overlay[i + 1][j - 1] < 5)
+                            if (!(overlay[i][j - 1] == 0 && overlay[i + 1][j] == 0))
+                                overlay[i + 1][j - 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
 
-                    if (overlay[i - 1][j - 1] != 0 && overlay[i - 1][j - 1] < 5)
-                        if (!(overlay[i][j - 1] == 0 && overlay[i - 1][j] == 0))
-                            overlay[i - 1][j - 1] = 4;
+                    try {
+                        if (overlay[i - 1][j + 1] != 0 && overlay[i - 1][j + 1] < 5)
+                            if (!(overlay[i - 1][j] == 0 && overlay[i][j + 1] == 0))
+                                overlay[i - 1][j + 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
 
-                    if (overlay[i][j + 1] != 0 && overlay[i][j + 1] < 5)
-                        overlay[i][j + 1] = 4;
-                    if (overlay[i][j - 1] != 0 && overlay[i][j - 1] < 5)
-                        overlay[i][j - 1] = 4;
+                    try {
+                        if (overlay[i - 1][j - 1] != 0 && overlay[i - 1][j - 1] < 5)
+                            if (!(overlay[i][j - 1] == 0 && overlay[i - 1][j] == 0))
+                                overlay[i - 1][j - 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
 
-                    if (overlay[i + 1][j] != 0 && overlay[i + 1][j] < 5)
-                        overlay[i + 1][j] = 4;
-                    if (overlay[i - 1][j] != 0 && overlay[i - 1][j] < 5)
-                        overlay[i - 1][j] = 4;
+                    try {
+                        if (overlay[i][j + 1] != 0 && overlay[i][j + 1] < 5)
+                            overlay[i][j + 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
 
+                    try {
+                        if (overlay[i][j - 1] != 0 && overlay[i][j - 1] < 5)
+                            overlay[i][j - 1] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
+
+                    try {
+                        if (overlay[i + 1][j] != 0 && overlay[i + 1][j] < 5)
+                            overlay[i + 1][j] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
+
+                    try {
+                        if (overlay[i - 1][j] != 0 && overlay[i - 1][j] < 5)
+                            overlay[i - 1][j] = 4;
+                    } catch (ArrayIndexOutOfBoundsException ignored) {
+                    }
                 }
             }
         }
@@ -158,21 +182,17 @@ public class Map extends View {
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
-                } else if(overlay[i][j] == 3){
+                } else if (overlay[i][j] == 3) {
                     fillPaint.setStyle(Paint.Style.FILL);
                     fillPaint.setColor(Color.WHITE);
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
-                }
-
-                else if(overlay[i][j] > 10 && overlay[i][j]<30){
+                } else if (overlay[i][j] > 10 && overlay[i][j] < 30) {
                     box.setBounds(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE);
                     box.draw(canvas);
                     canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);
-                }
-
-                else if(overlay[i][j] > 30){
+                } else if (overlay[i][j] > 30) {
                     fillPaint.setStyle(Paint.Style.FILL);
                     fillPaint.setColor(Color.BLUE);
 
@@ -198,6 +218,7 @@ public class Map extends View {
                 treasureAchievements = TreasureAchievementMapper.transform(response.body());
                 makeTreasures();
             }
+
             @Override
             public void onFailure(Call<List<TreasureAchievementEntity>> call, Throwable throwable) {
                 treasureAchievements = new ArrayList<>();
@@ -216,6 +237,7 @@ public class Map extends View {
                 enemiesAchievements = EnemiesAchievementEntityMapper.transform(response.body());
                 makeEnemies();
             }
+
             @Override
             public void onFailure(Call<List<EnemiesAchievementEntity>> call, Throwable throwable) {
                 enemiesAchievements = new ArrayList<>();
