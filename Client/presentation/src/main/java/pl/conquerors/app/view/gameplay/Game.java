@@ -67,7 +67,6 @@ public class Game extends SurfaceView implements SurfaceHolder.Callback {
             case MotionEvent.ACTION_DOWN:
                 int x= character.getTile((int)event.getX(), (int)event.getY())[0];
                 int y= character.getTile((int)event.getX(), (int)event.getY())[1];
-                System.out.println(x + " " + y);
                 characterPoint.set(x,y);
 
         }
