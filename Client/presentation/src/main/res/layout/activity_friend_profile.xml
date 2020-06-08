@@ -49,7 +49,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="15dp"
-                android:text="@string/friend_games"
+                android:text="@string/friend_points"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -61,7 +61,7 @@
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <include layout="@layout/divider"/>
+        <include layout="@layout/divider" />
 
         <LinearLayout
             android:id="@+id/layout_friend_characters"

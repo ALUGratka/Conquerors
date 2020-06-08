@@ -18,6 +18,4 @@ public interface FriendProfileView extends BaseView {
     Long getCurrentUserId();
 
     void setupActionButton(final UserRelationship usersRelationship);
-
-    void setNumberOfCharacters(int numberOfCharacters);
 }

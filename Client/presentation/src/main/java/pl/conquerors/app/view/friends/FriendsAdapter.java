@@ -72,11 +72,11 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         @BindView(R.id.friend_name)
         TextView name;
 
-        @BindView(R.id.friend_characters)
-        TextView characters;
+        @BindView(R.id.friend_points)
+        TextView points;
 
-        @BindView(R.id.friend_games)
-        TextView games;
+        @BindView(R.id.number_of_games)
+        TextView numberOfGames;
 
         @OnClick(R.id.item_view)
         void userSelected() {
@@ -96,6 +96,8 @@ public class FriendsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             User user = adapterUser.getUser();
             name.setText(user.getUserNick());
             boundUser = user;
+            numberOfGames.setText("0");
+            points.setText(user.getUserPoints());
         }
     }
 
