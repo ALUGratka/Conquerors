@@ -1,6 +1,7 @@
 package pl.conquerors.app.view.gameplay;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.Rect;
@@ -40,14 +41,30 @@ public class Character implements Object {
     List<EnemiesAchievement> enemiesAchievements;
     Treasure currentTreasure;
     Enemy currentEnemy;
+    Paint fightButtonPaint, runButtonPaint;
+    Paint collectButtonPaint, cancelButtonPaint;
 
     public Character() {
         getEnemies();
         getTreasures();
         getEnemiesAchievement(1);
         getTreasureAchievement(1);
-    }
+        fightButtonPaint = new Paint();
+        runButtonPaint = new Paint();
+        collectButtonPaint = new Paint();
+        cancelButtonPaint = new Paint();
 
+        fightButtonPaint.setColor(Color.DKGRAY);
+        fightButtonPaint.setStrokeWidth(3);
+        runButtonPaint.setColor(Color.DKGRAY);
+        runButtonPaint.setStrokeWidth(3);
+        collectButtonPaint.setColor(Color.DKGRAY);
+        collectButtonPaint.setStrokeWidth(3);
+        cancelButtonPaint.setColor(Color.DKGRAY);
+        cancelButtonPaint.setStrokeWidth(3);
+        cancelButtonPaint.setTextSize(50);
+
+    }
 
     public int[] getTile(int x, int y) {
         int[] xy = new int[2];
