@@ -4,6 +4,7 @@ from conquerors.models import User, Character, LastPrize, Enemy, Treasure, Gamep
     GameplayTreasuresAchievements, Gameplay, UserRelationship
 import json
 from datetime import date
+from random import randint
 
 
 @app.route("/")
@@ -344,6 +345,7 @@ def createPrizeDate():
 
         userId = data['userId']
         lastDate = date.today()
+        characterId = data['characterId']
 
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
@@ -356,15 +358,23 @@ def createPrizeDate():
                 response.status_code = 403
                 return response
             else:
-                # if so create character and add to db
                 prizeDate = LastPrize(lastDate=lastDate, userId=userId)
                 db.session.add(prizeDate)
                 user = User.query.get(userId)
-                user.skillPoints = user.skillPoints + 2
+                character = Character.query.get(characterId)
+                attribute = randint(0, 3)
+                if(attribute==0):
+                    character.agility = character.agility +2
+                if (attribute == 1):
+                    character.charisma = character.charisma+2
+                if (attribute == 2):
+                    character.strength = character.strength + 2
+                if (attribute == 3):
+                    character.intelligence = character.intelligence + 2
                 db.session.commit()
                 # send response
                 message = {
-                    'response': 'Prize Date created'
+                    'attributeId': attribute
                 }
                 response = make_response(json.dumps(message))
                 response.headers['Content-Type'] = 'application/json'
