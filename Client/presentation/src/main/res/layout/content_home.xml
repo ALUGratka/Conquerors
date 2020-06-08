@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/theme_background_color"
+    android:background="@drawable/background_no_borders"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
@@ -19,60 +19,214 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/fragment"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp">
 
-
-        <ScrollView
+        <include layout="@layout/divider"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="1dp"
+            android:layout_marginTop="60dp"/>
+
+        <TextView
+            android:id="@+id/hello_user_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+            android:layout_marginTop="10dp"
+            tools:text="Witaj ala123" />
+
+        <include layout="@layout/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:id="@+id/daily_prize_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/button"
+            android:text="@string/home_get_daily_prize_button"
+            android:padding="20dp"/>
+
+        <include layout="@layout/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/home_your_games"
+            android:gravity="center"
+            android:background="@color/theme_transparent_grey"/>
+
+        <include layout="@layout/divider"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/theme_transparent_grey"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/previousButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/left_arrow_button"
+                android:gravity="center_vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/frame_game_layout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+
+            <FrameLayout
+                android:id="@+id/frame_game_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:id="@+id/game_layout"
+                android:layout_width="250dp"
+                android:layout_height="350dp"
+                android:background="@drawable/background"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="30dp">
 
-                <android.support.constraint.ConstraintLayout
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/shield"/>
+
+                <include layout="@layout/divider"/>
+
+                <TextView
+                    android:id="@+id/game_opponent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_huge"
+                    android:text="Przeciwnik: test123"
+                    android:gravity="center"/>
 
-                    <Button
-                        android:id="@+id/homeCreatorButton"
-                        android:layout_width="200dp"
-                        android:layout_height="70dp"
-                        android:background="@drawable/button_postacie_active"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:layout_constraintBottom_toTopOf="@+id/homePrizeButton"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                <include layout="@layout/divider"/>
 
-                    <Button
-                        android:id="@+id/homePrizeButton"
-                        android:layout_width="200dp"
-                        android:layout_height="70dp"
-                        android:background="@drawable/button_nagrody_active"
-                        android:clickable="true"
-                        android:focusable="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/homeCreatorButton" />
+                <TextView
+                    android:id="@+id/game_character"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_huge"
+                    android:text="Postać: Księżniczka z zasiedmiogórogrodu"
+                    android:gravity="center"/>
 
+                <include layout="@layout/divider"/>
 
-                </android.support.constraint.ConstraintLayout>
+                <TextView
+                    android:id="@+id/game_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_huge"
+                    android:text="Data rozpoczącia: 7.05.2020"
+                    android:gravity="center"/>
 
             </LinearLayout>
-        </ScrollView>
 
-    </FrameLayout>
+                <LinearLayout
+                    android:id="@+id/no_game_layout"
+                    android:layout_width="200dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/background"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="30dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_no_games_message"
+                        android:textSize="@dimen/image_small"
+                        android:gravity="center"/>
+
+                    <Button
+                        android:id="@+id/no_characters_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button"
+                        android:text="@string/home_no_games_action_button" />
+                </LinearLayout>
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/nextButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/right_arrow_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/frame_game_layout"
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/theme_transparent_grey"
+            android:paddingBottom="20dp">
+
+            <Button
+                android:id="@+id/play_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_play_game_button"
+                android:background="@drawable/button"
+                android:layout_gravity="center"/>
+
+            <Button
+                android:id="@+id/not_your_turn_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_it_is_opponent_turn_button"
+                android:background="@drawable/button_active"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:clickable="false"/>
+
+        </FrameLayout>
+
+        <include layout="@layout/divider"/>
+
+    </LinearLayout>
+
+    </ScrollView>
+
 
 </android.support.design.widget.CoordinatorLayout>

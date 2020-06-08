@@ -15,6 +15,8 @@ public interface FriendsView extends BaseView {
     void setInvitationVisible(final boolean visible);
 
     void setFriendsVisible(final boolean visible);
+    void setNoFriendsVisible(final boolean visible);
+
 
     void handleError(Throwable error);
 }

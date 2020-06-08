@@ -45,7 +45,15 @@ public class ShowCharactersPresenter extends BasePresenter<ShowCharactersView> {
             @Override
             public void onResponse(Call<List<CharacterEntity>> call, Response<List<CharacterEntity>> response) {
                 List<Character> characters = transform(response.body());
-                mView.showCharacters(characters);
+                if(characters.isEmpty()){
+                    mView.startCreateCharacter(true);
+                    mView.showCharacters(false);
+                }
+                else {
+                    mView.startCreateCharacter(false);
+                    mView.showCharacters(true);
+                    mView.showCharacters(characters);
+                }
             }
 
             @Override

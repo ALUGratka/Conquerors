@@ -9,12 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.createCharacter.CreateCharacterUseCase;
@@ -24,6 +27,18 @@ import pl.conquerors.app.scheduler.AndroidComposedScheduler;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 
 public class ShowCharactersActivity extends BaseActivity implements ShowCharactersView{
+
+    @BindView(R.id.no_characters_layout)
+    LinearLayout noCharactersLayout;
+
+    @BindView(R.id.recycler)
+    RecyclerView recyclerView;
+
+    @OnClick(R.id.no_characters_button)
+    protected void onNoCharacterButtonClicked(){
+        Navigator.startCreateCharacter(this);
+        finish();
+    }
 
     private ShowCharactersAdapter showCharactersAdapter;
     private ShowCharactersPresenter mCharacterPresenter;
@@ -37,7 +52,6 @@ public class ShowCharactersActivity extends BaseActivity implements ShowCharacte
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_show_characters);
 
-            RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
             showCharactersAdapter = new ShowCharactersAdapter();
@@ -59,6 +73,16 @@ public class ShowCharactersActivity extends BaseActivity implements ShowCharacte
     @Override
     public int getUserId() {
         return (int)SharedPreferenceUtil.getUser(this.getContext()).getUserId();
+    }
+
+    @Override
+    public void startCreateCharacter(boolean visible) {
+        noCharactersLayout.setVisibility(visible?View.VISIBLE:View.GONE);
+    }
+
+    @Override
+    public void showCharacters(boolean visible) {
+        recyclerView.setVisibility(visible? View.VISIBLE:View.GONE);
     }
 
     public void showCharacters(List<Character> characters){

@@ -5,9 +5,11 @@ import java.util.List;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
+import pl.conquerors.app.model.EnemyEntity;
 import pl.conquerors.app.model.PrizeAnswerEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
+import pl.conquerors.app.model.TreasureEntity;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.model.UserRelationshipEntity;
 import retrofit2.Call;
@@ -61,6 +63,12 @@ public interface RestService {
     @POST("gameplay-enemies-achievement")
     Call<EnemiesAchievementEntity> createEnemiesAchievement
             (@Body EnemiesAchievementEntity enemiesAchievementEntity);
+
+    @GET("treasures")
+    Call<List<TreasureEntity>> getTreasureEntity();
+
+    @GET("enemies")
+    Call<List<EnemyEntity>> getEnemyEntity();
 
     @GET("users/{userId}/prizes")
     Call<List<PrizeDateEntity>> getPrizeDate(@Path("userId") int user);

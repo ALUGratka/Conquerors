@@ -10,4 +10,7 @@ public interface ShowCharactersView extends BaseView {
     void showCharacters(List<Character> characters);
 
     int getUserId();
+
+    void startCreateCharacter(boolean visible);
+    void showCharacters(boolean visible);
 }

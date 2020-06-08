@@ -220,7 +220,7 @@ def create_character():
         pants = data['pants']
         shoes = data['shoes']
         skillPoints = data['skillPoints']
-        
+
 
         # check if user with given id exists
         if User.query.filter_by(id=int(userId)).first():
@@ -500,7 +500,9 @@ def post_gameplay():
     canPlay2 = data['canPlay2']
     canAccept1 = data['canAccept1']
     canAccept2 = data['canAccept2']
-    gameplay = Gameplay(player1id=player1id, player2id=player2id,character1id=character1id, character2id=character2id,
+
+
+    gameplay = Gameplay(player1id=player1id, player2id=player2id, character1id=character1id, character2id=character2id,
                         turn=turn, round=round,
                         player1PositionX=player1PositionX, player1PositionY=player1PositionY,
                         player2PositionX=player2PositionX, player2PositionY=player2PositionY,
@@ -1016,3 +1018,6 @@ def get_user_invitations():
             response.headers['Content-Type'] = 'application/json'
             response.status_code = 200  # success
             return response
+
+        response.status_code = 200  # success
+        return response

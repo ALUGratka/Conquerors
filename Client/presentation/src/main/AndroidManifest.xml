@@ -47,6 +47,7 @@
             android:label="Get prize"
             android:screenOrientation="fullSensor">
         </activity>
+
         <activity android:name=".view.createCharacter.CreateCharacterActivity"/>
 
 
@@ -94,14 +95,15 @@
             android:screenOrientation="fullSensor">
         </activity>
 
-        <activity android:name=".view.createGame.chooseOpponent.chooseOpponentActivity"
+        <activity android:name=".view.createGame.chooseOpponent.ChooseOpponentActivity"
             android:label="Choose opponent"
-            android:screenOrientation="fullSensor">
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.createGame.chooseCharacter.ChooseCharacterActivity">
         </activity>
 
         <activity android:name=".view.gameplay.GameActivity"
             android:label="Gameplay"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
@@ -109,7 +111,7 @@
         </activity>
         <activity android:name=".view.showGames.showGamesActivity"
             android:label="Show games"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
         </activity>
 
 
@@ -132,6 +134,13 @@
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.friends.FriendsActivity">
 
+        </activity>
+
+
+        <activity android:name=".view.createGame.chooseCharacter.ChooseCharacterActivity"
+            android:label="@string/choose_character"
+            android:screenOrientation="fullSensor"
+            android:parentActivityName=".view.home.HomeActivity">
         </activity>
 
         <meta-data
