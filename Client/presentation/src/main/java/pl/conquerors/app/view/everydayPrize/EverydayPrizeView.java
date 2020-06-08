@@ -3,6 +3,7 @@ package pl.conquerors.app.view.everydayPrize;
 import java.util.List;
 
 import pl.conquerors.app.base.BaseView;
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.domain.model.PrizeDate;
 
 public interface EverydayPrizeView extends BaseView {
@@ -11,4 +12,6 @@ public interface EverydayPrizeView extends BaseView {
     void showAlreadyGifted();
 
     void updateCalendar(List<PrizeDate> prizeDates);
+
+    public void openDialog(List<Character> characters);
 }

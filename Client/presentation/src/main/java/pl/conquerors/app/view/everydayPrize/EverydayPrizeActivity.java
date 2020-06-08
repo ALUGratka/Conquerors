@@ -1,6 +1,8 @@
 package pl.conquerors.app.view.everydayPrize;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +24,7 @@ import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.interactor.everydayPrize.EverydayPrizeUseCase;
+import pl.conquerors.app.domain.model.Character;
 import pl.conquerors.app.domain.model.PrizeDate;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.scheduler.AndroidComposedScheduler;
@@ -96,7 +100,7 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
         int characterId = 5;
-        mEverydayPrizePresenter.performEverydayPrize(userId, characterId);
+        mEverydayPrizePresenter.getCharacters(userId);
     }
 
 
@@ -123,7 +127,24 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
         Navigator.startHome(this);
     }
 
-    public void openDialog(){
+    public void openDialog(List<Character> characters){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        List<String> charactersString = new ArrayList<String>();
+        for(Character character:characters)
+        {
+            charactersString.add(character.getmNickname());
+        }
+        builder.setItems(charactersString.toArray(new String[0]), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Character character = characters.get(i);
+                int characterId = character.getmId();
+                mEverydayPrizePresenter.performEverydayPrize(userId, characterId);
+            }
+        });
+        builder.create();
 
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
