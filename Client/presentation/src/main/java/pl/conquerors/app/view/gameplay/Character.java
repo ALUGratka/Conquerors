@@ -73,12 +73,10 @@ public class Character implements Object {
         //dla skrzynek
         else if (overlay[point.x][point.y] > 5 && overlay[point.x][point.y] < 30 && distance == 1) {
             get_treasure();
-
         }
         //dla wrogów
         else if (overlay[point.x][point.y] > 30 && distance == 1) {
             begin_fight();
-
         }
 
     }
