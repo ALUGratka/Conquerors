@@ -166,7 +166,8 @@ public class Map extends View {
     }
 
     public void showTreasurePopUp(Canvas canvas, Character character) {
-        if (character.currentTreasure != null) {
+        if (character.currentTreasure != null && !character.currentTreasure.equals(character.pastTreasure)) {
+            //character.pastTreasure = character.currentTreasure;
             int id = character.currentTreasure.getmId();
             String name = character.currentTreasure.getmName();
             String description = character.currentTreasure.getmDescription();
@@ -270,7 +271,8 @@ public class Map extends View {
     }
 
     public void showEnemyPopUp(Canvas canvas, Character character) {
-        if (character.currentEnemy != null) {
+        if (character.currentEnemy != null && !character.currentEnemy.equals(character.pastEnemy)) {
+            //character.pastEnemy = character.currentEnemy;
             int id = character.currentEnemy.getmId();
             String name = character.currentEnemy.getmName();
             String description = character.currentEnemy.getmDescription();

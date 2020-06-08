@@ -39,8 +39,8 @@ public class Character implements Object {
     List<Treasure> treasures;
     List<TreasureAchievement> treasureAchievements;
     List<EnemiesAchievement> enemiesAchievements;
-    Treasure currentTreasure;
-    Enemy currentEnemy;
+    Treasure currentTreasure, pastTreasure;
+    Enemy currentEnemy, pastEnemy;
     Paint fightButtonPaint, runButtonPaint;
     Paint collectButtonPaint, cancelButtonPaint;
 
