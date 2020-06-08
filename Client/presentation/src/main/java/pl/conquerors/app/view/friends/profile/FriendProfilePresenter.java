@@ -1,6 +1,7 @@
 package pl.conquerors.app.view.friends.profile;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
@@ -92,6 +93,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
                 UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
                 mView.setupActionButton(userRelationship);
+                Toast.makeText(mView.getContext(), getString(R.string.added_friend_message),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -116,6 +118,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
                 UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
                 mView.setupActionButton(userRelationship);
+                Toast.makeText(mView.getContext(), getString(R.string.deleted_friend_message),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -139,6 +142,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
                 UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
                 mView.setupActionButton(userRelationship);
+                Toast.makeText(mView.getContext(), getString(R.string.accepted_friend_message),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -162,6 +166,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
                 UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
                 mView.setupActionButton(userRelationship);
+                Toast.makeText(mView.getContext(), getString(R.string.ignored_message),Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -185,6 +190,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<UserRelationshipEntity> call, Response<UserRelationshipEntity> response) {
                 UserRelationship userRelationship = UserRelationshipMapper.transform(response.body());
                 mView.setupActionButton(userRelationship);
+                Toast.makeText(mView.getContext(), getString(R.string.uninvited_message),Toast.LENGTH_SHORT).show();
             }
 
             @Override

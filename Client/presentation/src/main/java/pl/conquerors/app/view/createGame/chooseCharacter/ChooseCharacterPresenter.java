@@ -22,12 +22,7 @@ public class ChooseCharacterPresenter extends BasePresenter<ChooseCharacterView>
         attemptToLoadAllCharacters();
     }
 
-    void loadData(){
-        attemptToLoadAllCharacters();
-
-    }
-
-    public void attemptToLoadAllCharacters() {
+    private void attemptToLoadAllCharacters() {
         final long userId = mView.getUserId();
 
         Call<List<CharacterEntity>>call = RestClient.getInstance().getCharacter((int)userId);

@@ -191,6 +191,8 @@
     <string name="uninvit_title">Anulowanie zaproszenia</string>
     <string name="uninvit_message">Jesteś pewien, że chcesz anulować zaproszenie do znajomych?</string>
     <string name="uninvited_message">Zaproszenie zostało anulowane</string>
+    <string name="no_friends_message">Nie masz jeszcze żadnych znajomych</string>
+    <string name="no_friends_action_button">Dodaj teraz!</string>
 
     <!-- Invitations -->
     <string name="invitations_header">Zaproszenia</string>

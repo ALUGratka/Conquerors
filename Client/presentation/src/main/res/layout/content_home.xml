@@ -25,7 +25,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -128,7 +130,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_huge"
-                    tools:text="Przeciwnik: test123"
+                    android:text="Przeciwnik: test123"
                     android:gravity="center"/>
 
                 <include layout="@layout/divider"/>
@@ -138,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_huge"
-                    tools:text="Postać: Księżniczka z zasiedmiogórogrodu"
+                    android:text="Postać: Księżniczka z zasiedmiogórogrodu"
                     android:gravity="center"/>
 
                 <include layout="@layout/divider"/>
@@ -148,7 +150,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/font_huge"
-                    tools:text="Data rozpoczącia: 7.05.2020"
+                    android:text="Data rozpoczącia: 7.05.2020"
                     android:gravity="center"/>
 
             </LinearLayout>
@@ -201,7 +203,7 @@
             android:paddingBottom="20dp">
 
             <Button
-                android:id="@+id/playButton"
+                android:id="@+id/play_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/home_play_game_button"
@@ -209,7 +211,7 @@
                 android:layout_gravity="center"/>
 
             <Button
-                android:id="@+id/notYourTurnButton"
+                android:id="@+id/not_your_turn_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/home_it_is_opponent_turn_button"

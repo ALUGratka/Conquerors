@@ -191,6 +191,8 @@
     <string name="uninvit_title">Uninviting</string>
     <string name="uninvit_message">Are you sure you want to cancel this invitation?</string>
     <string name="uninvited_message">Invitation was canceled</string>
+    <string name="no_friends_message">You do not have any friends yet</string>
+    <string name="no_friends_action_button">Add one!</string>
 
     <!-- Invitations -->
     <string name="invitations_header">Invitations</string>
@@ -203,8 +205,6 @@
     <string name="home_no_games_action_button">Create one!</string>
     <string name="home_play_game_button">Play</string>
     <string name="home_it_is_opponent_turn_button">Opponent turn</string>
-
-
 
 
 </resources>

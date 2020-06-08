@@ -14,6 +14,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     @Override
     public void created() {
         super.created();
+        attemptToLoadAllGames();
     }
 
     @Override
@@ -54,5 +55,15 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 break;
         }
         mView.closeDrawer();
+    }
+
+    private void attemptToLoadAllGames() {
+        final long userId = mView.getUserId();
+
+        mView.startCreateGame(false);
+        mView.setGameCardVisible(true);
+        mView.setArrowsVisible(true);
+        mView.setPlayButtonVisible(true);
+        mView.setNotYourTurnButtonVisible(false);
     }
 }
