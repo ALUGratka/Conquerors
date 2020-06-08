@@ -62,7 +62,6 @@ public class Character implements Object {
         collectButtonPaint.setStrokeWidth(3);
         cancelButtonPaint.setColor(Color.DKGRAY);
         cancelButtonPaint.setStrokeWidth(3);
-        cancelButtonPaint.setTextSize(50);
 
     }
 
