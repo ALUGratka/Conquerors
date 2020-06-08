@@ -159,4 +159,9 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
         rejectFriendButton.setVisibility(usersRelationship.getCanReject() ? View.VISIBLE : View.GONE);
         uninviteFriendButton.setVisibility(usersRelationship.getCanUninvite() ? View.VISIBLE : View.GONE);
     }
+
+    @Override
+    public void setNumberOfCharacters(int numberOfCharacters) {
+        characters.setText(String.valueOf(numberOfCharacters));
+    }
 }
