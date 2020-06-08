@@ -163,7 +163,7 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         Character character = characters.get(index);
 
         characterName.setText(character.getmNickname());
-        characterClassName.setText(character.getmCharacterClass().name());
+        characterClassName.setText(character.getmCharacterClass());
         characterStrength.setText(String.valueOf(character.getmStrength()));
         characterCharisma.setText(String.valueOf(character.getmCharisma()));
         characterAgility.setText(String.valueOf(character.getmAgility()));
