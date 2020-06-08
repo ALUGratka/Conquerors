@@ -613,30 +613,30 @@ def get_gameplay():
 @app.route("/gameplays", methods=['GET'])
 def get_gameplays():
     player1id = request.args.get('player1id')
-    player2id = request.args.get('player2id')
-    gameplay = Gameplay.query.filter_by(player1id=int(player1id), player2id=int(player2id)).first()
-    if gameplay:
-        message = gameplay.to_dict()
+    gameplay = Gameplay.query.filter_by(player1id=int(player1id)).all()
+    gameplay2 = Gameplay.query.filter_by(player2id=int(player1id)).all()
+    gameplaysJson = []
+
+    for g in gameplay:
+        id = g.player1id
+        gmp = Gameplay.query.filter_by(player1id=id).first()
+        gameplaysJson.append(gmp.to_dict())
+    for g in gameplay2:
+        id2 = g.player2id
+        gmp2 = Gameplay.query.filter_by(player2id=id2).first()
+        gameplaysJson.append(gmp2.to_dict())
+
+    if not gameplaysJson:
+        message = {'response' : 'User does not have any started games'}
         response = make_response(json.dumps(message))
         response.headers['Content-Type'] = 'application/json'
-        response.status_code = 200  # success
+        response.status_code = 204
         return response
     else:
-        gameplay = Gameplay.query.filter_by(player1id=int(player2id), player2id=int(player1id)).first()
-        if gameplay:
-            message = gameplay.to_dict()
-            response = make_response(json.dumps(message))
-            response.headers['Content-Type'] = 'application/json'
-            response.status_code = 200  # success
-            return response
-        else:
-            message = {
-                'response': 'Gameplay invalid'
-            }
-            response = make_response(json.dumps(message))
-            response.headers['Content-Type'] = 'application/json'
-            response.status_code = 400  # bad request
-            return response
+        response = make_response(json.dumps(gameplaysJson, default=str))
+        response.headers['Content-Type'] = 'application/json'
+        response.status_code = 200
+        return response
 
 
 @app.route("/gameplay-enemies-achievement", methods=['POST', 'PUT'])
