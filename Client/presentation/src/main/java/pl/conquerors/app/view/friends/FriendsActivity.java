@@ -13,12 +13,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.domain.model.User;
@@ -35,6 +38,26 @@ public class FriendsActivity extends BaseActivity implements FriendsView {
     @BindView(R.id.invitationLayout)
     LinearLayout invitationsLayout;
 
+    @BindView(R.id.friends_layout)
+    ScrollView friendsLayout;
+
+    @BindView(R.id.recycler)
+    RecyclerView recyclerView;
+
+    @BindView(R.id.recycler2)
+    RecyclerView recyclerView2;
+
+    @BindView(R.id.no_fiends_layout)
+    LinearLayout noFriendsLayout;
+
+    @OnClick(R.id.no_fiends_button)
+    protected void onNoFriendsButtonClicked(){
+        Navigator.startFindFriend(this);
+        finish();
+    };
+
+
+
     public static Intent getStartingIntent(Context context) {
         return new Intent(context, FriendsActivity.class);
     }
@@ -44,9 +67,8 @@ public class FriendsActivity extends BaseActivity implements FriendsView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycler);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        RecyclerView recyclerView2 = (RecyclerView) findViewById(R.id.recycler2);
         recyclerView2.setLayoutManager(new LinearLayoutManager(getContext()));
 
         friendsAdapter = new FriendsAdapter();
@@ -114,7 +136,12 @@ public class FriendsActivity extends BaseActivity implements FriendsView {
 
     @Override
     public void setFriendsVisible(boolean visible) {
+        friendsLayout.setVisibility(visible ? View.VISIBLE : View.GONE);
+    }
 
+    @Override
+    public void setNoFriendsVisible(boolean visible) {
+        noFriendsLayout.setVisibility(visible ? View.VISIBLE : View.GONE);
     }
 
 

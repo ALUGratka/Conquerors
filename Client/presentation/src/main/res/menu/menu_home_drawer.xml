@@ -2,8 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/group_event"
-        android:checkableBehavior="single">
+        android:id="@+id/group_event">
         <item
             android:id="@+id/nav_my_games"
             android:icon="@drawable/ic_my_games"
@@ -12,6 +11,17 @@
             android:id="@+id/nav_add_game"
             android:icon="@drawable/ic_add_game"
             android:title="@string/menu_item_add_event"/>
+    </group>
+
+    <group android:id="@+id/group_characters">
+        <item
+            android:id="@+id/nav_my_characters"
+            android:icon="@drawable/ic_profile"
+            android:title="@string/menu_item_characters"/>
+        <item
+            android:id="@+id/nav_add_character"
+            android:icon="@drawable/ic_friends"
+            android:title="@string/menu_item_add_character"/>
     </group>
 
     <group android:id="@+id/group_user">

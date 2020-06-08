@@ -39,7 +39,7 @@ public class createGameActivity extends BaseActivity implements createGameView {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_game);
+        setContentView(R.layout.activity_choose_character);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         userId = (int) SharedPreferenceUtil.getUser(this.getContext()).getUserId();

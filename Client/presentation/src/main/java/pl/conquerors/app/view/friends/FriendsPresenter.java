@@ -36,7 +36,16 @@ public class FriendsPresenter extends BasePresenter<FriendsView> {
             public void onResponse(Call<List<UserEntity>> call, Response<List<UserEntity>> response) {
                 if(response.body() != null)  {
                     List<User> users = UserEntityMapper.transform(response.body());
-                    mView.showFriends(users);
+                    if(users.isEmpty()){
+                        mView.setFriendsVisible(false);
+                        mView.setNoFriendsVisible(true);
+                    }
+                    else{
+                        mView.setFriendsVisible(true);
+                        mView.setNoFriendsVisible(false);
+                        mView.showFriends(users);
+                    }
+
                 }
 
             }

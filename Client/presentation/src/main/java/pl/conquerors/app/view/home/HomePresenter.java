@@ -14,6 +14,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
     @Override
     public void created() {
         super.created();
+        attemptToLoadAllGames();
     }
 
     @Override
@@ -42,9 +43,27 @@ public class HomePresenter extends BasePresenter<HomeView> {
                 break;
             case R.id.nav_my_games:
                 mView.showMyGames();
+                break;
             case R.id.nav_friends:
                 mView.showMyFriends();
+                break;
+            case R.id.nav_my_characters:
+                mView.showMyCharacters();
+                break;
+            case R.id.nav_add_character:
+                mView.showAddCharacter();
+                break;
         }
         mView.closeDrawer();
+    }
+
+    private void attemptToLoadAllGames() {
+        final long userId = mView.getUserId();
+
+        mView.startCreateGame(false);
+        mView.setGameCardVisible(true);
+        mView.setArrowsVisible(true);
+        mView.setPlayButtonVisible(true);
+        mView.setNotYourTurnButtonVisible(false);
     }
 }
