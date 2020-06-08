@@ -27,6 +27,7 @@ import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.view.createGame.chooseCharacter.ChooseCharacterPresenter;
+import pl.conquerors.app.view.gameplay.Game;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +58,20 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
 
             GameplayEntity gameplay = new GameplayEntity(0, userId, (int)opponent.getUserId(), character.getmId(), 0, 1, 1, 2, 15, 8,2, false, false, false,  true);
 
+            Call<GameplayEntity> call = RestClient.getInstance().createGameplay(gameplay);
 
+            call.enqueue(new Callback<GameplayEntity>(){
+
+                @Override
+                public void onResponse(Call<GameplayEntity> call, Response<GameplayEntity> response) {
+                        Log.e("Gameplay created", "Code: " + response.code());
+                }
+
+                @Override
+                public void onFailure(Call<GameplayEntity> call, Throwable t) {
+                        Log.e("Gameplay error", t.getMessage());
+                }
+            });
 
             finish();
             Toast.makeText(this, getString(R.string.game_created), Toast.LENGTH_SHORT).show();

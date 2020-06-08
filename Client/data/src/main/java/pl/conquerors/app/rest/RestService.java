@@ -2,10 +2,12 @@ package pl.conquerors.app.rest;
 
 import java.util.List;
 
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
 import pl.conquerors.app.model.EnemyEntity;
+import pl.conquerors.app.model.GameplayEntity;
 import pl.conquerors.app.model.PrizeAnswerEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
@@ -56,6 +58,17 @@ public interface RestService {
     @POST("prize")
     Call<PrizeAnswerEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
 
+    @GET("gameplay")
+    Call<GameplayEntity> gameplay(@Query("id") final long id);
+
+    @POST("gameplay")
+    Call<GameplayEntity> createGameplay
+            (@Body GameplayEntity gameplayEntity);
+
+    @GET("gameplays")
+    Call<List<GameplayEntity>> getGameplays
+            (@Query("player1id") final long player1id);
+
     @POST("gameplay-treasures-achievement")
     Call<TreasureAchievementEntity> createTreasuresAchievement
             (@Body TreasureAchievementEntity treasureAchievementEntity);
@@ -84,6 +97,7 @@ public interface RestService {
 
     @GET("/gameplay-enemies-achievement")
     Call<List<EnemiesAchievementEntity>> getEnemiesAchievement(@Query("gameplayId") int gamePlayId);
+
     @GET("users/{userId}")
     Call<UserEntity> getFriend(
             @Path("userId") long userId
