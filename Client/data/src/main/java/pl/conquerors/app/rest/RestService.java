@@ -5,6 +5,7 @@ import java.util.List;
 import pl.conquerors.app.model.CharacterEntity;
 import pl.conquerors.app.model.CharacterStatisticsEntity;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
+import pl.conquerors.app.model.PrizeAnswerEntity;
 import pl.conquerors.app.model.PrizeDateEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.model.UserEntity;
@@ -51,7 +52,7 @@ public interface RestService {
     Call<CharacterEntity> createCharacter(@Body CharacterEntity characterEntity);
 
     @POST("prize")
-    Call<PrizeDateEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
+    Call<PrizeAnswerEntity> createPrizeDate(@Body PrizeDateEntity prizeDateEntity);
 
     @POST("gameplay-treasures-achievement")
     Call<TreasureAchievementEntity> createTreasuresAchievement

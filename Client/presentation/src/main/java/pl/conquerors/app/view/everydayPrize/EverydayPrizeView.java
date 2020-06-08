@@ -6,10 +6,7 @@ import pl.conquerors.app.base.BaseView;
 import pl.conquerors.app.domain.model.PrizeDate;
 
 public interface EverydayPrizeView extends BaseView {
-    void getPrize();
-    void showPrizeView(Integer points);
-
-    void onEverydayPrizeSucceeded();
+    void onEverydayPrizeSucceeded(int attributeId);
 
     void showAlreadyGifted();
 

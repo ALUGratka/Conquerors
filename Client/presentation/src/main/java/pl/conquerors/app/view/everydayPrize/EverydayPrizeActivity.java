@@ -93,29 +93,37 @@ public class EverydayPrizeActivity extends BaseActivity implements EverydayPrize
 
     }
 
-    @Override
-    public void getPrize() {
-        showPrizeView(100);
-    }
-
     @OnClick(R.id.giftImage)
     public void onPrizeButtonClicked() {
-        mEverydayPrizePresenter.performEverydayPrize(userId);
+        int characterId = 5;
+        mEverydayPrizePresenter.performEverydayPrize(userId, characterId);
     }
 
-    @Override
-    public void showPrizeView(Integer points) {
-        Toast.makeText(this, getString(R.string.info_got_gift, points), Toast.LENGTH_SHORT).show();
-        Navigator.startHome(this);
-    }
 
     public void showAlreadyGifted(){
         Toast.makeText(this, "You already got a prize", Toast.LENGTH_SHORT).show();
     }
 
     @Override
-    public void onEverydayPrizeSucceeded() {
-        Toast.makeText(this, getString(R.string.info_got_gift, 2), Toast.LENGTH_SHORT).show();
+    public void onEverydayPrizeSucceeded(int attributeId) {
+        switch(attributeId){
+            case 0:
+                Toast.makeText(this, "You have been gifted 2 agility points", Toast.LENGTH_SHORT).show();
+                break;
+            case 1:
+                Toast.makeText(this, "You have been gifted 2 charisma points", Toast.LENGTH_SHORT).show();
+                break;
+            case 2:
+                Toast.makeText(this, "You have been gifted 2 strength points", Toast.LENGTH_SHORT).show();
+                break;
+            case 3:
+                Toast.makeText(this, "You have been gifted 2 intelligence points", Toast.LENGTH_SHORT).show();
+                break;
+        }
         Navigator.startHome(this);
+    }
+
+    public void openDialog(){
+
     }
 }
