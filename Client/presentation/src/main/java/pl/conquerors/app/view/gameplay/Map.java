@@ -296,10 +296,10 @@ public class Map extends View {
                 canvas.drawText(descriptionParts.get(1), 2 * TILE_SIZE, (float) 7.0 * TILE_SIZE, description2Paint);
             }
 
-//            canvas.drawRect(2*TILE_SIZE, (float)9.0*TILE_SIZE, 5*TILE_SIZE, (float)10*TILE_SIZE,character.runButtonPaint);
-//            canvas.drawRect(6*TILE_SIZE, (float)9.0*TILE_SIZE, 9*TILE_SIZE, (float)10*TILE_SIZE,character.fightButtonPaint);
-//            canvas.drawText("UCIEKAJ", (float) 2.1 * TILE_SIZE, (float) 9.5 * TILE_SIZE, runTextPaint);
-//            canvas.drawText("WALCZ", (float) 7 * TILE_SIZE, (float) 9.5 * TILE_SIZE, fightTextPaint);
+            canvas.drawRect(2*TILE_SIZE, (float)9.0*TILE_SIZE, 5*TILE_SIZE, (float)10*TILE_SIZE,character.runButtonPaint);
+            canvas.drawRect(6*TILE_SIZE, (float)9.0*TILE_SIZE, 9*TILE_SIZE, (float)10*TILE_SIZE,character.fightButtonPaint);
+            canvas.drawText("UCIEKAJ", (float) 2.1 * TILE_SIZE, (float) 9.5 * TILE_SIZE, runTextPaint);
+            canvas.drawText("WALCZ", (float) 7 * TILE_SIZE, (float) 9.5 * TILE_SIZE, fightTextPaint);
 
 
             switch (id) {
