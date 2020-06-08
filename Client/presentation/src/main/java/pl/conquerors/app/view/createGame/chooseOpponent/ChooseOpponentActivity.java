@@ -15,7 +15,10 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import pl.conquerors.app.base.BaseActivity;
 import pl.conquerors.app.R;
+import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.model.GameplayEntity;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.util.SharedPreferenceUtil;
 import pl.conquerors.app.view.createGame.chooseCharacter.ChooseCharacterPresenter;
@@ -39,6 +42,14 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
         }
         else {
             //TODO send game info to database
+            final int userId = (int)SharedPreferenceUtil.getUser(this).getUserId();
+            Character character = SharedPreferenceUtil.getGameCharacter(this);
+            User opponent = SharedPreferenceUtil.getOpponent(this);
+
+            GameplayEntity gameplay = new GameplayEntity(0, userId, (int)opponent.getUserId(), character.getmId(), 0, 1, 1, 2, 15, 8,2, false, false, false,  true);
+
+
+
             finish();
             Toast.makeText(this, getString(R.string.game_created), Toast.LENGTH_SHORT).show();
         }

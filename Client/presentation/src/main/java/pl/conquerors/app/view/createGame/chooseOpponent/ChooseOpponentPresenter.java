@@ -4,6 +4,7 @@ import java.util.List;
 
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.User;
+import pl.conquerors.app.model.GameplayEntity;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.rest.RestClient;
@@ -45,6 +46,13 @@ class ChooseOpponentPresenter extends BasePresenter<ChooseOpponentView> {
                 handleError(t);
             }
         });
+    }
+
+    public void attemptToCreateGame(GameplayEntity gameplayEntity) {
+
+        //TODO send game to database
+
+
     }
 
 }
