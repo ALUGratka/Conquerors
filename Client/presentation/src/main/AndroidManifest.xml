@@ -95,7 +95,7 @@
             android:screenOrientation="fullSensor">
         </activity>
 
-        <activity android:name=".view.createGame.chooseOpponent.ChooseOpponentActivity"
+        <activity android:name=".view.createGame.chooseOpponent.chooseOpponentActivity"
             android:label="Choose opponent"
             android:screenOrientation="fullSensor"
             android:parentActivityName=".view.createGame.chooseCharacter.ChooseCharacterActivity">
@@ -140,7 +140,7 @@
         <activity android:name=".view.createGame.chooseCharacter.ChooseCharacterActivity"
             android:label="@string/choose_character"
             android:screenOrientation="fullSensor"
-            android:parentActivityName=".view.home.HomeActivity"/>
+            android:parentActivityName=".view.home.HomeActivity">
         </activity>
 
         <meta-data
