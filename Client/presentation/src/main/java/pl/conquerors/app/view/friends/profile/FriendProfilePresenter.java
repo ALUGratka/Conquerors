@@ -10,12 +10,15 @@ import java.util.List;
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.Character;
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.User;
 import pl.conquerors.app.domain.model.UserRelationship;
 import pl.conquerors.app.model.CharacterEntity;
+import pl.conquerors.app.model.GameplayEntity;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.model.UserRelationshipEntity;
 import pl.conquerors.app.model.mapper.CharacterEntityMapper;
+import pl.conquerors.app.model.mapper.GamplayEntityMapper;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.model.mapper.UserRelationshipMapper;
 import pl.conquerors.app.rest.RestClient;
@@ -41,6 +44,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
         if(userId!=null){
             showProfile();
             attemptToGetUserCharactersNumber();
+            attemptToGetUserNumberOfGames();
             getUserActions(mView.getUser());
         }
     }
@@ -83,6 +87,31 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             }
         });
 
+    }
+
+    private void attemptToGetUserNumberOfGames(){
+        mView.showLoading();
+
+        final long userId = (int)mView.getUser().getUserId();
+
+        Call<List<GameplayEntity>> call = RestClient.getInstance().getGameplays(userId);
+
+        call.enqueue(new Callback<List<GameplayEntity>>() {
+            @Override
+            public void onResponse(Call<List<GameplayEntity>> call, Response<List<GameplayEntity>> response) {
+                if(response.body()==null) mView.setNumberOfGames(0);
+                else {
+                    List<Gameplay> gameplays = GamplayEntityMapper.transform(response.body());
+                    mView.setNumberOfGames(gameplays.size());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<GameplayEntity>> call, Throwable t) {
+
+            }
+        });
     }
 
     private void getUserActions(final User user) {

@@ -164,4 +164,11 @@ public class FriendProfileActivity extends BaseActivity implements FriendProfile
     public void setNumberOfCharacters(int numberOfCharacters) {
         characters.setText(String.valueOf(numberOfCharacters));
     }
+
+    @Override
+    public void setNumberOfGames(int numberOfGames) {
+        points.setText(String.valueOf(numberOfGames));
+    }
+
+
 }
