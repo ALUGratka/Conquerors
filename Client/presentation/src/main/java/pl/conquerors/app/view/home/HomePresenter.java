@@ -2,9 +2,19 @@ package pl.conquerors.app.view.home;
 
 import android.view.MenuItem;
 
+import java.util.List;
+
 import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
+import pl.conquerors.app.domain.model.Gameplay;
+import pl.conquerors.app.model.GameplayEntity;
+import pl.conquerors.app.model.mapper.GamplayEntityMapper;
 import pl.conquerors.app.navigation.Navigator;
+import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.view.gameplay.GameActivity;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import rx.Subscriber;
 
 public class HomePresenter extends BasePresenter<HomeView> {
@@ -60,10 +70,41 @@ public class HomePresenter extends BasePresenter<HomeView> {
     private void attemptToLoadAllGames() {
         final long userId = mView.getUserId();
 
+        Call<List<GameplayEntity>> call = RestClient.getInstance().getGameplays(userId);
+
+        call.enqueue(new Callback<List<GameplayEntity>>() {
+            @Override
+            public void onResponse(Call<List<GameplayEntity>> call, Response<List<GameplayEntity>> response) {
+                if(response.body()==null){
+                    mView.startCreateGame(true);
+                    mView.setGameCardVisible(false);
+                    mView.setArrowsVisible(false);
+                    mView.setPlayButtonVisible(false);
+                    mView.setNotYourTurnButtonVisible(false);
+                }
+                else {
+                    List<Gameplay> gameplays = GamplayEntityMapper.transform(response.body());
+                    if(gameplays.size()==1) mView.setArrowsVisible(false);
+                    mView.setGameCard(0);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<GameplayEntity>> call, Throwable t) {
+
+            }
+        });
+
         mView.startCreateGame(false);
         mView.setGameCardVisible(true);
         mView.setArrowsVisible(true);
         mView.setPlayButtonVisible(true);
         mView.setNotYourTurnButtonVisible(false);
+    }
+
+    void attemptToGetGames(){
+        final long userId = mView.getUserId();
+
+
     }
 }

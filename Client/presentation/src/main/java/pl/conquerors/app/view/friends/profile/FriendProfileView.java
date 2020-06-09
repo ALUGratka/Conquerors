@@ -20,4 +20,5 @@ public interface FriendProfileView extends BaseView {
     void setupActionButton(final UserRelationship usersRelationship);
 
     void setNumberOfCharacters(int numberOfCharacters);
+    void setNumberOfGames(int numberOfGames);
 }
