@@ -118,6 +118,7 @@ public class ChooseCharacterActivity extends BaseActivity implements ChooseChara
         Navigator.startChooseOpponent(this);
         Log.i("character", SharedPreferenceUtil.getGameCharacter(this).getmNickname());
         finish();
+
     }
 
     ChooseCharacterPresenter presenter;

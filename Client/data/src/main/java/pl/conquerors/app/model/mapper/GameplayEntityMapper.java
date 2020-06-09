@@ -6,7 +6,7 @@ import java.util.List;
 import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.model.GameplayEntity;
 
-public class GamplayEntityMapper {
+public class GameplayEntityMapper {
     public static Gameplay transform (GameplayEntity gameplayEntity){
         Gameplay gameplay = null;
         if(gameplayEntity!=null){

@@ -20,15 +20,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/gameIdText"
+                android:id="@+id/opponentName"
                 android:layout_width="203dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Id Rozgrywki"
+                android:text="Przeciwnik:"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/gameIdValue"
+                android:id="@+id/opponentValue"
                 android:layout_width="201dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center"
@@ -60,15 +60,15 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/opponentText"
+                android:id="@+id/roundText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Przeciwnik"
+                android:text="Runda"
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/opponentValue"
+                android:id="@+id/roundValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center"
@@ -84,7 +84,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Data"
                 android:textSize="24sp" />
 
             <TextView

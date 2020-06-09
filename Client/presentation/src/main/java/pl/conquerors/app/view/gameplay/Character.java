@@ -15,6 +15,7 @@ import java.util.List;
 
 import pl.conquerors.app.domain.model.EnemiesAchievement;
 import pl.conquerors.app.domain.model.Enemy;
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.Treasure;
 import pl.conquerors.app.domain.model.TreasureAchievement;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
@@ -26,6 +27,7 @@ import pl.conquerors.app.model.mapper.EnemyEntityMapper;
 import pl.conquerors.app.model.mapper.TreasureAchievementMapper;
 import pl.conquerors.app.model.mapper.TreasureEntityMapper;
 import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,8 +49,9 @@ public class Character implements Object {
     public Character() {
         getEnemies();
         getTreasures();
-        getEnemiesAchievement(1);
-        getTreasureAchievement(1);
+
+        //getEnemiesAchievement(1);
+        //getTreasureAchievement(1);
         fightButtonPaint = new Paint();
         runButtonPaint = new Paint();
         collectButtonPaint = new Paint();

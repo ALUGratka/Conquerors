@@ -32,6 +32,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static pl.conquerors.app.model.mapper.GameplayEntityMapper.transform;
+
 public class ChooseOpponentActivity extends BaseActivity implements ChooseOpponentView {
 
     private ChooseOpponentAdapter adapter;
@@ -54,8 +56,9 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
             final int userId = (int)SharedPreferenceUtil.getUser(this).getUserId();
             Character character = SharedPreferenceUtil.getGameCharacter(this);
             User opponent = SharedPreferenceUtil.getOpponent(this);
+            Gameplay game = SharedPreferenceUtil.getGameplayId(this);
+            GameplayEntity gameplay = new GameplayEntity(0,userId, (int)opponent.getUserId(), character.getmId(), 0, 1, 1, 2, 15, 8,2, false, false, false,  true);
 
-            GameplayEntity gameplay = new GameplayEntity(0, userId, (int)opponent.getUserId(), character.getmId(), 0, 1, 1, 2, 15, 8,2, false, false, false,  true);
 
             Call<GameplayEntity> call = RestClient.getInstance().createGameplay(gameplay);
 
@@ -65,6 +68,7 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
                 public void onResponse(Call<GameplayEntity> call, Response<GameplayEntity> response) {
                         Log.e("Gameplay created", "Code: " + response.code());
                         createNewMap(response.body().getId());
+                        startGame(transform(response.body()));
                 }
 
                 @Override
@@ -72,12 +76,14 @@ public class ChooseOpponentActivity extends BaseActivity implements ChooseOppone
                         Log.e("Gameplay error", t.getMessage());
                 }
             });
-
+            Navigator.startGame(this);
             finish();
             Toast.makeText(this, getString(R.string.game_created), Toast.LENGTH_SHORT).show();
         }
     }
-
+    public void startGame(Gameplay game){
+        SharedPreferenceUtil.setGameplayId(this,game);
+    }
     public static Intent getStartingIntents(Context context){
         return new Intent(context, ChooseOpponentActivity.class);
     }

@@ -17,10 +17,12 @@ import java.util.Random;
 
 import pl.conquerors.app.R;
 import pl.conquerors.app.domain.model.EnemiesAchievement;
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.TreasureAchievement;
 import pl.conquerors.app.model.EnemiesAchievementEntity;
 import pl.conquerors.app.model.TreasureAchievementEntity;
 import pl.conquerors.app.rest.RestClient;
+import pl.conquerors.app.util.SharedPreferenceUtil;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -124,8 +126,10 @@ public class Map extends View {
         fightTextPaint.setTextSize(50);
 
         create_map();
-        getTreasureAchievement(1);
-        getEnemiesAchievement(1);
+        Gameplay game = SharedPreferenceUtil.getGameplayId(this.getContext());
+
+        getTreasureAchievement(game.getId());
+        getEnemiesAchievement(game.getId());
     }
 
     public void create_map() {

@@ -12,6 +12,7 @@ import pl.conquerors.app.view.everydayPrize.EverydayPrizeActivity;
 import pl.conquerors.app.view.friends.FriendsActivity;
 import pl.conquerors.app.view.friends.profile.FriendProfileActivity;
 import pl.conquerors.app.view.friends.search.FindFriendActivity;
+import pl.conquerors.app.view.gameplay.GameActivity;
 import pl.conquerors.app.view.home.HomeActivity;
 import pl.conquerors.app.view.login.LoginActivity;
 import pl.conquerors.app.view.profile.my.MyProfileActivity;
@@ -98,5 +99,9 @@ public class Navigator {
 
     public static void startFriendProfile(Context context, final User user) {
         context.startActivity(FriendProfileActivity.getStartingIntent(context, user));
+    }
+
+    public static void startGame(Context context){
+        context.startActivity(GameActivity.getStartingIntents(context));
     }
 }

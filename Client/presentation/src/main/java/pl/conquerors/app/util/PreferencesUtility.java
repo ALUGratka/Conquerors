@@ -15,4 +15,6 @@ public class PreferencesUtility {
     public static final String NAME_SELECTED = "name_selected";
     public static final String OPPONENT_SELECTED = "opponent_selected";
     public static final String CHARACTER_SELECTED = "character_selected";
+    public static final String GAMEPLAY = "GAMEPLAY";
+
 }

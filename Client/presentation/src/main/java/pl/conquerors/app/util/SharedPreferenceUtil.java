@@ -9,6 +9,7 @@ import pl.conquerors.app.domain.model.Character;
 
 import com.google.gson.Gson;
 
+import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.domain.model.User;
 
 import static android.preference.PreferenceManager.*;
@@ -20,6 +21,7 @@ import static pl.conquerors.app.util.PreferencesUtility.APPEARANCE_PANTS_SELECTE
 import static pl.conquerors.app.util.PreferencesUtility.APPEARANCE_SHOES_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.CHARACTER_CLASS_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.CHARACTER_SELECTED;
+import static pl.conquerors.app.util.PreferencesUtility.GAMEPLAY;
 import static pl.conquerors.app.util.PreferencesUtility.LOGGED_IN_PREF;
 import static pl.conquerors.app.util.PreferencesUtility.NAME_SELECTED;
 import static pl.conquerors.app.util.PreferencesUtility.OPPONENT_SELECTED;
@@ -183,5 +185,19 @@ public class SharedPreferenceUtil {
         Gson gson = new Gson();
         String json = getPreferences(context).getString(CHARACTER_SELECTED, null);
         return gson.fromJson(json, Character.class);
+    }
+
+    public static Gameplay getGameplayId(Context context){
+        Gson gson = new Gson();
+        String json = getPreferences(context).getString(GAMEPLAY, null);
+        return gson.fromJson(json, Gameplay.class);
+    }
+
+    public static void setGameplayId(Context context, Gameplay gameplay){
+        SharedPreferences.Editor editor = getPreferences(context).edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(gameplay);
+        editor.putString(GAMEPLAY, json);
+        editor.apply();
     }
 }
