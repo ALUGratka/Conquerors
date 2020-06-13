@@ -8,7 +8,7 @@ import pl.conquerors.app.R;
 import pl.conquerors.app.base.BasePresenter;
 import pl.conquerors.app.domain.model.Gameplay;
 import pl.conquerors.app.model.GameplayEntity;
-import pl.conquerors.app.model.mapper.GamplayEntityMapper;
+import pl.conquerors.app.model.mapper.GameplayEntityMapper;
 import pl.conquerors.app.navigation.Navigator;
 import pl.conquerors.app.rest.RestClient;
 import pl.conquerors.app.view.gameplay.GameActivity;
@@ -83,7 +83,7 @@ public class HomePresenter extends BasePresenter<HomeView> {
                     mView.setNotYourTurnButtonVisible(false);
                 }
                 else {
-                    List<Gameplay> gameplays = GamplayEntityMapper.transform(response.body());
+                    List<Gameplay> gameplays = GameplayEntityMapper.transform(response.body());
                     if(gameplays.size()==1) mView.setArrowsVisible(false);
                     mView.setGameCard(0);
                 }

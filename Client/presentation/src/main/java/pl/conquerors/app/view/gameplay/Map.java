@@ -51,7 +51,7 @@ public class Map extends View {
     public Map(Context context) {
         super(context);
         box = getResources().getDrawable(R.mipmap.skarb, null);
-        box.mutate().setColorFilter(Color.GREEN, PorterDuff.Mode.MULTIPLY);
+        box.mutate().setColorFilter(Color.argb(255,173,223,173), PorterDuff.Mode.MULTIPLY);
         enemy1 = getResources().getDrawable(R.drawable.enemy1, null);
         enemy2 = getResources().getDrawable(R.drawable.enemy2, null);
         enemy3 = getResources().getDrawable(R.drawable.enemy3, null);
@@ -451,19 +451,19 @@ public class Map extends View {
 
                 if (overlay[i][j] == 1) {
                     fillPaint.setStyle(Paint.Style.FILL);
-                    fillPaint.setColor(Color.GREEN);
+                    fillPaint.setColor(Color.argb(255,173,223,173));
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 } else if (overlay[i][j] == 0) {
                     fillPaint.setStyle(Paint.Style.FILL);
-                    fillPaint.setColor(Color.RED);
+                    fillPaint.setColor(Color.DKGRAY);
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
                 } else if (overlay[i][j] == 4) {
                     fillPaint.setStyle(Paint.Style.FILL);
-                    fillPaint.setColor(Color.YELLOW);
+                    fillPaint.setColor(Color.argb(255,255,255,168));
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, strokePaint);
@@ -479,7 +479,7 @@ public class Map extends View {
                     canvas.drawRect(i * TILE_SIZE, j * TILE_SIZE, i * TILE_SIZE + TILE_SIZE, j * TILE_SIZE + TILE_SIZE, strokePaint);
                 } else if (overlay[i][j] > 30) {
                     fillPaint.setStyle(Paint.Style.FILL);
-                    fillPaint.setColor(Color.GREEN);
+                    fillPaint.setColor(Color.argb(255,173,223,173));
 
                     canvas.drawRect(pos_i, pos_j, pos_i + TILE_SIZE, pos_j + TILE_SIZE, fillPaint);
                     int enemyId = overlay[i][j] - 30;

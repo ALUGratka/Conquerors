@@ -18,7 +18,7 @@ import pl.conquerors.app.model.GameplayEntity;
 import pl.conquerors.app.model.UserEntity;
 import pl.conquerors.app.model.UserRelationshipEntity;
 import pl.conquerors.app.model.mapper.CharacterEntityMapper;
-import pl.conquerors.app.model.mapper.GamplayEntityMapper;
+import pl.conquerors.app.model.mapper.GameplayEntityMapper;
 import pl.conquerors.app.model.mapper.UserEntityMapper;
 import pl.conquerors.app.model.mapper.UserRelationshipMapper;
 import pl.conquerors.app.rest.RestClient;
@@ -101,7 +101,7 @@ public class FriendProfilePresenter extends BasePresenter<FriendProfileView> {
             public void onResponse(Call<List<GameplayEntity>> call, Response<List<GameplayEntity>> response) {
                 if(response.body()==null) mView.setNumberOfGames(0);
                 else {
-                    List<Gameplay> gameplays = GamplayEntityMapper.transform(response.body());
+                    List<Gameplay> gameplays = GameplayEntityMapper.transform(response.body());
                     mView.setNumberOfGames(gameplays.size());
                 }
 
